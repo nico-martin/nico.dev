@@ -1,0 +1,30 @@
+{
+    "name": "nico.dev",
+    "version": "0.1.2",
+    "description": "A Vue-APP for https://skatepark.guide",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:nico-martin/nico.dev.git"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "fs": "0.0.1-security"
+    },
+    "author": "Nico Martin",
+    "license": "UNLICENSED",
+    "scripts": {
+        "start": "npm run build",
+        "prod": "npm run update & npm run build:prod",
+        "build": "webpack -d --watch",
+        "build:prod": "webpack -p",
+        "update": "node update-package.js"
+    },
+    "bugs": {
+        "url": "https://github.com/nico-martin/nico.dev/issues"
+    },
+    "homepage": "https://github.com/nico-martin/nico.dev",
+    "browserslist": [
+        "> 1%",
+        "IE 11"
+    ]
+}
