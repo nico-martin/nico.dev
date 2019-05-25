@@ -1,0 +1,17 @@
+.title {
+	&__title, &__subtitle {
+		display: inline-block;
+		color: transparent;
+		color: #fff;
+		position: relative;
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			top: 0;
+			background-color: c();
+		}
+	}
+}
