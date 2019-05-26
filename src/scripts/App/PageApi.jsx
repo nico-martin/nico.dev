@@ -47,11 +47,15 @@ class Page extends Component {
 
 	render() {
 		if (!this.state.page) {
-			return <p>Error</p>;
+			return <p>Error: invalid page</p>;
+		}
+
+		if (!this.state.entries) {
+			return <p>Error: fetch failed</p>
 		}
 
 		if (!this.state.entries.length) {
-			return <p>no entries</p>
+			return <p>loading</p>
 		}
 
 		console.log(this.state.entries);
