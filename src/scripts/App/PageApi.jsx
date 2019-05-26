@@ -19,12 +19,14 @@ class Page extends Component {
 			page: (page in api ? api[page] : false),
 			entries: {}
 		});
+		document.body.classList.add('loading--posts');
 		if (this.state.page) {
 			fetch(this.state.page.api)
 				.then(result => {
 					return result.json();
 				})
 				.then(entries => {
+					document.body.classList.remove('loading--posts');
 					this.setState({
 						entries
 					});
@@ -55,13 +57,18 @@ class Page extends Component {
 		}
 
 		if (!this.state.entries.length) {
-			return <p>loading</p>
+			return <p>loading..</p>
 		}
 
-		console.log(this.state.entries);
-
 		return (
-			<div className={this.props.className}>Page: {api[this.props.page].api}</div>
+			<ul className={this.props.className}>
+				{
+					Object.keys(this.state.entries).map(id => {
+						const entry = this.state.entries[id];
+						return <li>{entry.title}</li>;
+					})
+				}
+			</ul>
 		);
 	};
 }

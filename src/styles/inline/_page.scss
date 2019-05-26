@@ -77,7 +77,7 @@
 	}
 }
 
-body.loaded--image.loaded--fonts.loaded--app {
+body.loaded--image.loaded--fonts.loaded--app:not(.loading--posts) {
 	.page__loader {
 		animation: none;
 	}
