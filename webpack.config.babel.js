@@ -22,7 +22,7 @@ module.exports = {
 	entry: [
 		`${SRC_DIR}/styles/app.scss`,
 		`${SRC_DIR}/styles/inline.scss`,
-		`${SRC_DIR}/scripts/app.js`
+		`${SRC_DIR}/scripts/main.js`
 	],
 	output: {
 		path: DIST_DIR,
@@ -37,7 +37,7 @@ module.exports = {
 				use: 'raw-loader'
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/
 			},
@@ -98,7 +98,9 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
+		new CleanWebpackPlugin({
+			cleanStaleWebpackAssets: false
+		}),
 		inlineCss,
 		appCss,
 		new CopyWebpackPlugin([
@@ -113,6 +115,10 @@ module.exports = {
 				transformPath(targetPath, absolutePath) {
 					return targetPath.replace('\\src\\img', '');
 				},
+			}, {
+				from: 'src/fonts/*',
+				to: './assets/fonts/',
+				flatten: true
 			},
 			{
 				from: 'src/version.json',
@@ -124,10 +130,9 @@ module.exports = {
 			//hash: true,
 			title: app.title,
 			description: app.description,
-			subtitle: 'test',
 			template: 'src/index.html',
 			filename: './index.html',
-			inlineSource: '.inline.css$',
+			inlineSource: '.inline.css'
 		}),
 		new HtmlInlineSourcePlugin(),
 		new AsyncStylesheetPlugin({

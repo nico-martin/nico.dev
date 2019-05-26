@@ -20,33 +20,48 @@
 	<meta property="og:image" content="/assets/img/meta-image.jpg"/>
 	<meta property="og:image:width" content="1024"/>
 	<meta property="og:image:height" content="643"/>
+	-->
 
 	<script id="loadFonts">
 		function loadFont(t, e, n) {
-			var a = navigator.userAgent;
-			if (window.addEventListener && (!a.match(/(Android (2|3|4.0|4.1|4.2|4.3))|(Opera (Mini|Mobi))/) || a.match(/Chrome/))) {
-				var o = {};
-				try {
-					o = localStorage || {}
-				} catch (t) {
+			return new Promise(resolve => {
+				const a = navigator.userAgent;
+				if (window.addEventListener && (!a.match(/(Android (2|3|4.0|4.1|4.2|4.3))|(Opera (Mini|Mobi))/) || a.match(/Chrome/))) {
+					let o = {};
+					try {
+						o = localStorage || {}
+					} catch (t) {
+					}
+					const r = t, i = r + "url", s = r + "css", d = o[i], c = o[s], l = document.createElement("style");
+					if (l.rel = "stylesheet", document.head.appendChild(l), !c || d !== e && d !== n) {
+						const u = n && function () {
+							if (!window.FontFace) return !1;
+							const t = new FontFace("t", 'url("data:application/font-woff2,") format("woff2")', {});
+							return t.load(), "loading" === t.status
+						}() ? n : e, f = new XMLHttpRequest;
+						f.open("GET", u), f.onload = function () {
+							f.status >= 200 && f.status < 400 && (o[i] = u, o[s] = l.textContent = f.responseText)
+							resolve();
+						}, f.send()
+					} else {
+						l.textContent = c;
+						resolve();
+					}
 				}
-				var r = t, i = r + "url", s = r + "css", d = o[i], c = o[s], l = document.createElement("style");
-				if (l.rel = "stylesheet", document.head.appendChild(l), !c || d !== e && d !== n) {
-					var u = n && function () {
-						if (!window.FontFace) return !1;
-						var t = new FontFace("t", 'url("data:application/font-woff2,") format("woff2")', {});
-						return t.load(), "loading" === t.status
-					}() ? n : e, f = new XMLHttpRequest;
-					f.open("GET", u), f.onload = function () {
-						f.status >= 200 && f.status < 400 && (o[i] = u, o[s] = l.textContent = f.responseText)
-					}, f.send()
-				} else l.textContent = c
-			}
+			});
 		}
 
-		loadFont('OpenSans-1.0', '/assets/fonts/fonts-woff.css', '/assets/fonts/fonts-woff2.css');
+		const min = 1000;
+		const starttime = new Date().getTime();
+		loadFont('Affogato-1.0', '/assets/fonts/font-woff.css', '/assets/fonts/font-woff2.css').then(() => {
+			const endtime = new Date().getTime();
+			let fontDelay = min - (endtime - starttime);
+			if (fontDelay <= 0) {
+				fontDelay = 0;
+			}
+			window.setTimeout(() => document.body.classList.add('loaded--fonts'), fontDelay);
+		});
 	</script>
-	-->
 </head>
 <body class="page">
 <div class="page__image page-image">
@@ -57,7 +72,7 @@
 			<feComposite in2="SourceGraphic" operator="in"></feComposite>
 		</filter>
 	</svg>
-	<div class="page-image__image page-image__image--thumb"
+	<div class="page-image__image js-page-image-thumb page-image__image--thumb"
 	     style="background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLS4tGyIyNTEsNSgsLSz/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAAyADIDASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAcEBgMFCAEC/8QANRAAAgEDAgQDBAgHAAAAAAAAAQIDAAQRBSEGEhMxB0FhFCJRkQgVQlJxgaHRI1WSk6Lh8P/EABgBAQEAAwAAAAAAAAAAAAAAAAIDAAEE/8QAIBEAAgIBBAMBAAAAAAAAAAAAAAECERITITFRAzJBQv/aAAwDAQACEQMRAD8AdBiFYZoXjAcrlG7ZHepAjk5Cw5WA74YGs0s8LQRRTAoUyDkbZJFTSKN9GmkR7bEtsR0yfeQ9q+BqMbHB2PwqXcFBZTMg5gGJAG2d9qXVyms2Op2l/b313PJK6NdWEwQxBGKghMAMCvNkHfPKc980XLEcIZ2Xz2lG+PyrwzRHuG+VCRisiw87ovNygsATW7YKRi6kP3H+VFb8aHp5A/jyn1/4UUsWHJGtuYwsyueYMEK4ztuQe3bO1T7blOm2+TnLOd/wqr3M851RoepcxRNIxVpMAnYnA9Nv1rYJO0VuMXEhEZyAW27jOfyqkd1aNTdbEDiviXS+GNPuLnUZ+nG9wY4kRSzSHc4UDvsM/AClFqXiVpb38OtW0mqPdx8xGnSxKsYbGBzSjuvngEnP4V9+OGpQtx1ptkZMssFw/LnzZxg49eQ0rpDgMTQwUuRRm48HQnBHidpfFt39X9GWx1IIZOhJ7yuBjJRxse/Y4PpV8iUPIgJwOda494Y1OXTPEXRruNwvSuYskj7LPyN/ixrr5SCygnA6ij9TWmqZidlpGmWyqAQxI8y3eivVtwiBRMMKMDeinSBbKT4h3UVrcWdzzMiRMA7IuSM8w7eZ3quadr/11ouovpI9ruLGNg8DzKJ2IXI934nbGcDNWHiHhjVtUsl9n1G3sJCQzq8JmGx7ZDL/AK9ax6PwldcN2KPZQ2cvXOJ5HmkU4yDhVIPr5/Ch45P6UnHoRXiFpV5NxlFxBfXaSx3UOIomDCROVduYEDzLfDGapF2wErAeRxTz8Z7CG30pLt763tpJZ15etsJQqNlAfsnfm9SoFIkwzXt/0LcB3kO2WCjAGSSScADB3pRe25kkrVEjReG77XJWu7ARdWxmRn52ILDYgL65B+FdN2+qDpL1m3LLg+u5pT8MaJecOWzafHy3V5csLp5Y1YwoAAApbHfz9at/Q4iubePoWtrzq4YFpDgjcHcCoS8lstp0l2MUcWEDGYP7TfvRS79j4v8A5daf1n9qKOozNJDfv+/5VHlY+wRjJ7miiro52If6R0jiz0VA7BDI7cuds4xn5E0gYPelVW3UA7Ht2NFFWj6gfI2PCGaWSxvueR35Z1UcxJwMdvwp56FtdgDYEdqKK4n7s6/wiy8i/dHyoooqpE//2Q==); "></div>
 	<div aria-hidden="true" class="js-page-image page-image__image"></div>
 	<script>
@@ -75,10 +90,13 @@
 			const $image = document.querySelector('.js-page-image');
 			const sizes = [2000, 1500, 1000, 700, 500];
 			const type = (WebP ? 'webp' : 'jpg');
-			const width = $image.offsetWidth;
+			let imageSize = $image.offsetWidth;
+			if (imageSize >= $image.offsetHeight) {
+				imageSize = $image.offsetHeight;
+			}
 			let theSize = sizes[0];
 			sizes.forEach(function (size) {
-				if (size >= width) {
+				if (size >= imageSize) {
 					theSize = size;
 				}
 			});
@@ -91,13 +109,22 @@
 			};
 			bkg.src = '/assets/img/portrait/nico-martin-' + theSize + '.' + type;
 		});
+
+		window.addEventListener("scroll", function (event) {
+			document.querySelector('.js-page-image').style.transform = 'translateY(' + (this.scrollY / 2) + 'px)';
+			document.querySelector('.js-page-image-thumb').style.transform = 'translateY(' + (this.scrollY / 2) + 'px)';
+		});
 	</script>
 </div>
 <div class="page__content">
 	<h1 class="page__title title">
-		<span class="title__title">Nico Martin</span>
+		<span class="title__title">Nico Martin</span><br>
 		<span class="title__subtitle">A frontend developer</span>
 	</h1>
+	<script>
+		window.setTimeout(() => document.querySelector('.title').classList.add('title--loaded'), 500);
+	</script>
+	<main class="page__main" id="main"></main>
 </div>
 <div class="page__loader loader">
 </div>
