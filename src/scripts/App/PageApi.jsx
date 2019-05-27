@@ -34,6 +34,7 @@ class PageApi extends Component {
 					return result.json();
 				})
 				.then(entries => {
+					entries = entries.reverse();
 					document.body.classList.remove('loading--posts');
 					idb.set(page.api, entries);
 					this.setState({
@@ -62,7 +63,6 @@ class PageApi extends Component {
 	}
 
 	entry(key, entry) {
-		console.log(entry);
 		if (key === 'talks') {
 			const date = this.fortmatDate(entry.date);
 			return (
