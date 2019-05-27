@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
 @import 'settings/import';
+@import 'inline/font';
 @import 'inline/normalize';
 @import 'inline/resets';
 @import 'inline/typography';
 @import 'inline/page';
 @import 'inline/page-image';
-@import 'inline/title';
+@import 'inline/content';
+@import 'inline/social';

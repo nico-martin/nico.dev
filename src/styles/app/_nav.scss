@@ -1,0 +1,23 @@
+.nav {
+	display: flex;
+	& > * + * {
+		margin-left: .5em;
+	}
+	&__element {
+		color: c();
+		font-weight: normal;
+		&--active {
+			font-weight: 900;
+		}
+	}
+
+	&--main {
+		.nav__element {
+			text-decoration: none;
+			font-weight: 900;
+			&--active {
+				@include background-gradient;
+			}
+		}
+	}
+}

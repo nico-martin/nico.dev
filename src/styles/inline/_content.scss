@@ -1,0 +1,37 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	margin-top: -$space-page*2;
+	@include desktop {
+		margin-top: 0;
+	}
+	position: relative;
+	& > * + * {
+		margin-top: $space-page;
+	}
+
+	&__title {
+		font-size: 16vmin;
+		margin-left: -.05em;
+		@include desktop {
+			font-size: 12vmin;
+		}
+		font-weight: 900;
+		letter-spacing: -.07em;
+		line-height: .8;
+		@include background-gradient;
+	}
+
+	&__links {
+		font-size: 3.5vmin;
+		@include desktop {
+			font-size: 2vmin;
+		}
+	}
+
+	&__app {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+	}
+}

@@ -115,11 +115,11 @@ module.exports = {
 				transformPath(targetPath, absolutePath) {
 					return targetPath.replace('\\src\\img', '');
 				},
-			}, {
+			}/*, {
 				from: 'src/fonts/*',
 				to: './assets/fonts/',
 				flatten: true
-			},
+			}*/,
 			{
 				from: 'src/version.json',
 				to: './version.json',

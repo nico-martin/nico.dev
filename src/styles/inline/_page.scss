@@ -19,14 +19,18 @@
 			position: absolute;
 			left: 50%;
 			bottom: 0;
-			width: 120vw;
-			height: 20vw;
-			transform: rotate(5deg) translateX(-50%) translateY(50%);
-			@include box-shadow();
+			width: 200vw;
+			height: 40vw;
+			transform: rotate(5deg) translateX(-50%) translateY(70%);
+			box-shadow: 0 0 120px rgba(0, 0, 0, 0.6);
 		}
 	}
 	&__content {
 		padding: 0 $space-page $space-page $space-page;
+		min-height: 50vh;
+		@include desktop {
+			min-height: 100vh;
+		}
 	}
 	&__loader {
 		position: fixed;
@@ -41,6 +45,7 @@
 		transform: rotate(-45deg);
 		animation: spinner .4s infinite linear;
 	}
+
 	&__main {
 		opacity: 0;
 		@include transition();
@@ -69,15 +74,15 @@
 			}
 		}
 		&__loader {
-			width: 4rem;
-			height: 4rem;
-			border-width: .5rem;
+			width: 6rem;
+			height: 6rem;
+			border-width: .8rem;
 			will-change: transform;
 		}
 	}
 }
 
-body.loaded--image.loaded--fonts.loaded--app:not(.loading--posts) {
+body.loaded--image.loaded--app:not(.loading--posts) {
 	.page__loader {
 		animation: none;
 	}

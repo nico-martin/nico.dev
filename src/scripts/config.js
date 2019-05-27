@@ -1,7 +1,9 @@
+import {openDB, deleteDB, wrap, unwrap} from 'idb';
+
 export const api = {
 	blog: {
 		title: 'Blog',
-		api: 'https://api.nico.dev/2PACX-1vQGBz_zUR59Zcn6jJfICvIXbOlj0BSsgD4Z756YmYFm-0uY3PdDydUp_FshVDX0ndDYpH23xKc4ILWL/?row=true'
+		api: 'https://api.nico.dev/2PACX-1vSNjZItcRIaqBeN8xIBQNjphBUqgBEOo149_bUjFMLOGsByT0LXqaBF3C-zN44ThrDeEdB5Q_bJsW5B/?row=true&table=532894058'
 	},
 	talks: {
 		title: 'Talks',
@@ -9,6 +11,38 @@ export const api = {
 	},
 	code: {
 		title: 'Code',
-		api: 'https://api.nico.dev/2PACX-1vSve_Q6hStmz2pwm1AfTIrJfiYrucqqmWh10YAkRV4aLm6Pd8dLOHIaLVrGxOohtt_EwTJErewtbQ-O/?row=true'
+		api: 'https://api.nico.dev/2PACX-1vSNjZItcRIaqBeN8xIBQNjphBUqgBEOo149_bUjFMLOGsByT0LXqaBF3C-zN44ThrDeEdB5Q_bJsW5B/?row=true&table=83043280'
 	}
+};
+
+export const pages = {
+	privacy: 'Privacy',
+	legal: 'Legal',
+	app: 'App'
+};
+
+const store = 'store';
+
+const dbPromise = openDB('nico.api', 1, {
+	upgrade(db) {
+		db.createObjectStore(store);
+	}
+});
+
+export const idb = {
+	async get(key) {
+		return (await dbPromise).get(store, key);
+	},
+	async set(key, val) {
+		return (await dbPromise).put(store, val, key);
+	},
+	async delete(key) {
+		return (await dbPromise).delete(store, key);
+	},
+	async clear() {
+		return (await dbPromise).clear(store);
+	},
+	async keys() {
+		return (await dbPromise).getAllKeys(store);
+	},
 };

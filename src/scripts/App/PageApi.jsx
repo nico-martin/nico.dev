@@ -1,25 +1,33 @@
 import {render, h, Component} from 'preact';
-import {api} from './../config.js';
+import {api, idb} from './../config.js';
 
-class Page extends Component {
+class PageApi extends Component {
 	constructor(props) {
 		super();
 
-		const page = (props.page in api ? api[props.page] : false);
-
 		this.state = {
-			page,
+			page: props.page,
 			entries: {}
 		}
 	};
 
 	fetchEntries(page) {
-		// Todo: indexedDB first
+
 		this.setState({
-			page: (page in api ? api[page] : false),
+			page,
 			entries: {}
 		});
 		document.body.classList.add('loading--posts');
+
+		idb.get(page.api).then(resp => {
+			if (resp) {
+				document.body.classList.remove('loading--posts');
+				this.setState({
+					entries: resp
+				});
+			}
+		});
+
 		if (this.state.page) {
 			fetch(this.state.page.api)
 				.then(result => {
@@ -27,6 +35,7 @@ class Page extends Component {
 				})
 				.then(entries => {
 					document.body.classList.remove('loading--posts');
+					idb.set(page.api, entries);
 					this.setState({
 						entries
 					});
@@ -53,11 +62,11 @@ class Page extends Component {
 		}
 
 		if (!this.state.entries) {
-			return <p>Error: fetch failed</p>
+			return <p>Error: fetch failed</p>;
 		}
 
 		if (!this.state.entries.length) {
-			return <p>loading..</p>
+			return '';
 		}
 
 		return (
@@ -73,4 +82,4 @@ class Page extends Component {
 	};
 }
 
-export default Page;
+export default PageApi;
