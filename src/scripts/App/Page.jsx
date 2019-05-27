@@ -7,10 +7,10 @@ import PageStatic from './PageStatic.jsx';
 class Page extends Component {
 	render() {
 		if (this.props.page in api) {
-			return <PageApi page={api[this.props.page]}/>
+			return <PageApi type={this.props.page} className={this.props.className} page={api[this.props.page]}/>
 		}
 
-		return <PageStatic page={this.props.page}/>
+		return <PageStatic className={this.props.className} page={this.props.page}/>
 	};
 }
 

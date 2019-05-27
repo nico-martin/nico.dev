@@ -49,3 +49,10 @@ $easing_bezier: (
 	background-image: linear-gradient(-90deg, #{c(gradient)}, #{c(gradient, to)});
 	-webkit-background-clip: text;
 }
+
+@mixin font-size($mulitiple: 1) {
+	font-size: (1.8*$mulitiple)+0rem;
+	@include desktop {
+		font-size: (2*$mulitiple)+0rem;
+	}
+}

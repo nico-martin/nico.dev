@@ -1,24 +1,28 @@
 .content {
 	display: flex;
 	flex-direction: column;
-	margin-top: -$space-page*2;
-	@include desktop {
-		margin-top: 0;
-	}
 	position: relative;
+	& > * {
+		width: 100%;
+		max-width: 750px;
+		margin: 0 auto;
+	}
 	& > * + * {
 		margin-top: $space-page;
 	}
 
 	&__title {
 		font-size: 16vmin;
-		margin-left: -.05em;
 		@include desktop {
 			font-size: 12vmin;
 		}
 		font-weight: 900;
-		letter-spacing: -.07em;
+		//letter-spacing: -.07em;
 		line-height: .8;
+		margin-top: -$space-page;
+		@include desktop {
+			margin-top: 0;
+		}
 		@include background-gradient;
 	}
 

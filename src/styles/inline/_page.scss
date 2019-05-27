@@ -15,7 +15,7 @@
 		overflow: hidden;
 		&:after {
 			content: '';
-			background-color: #fff;
+			background-color: c(white, bkg);
 			position: absolute;
 			left: 50%;
 			bottom: 0;
@@ -26,9 +26,11 @@
 		}
 	}
 	&__content {
-		padding: 0 $space-page $space-page $space-page;
+		padding: 0 $space-page/2 $space-page/2 $space-page/2;
 		min-height: 50vh;
+		background-color: c(white, bkg);
 		@include desktop {
+			padding: 0 $space-page $space-page $space-page;
 			min-height: 100vh;
 		}
 	}
@@ -55,7 +57,7 @@
 
 	@include desktop {
 		&__content {
-			width: 50vw;
+			width: 60vw;
 			padding-top: $space-page;
 		}
 		&__image {
@@ -63,7 +65,7 @@
 			right: 0;
 			top: 0;
 			bottom: 0;
-			width: 50vw;
+			width: 40vw;
 			height: 100vh;
 			&:after {
 				left: 0;
@@ -79,6 +81,12 @@
 			border-width: .8rem;
 			will-change: transform;
 		}
+	}
+}
+
+.page-image__image {
+	@include desktop {
+		transform: translateY(0) !important;
 	}
 }
 

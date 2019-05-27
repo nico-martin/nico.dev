@@ -4,14 +4,16 @@ html {
 
 body {
 	font-family: Affogato, sans-serif;
-	font-size: 1.8rem;
-	@include desktop {
-		font-size: 2.4rem;
-	}
+	@include font-size;
 }
 
 a {
 	font-weight: 900;
 	@include transition();
 	cursor: pointer;
+}
+
+::selection {
+	color: #fff;
+	background: c(gradient);
 }

@@ -35,14 +35,5 @@ export const idb = {
 	},
 	async set(key, val) {
 		return (await dbPromise).put(store, val, key);
-	},
-	async delete(key) {
-		return (await dbPromise).delete(store, key);
-	},
-	async clear() {
-		return (await dbPromise).clear(store);
-	},
-	async keys() {
-		return (await dbPromise).getAllKeys(store);
-	},
+	}
 };
