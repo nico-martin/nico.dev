@@ -51,6 +51,11 @@ $easing_bezier: (
 }
 
 @mixin font-size($mulitiple: 1) {
+	@if $mulitiple == 'small' {
+		$mulitiple: .8;
+	} @else if $mulitiple == 'x-small' {
+		$mulitiple: .6;
+	}
 	font-size: (1.8*$mulitiple)+0rem;
 	@include desktop {
 		font-size: (2*$mulitiple)+0rem;

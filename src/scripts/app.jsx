@@ -45,7 +45,7 @@ class App extends Component {
 					<nav className="app__footer-nav nav nav--footer">
 						{
 							Object.keys(pages).map(link => {
-								return <Link className="nav__element" activeClassName="nav__element--active" href={`/${link}/`}>{pages[link]}</Link>;
+								return <Link className={`nav__element nav__element--${link}`} activeClassName="nav__element--active" href={`/${link}/`}>{pages[link]}</Link>;
 							})
 						}
 					</nav>

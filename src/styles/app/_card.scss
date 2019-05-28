@@ -1,3 +1,11 @@
+$languages: (
+	bash: #89e051,
+	php:#4F5D95,
+	css:#563d7c,
+	javascript:#f1e05a,
+	html:#e34c26
+);
+
 .card-list {
 	@include desktop {
 		display: flex;
@@ -9,6 +17,9 @@
 	& + .card {
 		margin-top: $space-page/2;
 	}
+
+	display: flex;
+	flex-direction: column;
 
 	@include desktop {
 		margin-top: $space-page/2;
@@ -25,21 +36,74 @@
 	@include transition();
 	&:hover {
 		transform: scale(1.01);
-		box-shadow: 0 0 25px rgba(0, 0, 0, 0.18 );
+		box-shadow: 0 0 25px rgba(0, 0, 0, 0.18);
 	}
 
 	&__title {
 		font-weight: 900;
+		margin-bottom: $space-page/4;
 		@include font-size();
-		margin-top: .1em;
 	}
 
 	&__subtitle {
-		@include font-size(.8);
-		margin-top: $space-page/4;
+		@include font-size(small);
+		margin-bottom: $space-page/4;
 	}
 
 	&__date {
-		@include font-size(.6);
+		@include font-size(x-small);
+		margin-bottom: .1em;
+	}
+
+	&__language {
+		display: inline-block;
+		padding-left: 1em;
+		position: relative;
+		& + .card__language {
+			margin-left: .7em;
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-60%);
+			width: .6em;
+			height: .6em;
+			border-radius: 50%;
+			background-color: c(gradient);
+		}
+		@each $lang, $hex in $languages {
+			&--#{$lang}:before {
+				background-color: $hex;
+			}
+		}
+	}
+
+	&__languages {
+		@include font-size(small);
+		margin-bottom: $space-page/4;
+	}
+
+	&__links {
+		margin-top: auto;
+		@include font-size(small);
+	}
+
+	&__link {
+		@include background-gradient;
+		i {
+			-webkit-text-fill-color: c(gradient, to);
+			color: c(gradient, to);
+			display: inline-block;
+			will-change: transform;
+			@include transition(transform, fast);
+		}
+		& + .card__link {
+			margin-left: 1.5em;
+		}
+		&:hover i {
+			transform: translateX(10%);
+		}
 	}
 }

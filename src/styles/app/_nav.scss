@@ -1,5 +1,6 @@
 .nav {
 	display: flex;
+	flex-wrap: wrap;
 	& > * + * {
 		margin-left: .5em;
 	}
@@ -8,6 +9,33 @@
 		font-weight: normal;
 		&--active {
 			font-weight: 900;
+		}
+		&--app {
+			position: relative;
+			margin-left: 0;
+			margin-top: 1.5em;
+			width: 100%;
+			text-align: center;
+			@include desktop {
+				width: auto;
+				margin-left: 1.5em;
+				margin-top: 0;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: 0;
+				transform: translateY(-.7em) translateX(-50%);
+				border-bottom: 1px solid currentColor;
+				width: 1.5em;
+				@include desktop {
+					width: .5em;
+					left: 0;
+					top: 50%;
+					transform: translateY(-30%) translateX(-200%);
+				}
+			}
 		}
 	}
 
@@ -19,5 +47,13 @@
 				@include background-gradient;
 			}
 		}
+	}
+
+	&--footer {
+		justify-content: center;
+
+		@include desktop {
+		}
+		@include font-size(small);
 	}
 }

@@ -18,7 +18,7 @@ export const api = {
 export const pages = {
 	privacy: 'Privacy',
 	legal: 'Legal',
-	app: 'App'
+	app: 'This Project is Open Source'
 };
 
 const store = 'store';

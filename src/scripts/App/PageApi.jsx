@@ -70,6 +70,63 @@ class PageApi extends Component {
 					<span className="card__date">{date}</span>
 					<h3 className="card__title">{entry.venue}</h3>
 					<p className="card__subtitle">{entry.title}</p>
+					<p className="card__links">
+						{
+							[entry.slides, entry.video].map((link, i) => {
+								let text = 'Slides';
+								if (i === 1) {
+									text = 'Video';
+								}
+								if (link) {
+									return <a href={link} target="_blank" className="card__link">{text}<i class="icon-arrow-right"></i></a>
+								}
+							})}
+					</p>
+				</div>
+			);
+		} else if (key === 'blog') {
+			const date = this.fortmatDate(entry.date);
+			return (
+				<div className="card">
+					<span className="card__date">{date} on {entry.publisher}</span>
+					<h3 className="card__title">{entry.title}</h3>
+					{entry.abstract &&
+					<p className="card__subtitle">
+						<i>German:</i><br/>
+						<span>{entry.abstract}</span>
+					</p>
+					}
+					<p className="card__links">
+						<a href={entry.link} target="_blank" className="card__link">weiterlesen <i class="icon-arrow-right"></i></a>
+					</p>
+				</div>
+			);
+		} else if (key === 'code') {
+			const languages = entry.language.split(', ');
+			return (
+				<div className="card">
+					<h3 className="card__title">{entry.title}</h3>
+					<span className="card__languages">
+						{
+							languages.map(language => {
+								return <span className={`card__language card__language--${language.toLowerCase().replace(' ', '-')}`}>{language}</span>
+							})
+						}
+					</span>
+					<p className="card__subtitle">{entry.description}</p>
+					<p className="card__links">
+						{
+							[entry.link, entry.demo].map((link, i) => {
+								let text = entry.publisher;
+								if (i === 1) {
+									text = 'Demo';
+								}
+								if (link) {
+									return <a href={link} target="_blank" className="card__link">{text}<i class="icon-arrow-right"></i></a>
+								}
+							})
+						}
+					</p>
 				</div>
 			);
 		}

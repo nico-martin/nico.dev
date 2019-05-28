@@ -4,6 +4,7 @@
 	flex-grow: 1;
 	&__nav {
 		position: sticky;
+		z-index: 9999;
 		padding: #{$space-page/2};
 		margin: -#{$space-page/2};
 		background-color: c(white, bkg);
