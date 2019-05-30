@@ -9,9 +9,8 @@
 	<meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<meta name="robots" content="all">
-	<!--
 	<meta name="twitter:card" content="summary"/>
-	<meta name="twitter:site" content="@WC_Guide"/>
+	<meta name="twitter:site" content="@nic_o_martin"/>
 	<meta name="twitter:image" content="/assets/img/meta-image.jpg"/>
 
 	<meta property="og:type" content="website"/>
@@ -19,10 +18,15 @@
 	<meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>"/>
 	<meta property="og:image" content="/assets/img/meta-image.jpg"/>
 	<meta property="og:image:width" content="1024"/>
-	<meta property="og:image:height" content="643"/>
-	-->
+	<meta property="og:image:height" content="640"/>
 </head>
-<body class="page">
+<body class="page browser-not-supported">
+<script>
+	window.browserSupported = (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1);
+	if (browserSupported) {
+		document.body.classList.remove('browser-not-supported');
+	}
+</script>
 <div class="page__image page-image">
 	<svg style="display: none">
 		<filter id="blur-page-image">
@@ -35,17 +39,10 @@
 	     style="background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLS4tGyIyNTEsNSgsLSz/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAAyADIDASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAcEBgMFCAEC/8QANRAAAgEDAgQDBAgHAAAAAAAAAQIDAAQRBSEGEhMxB0FhFCJRkQgVQlJxgaHRI1WSk6Lh8P/EABgBAQEAAwAAAAAAAAAAAAAAAAIDAAEE/8QAIBEAAgIBBAMBAAAAAAAAAAAAAAECERITITFRAzJBQv/aAAwDAQACEQMRAD8AdBiFYZoXjAcrlG7ZHepAjk5Cw5WA74YGs0s8LQRRTAoUyDkbZJFTSKN9GmkR7bEtsR0yfeQ9q+BqMbHB2PwqXcFBZTMg5gGJAG2d9qXVyms2Op2l/b313PJK6NdWEwQxBGKghMAMCvNkHfPKc980XLEcIZ2Xz2lG+PyrwzRHuG+VCRisiw87ovNygsATW7YKRi6kP3H+VFb8aHp5A/jyn1/4UUsWHJGtuYwsyueYMEK4ztuQe3bO1T7blOm2+TnLOd/wqr3M851RoepcxRNIxVpMAnYnA9Nv1rYJO0VuMXEhEZyAW27jOfyqkd1aNTdbEDiviXS+GNPuLnUZ+nG9wY4kRSzSHc4UDvsM/AClFqXiVpb38OtW0mqPdx8xGnSxKsYbGBzSjuvngEnP4V9+OGpQtx1ptkZMssFw/LnzZxg49eQ0rpDgMTQwUuRRm48HQnBHidpfFt39X9GWx1IIZOhJ7yuBjJRxse/Y4PpV8iUPIgJwOda494Y1OXTPEXRruNwvSuYskj7LPyN/ixrr5SCygnA6ij9TWmqZidlpGmWyqAQxI8y3eivVtwiBRMMKMDeinSBbKT4h3UVrcWdzzMiRMA7IuSM8w7eZ3quadr/11ouovpI9ruLGNg8DzKJ2IXI934nbGcDNWHiHhjVtUsl9n1G3sJCQzq8JmGx7ZDL/AK9ax6PwldcN2KPZQ2cvXOJ5HmkU4yDhVIPr5/Ch45P6UnHoRXiFpV5NxlFxBfXaSx3UOIomDCROVduYEDzLfDGapF2wErAeRxTz8Z7CG30pLt763tpJZ15etsJQqNlAfsnfm9SoFIkwzXt/0LcB3kO2WCjAGSSScADB3pRe25kkrVEjReG77XJWu7ARdWxmRn52ILDYgL65B+FdN2+qDpL1m3LLg+u5pT8MaJecOWzafHy3V5csLp5Y1YwoAAApbHfz9at/Q4iubePoWtrzq4YFpDgjcHcCoS8lstp0l2MUcWEDGYP7TfvRS79j4v8A5daf1n9qKOozNJDfv+/5VHlY+wRjJ7miiro52If6R0jiz0VA7BDI7cuds4xn5E0gYPelVW3UA7Ht2NFFWj6gfI2PCGaWSxvueR35Z1UcxJwMdvwp56FtdgDYEdqKK4n7s6/wiy8i/dHyoooqpE//2Q==); "></div>
 	<div aria-hidden="true" class="js-page-image page-image__image"></div>
 	<script>
-		function hasWebP() {
-			return new Promise(res => {
-				const webP = new Image();
-				webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-				webP.onload = webP.onerror = function () {
-					res(webP.height === 2);
-				};
-			})
-		}
-
-		hasWebP().then(WebP => {
+		const image = new Image();
+		image.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+		image.onload = image.onerror = function () {
+			const WebP = (image.height === 2);
 			const $image = document.querySelector('.js-page-image');
 			const sizes = [2000, 1500, 1000, 700, 500];
 			const type = (WebP ? 'webp' : 'jpg');
@@ -67,7 +64,7 @@
 				document.body.classList.add('loaded--image');
 			};
 			bkg.src = '/assets/img/portrait/nico-martin-' + theSize + '.' + type;
-		});
+		};
 
 		window.addEventListener("scroll", function (event) {
 			document.querySelector('.js-page-image').style.transform = 'translateY(' + (this.scrollY / 2) + 'px)';
@@ -108,12 +105,28 @@
 			</svg>
 		</a>
 	</nav>
-	<div class="content__app" id="main"></div>
+	<div class="content__app" id="main">
+		<noscript>
+			<div class="editor">
+				<p class="big"><b>Hello, my name is Nico.</b><br/>I'm a frontend developer and founder of <a target="_blank" href="https://sayhello.ch">say hello</a>, a digital agency focused on modern web developement and WordPress.</p>
+			</div>
+		</noscript>
+	</div>
 </div>
 <div class="page__loader loader">
 </div>
 <script>
-	window.setTimeout(() => document.querySelectorAll('.skeleton').forEach(e => e.classList.add('skeleton--loaded')), 500);
+	if (browserSupported) {
+		const script = document.createElement('script');
+		script.src = '/assets/app.js';
+		document.body.appendChild(script);
+	} else {
+		const p = document.createElement('p');
+		p.classList.add('editor');
+		p.innerHTML = '<p class="big"><b>Hello, my name is Nico.</b><br/>I\'m a frontend developer and founder of <a target="_blank" href="https://sayhello.ch">say hello</a>, a digital agency focused on modern web developement and WordPress.</p>';
+		document.querySelector('#main').appendChild(p);
+		document.body.classList.add('loaded--app');
+	}
 </script>
 </body>
 </html>

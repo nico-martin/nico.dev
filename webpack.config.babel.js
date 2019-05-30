@@ -6,10 +6,14 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlInlineSourcePlugin from 'html-webpack-inline-source-plugin';
+import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import ScriptExtHtmlPlugin from 'script-ext-html-webpack-plugin';
 import AsyncStylesheetPlugin from 'async-stylesheet-webpack-plugin';
 import LiveReloadPlugin from 'webpack-livereload-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import WebpackPwaManifest from 'webpack-pwa-manifest';
+import {GenerateSW} from 'workbox-webpack-plugin';
 
 const DIST_DIR = path.resolve(__dirname, "dist");
 const SRC_DIR = path.resolve(__dirname, "src");
@@ -26,7 +30,7 @@ module.exports = {
 	],
 	output: {
 		path: DIST_DIR,
-		filename: "assets/app-[hash].js",
+		filename: "assets/app.js",
 		publicPath: '/'
 	},
 	module: {
@@ -115,11 +119,7 @@ module.exports = {
 				transformPath(targetPath, absolutePath) {
 					return targetPath.replace('\\src\\img', '');
 				},
-			}/*, {
-				from: 'src/fonts/*',
-				to: './assets/fonts/',
-				flatten: true
-			}*/,
+			},
 			{
 				from: 'src/version.json',
 				to: './version.json',
@@ -132,16 +132,83 @@ module.exports = {
 			description: app.description,
 			template: 'src/index.html',
 			filename: './index.html',
-			inlineSource: '.inline.css'
+			inlineSource: '.inline.css',
+			excludeAssets: [/app.*.js/]
 		}),
+		new HtmlWebpackExcludeAssetsPlugin(),
 		new HtmlInlineSourcePlugin(),
+		new FaviconsWebpackPlugin({
+			logo: './src/img/favicon.png',
+			prefix: 'assets/icon/[hash]/',
+			emitStats: true,
+			statsFilename: 'assets/icon/iconstats-[hash].json',
+			persistentCache: true,
+			inject: true,
+			background: app.colorbkg,
+			title: app.title,
+			icons: {
+				android: true,
+				appleIcon: true,
+				appleStartup: true,
+				coast: false,
+				favicons: true,
+				firefox: true,
+				opengraph: false,
+				twitter: true,
+				yandex: false,
+				windows: false
+			}
+		}),
 		new AsyncStylesheetPlugin({
 			preloadPolyfill: true
 		}),
-		new ScriptExtHtmlPlugin({
-			defaultAttribute: 'defer'
-		}),
 		new LiveReloadPlugin(),
-		new MiniCssExtractPlugin()
+		new MiniCssExtractPlugin(),
+		new WebpackPwaManifest({
+			name: app.title,
+			short_name: app.title.replace(' ', ''),
+			description: app.description,
+			theme_color: app.color,
+			background_color: app.colorbkg,
+			display: "browser",
+			crossorigin: 'use-credentials',
+			icons: [
+				{
+					src: path.resolve('./src/img/favicon.png'),
+					sizes: [96, 128, 192, 256, 384, 512],
+					destination: path.join('assets', 'icon'),
+					ios: true
+				}
+			]
+		}),
+		new GenerateSW({
+			importWorkboxFrom: 'local',
+			include: [/\.html$/, /\.js$/, /\.css$/],
+			importsDirectory: 'wb-assets',
+			exclude: [/inline\.css$/],
+			runtimeCaching: [
+				{
+					urlPattern: new RegExp('^https://api\.nico\.dev/'),
+					handler: 'networkFirst',
+					options: {
+						cacheName: 'api-rest-cache'
+					}
+				}, {
+					urlPattern: new RegExp(/\.(?:png|gif|jpg|svg|ico|webp)$/),
+					handler: 'cacheFirst',
+					options: {
+						cacheName: 'image-cache'
+					}
+				}, {
+					urlPattern: new RegExp(/\.html$/),
+					handler: 'networkFirst',
+					options: {
+						cacheName: 'index-cache'
+					}
+				}
+			],
+			navigateFallback: 'index.html',
+			skipWaiting: true,
+		})
 	]
 };
