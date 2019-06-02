@@ -1,46 +1,13 @@
 import {render, h, Component} from 'preact';
-import {api, idb} from './../config.js';
+import {fetchApi} from './../store';
 
 class PageApi extends Component {
 	constructor(props) {
 		super();
 
 		this.state = {
-			page: props.page,
+			pageSlug: props.page,
 			entries: {}
-		}
-	};
-
-	fetchEntries(page) {
-
-		this.setState({
-			page,
-			entries: {}
-		});
-		document.body.classList.add('loading--posts');
-
-		idb.get(page.api).then(resp => {
-			if (resp) {
-				document.body.classList.remove('loading--posts');
-				this.setState({
-					entries: resp
-				});
-			}
-		});
-
-		if (this.state.page) {
-			fetch(this.state.page.api)
-				.then(result => {
-					return result.json();
-				})
-				.then(entries => {
-					entries = entries.reverse();
-					document.body.classList.remove('loading--posts');
-					idb.set(page.api, entries);
-					this.setState({
-						entries
-					});
-				});
 		}
 	};
 
@@ -49,12 +16,22 @@ class PageApi extends Component {
 		const nextPage = nextProps.page;
 
 		if (currentPage !== nextPage) {
-			this.fetchEntries(nextPage);
+			this.setState({
+				pageSlug: nextPage,
+				entries: {}
+			});
+			fetchApi(nextPage, resp => this.setState({
+					entries: resp
+				})
+			);
 		}
 	};
 
 	componentDidMount() {
-		this.fetchEntries(this.props.page);
+		fetchApi(this.state.pageSlug, resp => this.setState({
+				entries: resp
+			})
+		);
 	};
 
 	fortmatDate(date) {
@@ -102,6 +79,7 @@ class PageApi extends Component {
 				</div>
 			);
 		} else if (key === 'code') {
+
 			const languages = entry.language.split(', ');
 			return (
 				<div className="card">
@@ -139,12 +117,20 @@ class PageApi extends Component {
 	}
 
 	render() {
-		if (!this.state.page) {
-			return <p>Error: invalid page</p>;
+		if (!this.state.pageSlug) {
+			return (
+				<div className={this.props.className}>
+					<p>Error: invalid page</p>
+				</div>
+			);
 		}
 
 		if (!this.state.entries) {
-			return <p>Error: fetch failed</p>;
+			return (
+				<div className={this.props.className}>
+					<p>Error: fetch failed</p>
+				</div>
+			);
 		}
 
 		if (!this.state.entries.length) {

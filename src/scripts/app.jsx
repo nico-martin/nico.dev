@@ -1,10 +1,9 @@
 import {render, h, Component} from 'preact';
 import {Router} from 'preact-router';
 import {Link} from 'preact-router/match';
-import {api, pages} from './config.js';
+import {sources} from './store';
 
 import Page from './App/Page.jsx';
-import Home from './App/Home.jsx';
 
 class App extends Component {
 	constructor() {
@@ -14,8 +13,10 @@ class App extends Component {
 			'/': 'About'
 		};
 
-		Object.keys(api).forEach(page => {
-			nav[`/${page}/`] = api[page].title;
+		Object.keys(sources).forEach(page => {
+			if (typeof sources[page].title !== 'undefined') {
+				nav[`/${page}/`] = sources[page].title;
+			}
 		});
 
 		this.state = {
@@ -38,14 +39,14 @@ class App extends Component {
 					}
 				</nav>
 				<Router>
-					<Home className="app__content" path="/"/>
+					<Page className="app__content" path="/"/>
 					<Page className="app__content" path="/:page/"/>
 				</Router>
 				<footer className="app__footer">
 					<nav className="app__footer-nav nav nav--footer">
 						{
-							Object.keys(pages).map(link => {
-								return <Link className={`nav__element nav__element--${link}`} activeClassName="nav__element--active" href={`/${link}/`}>{pages[link]}</Link>;
+							Object.keys(sources.pages.pages).map(link => {
+								return <Link className={`nav__element nav__element--${link}`} activeClassName="nav__element--active" href={`/${link}/`}>{sources.pages.pages[link]}</Link>;
 							})
 						}
 					</nav>

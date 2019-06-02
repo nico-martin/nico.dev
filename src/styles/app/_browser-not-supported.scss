@@ -2,8 +2,10 @@ body.browser-not-supported {
 	.content__title {
 		margin-top: 20vh;
 	}
-	.content__title, .editor a {
-		background-image: none;
-		color: c(gradient);
+	&:not(.no-js) {
+		.content__title, .editor a {
+			background-image: none;
+			color: c(gradient);
+		}
 	}
 }

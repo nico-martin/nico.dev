@@ -133,7 +133,16 @@ module.exports = {
 			template: 'src/index.html',
 			filename: './index.html',
 			inlineSource: '.inline.css',
-			excludeAssets: [/app.*.js/]
+			excludeAssets: [/app.*.js/],
+			minify: {
+				collapseWhitespace: true,
+				removeComments: true,
+				removeRedundantAttributes: true,
+				removeScriptTypeAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				useShortDoctype: true,
+				minifyJS: true
+			}
 		}),
 		new HtmlWebpackExcludeAssetsPlugin(),
 		new HtmlInlineSourcePlugin(),

@@ -1,4 +1,8 @@
 .editor {
+	& + .editor {
+		margin-top: $space-page;
+	}
+
 	& > * + * {
 		margin-top: 1em;
 	}

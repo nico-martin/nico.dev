@@ -20,12 +20,13 @@
 	<meta property="og:image:width" content="1024"/>
 	<meta property="og:image:height" content="640"/>
 </head>
-<body class="page browser-not-supported">
+<body class="page browser-not-supported no-js">
 <script>
 	window.browserSupported = (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1);
 	if (browserSupported) {
 		document.body.classList.remove('browser-not-supported');
 	}
+	document.body.classList.remove('no-js');
 </script>
 <div class="page__image page-image">
 	<svg style="display: none">
@@ -35,8 +36,12 @@
 			<feComposite in2="SourceGraphic" operator="in"></feComposite>
 		</filter>
 	</svg>
+	<noscript>
+		<div class="page-image__image" style="background-image: url('/assets/img/portrait/nico-martin-2000.jpg');"></div>
+	</noscript>
 	<div class="page-image__image js-page-image-thumb page-image__image--thumb"
 	     style="background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLS4tGyIyNTEsNSgsLSz/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAAyADIDASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAcEBgMFCAEC/8QANRAAAgEDAgQDBAgHAAAAAAAAAQIDAAQRBSEGEhMxB0FhFCJRkQgVQlJxgaHRI1WSk6Lh8P/EABgBAQEAAwAAAAAAAAAAAAAAAAIDAAEE/8QAIBEAAgIBBAMBAAAAAAAAAAAAAAECERITITFRAzJBQv/aAAwDAQACEQMRAD8AdBiFYZoXjAcrlG7ZHepAjk5Cw5WA74YGs0s8LQRRTAoUyDkbZJFTSKN9GmkR7bEtsR0yfeQ9q+BqMbHB2PwqXcFBZTMg5gGJAG2d9qXVyms2Op2l/b313PJK6NdWEwQxBGKghMAMCvNkHfPKc980XLEcIZ2Xz2lG+PyrwzRHuG+VCRisiw87ovNygsATW7YKRi6kP3H+VFb8aHp5A/jyn1/4UUsWHJGtuYwsyueYMEK4ztuQe3bO1T7blOm2+TnLOd/wqr3M851RoepcxRNIxVpMAnYnA9Nv1rYJO0VuMXEhEZyAW27jOfyqkd1aNTdbEDiviXS+GNPuLnUZ+nG9wY4kRSzSHc4UDvsM/AClFqXiVpb38OtW0mqPdx8xGnSxKsYbGBzSjuvngEnP4V9+OGpQtx1ptkZMssFw/LnzZxg49eQ0rpDgMTQwUuRRm48HQnBHidpfFt39X9GWx1IIZOhJ7yuBjJRxse/Y4PpV8iUPIgJwOda494Y1OXTPEXRruNwvSuYskj7LPyN/ixrr5SCygnA6ij9TWmqZidlpGmWyqAQxI8y3eivVtwiBRMMKMDeinSBbKT4h3UVrcWdzzMiRMA7IuSM8w7eZ3quadr/11ouovpI9ruLGNg8DzKJ2IXI934nbGcDNWHiHhjVtUsl9n1G3sJCQzq8JmGx7ZDL/AK9ax6PwldcN2KPZQ2cvXOJ5HmkU4yDhVIPr5/Ch45P6UnHoRXiFpV5NxlFxBfXaSx3UOIomDCROVduYEDzLfDGapF2wErAeRxTz8Z7CG30pLt763tpJZ15etsJQqNlAfsnfm9SoFIkwzXt/0LcB3kO2WCjAGSSScADB3pRe25kkrVEjReG77XJWu7ARdWxmRn52ILDYgL65B+FdN2+qDpL1m3LLg+u5pT8MaJecOWzafHy3V5csLp5Y1YwoAAApbHfz9at/Q4iubePoWtrzq4YFpDgjcHcCoS8lstp0l2MUcWEDGYP7TfvRS79j4v8A5daf1n9qKOozNJDfv+/5VHlY+wRjJ7miiro52If6R0jiz0VA7BDI7cuds4xn5E0gYPelVW3UA7Ht2NFFWj6gfI2PCGaWSxvueR35Z1UcxJwMdvwp56FtdgDYEdqKK4n7s6/wiy8i/dHyoooqpE//2Q==); "></div>
+
 	<div aria-hidden="true" class="js-page-image page-image__image"></div>
 	<script>
 		const image = new Image();
