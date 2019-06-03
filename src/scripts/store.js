@@ -50,11 +50,11 @@ export const fetchApi = function (key, setResponse) {
 		return;
 	}
 
+	document.body.classList.add('loading--api');
+
 	idb.get(key).then(resp => {
 		if (resp) {
 			setResponse(resp);
-		} else {
-			document.body.classList.add('loading--api');
 		}
 	});
 

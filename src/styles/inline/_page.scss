@@ -90,7 +90,7 @@
 	}
 }
 
-body.loaded--image.loaded--app:not(.loading--posts) {
+body.loaded--image.loaded--app:not(.loading--api) {
 	.page__loader {
 		animation: none;
 	}
