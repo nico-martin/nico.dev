@@ -93,8 +93,8 @@ $languages: (
 	&__link {
 		@include background-gradient;
 		i {
-			-webkit-text-fill-color: c(gradient, to);
-			color: c(gradient, to);
+			-webkit-text-fill-color: c(gradient, from);
+			color: c(gradient, from);
 			display: inline-block;
 			will-change: transform;
 			@include transition(transform, fast);

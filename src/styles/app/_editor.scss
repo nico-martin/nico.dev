@@ -6,15 +6,21 @@
 	& > * + * {
 		margin-top: 1em;
 	}
+
 	& > h2 + * {
 		margin-top: .5em;
 	}
+
 	.big + * {
 		margin-top: $space-page;
 	}
 
 	p, li {
-		line-height: 1.2;
+		line-height: 1.5;
+		&.big {
+			line-height: 1.2;
+		}
+		@include font-size(.9);
 	}
 
 	ul, ol {
@@ -42,8 +48,12 @@
 		}
 	}
 
-	.big, h2, h3 {
+	.big {
 		@include font-size(1.4);
+	}
+
+	h2, h3 {
+		@include font-size(1.2);
 	}
 
 	a {

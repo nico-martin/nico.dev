@@ -141,7 +141,6 @@ module.exports = {
 				removeScriptTypeAttributes: true,
 				removeStyleLinkTypeAttributes: true,
 				useShortDoctype: true,
-				minifyJS: true
 			}
 		}),
 		new HtmlWebpackExcludeAssetsPlugin(),

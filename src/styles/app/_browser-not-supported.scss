@@ -3,7 +3,7 @@ body.browser-not-supported {
 		margin-top: 20vh;
 	}
 	&:not(.no-js) {
-		.content__title, .editor a {
+		.content__title span, .editor a {
 			background-image: none;
 			color: c(gradient);
 		}

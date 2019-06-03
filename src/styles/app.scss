@@ -7,3 +7,9 @@
 @import 'app/card';
 @import 'app/editor';
 @import 'app/browser-not-supported';
+
+body.loaded--app {
+	.content__app {
+		opacity: 1;
+	}
+}

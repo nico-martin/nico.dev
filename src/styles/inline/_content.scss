@@ -23,7 +23,11 @@
 		@include desktop {
 			margin-top: 0;
 		}
-		@include background-gradient;
+		span {
+			display: inline-block;
+			margin-left: -.05em;
+			@include background-gradient;
+		}
 	}
 
 	&__links {
@@ -40,11 +44,5 @@
 		opacity: 0;
 		will-change: opacity;
 		@include transition(opacity);
-	}
-}
-
-body.loaded--app {
-	.content__app {
-		opacity: 1;
 	}
 }

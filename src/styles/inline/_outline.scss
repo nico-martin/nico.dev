@@ -1,0 +1,9 @@
+a:focus {
+	outline: 4px solid c(gradient);
+}
+
+body.no-outline {
+	a {
+		outline: none;
+	}
+}
