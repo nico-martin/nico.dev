@@ -14,7 +14,7 @@ class Page extends Component {
 			<div className={this.props.className}>
 				{typeof this.props.page === 'undefined' &&
 				<div className="editor">
-					<p className="big"><b>Hello, my name is Nico.</b><br/>I'm a frontend developer and founder of <a target="_blank" href="https://sayhello.ch">say hello</a>, a digital agency focused on modern web developement and WordPress.</p>
+					<p className="big"><b>Hello, my name is Nico.</b><br/>I'm a frontend developer and founder of <a target="_blank" rel="noopener noreferrer" href="https://sayhello.ch">say hello</a>, a digital agency focused on modern web developement and WordPress.</p>
 				</div>
 				}
 				<PageStatic page={this.props.page}/>

@@ -14,6 +14,8 @@ import LiveReloadPlugin from 'webpack-livereload-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import {GenerateSW} from 'workbox-webpack-plugin';
+import RobotstxtPlugin from 'robotstxt-webpack-plugin';
+import SitemapPlugin from 'sitemap-webpack-plugin';
 
 const DIST_DIR = path.resolve(__dirname, "dist");
 const SRC_DIR = path.resolve(__dirname, "src");
@@ -217,6 +219,18 @@ module.exports = {
 			],
 			navigateFallback: 'index.html',
 			skipWaiting: true,
-		})
+		}),
+		new RobotstxtPlugin({
+			sitemap: "https://nico.dev/sitemap.xml",
+			host: "https://nico.dev"
+		}),
+		new SitemapPlugin('https://nico.dev', [
+			'/blog/',
+			'/talks/',
+			'/code/',
+			'/privacy/',
+			'/legal/',
+			'/app/'
+		])
 	]
 };
