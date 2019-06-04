@@ -62,3 +62,9 @@ $easing_bezier: (
 		font-size: (2*$mulitiple)+0rem;
 	}
 }
+
+@mixin dark {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}

@@ -10,6 +10,10 @@
 		padding: .4em;
 		background-color: c();
 		color: #fff;
+		@include dark {
+			background-color: #fff;
+			color: c();
+		}
 		border-radius: .3em;
 		svg {
 			width: 1em;

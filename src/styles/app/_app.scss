@@ -8,6 +8,9 @@
 		padding: #{$space-page/2};
 		margin: -#{$space-page/2};
 		background-color: c(white, bkg);
+		@include dark {
+			background-color: c(black, bkg);
+		}
 		top: 0;
 	}
 	&__content {

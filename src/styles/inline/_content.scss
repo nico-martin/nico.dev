@@ -12,14 +12,13 @@
 	}
 
 	&__title {
-		font-size: 16vmin;
+		font-size: 5rem;
 		@include desktop {
-			font-size: 12vmin;
+			font-size: 10rem;
 		}
 		font-weight: 900;
-		//letter-spacing: -.07em;
 		line-height: .8;
-		margin-top: -$space-page;
+		margin-top: -$space-page/2;
 		@include desktop {
 			margin-top: 0;
 		}

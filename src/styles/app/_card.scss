@@ -31,13 +31,15 @@ $languages: (
 	padding: $space-page/2;
 	border-radius: 10px;
 	background-color: c(white);
+	@include dark {
+		background-color: c(black);
+	}
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	border: 1px solid #e6e6e6;
-	@include transition();
-	&:hover {
-		transform: scale(1.01);
-		box-shadow: 0 0 25px rgba(0, 0, 0, 0.18);
+	@include dark {
+		border-color: transparent;
 	}
+	@include transition();
 
 	&__title {
 		font-weight: 900;
