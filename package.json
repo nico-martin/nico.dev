@@ -6,7 +6,7 @@
         "color": "#009d89",
         "colorbkg": "#f8f8f8"
     },
-    "version": "1.0.12",
+    "version": "1.0.15",
     "description": "A Preact-APP for nico.dev",
     "repository": {
         "type": "git",

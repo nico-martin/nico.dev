@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<link rel="dns-prefetch" href="//api.nico.dev">
@@ -7,9 +7,9 @@
 		<%= htmlWebpackPlugin.options.title %>
 	</title>
 	<meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="robots" content="all">
-	<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:card" content="summary_large_image"/>
 	<meta name="twitter:site" content="@nic_o_martin"/>
 	<meta name="twitter:image" content="/assets/img/meta-image.jpg"/>
 
@@ -128,5 +128,23 @@
 		document.body.classList.add('loaded--app');
 	}
 </script>
+<script type="application/ld+json">{
+        "name":"Nico Martin",
+        "description":"Nico Martin is a frontend developer from switzerland.",
+        "author": {
+            "@type":"Person",
+            "name":"Nico Martin"
+        },
+        "@type":"WebSite",
+        "url":"https:/nico.dev/",
+        "image":"https://nico.dev/assets/img/portrait/nico-martin-2000.jpg",
+        "headline":"Nico Martin - Frontend Developer",
+        "sameAs":[
+            "https://twitter.com/nic_o_martin",
+            "https://www.linkedin.com/in/martinnico/",
+            "https://github.com/nico-martin"
+        ],
+        "@context":"http://schema.org"
+    }</script>
 </body>
 </html>
