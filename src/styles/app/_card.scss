@@ -37,7 +37,7 @@ $languages: (
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	border: 1px solid #e6e6e6;
 	@include dark {
-		border-color: transparent;
+		border-color: #1a1a1a;
 	}
 	@include transition();
 
