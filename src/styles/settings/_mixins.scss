@@ -48,6 +48,7 @@ $easing_bezier: (
 	-webkit-text-fill-color: transparent;
 	background-image: linear-gradient(-90deg, #{c(gradient, from)}, #{c(gradient, to)});
 	-webkit-background-clip: text;
+	text-decoration: none;
 }
 
 @mixin font-size($mulitiple: 1) {
