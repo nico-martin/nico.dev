@@ -28,8 +28,9 @@ module.exports = {
 	entry: [
 		`${SRC_DIR}/styles/app.scss`,
 		`${SRC_DIR}/styles/inline.scss`,
-		`${SRC_DIR}/scripts/main.js`
+		`${SRC_DIR}/scripts/main.ts`
 	],
+	devtool: 'inline-source-map',
 	output: {
 		path: DIST_DIR,
 		filename: "assets/app.js",
@@ -43,8 +44,8 @@ module.exports = {
 				use: 'raw-loader'
 			},
 			{
-				test: /\.(js|jsx)$/,
-				loader: 'babel-loader',
+				test: /\.(js|jsx|ts|tsx)$/,
+				loader: 'ts-loader',
 				exclude: /node_modules/
 			},
 			{

@@ -8,8 +8,8 @@ if ("serviceWorker" in navigator && (window.location.href.indexOf('.hello') === 
  * A11y
  */
 
-const CheckClass = 'no-outline';
-const $body = document.body;
+const CheckClass: string = 'no-outline';
+const $body: HTMLElement = document.body;
 
 $body.classList.add(CheckClass);
 

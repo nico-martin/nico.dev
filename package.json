@@ -14,8 +14,8 @@
 	},
 	"dependencies": {
 		"idb": "^4.0.3",
-		"preact": "^8.4.2",
-		"preact-router": "^2.6.1"
+		"preact": "^10.0.0-rc.3",
+		"preact-router": "^3.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
@@ -28,7 +28,7 @@
 		"@babel/register": "^7.4.4",
 		"async-stylesheet-webpack-plugin": "^0.4.1",
 		"autoprefixer": "^9.5.1",
-		"babel-loader": "^7.1.5",
+		"babel-loader": "^8.0.6",
 		"clean-webpack-plugin": "^3.0.0",
 		"copy-webpack-plugin": "^5.0.3",
 		"css-loader": "^2.1.1",
@@ -51,6 +51,8 @@
 		"sitemap-webpack-plugin": "^0.6.0",
 		"style-loader": "^0.21.0",
 		"svg-inline-loader": "^0.8.0",
+		"ts-loader": "^6.2.0",
+		"typescript": "^3.6.3",
 		"webpack": "^4.12.2",
 		"webpack-cli": "^3.3.3",
 		"webpack-livereload-plugin": "^2.2.0",
