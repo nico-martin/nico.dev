@@ -1,7 +1,7 @@
 import path from 'path';
 import pkg from './package.json';
 
-import CleanWebpackPlugin from 'clean-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -13,7 +13,7 @@ import AsyncStylesheetPlugin from 'async-stylesheet-webpack-plugin';
 import LiveReloadPlugin from 'webpack-livereload-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
-import {GenerateSW} from 'workbox-webpack-plugin';
+import { GenerateSW } from 'workbox-webpack-plugin';
 import RobotstxtPlugin from 'robotstxt-webpack-plugin';
 import SitemapPlugin from 'sitemap-webpack-plugin';
 
@@ -73,7 +73,7 @@ module.exports = {
 						},
 						{
 							loader: 'sass-loader',
-							options: {minimize: true}
+							options: { minimize: true }
 						},
 					]
 				})
@@ -199,19 +199,19 @@ module.exports = {
 			runtimeCaching: [
 				{
 					urlPattern: new RegExp('^https://api\.nico\.dev/'),
-					handler: 'networkFirst',
+					handler: 'NetworkFirst',
 					options: {
 						cacheName: 'api-rest-cache'
 					}
 				}, {
 					urlPattern: new RegExp(/\.(?:png|gif|jpg|svg|ico|webp)$/),
-					handler: 'cacheFirst',
+					handler: 'CacheFirst',
 					options: {
 						cacheName: 'image-cache'
 					}
 				}, {
 					urlPattern: new RegExp(/\.html$/),
-					handler: 'networkFirst',
+					handler: 'NetworkFirst',
 					options: {
 						cacheName: 'index-cache'
 					}

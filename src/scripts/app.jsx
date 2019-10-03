@@ -1,9 +1,10 @@
-import {render, h, Component} from 'preact';
-import {Router} from 'preact-router';
-import {Link} from 'preact-router/match';
-import {sources} from './store';
+import { render, h, Component } from 'preact';
+import { Router } from 'preact-router';
+import { Link } from 'preact-router/match';
+import { sources } from './store';
 
 import Page from './App/Page.jsx';
+import Cv from './App/Cv.jsx';
 
 class App extends Component {
 	constructor() {
@@ -39,8 +40,9 @@ class App extends Component {
 					}
 				</nav>
 				<Router>
-					<Page className="app__content" path="/"/>
-					<Page className="app__content" path="/:page/"/>
+					<Page className="app__content" path="/" />
+					<Page className="app__content" path="/:page/" />
+					<Cv className="app__content" path="/cv/" />
 				</Router>
 				<footer className="app__footer">
 					<nav className="app__footer-nav nav nav--footer">
@@ -56,4 +58,4 @@ class App extends Component {
 	}
 }
 
-render(<App/>, document.querySelector('#main'));
+render(<App />, document.querySelector('#main'));
