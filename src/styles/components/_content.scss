@@ -1,0 +1,32 @@
+.content {
+  margin: 0 auto;
+  padding: var(--spacing-page) 0;
+  width: 600px;
+  max-width: calc(100% - var(--spacing-page));
+
+  & > * + * {
+    margin-top: var(--spacing-page);
+  }
+
+  &__title {
+    font-size: 5rem;
+    @include desktop {
+      font-size: 10rem;
+    }
+    font-weight: 900;
+    line-height: .8;
+
+    span {
+      display: inline-block;
+      margin-left: -.05em;
+      @include background-gradient;
+    }
+  }
+
+  &__links {
+    font-size: 1.5rem;
+    @include desktop {
+      font-size: 2rem;
+    }
+  }
+}

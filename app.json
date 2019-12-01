@@ -1,0 +1,15 @@
+{
+  "title": "Nico Martin",
+  "short": "NicoMartin",
+  "description": "I'm a frontend developer and founder of say hello, a digital agency focused on modern web development and WordPress.",
+  "color": "#009d89",
+  "colorbkg": "#f8f8f8",
+  "pages": [
+    "/blog/",
+    "/talks/",
+    "/code/",
+    "/privacy/",
+    "/legal/",
+    "/app/"
+  ]
+}

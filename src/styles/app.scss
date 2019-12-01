@@ -1,15 +1,24 @@
-@charset "UTF-8";
+:root {
+  --spacing: 2rem;
+  --spacing-section: 4rem;
+  --spacing-page: 5rem;
+  --transition-speed: 200ms;
 
-@import 'settings/import';
-@import 'app/font';
-@import 'app/app';
-@import 'app/nav';
-@import 'app/card';
-@import 'app/editor';
-@import 'app/browser-not-supported';
+  --c-p: #1d1d1b;
+  --c-bkg: #f8f8f8;
+  --c-bkg-inverse: #252525;
 
-body.loaded--app {
-	.content__app {
-		opacity: 1;
-	}
+  --c-grad: #009d89;
+  --c-grad-from: #009fb4;
+  --c-grad-to: #009c69;
 }
+
+@import 'tools/keyframes.spinner';
+@import 'tools/mixins';
+@import 'reset';
+@import 'font';
+@import 'typography';
+
+@import 'components/page';
+@import 'components/content';
+@import 'components/link';

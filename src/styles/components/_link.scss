@@ -1,0 +1,52 @@
+.social {
+  & > * + * {
+    margin-left: 1rem;
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    padding: .4em;
+    background-color: var(--c-p);
+    color: #fff;
+    border-radius: .3em;
+
+    svg {
+      width: 1em;
+      height: 1em;
+      display: block;
+      position: relative;
+      path {
+        fill: currentColor;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      top: 0;
+      background-image: linear-gradient(-45deg, var(--c-grad-from), var(--c-grad-to));
+      opacity: 0;
+      will-change: opacity;
+      @include transition(opacity);
+    }
+
+    &:hover:before {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 4px solid var(--c-grad);
+    }
+  }
+}
+
+body.no-outline {
+  .social__link:focus {
+    outline: none;
+  }
+}

@@ -1,0 +1,19 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Affogato, sans-serif;
+  @include font-size;
+}
+
+a {
+  font-weight: 900;
+  @include transition();
+  cursor: pointer;
+}
+
+::selection {
+  color: #fff;
+  background: var(--c-grad);
+}
