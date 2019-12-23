@@ -8,13 +8,7 @@ import PageStatic from './PageStatic.jsx';
 
 const Page = props => {
   if (props.page in sources) {
-    return (
-      <PageApi
-        type={props.page}
-        className={props.className}
-        page={props.page}
-      />
-    );
+    return <PageApi className={props.className} slug={props.page} />;
   }
 
   return (
@@ -36,7 +30,7 @@ const Page = props => {
           </p>
         </div>
       )}
-      <PageStatic page={props.page} />
+      <PageStatic className={props.className} slug={props.page} />
     </div>
   );
 };

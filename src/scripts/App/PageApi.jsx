@@ -3,18 +3,18 @@ import { useState, useEffect } from 'preact/hooks';
 import { Card, CardList } from './Cards.jsx';
 import { fetchApi } from './../store';
 
-const PageApi = ({ className = '', page = '' }) => {
+const PageApi = ({ className = '', slug = '' }) => {
   const [entries, setEntries] = useState({});
 
   useEffect(() => {
     setEntries({});
-    fetchApi(page, resp => {
+    fetchApi(slug, resp => {
       setEntries(resp);
     });
-  }, [page]);
+  }, [slug]);
 
   const Content = () => {
-    if (page === '') {
+    if (slug === '') {
       return <p>Error: invalid page</p>;
     }
 

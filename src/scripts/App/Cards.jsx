@@ -1,4 +1,4 @@
-import { render, h, Component, Fragment } from 'preact';
+import { h } from 'preact';
 
 export const CardList = ({ className = '', children }) => {
   return <div className={className + ' card-list'}>{children}</div>;
@@ -18,7 +18,9 @@ export const Card = ({ entry }) => {
       {entry.links.length !== 0 && (
         <div className="card__links">
           {entry.links.map(link => (
-            <a href={link[0]}>{link[1]}</a>
+            <a href={link[0]} target="_blank">
+              {link[1]} <i className="icon-arrow-right" />
+            </a>
           ))}
         </div>
       )}

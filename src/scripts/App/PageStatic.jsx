@@ -1,17 +1,19 @@
-import { render, h, Component } from 'preact';
+import { h } from 'preact';
 import { sources, fetchApi } from './../store';
 import { Link } from 'preact-router/match';
+import { useEffect, useState } from 'preact/hooks';
 
-class PageStatic extends Component {
-  constructor(props) {
-    super();
+const PageStatic = ({ className = '', slug = '' }) => {
+  const [page, setPage] = useState({});
 
-    this.state = {
-      pageSlug: props.page,
-      page: {},
-    };
-  }
+  useEffect(() => {
+    setPage({});
+    fetchApi(page, resp => {
+      setPage(resp);
+    });
+  }, [slug]);
 
+  /*
   setPage(key) {
     if (typeof key === 'undefined') {
       key = 'home';
@@ -78,6 +80,7 @@ class PageStatic extends Component {
       />
     );
   }
-}
+   */
+};
 
 export default PageStatic;
