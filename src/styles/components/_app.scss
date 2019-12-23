@@ -1,0 +1,18 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  &__nav {
+    position: sticky;
+    z-index: 9999;
+    background-color: var(--c-bkg);
+    top: 0;
+  }
+  &__content {
+    margin-top: var(--spacing-page);
+  }
+  &__footer {
+    margin-top: auto;
+    padding-top: var(--spacing-page);
+  }
+}

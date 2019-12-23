@@ -1,72 +1,63 @@
-import { render, h, Component } from 'preact';
+import { render, h, Fragment } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
+import Page from './App/Page.jsx';
 import { sources } from './store';
 
-//import Page from './App/Page.jsx';
+const App = () => {
+  const [nav, setNav] = useState({});
 
-class App extends Component {
-  constructor() {
-    super();
-
-    const nav = {
+  useEffect(() => {
+    const newNav = {
       '/': 'About',
     };
 
     Object.keys(sources).forEach(page => {
       if (typeof sources[page].title !== 'undefined') {
-        nav[`/${page}/`] = sources[page].title;
+        newNav[`/${page}/`] = sources[page].title;
       }
     });
 
-    this.state = {
-      nav,
-    };
-  }
+    setNav(newNav);
+  }, []);
 
-  componentDidMount() {
-    document.body.classList.add('loaded--app');
-  }
-
-  render() {
-    return <p>test</p>;
-    return (
-      <main className="app">
-        <nav className="app__nav nav nav--main">
-          {Object.keys(state.nav).map(link => {
+  return (
+    <Fragment>
+      <nav className="app__nav nav nav--main">
+        {Object.keys(nav).map(link => {
+          return (
+            <Link
+              className="nav__element"
+              activeClassName="nav__element--active"
+              href={link}
+            >
+              {nav[link]}
+            </Link>
+          );
+        })}
+      </nav>
+      <Router>
+        <Page className="app__content" path="/" />
+        <Page className="app__content" path="/:page/" />
+      </Router>
+      <footer className="app__footer">
+        <nav className="app__footer-nav nav nav--footer">
+          {Object.keys(sources.pages.pages).map(link => {
             return (
               <Link
-                className="nav__element"
+                className={`nav__element nav__element--${link}`}
                 activeClassName="nav__element--active"
-                href={link}
+                href={`/${link}/`}
               >
-                {state.nav[link]}
+                {sources.pages.pages[link]}
               </Link>
             );
           })}
         </nav>
-        <Router>
-          <Page className="app__content" path="/" />
-          <Page className="app__content" path="/:page/" />
-        </Router>
-        <footer className="app__footer">
-          <nav className="app__footer-nav nav nav--footer">
-            {Object.keys(sources.pages.pages).map(link => {
-              return (
-                <Link
-                  className={`nav__element nav__element--${link}`}
-                  activeClassName="nav__element--active"
-                  href={`/${link}/`}
-                >
-                  {sources.pages.pages[link]}
-                </Link>
-              );
-            })}
-          </nav>
-        </footer>
-      </main>
-    );
-  }
-}
+      </footer>
+    </Fragment>
+  );
+};
 
 render(<App />, document.querySelector('#main'));

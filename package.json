@@ -88,8 +88,7 @@
     ]
   },
   "browserslist": [
-    "> 1%",
-    "IE 11"
+    "> 10%"
   ],
   "prettier": {
     "singleQuote": true,

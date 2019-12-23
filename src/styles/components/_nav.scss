@@ -1,0 +1,42 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * + * {
+    margin-left: .8em;
+  }
+
+  &__element {
+    color: var(--c-p);
+    font-weight: normal;
+
+    &--active {
+      font-weight: 900;
+    }
+
+    &--app {
+      position: relative;
+      margin-left: 0;
+      margin-top: 1em;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &--main {
+    .nav__element {
+      text-decoration: none;
+      font-weight: 900;
+      font-size: var(--fs-nav);
+
+      &--active {
+        @include background-gradient;
+      }
+    }
+  }
+
+  &--footer {
+    justify-content: center;
+    font-size: var(--fs-s);
+  }
+}

@@ -9,9 +9,9 @@
   }
 
   &__title {
-    font-size: 5rem;
+    font-size: 3rem;
     @include desktop {
-      font-size: 10rem;
+      font-size: 6rem;
     }
     font-weight: 900;
     line-height: .8;
@@ -24,9 +24,9 @@
   }
 
   &__links {
-    font-size: 1.5rem;
+    font-size: 1rem;
     @include desktop {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
 }
