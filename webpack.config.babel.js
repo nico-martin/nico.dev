@@ -11,8 +11,8 @@ import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import LiveReloadPlugin from 'webpack-livereload-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-//import WebpackPwaManifest from 'webpack-pwa-manifest';
-//import { GenerateSW } from 'workbox-webpack-plugin';
+import WebpackPwaManifest from 'webpack-pwa-manifest';
+import { GenerateSW } from 'workbox-webpack-plugin';
 import RobotstxtPlugin from 'robotstxt-webpack-plugin';
 import SitemapPlugin from 'sitemap-webpack-plugin';
 
@@ -96,14 +96,13 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: 'assets/app.css',
       }),
-      /*
       new WebpackPwaManifest({
         name: app.title,
         short_name: app.short,
         description: app.description,
         theme_color: app.color,
         background_color: app.colorbkg,
-        display: 'browser',
+        display: 'standalone',
         crossorigin: 'use-credentials',
         icons: [
           {
@@ -145,7 +144,6 @@ module.exports = (env, argv) => {
         navigateFallback: 'index.html',
         skipWaiting: true,
       }),
-       */
       new RobotstxtPlugin({
         sitemap: 'https://nico.dev/sitemap.xml',
         host: 'https://nico.dev',

@@ -20,7 +20,7 @@ export const Card = ({ entry }) => {
       {entry.links.length !== 0 && (
         <p className="card__links">
           {entry.links.map(link => (
-            <a href={link[0]} target="_blank">
+            <a href={link[0]} rel="noopener noreferrer" target="_blank">
               {link[1]}
               <i className="icon-arrow-right" />
             </a>
