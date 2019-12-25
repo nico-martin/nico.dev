@@ -1,7 +1,10 @@
 .content {
   margin: 0 auto;
-  padding: var(--spacing-page) 0;
-  width: 600px;
+  padding: var(--spacing-section) 0;
+  @include desktop {
+    padding: var(--spacing-page) 0;
+  }
+  width: 700px;
   max-width: calc(100% - var(--spacing-page));
 
   & > * + * {
@@ -26,7 +29,7 @@
   &__links {
     font-size: 1rem;
     @include desktop {
-      font-size: 1.5rem;
+      font-size: var(--fs-l);
     }
   }
 }

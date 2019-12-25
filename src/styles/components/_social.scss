@@ -9,7 +9,7 @@
     overflow: hidden;
     padding: .4em;
     background-color: var(--c-p);
-    color: #fff;
+    color: var(--c-social);
     border-radius: .3em;
 
     svg {
@@ -17,6 +17,7 @@
       height: 1em;
       display: block;
       position: relative;
+
       path {
         fill: currentColor;
       }

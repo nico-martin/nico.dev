@@ -3,8 +3,9 @@ html {
 }
 
 body {
-  font-family: Affogato, sans-serif;
   font-size: var(--fs);
+  line-height: 1.2;
+  color: var(--c-p);
 }
 
 a {

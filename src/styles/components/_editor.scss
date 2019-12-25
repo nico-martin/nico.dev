@@ -16,9 +16,9 @@
   }
 
   p, li {
-    line-height: 1.5;
+    line-height: 1.4;
     &.big {
-      line-height: 1.2;
+      line-height: 1.3;
     }
   }
 
@@ -28,8 +28,10 @@
 
   ul {
     list-style: none;
+
     li {
       position: relative;
+
       &:before {
         content: '';
         height: .4em;

@@ -14,15 +14,18 @@ export const Card = ({ entry }) => {
       {entry.subTitle !== false && (
         <p className="card__subtitle">{entry.subTitle}</p>
       )}
-      {entry.content !== false && entry.content}
+      {entry.content !== false && (
+        <p className="card__content">{entry.content}</p>
+      )}
       {entry.links.length !== 0 && (
-        <div className="card__links">
+        <p className="card__links">
           {entry.links.map(link => (
             <a href={link[0]} target="_blank">
-              {link[1]} <i className="icon-arrow-right" />
+              {link[1]}
+              <i className="icon-arrow-right" />
             </a>
           ))}
-        </div>
+        </p>
       )}
     </div>
   );

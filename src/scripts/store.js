@@ -1,5 +1,4 @@
-import { openDB, deleteDB, wrap, unwrap } from 'idb';
-
+import idb from './storeDB';
 export const sources = {
   blog: {
     title: 'Blog',
@@ -18,7 +17,7 @@ export const sources = {
   },
   pages: {
     api:
-      'https://api.nico.dev/2PACX-1vSNjZItcRIaqBeN8xIBQNjphBUqgBEOo149_bUjFMLOGsByT0LXqaBF3C-zN44ThrDeEdB5Q_bJsW5B/?row=true&col=true&table=1931568447&filter-col=content|md2html',
+      'https://api.nico.dev/2PACX-1vSNjZItcRIaqBeN8xIBQNjphBUqgBEOo149_bUjFMLOGsByT0LXqaBF3C-zN44ThrDeEdB5Q_bJsW5B/?row=true&col=false&table=1931568447&filter-col=content|md2html',
     pages: {
       privacy: 'Privacy',
       legal: 'Legal',
@@ -27,50 +26,26 @@ export const sources = {
   },
 };
 
-const idbStore = 'store';
-
-const idbPromise = openDB('nicoApi', 1, {
-  upgrade(db) {
-    db.createObjectStore(idbStore);
-  },
-});
-
-const idb = {
-  async get(key) {
-    return (await idbPromise).get(idbStore, key);
-  },
-  async set(key, val) {
-    return (await idbPromise).put(idbStore, val, key);
-  },
-};
-
 export const fetchApi = function(key, setResponse) {
-  if (typeof sources[key] === 'undefined') {
-    setResponse(false);
-    return;
-  }
-  if (typeof sources[key].api === 'undefined') {
+  key = key || 'home';
+  if (!key in sources && !key in sources.pages.pages) {
     setResponse(false);
     return;
   }
 
-  idb.get(key).then(resp => {
-    if (resp) {
-      setResponse(resp);
-    }
-  });
+  if (key in sources.pages.pages || key === 'home') {
+    key = 'pages';
+  }
+
+  idb.get(key).then(resp => resp && setResponse(resp));
 
   fetch(sources[key].api)
-    .then(result => {
-      return result.json();
-    })
+    .then(result => result.json())
     .then(data => {
-      console.log(key, 'before', data);
-      const entries = data.map(dataSingular =>
-        formatResponse(key, dataSingular)
-      );
-      console.log(key, 'after', entries);
-      //idb.set(key, entries);
+      const entries = data
+        .map(dataSingular => formatResponse(key, dataSingular))
+        .filter(entry => entry.title !== '');
+      idb.set(key, entries);
       setResponse(entries);
     });
 };
@@ -93,36 +68,34 @@ const formatResponse = (key, data) => {
         content: data.title,
         links: [],
       };
-      if (data.slides !== '') {
-        entry.links.push([data.slides, 'Slides']);
-      }
-      if (data.video !== '') {
-        entry.links.push([data.video, 'Video']);
-      }
+      data.slides !== '' && entry.links.push([data.slides, 'Slides']);
+      data.video !== '' && entry.links.push([data.video, 'Video']);
       break;
     case 'code':
       entry = {
         title: data.title,
-        subTitle: data.title,
+        subTitle: data.language,
         content: data.description,
         links: [[data.link, data.publisher]],
       };
-      if (data.demo !== '') {
-        entry.links.push([data.demo, 'Demo']);
-      }
+      data.demo !== '' && entry.links.push([data.demo, 'Demo']);
+      break;
+    case 'pages':
+      entry = {
+        title: data.title,
+        content: data.content,
+      };
       break;
     default:
       entry = {};
   }
 
   return {
-    ...{
-      supTitle: false,
-      title: false,
-      subTitle: false,
-      content: false,
-      links: [],
-    },
+    supTitle: false,
+    title: false,
+    subTitle: false,
+    content: false,
+    links: [],
     ...entry,
   };
 };

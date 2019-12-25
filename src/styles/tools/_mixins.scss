@@ -4,6 +4,12 @@
   }
 }
 
+@mixin tablet() {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
 @mixin background-gradient {
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(-90deg, var(--c-grad-from), var(--c-grad-to));

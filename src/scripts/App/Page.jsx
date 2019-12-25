@@ -1,20 +1,11 @@
-import { render, h, Component } from 'preact';
-import { useState, useEffect } from 'preact/hooks';
-
-import { sources } from './../store';
-
+import { h, Fragment } from 'preact';
 import PageApi from './PageApi.jsx';
-import PageStatic from './PageStatic.jsx';
 
 const Page = props => {
-  if (props.page in sources) {
-    return <PageApi className={props.className} slug={props.page} />;
-  }
-
   return (
-    <div className={props.className}>
-      {typeof props.page === 'undefined' && (
-        <div className="editor">
+    <Fragment>
+      {!props.page && (
+        <div className={props.className + ' editor'}>
           <p className="big">
             <b>Hello, my name is Nico.</b>
             <br />
@@ -30,8 +21,8 @@ const Page = props => {
           </p>
         </div>
       )}
-      <PageStatic className={props.className} slug={props.page} />
-    </div>
+      <PageApi className={props.className} slug={props.page} />
+    </Fragment>
   );
 };
 

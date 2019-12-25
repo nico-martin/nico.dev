@@ -1,6 +1,22 @@
 .nav {
   display: flex;
   flex-wrap: wrap;
+  padding: var(--spacing-small) 0;
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -9px;
+    top: 0;
+    width: 10px;
+    background-color: var(--c-bkg);
+  }
+
+  &:before {
+    right: -9px;
+    left: auto;
+  }
 
   & > * + * {
     margin-left: .8em;

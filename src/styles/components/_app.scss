@@ -2,17 +2,42 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
   &__nav {
     position: sticky;
     z-index: 9999;
     background-color: var(--c-bkg);
     top: 0;
   }
+
   &__content {
     margin-top: var(--spacing-page);
+
+    & + .app__content {
+      margin-top: var(--spacing-section);
+    }
   }
+
   &__footer {
     margin-top: auto;
     padding-top: var(--spacing-page);
+  }
+
+  &__loader {
+    height: 1.8rem;
+    font-size: 1.8rem;
+
+    &:after {
+      content: '';
+      display: block;
+      height: 1em;
+      width: 1em;
+      border: .15em solid var(--c-p);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      margin: 0 auto;
+      animation: spinner .6s linear infinite;
+    }
   }
 }
