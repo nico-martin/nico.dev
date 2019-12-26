@@ -1,10 +1,15 @@
+body {
+  overflow-x: hidden;
+}
+
 .page {
   background-color: var(--c-bkg);
-  overflow-x: hidden;
+  padding-top: 50vh;
 
   &__image {
     background-color: var(--c-bkg-inverse);
     position: fixed;
+    -webkit-backface-visibility: hidden;
     bottom: 50vh;
     right: 0;
     left: 0;
@@ -24,26 +29,47 @@
   }
 
   &__shadow {
-    position: absolute;
-    background-color: var(--c-bkg);
-    top: 50vh;
+    position: relative;
     height: 20vw;
-    left: 50vw;
-    transform: rotate(5deg) translateX(-50%);
-    width: 200vw;
-    box-shadow: 0 0 120px rgba(0, 0, 0, 0.6);
+    margin-top: -10vw;
     z-index: 2;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: rotate(5deg) translateX(-50%);
+      height: 50%;
+      width: 120%;
+      z-index: 5;
+      background-color: var(--c-bkg);
+      box-shadow: 0 0 120px rgba(0, 0, 0, 0.6);
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 50%;
+      z-index: 6;
+      background-color: var(--c-bkg);
+    }
   }
 
   &__content {
     background-color: var(--c-bkg);
-    margin-top: 50vh;
     position: relative;
     z-index: 2;
     min-height: 50vh;
   }
 
   @include desktop {
+    padding-top: 0;
     &__image {
       left: 60vw;
       bottom: 0;
@@ -66,7 +92,6 @@
     }
 
     &__content {
-      margin-top: 0;
       margin-right: 40vw;
     }
   }

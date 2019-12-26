@@ -32,12 +32,14 @@ const open = () =>
 
 const set = (key, values) =>
   new Promise(resolve => {
-    open().then(db => {
-      const request = db
-        .transaction([storeName], 'readwrite')
-        .objectStore(storeName)
-        .add({ id: key, values });
-      request.onsuccess = () => resolve(values);
+    remove(key).then(() => {
+      open().then(db => {
+        const request = db
+          .transaction([storeName], 'readwrite')
+          .objectStore(storeName)
+          .add({ id: key, values });
+        request.onsuccess = () => resolve(values);
+      });
     });
   });
 
@@ -53,6 +55,18 @@ const get = key =>
           resolve(request.result ? request.result.values : false);
       })
       .catch(err => reject());
+  });
+
+const remove = key =>
+  new Promise((resolve, reject) => {
+    open().then(db => {
+      const request = db
+        .transaction([storeName], 'readwrite')
+        .objectStore(storeName)
+        .delete(key);
+
+      request.onsuccess = () => resolve();
+    });
   });
 
 export default { get, set };

@@ -1,6 +1,6 @@
 .content {
   margin: 0 auto;
-  padding: var(--spacing-section) 0;
+  padding: 0;
   @include desktop {
     padding: var(--spacing-page) 0;
   }

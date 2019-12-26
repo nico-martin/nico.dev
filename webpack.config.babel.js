@@ -117,7 +117,7 @@ module.exports = (env, argv) => {
         importWorkboxFrom: 'local',
         include: [/\.html$/, /\.js$/, /\.css$/],
         importsDirectory: 'wb-assets',
-        exclude: [/inline\.css$/],
+        exclude: [/app\.css$/],
         runtimeCaching: [
           {
             urlPattern: new RegExp('^https://api.nico.dev/'),
