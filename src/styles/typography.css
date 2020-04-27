@@ -10,7 +10,7 @@ body {
 
 a {
   font-weight: 900;
-  @include transition();
+  @mixin transition;
   cursor: pointer;
 }
 

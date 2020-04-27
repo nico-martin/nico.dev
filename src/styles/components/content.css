@@ -1,7 +1,7 @@
 .content {
   margin: 0 auto;
   padding: var(--spacing-section) 0;
-  @mixin desktop {
+  @media (min-width: 900px) {
     padding: var(--spacing-page) 0;
   }
   width: 700px;
@@ -13,22 +13,22 @@
 
   &__title {
     font-size: 3rem;
-    @mixin desktop {
+    @media (min-width: 900px) {
       font-size: 6rem;
     }
     font-weight: 900;
-    line-height: .8;
+    line-height: 0.8;
 
     span {
       display: inline-block;
-      margin-left: -.05em;
+      margin-left: -0.05em;
       @mixin background-gradient;
     }
   }
 
   &__links {
     font-size: 1rem;
-    @mixin desktop {
+    @media (min-width: 900px) {
       font-size: var(--fs-l);
     }
   }

@@ -38,11 +38,3 @@
 @import 'font-icon.css';
 @import 'font-affogato.css';
 @import 'typography.css';
-
-@import 'components/page.css';
-@import 'components/content.css';
-@import 'components/social.css';
-@import 'components/app.css';
-@import 'components/nav.css';
-@import 'components/editor.css';
-@import 'components/card.css';

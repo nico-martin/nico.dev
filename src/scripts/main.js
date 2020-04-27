@@ -1,4 +1,12 @@
 import './app.jsx';
+import '../styles/app.css';
+import '../styles/components/page.css';
+import '../styles/components/content.css';
+import '../styles/components/social.css';
+import '../styles/components/app.css';
+import '../styles/components/nav.css';
+import '../styles/components/editor.css';
+import '../styles/components/card.css';
 
 'serviceWorker' in navigator &&
   window.location.href.indexOf('.hello') === -1 &&

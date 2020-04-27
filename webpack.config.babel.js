@@ -1,21 +1,23 @@
 import path from 'path';
-import app from './app.json';
+import fs from 'fs';
 
 require('dotenv').config();
+import app from './app.json';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlInlineSourcePlugin from 'html-webpack-inline-source-plugin';
 import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
-import LiveReloadPlugin from 'webpack-livereload-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import { GenerateSW } from 'workbox-webpack-plugin';
 import RobotstxtPlugin from 'robotstxt-webpack-plugin';
 import SitemapPlugin from 'sitemap-webpack-plugin';
-import fs from 'fs';
+
+import TerserJSPlugin from 'terser-webpack-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 module.exports = (env, argv) => {
   const dirDist = path.resolve(__dirname, 'dist');
@@ -32,11 +34,8 @@ module.exports = (env, argv) => {
   }
 
   return {
-    entry: [`${dirSrc}/styles/app.css`, `${dirSrc}/scripts/main.js`],
-    output: {
-      path: dirDist,
-      filename: 'assets/app-[hash].js',
-      publicPath: '/',
+    entry: {
+      app: `${dirSrc}/scripts/main.js`,
     },
     devServer: {
       contentBase: dirDist,
@@ -45,6 +44,14 @@ module.exports = (env, argv) => {
       https: serveHttps,
       hot: true,
       historyApiFallback: true,
+    },
+    output: {
+      path: dirDist,
+      filename: 'assets/app-[hash].js',
+      publicPath: '/',
+    },
+    optimization: {
+      minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     devtool: dev ? `cheap-module-eval-source-map` : undefined,
     plugins: [
@@ -109,10 +116,6 @@ module.exports = (env, argv) => {
           yandex: false,
           windows: false,
         },
-      }),
-      new LiveReloadPlugin(),
-      new MiniCssExtractPlugin({
-        filename: 'assets/app.css',
       }),
       new WebpackPwaManifest({
         name: app.title,
@@ -203,10 +206,11 @@ module.exports = (env, argv) => {
               options: {
                 plugins: () => [
                   require('postcss-mixins')({
-                    mixinsDir: path.join(__dirname, 'src/styles/tools/mixins'),
+                    mixinsDir: path.join(__dirname, 'src/styles/tools/mixins/'),
                   }),
                   require('postcss-nested'),
                   require('autoprefixer'),
+                  require('cssnano')(),
                 ],
               },
             },

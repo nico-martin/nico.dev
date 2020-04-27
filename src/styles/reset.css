@@ -1,5 +1,5 @@
-// https://github.com/hankchizljaw/modern-css-reset
-// Box sizing rules
+/* https://github.com/hankchizljaw/modern-css-reset */
+/* Box sizing rules */
 *,
 *::before,
 *::after {
@@ -24,7 +24,6 @@ dd {
 
 /* Set core body defaults */
 body {
-  //min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
