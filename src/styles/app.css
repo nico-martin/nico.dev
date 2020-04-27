@@ -33,17 +33,16 @@
   }
 }
 
-@import 'tools/keyframes.spinner';
-@import 'tools/mixins';
-@import 'reset';
-@import 'font-icon';
-@import 'font-affogato';
-@import 'typography';
+@import 'tools/keyframes-spinner.css';
+@import 'reset.css';
+@import 'font-icon.css';
+@import 'font-affogato.css';
+@import 'typography.css';
 
-@import 'components/page';
-@import 'components/content';
-@import 'components/social';
-@import 'components/app';
-@import 'components/nav';
-@import 'components/editor';
-@import 'components/card';
+@import 'components/page.css';
+@import 'components/content.css';
+@import 'components/social.css';
+@import 'components/app.css';
+@import 'components/nav.css';
+@import 'components/editor.css';
+@import 'components/card.css';

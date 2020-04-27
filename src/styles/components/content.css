@@ -1,7 +1,7 @@
 .content {
   margin: 0 auto;
-  padding: 0;
-  @include desktop {
+  padding: var(--spacing-section) 0;
+  @mixin desktop {
     padding: var(--spacing-page) 0;
   }
   width: 700px;
@@ -13,7 +13,7 @@
 
   &__title {
     font-size: 3rem;
-    @include desktop {
+    @mixin desktop {
       font-size: 6rem;
     }
     font-weight: 900;
@@ -22,13 +22,13 @@
     span {
       display: inline-block;
       margin-left: -.05em;
-      @include background-gradient;
+      @mixin background-gradient;
     }
   }
 
   &__links {
     font-size: 1rem;
-    @include desktop {
+    @mixin desktop {
       font-size: var(--fs-l);
     }
   }

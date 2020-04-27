@@ -1,6 +1,6 @@
 {
   "name": "nico.dev",
-  "version": "2.1.1",
+  "version": "2.1.8",
   "description": "A Preact-APP for nico.dev",
   "repository": {
     "type": "git",
@@ -38,9 +38,10 @@
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.3",
+    "postcss-nested": "^4.2.1",
     "prettier": "^1.18.2",
     "prettier-stylelint": "^0.4.2",
     "pretty-quick": "^2.0.0",
@@ -53,6 +54,7 @@
     "stylelint-prettier": "^1.1.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3",
     "webpack-livereload-plugin": "^2.2.0",
     "webpack-pwa-manifest": "^4.1.1",
     "workbox-webpack-plugin": "^4.3.1"
@@ -60,11 +62,11 @@
   "author": "Nico Martin",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "npm run build",
-    "prod": "npm run update & npm run build:prod",
+    "dev": "yarn serve & yarn build",
+    "prod": "yarn build:prod",
     "build": "webpack -d --watch",
     "build:prod": "webpack -p",
-    "update": "node update-package.js"
+    "serve": "webpack-dev-server --open"
   },
   "bugs": {
     "url": "https://github.com/nico-martin/nico.dev/issues"

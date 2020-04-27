@@ -1,22 +1,27 @@
-@mixin desktop() {
+@define-mixin desktop {
   @media (min-width: 900px) {
-    @content;
+    @mixin-content ;
   }
 }
 
-@mixin tablet() {
+@define-mixin tablet {
   @media (min-width: 600px) {
-    @content;
+    @mixin-content ;
   }
 }
 
-@mixin background-gradient {
+@define-mixin background-gradient {
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(-90deg, var(--c-grad-from), var(--c-grad-to));
   -webkit-background-clip: text;
   text-decoration: none;
 }
 
+@define-mixin transition $speed: 200ms, $property: all, $function: ease-in, $delay: 0ms {
+  transition: $speed $property $function $delay;
+}
+
+/*
 $easing_bezier: (
   0.455,
   0.03,
@@ -68,3 +73,4 @@ $easing_bezier: (
     font-size: (2*$mulitiple)+0rem;
   }
 }
+*/

@@ -13,10 +13,11 @@ const PageApi = ({ className = '', slug = '' }) => {
 
   const Loading = () => <div className="app__loader" />;
   const Error = ({ error = 'Error' }) => <p className="app__error">{error}</p>;
+  const NotFound = () => <Error error="404: Page not found" />;
 
   const Content = () => {
     if (entries === false) {
-      return <Error error="Error: fetch failed" />;
+      return <NotFound />;
     }
 
     if (Object.keys(entries).length === 0) {

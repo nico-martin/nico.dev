@@ -21,14 +21,15 @@ export const sources = {
     pages: {
       privacy: 'Privacy',
       legal: 'Legal',
+      uses: '/uses',
       app: 'This Project is Open Source',
     },
   },
 };
 
 export const fetchApi = function(key, setResponse) {
-  key = key || 'home';
-  if (!key in sources && !key in sources.pages.pages) {
+  key = location.pathname === '/' ? 'home' : key;
+  if (!(key in sources) && !(key in sources.pages.pages) && key !== 'home') {
     setResponse(false);
     return;
   }

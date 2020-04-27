@@ -2,7 +2,7 @@
   display: grid;
   grid-gap: var(--spacing);
   align-items: stretch;
-  @include tablet {
+  @mixin tablet {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -42,13 +42,13 @@
     display: flex;
 
     a {
-      @include background-gradient;
+      @mixin background-gradient;
 
       i {
         display: inline-block;
         -webkit-text-fill-color: var(--c-grad-from);
         color: var(--c-grad-from);
-        @include transition(transform, fast);
+        @mixin transition transform, 100ms;
       }
 
       &:hover {

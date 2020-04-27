@@ -15,18 +15,36 @@ import WebpackPwaManifest from 'webpack-pwa-manifest';
 import { GenerateSW } from 'workbox-webpack-plugin';
 import RobotstxtPlugin from 'robotstxt-webpack-plugin';
 import SitemapPlugin from 'sitemap-webpack-plugin';
+import fs from 'fs';
 
 module.exports = (env, argv) => {
   const dirDist = path.resolve(__dirname, 'dist');
   const dirSrc = path.resolve(__dirname, 'src');
   const dev = argv.mode !== 'production';
 
+  let serveHttps = false;
+  if (process.env.SSL_KEY && process.env.SSL_CRT && process.env.SSL_PEM) {
+    serveHttps = {
+      key: fs.readFileSync(process.env.SSL_KEY),
+      cert: fs.readFileSync(process.env.SSL_CRT),
+      ca: fs.readFileSync(process.env.SSL_PEM),
+    };
+  }
+
   return {
-    entry: [`${dirSrc}/styles/app.scss`, `${dirSrc}/scripts/main.js`],
+    entry: [`${dirSrc}/styles/app.css`, `${dirSrc}/scripts/main.js`],
     output: {
       path: dirDist,
       filename: 'assets/app-[hash].js',
       publicPath: '/',
+    },
+    devServer: {
+      contentBase: dirDist,
+      compress: true,
+      port: process.env.PORT || 8080,
+      https: serveHttps,
+      hot: true,
+      historyApiFallback: true,
     },
     devtool: dev ? `cheap-module-eval-source-map` : undefined,
     plugins: [
@@ -121,21 +139,21 @@ module.exports = (env, argv) => {
         runtimeCaching: [
           {
             urlPattern: new RegExp('^https://api.nico.dev/'),
-            handler: 'networkFirst',
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'api-rest-cache',
             },
           },
           {
             urlPattern: new RegExp(/\.(?:png|gif|jpg|svg|ico|webp)$/),
-            handler: 'cacheFirst',
+            handler: 'CacheFirst',
             options: {
               cacheName: 'image-cache',
             },
           },
           {
             urlPattern: new RegExp(/\.html$/),
-            handler: 'networkFirst',
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'index-cache',
             },
@@ -170,20 +188,27 @@ module.exports = (env, argv) => {
           },
         },
         {
-          test: /\.(s*)css$/,
+          test: /\.css$/,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: dev,
+                //reloadAll: true,
+              },
             },
             'css-loader',
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [require('autoprefixer')],
+                plugins: () => [
+                  require('postcss-mixins')({
+                    mixinsDir: path.join(__dirname, 'src/styles/tools/mixins'),
+                  }),
+                  require('postcss-nested'),
+                  require('autoprefixer'),
+                ],
               },
-            },
-            {
-              loader: 'sass-loader',
             },
           ],
         },

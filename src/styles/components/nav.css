@@ -46,7 +46,7 @@
       font-size: var(--fs-nav);
 
       &--active {
-        @include background-gradient;
+        @mixin background-gradient;
       }
     }
   }

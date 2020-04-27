@@ -40,6 +40,7 @@ const App = () => {
       <Router>
         <Page className="app__content" path="/" />
         <Page className="app__content" path="/:page/" />
+        <Page className="app__content" default />
       </Router>
       <footer className="app__footer">
         <nav className="app__footer-nav nav nav--footer">

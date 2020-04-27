@@ -4,7 +4,7 @@ import PageApi from './PageApi.jsx';
 const Page = props => {
   return (
     <Fragment>
-      {!props.page && (
+      {location.pathname === '/' && (
         <div className={props.className + ' editor'}>
           <p className="big">
             <b>Hello, my name is Nico.</b>

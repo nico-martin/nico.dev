@@ -55,6 +55,6 @@
   }
 
   a {
-    @include background-gradient;
+    @mixin background-gradient;
   }
 }
