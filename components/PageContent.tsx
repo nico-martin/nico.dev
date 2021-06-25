@@ -1,5 +1,5 @@
-import cn from '@/utils/classnames';
 import React from 'react';
+import cn from '@utils/classnames';
 import styles from './PageContent.module.css';
 
 const PageContent = ({

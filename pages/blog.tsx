@@ -1,5 +1,5 @@
 import React from 'react';
-import PageContent from '@/comps/PageContent';
+import PageContent from '@comps/PageContent';
 
 export default () => {
   return (

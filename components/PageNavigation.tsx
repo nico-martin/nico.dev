@@ -1,8 +1,7 @@
-import React from 'react';
-
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-import cn from '@/utils/classnames';
+import { useRouter } from 'next/router';
+import React from 'react';
+import cn from '@utils/classnames';
 
 const LINKS = {
   '/': 'About',

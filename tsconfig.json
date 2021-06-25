@@ -19,10 +19,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/comps/*": [
+      "@comps/*": [
         "components/*"
       ],
-      "@/utils/*": [
+      "@utils/*": [
         "utils/*"
       ]
     }

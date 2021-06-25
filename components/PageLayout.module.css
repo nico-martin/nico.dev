@@ -1,0 +1,63 @@
+.root {
+  min-height: 100vh;
+}
+
+.image {
+  height: 100vh;
+  width: 40vw;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
+  z-index: 10;
+}
+
+.shadow {
+  content: '';
+  position: fixed;
+  background-color: var(--c-bkg);
+  top: 50vh;
+  right: 40vw;
+  transform: rotate(5deg) translateY(-50%) translateX(20%);
+  height: 120vh;
+  width: 20vh;
+  box-shadow: 0 0 120px #0009;
+  z-index: 20;
+}
+
+.main {
+  position: relative;
+  width: 60vw;
+  z-index: 50;
+  background-color: var(--c-bkg);
+}
+
+.navigation {
+}
+
+.content {
+  height: 150vh;
+}
+
+@mixin mobile {
+  .image {
+    position: fixed;
+    height: 40vh;
+    width: 100%;
+  }
+
+  .shadow {
+    position: absolute;
+    right: -10vw;
+    top: 40vh;
+    height: 20vh;
+    width: 120vw;
+    transform: rotate(5deg) translateY(-50%) translateX(0);
+  }
+
+  .main {
+    width: 100%;
+    margin-top: 40vh;
+    min-height: 60vh;
+  }
+}
