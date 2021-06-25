@@ -1,11 +1,10 @@
 import React from 'react';
-
-import PageLayout from '@/comps/PageLayout';
+import PageContent from '@/comps/PageContent';
 
 export default () => {
   return (
-    <PageLayout>
-      <h1>Blog</h1>
-    </PageLayout>
+    <PageContent title="Blog">
+      <p>Content</p>
+    </PageContent>
   );
 };

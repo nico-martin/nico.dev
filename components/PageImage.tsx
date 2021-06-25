@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
 
 import cn from '@/utils/classnames';
 
 const SIZES = [500, 700, 1000, 1500, 2000];
 const TYPES = {
+  avif: 'image/avif',
   webp: 'image/webp',
   jpg: '',
 };

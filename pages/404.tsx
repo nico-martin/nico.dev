@@ -1,11 +1,10 @@
 import React from 'react';
-
-import PageLayout from '@/comps/PageLayout';
+import PageContent from '@/comps/PageContent';
 
 export default () => {
   return (
-    <PageLayout>
-      <h1>404 Error</h1>
-    </PageLayout>
+    <PageContent title="404">
+      <p>Content</p>
+    </PageContent>
   );
 };
