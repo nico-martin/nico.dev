@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 
-const Home = () => {
-  const [state, setState] = useState<number>(0);
+import PageLayout from '@/comps/PageLayout';
+
+export default () => {
   return (
-    <main>
-      <h1>Hello from Preact</h1>
-      <p>{state}</p>
-      <button onClick={() => setState(state + 1)}>Increment</button>
-      <Link href='/about'>
-        <a>About</a>
-      </Link>
-    </main>
+    <PageLayout>
+      <h1>Hello</h1>
+    </PageLayout>
   );
 };
-
-export default Home;

@@ -1,0 +1,1 @@
+{"ast":null,"code":"const cn = (...classes) => classes.map(entry => typeof entry === 'string' ? entry : Object.entries(entry).filter(([cl, append]) => append).map(([cl]) => cl).join(' ')).filter(e => e !== '').join(' ');\n\nexport default cn;","map":null,"metadata":{},"sourceType":"module"}
