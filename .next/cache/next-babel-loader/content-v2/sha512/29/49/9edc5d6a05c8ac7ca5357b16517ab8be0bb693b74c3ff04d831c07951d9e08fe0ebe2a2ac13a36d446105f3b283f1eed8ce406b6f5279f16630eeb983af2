@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport PageContent from '@comps/PageContent';\nexport default (function () {\n  return __jsx(PageContent, {\n    title: \"Talks\"\n  }, __jsx(\"p\", null, \"Content\"));\n});","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,23 @@
+.root {
+}
+
+.linkWrapper {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: var(--fs-nav);
+}
+
+.linkWrapper + .linkWrapper {
+  margin-left: 0.8em;
+  display: inline-block;
+}
+
+.link {
+  font-size: 1em;
+  color: var(--c-p);
+  text-decoration: none;
+}
+
+.linkActive {
+  @mixin background-gradient;
+}

@@ -32,11 +32,30 @@
   background-color: var(--c-bkg);
 }
 
+.mainContent {
+  margin: 0 auto;
+  padding: var(--spacing-page) 0;
+  width: 700px;
+  max-width: calc(100% - var(--spacing-page));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .navigation {
+  margin-top: var(--spacing-page);
+}
+
+.header {
 }
 
 .content {
-  height: 150vh;
+  margin-top: var(--spacing-page);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: var(--spacing-page);
 }
 
 @mixin mobile {
@@ -48,16 +67,20 @@
 
   .shadow {
     position: absolute;
-    right: -10vw;
-    top: 40vh;
+    right: 0;
+    top: 44vh;
     height: 20vh;
-    width: 120vw;
-    transform: rotate(5deg) translateY(-50%) translateX(0);
+    width: 100vw;
+    transform: translateY(-50%) skewY(7deg);
   }
 
   .main {
     width: 100%;
     margin-top: 40vh;
     min-height: 60vh;
+  }
+
+  .mainContent {
+    padding: 0 0 var(--spacing-section) 0;
   }
 }

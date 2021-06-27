@@ -1,29 +1,44 @@
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
 import cn from '@utils/classnames';
+import { LINKS } from '@utils/constants';
+import styles from './PageNavigation.module.css';
 
-const LINKS = {
-  '/': 'About',
-  '/blog/': 'Blog',
-  '/talks/': 'Talks',
-  '/code/': 'Code',
-};
+const LinkWrapper = ({
+  children,
+  active,
+  className = '',
+}: {
+  children: JSX.Element;
+  active: boolean;
+  className?: string;
+}) =>
+  active ? (
+    <h1 className={className}>{children}</h1>
+  ) : (
+    <span className={className}>{children}</span>
+  );
 
 const PageNavigation = ({ className = '' }: { className?: string }) => {
-  const { asPath } = useRouter();
+  const { route } = useRouter();
   return (
-    <div className={cn('page-navigation', className)}>
+    <div className={cn(styles.root, className)}>
       {Object.entries(LINKS).map(([path, link]) => (
-        <Link href={path}>
-          <a
-            className={cn('page-navigation__item', {
-              'page-navigation__item--active': asPath === path,
-            })}
-          >
-            {link}
-          </a>
-        </Link>
+        <LinkWrapper
+          active={route !== '/' && route === path}
+          className={styles.linkWrapper}
+        >
+          <Link href={path}>
+            <a
+              className={cn(styles.link, {
+                [styles.linkActive]: route === path,
+              })}
+            >
+              {link}
+            </a>
+          </Link>
+        </LinkWrapper>
       ))}
     </div>
   );

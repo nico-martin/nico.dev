@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport PageLayout from '@/comps/PageLayout';\nexport default (function () {\n  return __jsx(PageLayout, null, __jsx(\"h1\", null, \"404 Error\"));\n});","map":null,"metadata":{},"sourceType":"module"}

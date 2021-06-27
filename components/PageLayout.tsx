@@ -1,4 +1,6 @@
 import React from 'react';
+import PageFooter from '@comps/PageFooter';
+import PageHeader from '@comps/PageHeader';
 import PageImage from '@comps/PageImage';
 import PageNavigation from '@comps/PageNavigation';
 import cn from '@utils/classnames';
@@ -33,8 +35,12 @@ const PageLayout = ({
       <PageImage className={cn(styles.image)} />
       <div className={cn(styles.shadow)} />
       <div className={cn(styles.main)}>
-        <PageNavigation className={cn(styles.navigation)} />
-        <div className={cn(styles.content)}>{children}</div>
+        <div className={cn(styles.mainContent)}>
+          <PageHeader className={cn(styles.header)} />
+          <PageNavigation className={cn(styles.navigation)} />
+          <div className={cn(styles.content)}>{children}</div>
+          <PageFooter className={cn(styles.footer)} />
+        </div>
       </div>
     </div>
   </React.Fragment>
