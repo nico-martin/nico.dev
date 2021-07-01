@@ -8,6 +8,7 @@ module.exports = {
         mixinsDir: path.join(__dirname, 'styles/mixins'),
       },
     ],
+    'postcss-nested',
     'autoprefixer',
     'postcss-preset-env',
   ],

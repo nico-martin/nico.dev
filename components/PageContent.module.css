@@ -1,10 +1,23 @@
 .root {
-
 }
 
 .title {
-
 }
 
 .content {
+  & > * + * {
+    margin-top: 1rem;
+  }
+
+  & > * + h2 {
+    margin-top: var(--spacing-section);
+  }
+
+  p {
+    line-height: 1.5;
+  }
+}
+
+.title + .content {
+  margin-top: var(--spacing-section);
 }

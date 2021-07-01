@@ -1,4 +1,10 @@
 import React from 'react';
+import { apiGet } from '@utils/apiFetch';
+import { ApiPageI, RessourceI } from '@utils/types';
+
+export const MESSAGES = {
+  GENERAL_ERROR: 'Something went wrong',
+};
 
 export const LINKS: Record<string, string> = {
   '/': 'About',
@@ -11,7 +17,7 @@ export const FOOTER_LINKS: Record<string, string> = {
   '/privacy': 'Privacy',
   '/legal': 'Legal',
   '/uses': '/uses',
-  '/app': 'This Project is Open Source',
+  '/about-this-website': 'This Project is Open Source',
 };
 
 export const SOCIAL_LINKS: Array<{

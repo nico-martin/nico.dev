@@ -10,6 +10,7 @@
     "next": "^10.2.3",
     "next-images": "^1.8.1",
     "next-plugin-preact": "^3.0.6",
+    "postcss-nested": "^5.0.5",
     "preact": "^10.5.13",
     "preact-render-to-string": "^5.1.19",
     "react": "npm:@preact/compat@0.0.4",
@@ -34,7 +35,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prod": "npm run build && npm run start"
   },
   "bugs": {
     "url": "https://github.com/nico-martin/nico.dev/issues"

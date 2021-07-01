@@ -9,9 +9,10 @@ body {
 }
 
 a {
-  font-weight: 900;
-  @mixin transition;
   cursor: pointer;
+  font-weight: bold;
+  color: var(--c-grad);
+  @mixin transition;
 }
 
 ::selection {
