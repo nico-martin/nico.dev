@@ -18,55 +18,8 @@
   margin-top: var(--spacing-page);
 }
 
-.socialLink {
-  font-size: var(--fs-l);
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  padding: 0.4em;
-  background-color: var(--c-p);
-  color: var(--c-social);
-  border-radius: 0.3em;
-}
-
 .socialLink + .socialLink {
   margin-left: 1rem;
-}
-
-.socialLink svg {
-  width: 1em;
-  height: 1em;
-  display: block;
-  position: relative;
-}
-
-.socialLink svg path {
-  fill: currentColor;
-}
-
-.socialLink::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-  background-image: linear-gradient(
-    -45deg,
-    var(--c-grad-from),
-    var(--c-grad-to)
-  );
-  opacity: 0;
-  will-change: opacity;
-  @mixin transition;
-}
-
-.socialLink:hover::before {
-  opacity: 1;
-}
-
-.socialLink:focus {
-  outline: 4px solid var(--c-grad);
 }
 
 @mixin mobile {

@@ -6,6 +6,10 @@ body {
   font-size: var(--fs);
   line-height: 1.2;
   color: var(--c-p);
+
+  @media print {
+    font-size: 1rem;
+  }
 }
 
 a {
@@ -18,4 +22,20 @@ a {
 ::selection {
   color: #fff;
   background: var(--c-grad);
+}
+
+button {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  color: var(--c-p);
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 900;
 }

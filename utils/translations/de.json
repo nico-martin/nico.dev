@@ -1,5 +1,20 @@
 {
   "language.de": "Deutsch",
   "language.en": "Englisch",
-  "language": "Sprache"
+  "language": "Sprache",
+  "cv.contact.name": "Name",
+  "cv.contact.dob": "Geburtsdatum",
+  "cv.contact.address": "Adresse",
+  "cv.contact.email": "E-Mail",
+  "cv.contact.phone": "Telefon",
+  "cv.contact.web": "Web",
+  "cv.contact.twitter": "Twitter",
+  "cv.contact.linkedin": "LinkedIn",
+  "cv.contact.github": "Github",
+  "cv.community": "Community Experience",
+  "cv.to.now": "heute",
+  "cv.language": "Sprachen",
+  "cv.professional": "Berufserfahrung",
+  "cv.education": "Ausbildung",
+  "cv.print": "Drucken"
 }

@@ -5,6 +5,7 @@ import styles from './PageContent.module.css';
 interface Props {
   className?: string;
   title?: string;
+  titleRight?: JSX.Element | Array<JSX.Element> | string;
 }
 
 interface PropsHtml extends Props {
@@ -20,11 +21,19 @@ interface PropsChildren extends Props {
 const PageContent = ({
   className = '',
   title = '',
+  titleRight = null,
   children = null,
   html = '',
 }: PropsHtml | PropsChildren) => (
   <div className={cn(className, styles.root)}>
-    {title !== '' && <h1 className={cn(styles.title)}>{title}</h1>}
+    {(title !== '' || Boolean(titleRight)) && (
+      <div className={cn(styles.title)}>
+        {title !== '' && <h1 className={cn(styles.heading)}>{title}</h1>}
+        {Boolean(titleRight) && (
+          <div className={cn(styles.titleRight)}>{titleRight}</div>
+        )}
+      </div>
+    )}
     {children && <div className={cn(styles.content)}>{children}</div>}
     {html && (
       <div

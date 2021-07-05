@@ -2,6 +2,15 @@
 }
 
 .title {
+  display: flex;
+  align-items: center;
+}
+
+.heading {
+}
+
+.titleRight {
+  margin-left: auto;
 }
 
 .content {
@@ -17,8 +26,12 @@
     line-height: 1.5;
   }
 
-  p.has-medium-font-size {
+  :global(.has-medium-font-size) {
     font-size: var(--fs-l);
+  }
+
+  :global(.space-large-after) {
+    margin-bottom: var(--spacing-section);
   }
 }
 

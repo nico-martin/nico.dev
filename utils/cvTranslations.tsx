@@ -3,8 +3,8 @@ import de from './translations/de.json';
 import en from './translations/en.json';
 
 export const LANGUAGES: Record<string, Record<string, string>> = {
-  de,
   en,
+  de,
 };
 
 interface TranslationsI {

@@ -30,7 +30,7 @@ export const getPageProps = async (slug: string) => {
 export const getCVProps = async () => {
   try {
     const pageData: ApiCvI = await apiGet<ApiCvI>(
-      'https://wp.nico.dev/wp-json/nico/v1/page/cv'
+      'https://wp.nico.dev/wp-json/nico/v1/cv'
     );
     return {
       props: {
@@ -46,3 +46,16 @@ export const getCVProps = async () => {
     };
   }
 };
+
+export const isUrl = (string: string): boolean =>
+  string.indexOf('https://') === 0 || string.indexOf('http://') === 0;
+
+export const convertStringToAnchor = (url: string): string =>
+  `<a href='${url}' target='_blank'>${url
+    .replace('https://www.', '')
+    .replace('https://', '')
+    .replace('http://www.', '')
+    .replace('http://', '')}</a>`;
+
+export const maybeConvertStringToAnchor = (url: string): string =>
+  isUrl(url) ? convertStringToAnchor(url) : url;

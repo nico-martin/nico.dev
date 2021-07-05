@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { Button, IconType } from '@theme';
 import cn from '@utils/classnames';
 import { SOCIAL_LINKS } from '@utils/constants';
 import styles from './PageHeader.module.css';
@@ -16,16 +17,17 @@ const PageHeader = ({ className = '' }: { className?: string }) => {
         )}
       </div>
       <nav className={styles.social}>
-        {SOCIAL_LINKS.map(({ label, link, Icon }) => (
-          <a
+        {Object.entries(SOCIAL_LINKS).map(([icon, { label, link }]) => (
+          <Button
+            useAnchor
+            icon={icon as IconType}
             href={link}
             title={label}
             target="_blank"
             rel="noopener noreferrer"
+            size="large"
             className={styles.socialLink}
-          >
-            <Icon />
-          </a>
+          />
         ))}
       </nav>
     </header>
