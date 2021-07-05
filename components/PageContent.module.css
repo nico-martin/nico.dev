@@ -16,6 +16,10 @@
   p {
     line-height: 1.5;
   }
+
+  p.has-medium-font-size {
+    font-size: var(--fs-l);
+  }
 }
 
 .title + .content {
