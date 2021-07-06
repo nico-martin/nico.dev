@@ -22,6 +22,7 @@ export interface ApiCvI {
     twitter: string;
     linkedin: string;
     github: string;
+    image: string;
   };
   community: {
     de: string;
@@ -48,3 +49,11 @@ export interface ApiCvI {
     desc_en: string;
   }>;
 }
+
+export type ApiBlogI = Array<{
+  title: string;
+  abstract: string;
+  date: string;
+  publisher: string;
+  link: string;
+}>;

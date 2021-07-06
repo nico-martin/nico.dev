@@ -38,7 +38,7 @@
 .tableContact,
 .tableLanguage {
   th {
-    width: 25%;
+    width: 10rem;
   }
 }
 
@@ -54,48 +54,68 @@
   }
 }
 
-.printTitle {
-  display: none;
+.headerElement {
+  display: flex;
+  align-items: flex-start;
+}
 
+.headerElementContent {
+  flex-grow: 1;
+}
+
+.headerElementImage {
+  display: none;
+  width: 35%;
+  height: auto;
+  padding-left: 2rem;
+  margin-left: auto;
+}
+
+.printHeader {
+  margin-bottom: var(--spacing-section);
+  display: none;
+}
+
+.printTitle {
   span {
     display: block;
     font-size: var(--fs-l);
   }
 }
+@media print {
+  .print {
+    padding: 3rem;
 
-.print {
-  padding: 3rem;
+    .printHeader,
+    .headerElementImage {
+      display: block;
+    }
 
-  .printTitle {
-    display: block;
-  }
+    .content {
+      ul {
+        margin: 0.5em 0 0 0;
+        padding-left: 1em;
 
-  .content {
-    ul {
-      margin: 0.5em 0 0 0;
-      padding-left: 1em;
-
-      li + li {
-        margin-top: 0.2em;
+        li + li {
+          margin-top: 0.2em;
+        }
       }
     }
-  }
 
-  .tableContact,
-  .tableLanguage {
-    th {
-      width: 20%;
+    .tableContact,
+    .tableLanguage {
+      th {
+        width: 8rem;
+      }
     }
-  }
 
-  .tableProfessional,
-  .tableEducation {
-    tr td:first-child {
-      width: 15%;
+    .tableProfessional,
+    .tableEducation {
+      tr td:first-child {
+        width: 15%;
+      }
     }
-  }
 
-  @media print {
     .pagebreak {
       page-break-before: always;
     }

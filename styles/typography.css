@@ -9,6 +9,13 @@ body {
 
   @media print {
     font-size: 1rem;
+
+    p,
+    li,
+    td,
+    th {
+      font-size: 1rem;
+    }
   }
 }
 

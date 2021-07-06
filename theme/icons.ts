@@ -1,3 +1,4 @@
+import arrow from './_icons/arrow.svg';
 import devto from './_icons/devto.svg';
 import dribbble from './_icons/dribbble.svg';
 import github from './_icons/github.svg';
@@ -14,6 +15,7 @@ const icons = {
   print,
   twitter,
   wordpress,
+  arrow,
 };
 
 export type IconType = keyof typeof icons;

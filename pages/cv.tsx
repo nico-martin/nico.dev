@@ -34,25 +34,38 @@ export default ({
     >
       <LanguageSwitcher />
       <div ref={componentRef}>
-        <h1 className={styles.printTitle}>
-          Nico Martin<span>Curriculum Vitae</span>
-        </h1>
-        {pageData.contact && (
-          <div className={cn(styles.element)}>
-            <table className={cn(styles.table, styles.tableContact)}>
-              {Object.entries(pageData.contact).map(([key, content]) => (
-                <tr key={key}>
-                  <th>{__(`cv.contact.${key}`)}</th>
-                  <td
-                    dangerouslySetInnerHTML={{
-                      __html: maybeConvertStringToAnchor(content),
-                    }}
-                  />
-                </tr>
-              ))}
-            </table>
+        <div className={cn(styles.element, styles.headerElement)}>
+          <div className={cn(styles.headerElementContent)}>
+            <div className={styles.printHeader}>
+              <h1 className={styles.printTitle}>
+                Nico Martin<span>Curriculum Vitae</span>
+              </h1>
+            </div>
+            {pageData.contact && (
+              <table className={cn(styles.table, styles.tableContact)}>
+                {Object.entries(pageData.contact).map(([key, content]) =>
+                  key === 'image' ? null : (
+                    <tr key={key}>
+                      <th>{__(`cv.contact.${key}`)}</th>
+                      <td
+                        dangerouslySetInnerHTML={{
+                          __html: maybeConvertStringToAnchor(content),
+                        }}
+                      />
+                    </tr>
+                  )
+                )}
+              </table>
+            )}
           </div>
-        )}
+          {pageData.contact.image && (
+            <img
+              className={styles.headerElementImage}
+              src={pageData.contact.image}
+              alt="Nico Martin"
+            />
+          )}
+        </div>
         {pageData.language && (
           <div className={cn(styles.element)}>
             <h2 className={cn(styles.title)}>{__('cv.language')}</h2>

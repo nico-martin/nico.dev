@@ -1,5 +1,5 @@
 import { apiGet } from '@utils/apiFetch';
-import { ApiPageI, ApiCvI } from '@utils/types';
+import { ApiPageI, ApiCvI, ApiBlogI } from '@utils/types';
 
 export const untrailingSlashIt = (str: string): string =>
   str.replace(/\/$/, '');
@@ -7,11 +7,9 @@ export const untrailingSlashIt = (str: string): string =>
 export const trailingSlashIt = (str: string): string =>
   untrailingSlashIt(str) + '/';
 
-export const getPageProps = async (slug: string) => {
+const getApiProps = async <T>(url: string) => {
   try {
-    const pageData: ApiPageI = await apiGet<ApiPageI>(
-      `https://wp.nico.dev/wp-json/nico/v1/page/${slug}`
-    );
+    const pageData: T = await apiGet<T>(url);
     return {
       props: {
         pageData,
@@ -27,25 +25,14 @@ export const getPageProps = async (slug: string) => {
   }
 };
 
-export const getCVProps = async () => {
-  try {
-    const pageData: ApiCvI = await apiGet<ApiCvI>(
-      'https://wp.nico.dev/wp-json/nico/v1/cv'
-    );
-    return {
-      props: {
-        pageData,
-      },
-    };
-  } catch (e) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-};
+export const getPageProps = async (slug: string) =>
+  getApiProps<ApiPageI>(`https://wp.nico.dev/wp-json/nico/v1/page/${slug}`);
+
+export const getCVProps = async () =>
+  getApiProps<ApiCvI>('https://wp.nico.dev/wp-json/nico/v1/cv');
+
+export const getBlogProps = async () =>
+  getApiProps<ApiBlogI>('https://wp.nico.dev/wp-json/nico/v1/blog');
 
 export const isUrl = (string: string): boolean =>
   string.indexOf('https://') === 0 || string.indexOf('http://') === 0;
