@@ -15,7 +15,7 @@
   }
 }
 
-@define-mixin transition $speed: 200ms, $property: all, $function: ease-in,
+@define-mixin transition $speed: 100ms, $property: all, $function: ease-in,
   $delay: 0ms {
   transition: $speed $property $function $delay;
 }

@@ -59,11 +59,11 @@
 
   &:hover {
     .linkIcon {
-      transform: translateX(0.25em);
+      transform: translateX(0.15em);
     }
   }
 }
 
 .linkElement + .linkElement {
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
 }

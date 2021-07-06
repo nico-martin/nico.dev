@@ -1,11 +1,14 @@
+import dayjs from 'dayjs';
 import { apiGet } from '@utils/apiFetch';
-import { ApiPageI, ApiCvI, ApiBlogI } from '@utils/types';
+import { ApiPageI, ApiCvI, ApiBlogI, ApiTalkI, ApiCodeI } from '@utils/types';
 
 export const untrailingSlashIt = (str: string): string =>
   str.replace(/\/$/, '');
 
 export const trailingSlashIt = (str: string): string =>
   untrailingSlashIt(str) + '/';
+
+export const formatDate = (date: string) => dayjs(date).format('DD.MM.YYYY');
 
 const getApiProps = async <T>(url: string) => {
   try {
@@ -33,6 +36,12 @@ export const getCVProps = async () =>
 
 export const getBlogProps = async () =>
   getApiProps<ApiBlogI>('https://wp.nico.dev/wp-json/nico/v1/blog');
+
+export const getTalkProps = async () =>
+  getApiProps<ApiTalkI>('https://wp.nico.dev/wp-json/nico/v1/talk');
+
+export const getCodeProps = async () =>
+  getApiProps<ApiCodeI>('https://wp.nico.dev/wp-json/nico/v1/code');
 
 export const isUrl = (string: string): boolean =>
   string.indexOf('https://') === 0 || string.indexOf('http://') === 0;

@@ -1,24 +1,43 @@
 import React from 'react';
+import { InferGetServerSidePropsType } from 'next';
+import { Card, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
-import { apiGet } from '@utils/apiFetch';
-import { ApiPageI } from '@utils/types';
+import { getCodeProps } from '@utils/helpers';
 
-export default (props) => {
-  return (
-    <PageContent title={props.title}>
-      <p>Content</p>
-    </PageContent>
-  );
-};
+export const getStaticProps = async () => await getCodeProps();
 
-export const getServerSideProps = async () => {
-  const api = await apiGet<ApiPageI>(
-    'https://wp.nico.dev/wp-json/nico/v1/page/home'
-  );
-
-  return {
-    props: {
-      title: api.title,
-    },
-  };
-};
+export default ({
+  pageData,
+}: InferGetServerSidePropsType<typeof getStaticProps>) => (
+  <PageContent>
+    <CardGrid>
+      {pageData.map(({ title, tags, description, codeTitle, code, demo }) => (
+        <Card
+          title={title}
+          subtitle={tags}
+          content={description}
+          links={[
+            ...(code !== ''
+              ? [
+                  {
+                    url: code,
+                    label: codeTitle,
+                    title: `View the code of "${title}" on ${codeTitle}}`,
+                  },
+                ]
+              : []),
+            ...(demo !== ''
+              ? [
+                  {
+                    url: demo,
+                    label: 'Demo',
+                    title: `View the demo of "${title}"`,
+                  },
+                ]
+              : []),
+          ]}
+        />
+      ))}
+    </CardGrid>
+  </PageContent>
+);

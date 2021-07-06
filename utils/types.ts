@@ -57,3 +57,21 @@ export type ApiBlogI = Array<{
   publisher: string;
   link: string;
 }>;
+
+export type ApiTalkI = Array<{
+  venue: string;
+  title: string;
+  date: string;
+  infos: string;
+  slides: string;
+  video: string;
+}>;
+
+export type ApiCodeI = Array<{
+  title: string;
+  tags: string;
+  description: string;
+  codeTitle: string;
+  code: string;
+  demo: string;
+}>;

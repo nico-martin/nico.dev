@@ -32,7 +32,7 @@ const Card = ({
         dangerouslySetInnerHTML={{ __html: content }}
       />
     )}
-    {Boolean(suptitle) && (
+    {links.length >= 1 && (
       <p className={styles.links}>
         {links.map(({ url, label, title }) => (
           <a
