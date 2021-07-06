@@ -1,6 +1,7 @@
 import React from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 import { Button } from '@theme';
 import PageContent from '@comps/PageContent';
 import LanguageSwitcher from '@comps/translations/LanguageSwitcher';
@@ -32,6 +33,10 @@ export default ({
         </Button>
       }
     >
+      <Head>
+        <title key="title">Curriculum Vitae - Nico Martin</title>
+        <meta name="robots" content="noindex" key="robots" />
+      </Head>
       <LanguageSwitcher />
       <div ref={componentRef}>
         <div className={cn(styles.element, styles.headerElement)}>

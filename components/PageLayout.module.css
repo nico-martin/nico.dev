@@ -43,14 +43,17 @@
 }
 
 .navigation {
-  margin-top: var(--spacing-page);
+  margin-top: calc(var(--spacing-page) - var(--spacing-small));
+  position: sticky;
+  z-index: 9999;
+  top: 0;
 }
 
 .header {
 }
 
 .content {
-  margin-top: var(--spacing-page);
+  margin-top: calc(var(--spacing-page) - var(--spacing-small));
 }
 
 .footer {

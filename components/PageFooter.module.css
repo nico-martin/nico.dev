@@ -7,7 +7,7 @@
 
 .link {
   font-weight: 400;
-  text-decoration: none;
+  text-decoration: underline;
   color: var(--c-p);
   font-size: var(--fs-s);
 }

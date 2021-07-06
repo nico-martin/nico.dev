@@ -1,19 +1,29 @@
 const withPrefresh = require('@prefresh/next');
+const withPWA = require('next-pwa');
+
 const preact = require('preact');
 const withPreact = require('next-plugin-preact');
 const withImages = require('next-images');
+const withClassNamesMap = require('@nico-martin/class-names-map/nextjs.js');
 
-module.exports = withPreact({
-  experimental: {
-    modern: true,
-  },
-  images: {},
-  webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    });
+module.exports = withPWA(
+  withPreact(
+    withClassNamesMap({
+      pwa: {
+        dest: 'public',
+      },
+      experimental: {
+        modern: true,
+      },
+      images: {},
+      webpack: (config, options) => {
+        config.module.rules.push({
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        });
 
-    return config;
-  },
-});
+        return config;
+      },
+    })
+  )
+);

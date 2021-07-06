@@ -1,5 +1,6 @@
 import React from 'react';
 import { InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 import PageContent from '@comps/PageContent';
 import { getPageProps } from '@utils/helpers';
 
@@ -8,5 +9,11 @@ export const getStaticProps = async () => await getPageProps('home');
 export default ({
   pageData,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => (
-  <PageContent html={pageData.content} />
+  <React.Fragment>
+    <Head>
+      <title key="title">Nico Martin</title>
+      <meta name="description" content={pageData.excerpt} key="description" />
+    </Head>
+    <PageContent html={pageData.content} />
+  </React.Fragment>
 );

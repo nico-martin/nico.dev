@@ -1,5 +1,3 @@
-type GetContent<T> = () => Promise<T>;
-
 export interface RessourceI {
   path: string;
   title: string;
@@ -50,28 +48,37 @@ export interface ApiCvI {
   }>;
 }
 
-export type ApiBlogI = Array<{
-  title: string;
-  abstract: string;
-  date: string;
-  publisher: string;
-  link: string;
-}>;
+export interface ApiBlogI {
+  excerpt: string;
+  items: Array<{
+    title: string;
+    abstract: string;
+    date: string;
+    publisher: string;
+    link: string;
+  }>;
+}
 
-export type ApiTalkI = Array<{
-  venue: string;
-  title: string;
-  date: string;
-  infos: string;
-  slides: string;
-  video: string;
-}>;
+export interface ApiTalkI {
+  excerpt: string;
+  items: Array<{
+    venue: string;
+    title: string;
+    date: string;
+    infos: string;
+    slides: string;
+    video: string;
+  }>;
+}
 
-export type ApiCodeI = Array<{
-  title: string;
-  tags: string;
-  description: string;
-  codeTitle: string;
-  code: string;
-  demo: string;
-}>;
+export interface ApiCodeI {
+  excerpt: string;
+  items: Array<{
+    title: string;
+    tags: string;
+    description: string;
+    codeTitle: string;
+    code: string;
+    demo: string;
+  }>;
+}

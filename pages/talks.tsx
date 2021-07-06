@@ -1,5 +1,6 @@
 import React from 'react';
 import { InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 import { Card, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
 import dayjs from '@utils/dayjs';
@@ -11,12 +12,14 @@ export default ({
   pageData,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const upcomingTalks = React.useMemo(
-    () => pageData.filter(({ date }) => dayjs(date).isSameOrAfter(dayjs())),
+    () =>
+      pageData.items.filter(({ date }) => dayjs(date).isSameOrAfter(dayjs())),
     [pageData]
   );
 
   const pastTalks = React.useMemo(
-    () => pageData.filter(({ date }) => !dayjs(date).isSameOrAfter(dayjs())),
+    () =>
+      pageData.items.filter(({ date }) => !dayjs(date).isSameOrAfter(dayjs())),
     [pageData]
   );
 
@@ -59,6 +62,10 @@ export default ({
 
   return (
     <PageContent>
+      <Head>
+        <title key="title">Talks - Nico Martin</title>
+        <meta name="description" content={pageData.excerpt} key="description" />
+      </Head>
       {upcomingTalks.length >= 1 && (
         <React.Fragment>
           <h2>Upcoming Talks</h2>

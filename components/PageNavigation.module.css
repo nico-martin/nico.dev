@@ -1,4 +1,6 @@
 .root {
+  background-color: var(--c-bkg);
+  padding: var(--spacing-small) 0;
 }
 
 .linkWrapper {
