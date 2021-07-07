@@ -1,0 +1,10 @@
+.root {
+}
+
+.button + .button {
+  margin-left: 0.5em;
+}
+
+.buttonActive {
+  text-decoration: underline;
+}

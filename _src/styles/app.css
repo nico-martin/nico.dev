@@ -1,0 +1,37 @@
+:root {
+  --spacing: 2rem;
+  --spacing-small: 1rem;
+  --spacing-section: 2.5rem;
+  --spacing-page: 7vmin;
+  --transition-speed: 200ms;
+  --c-p: #1d1d1b;
+  --c-bkg: #f8f8f8;
+  --c-bkg-inverse: #252525;
+  --c-card-b: #e6e6e6;
+  --c-card-bkg: #fff;
+  --c-social: #fff;
+  --c-grad: #009d89;
+  --c-grad-from: #009fb4;
+  --c-grad-to: #009c69;
+  --fs: 1.2rem;
+  --fs-s: 1rem;
+  --fs-xs: 0.8rem;
+  --fs-l: 1.4rem;
+  --fs-nav: 1.6rem;
+  --fs-xl: 2rem;
+
+  @media (prefers-color-scheme: dark) {
+    --c-p: #f2f2f2;
+    --c-bkg: #252525;
+    --c-bkg-inverse: #f8f8f8;
+    --c-card-b: #1a1a1a;
+    --c-card-bkg: #1d1d1d;
+    --c-social: #1d1d1d;
+  }
+}
+
+@import 'tools/keyframes-spinner.css';
+@import 'reset.css';
+@import 'font-icon.css';
+@import 'font-affogato.css';
+@import 'typography.css';

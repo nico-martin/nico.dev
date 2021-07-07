@@ -1,0 +1,27 @@
+.root {
+}
+
+.nav {
+  text-align: center;
+}
+
+.link {
+  font-weight: 400;
+  text-decoration: underline;
+  color: var(--c-p);
+  font-size: var(--fs-s);
+}
+
+.link + .link {
+  margin-left: 1em;
+}
+
+.link:last-child {
+  display: block;
+  margin-left: 0;
+  margin-top: 0.5em;
+}
+
+.linkActive {
+  font-weight: bold;
+}

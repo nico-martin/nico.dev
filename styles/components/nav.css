@@ -1,0 +1,58 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding: var(--spacing-small) 0;
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -9px;
+    top: 0;
+    width: 10px;
+    background-color: var(--c-bkg);
+  }
+
+  &:before {
+    right: -9px;
+    left: auto;
+  }
+
+  & > * + * {
+    margin-left: .8em;
+  }
+
+  &__element {
+    color: var(--c-p);
+    font-weight: normal;
+
+    &--active {
+      font-weight: 900;
+    }
+
+    &--app {
+      position: relative;
+      margin-left: 0;
+      margin-top: 1em;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &--main {
+    .nav__element {
+      text-decoration: none;
+      font-weight: 900;
+      font-size: var(--fs-nav);
+
+      &--active {
+        @mixin background-gradient;
+      }
+    }
+  }
+
+  &--footer {
+    justify-content: center;
+    font-size: var(--fs-s);
+  }
+}

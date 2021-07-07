@@ -1,9 +1,16 @@
-.DS_Store
-node_modules/
-.idea
-.htaccess
-dist/
-.idea/
+# next.js build output
+.next
+
+# dotenv environment variables file (build for Zeit Now)
 .env
-/package-lock.json
-/webpack.config.alias.js
+.env.build
+
+# Dependency directories
+node_modules/
+
+# Logs
+npm-debug.log*
+
+#IDE
+.idea/
+.DS_Store

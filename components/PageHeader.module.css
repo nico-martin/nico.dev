@@ -1,0 +1,33 @@
+.root {
+}
+
+.titleContainer {
+  display: block;
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 0.8;
+  display: inline-block;
+  margin-left: -0.05em;
+  @mixin background-gradient;
+}
+
+.social {
+  margin-top: var(--spacing-page);
+}
+
+.socialLink + .socialLink {
+  margin-left: 1rem;
+}
+
+@mixin mobile {
+  .title {
+    font-size: 3rem;
+  }
+
+  .socialLink {
+    font-size: 1rem;
+  }
+}
