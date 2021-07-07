@@ -32,6 +32,7 @@ const PageImage = ({ className = '' }: { className?: string }) => {
         />
       )}
       <img
+        alt="Nico Martin - Frontend Developer"
         className={cn(styles.imageThumb)}
         src="../portrait/nico-martin-thumb.jpg"
       />
