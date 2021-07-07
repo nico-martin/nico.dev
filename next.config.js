@@ -12,6 +12,9 @@ module.exports = withPWA(
       pwa: {
         dest: 'public',
       },
+      classNamesMap: {
+        separator: '',
+      },
       experimental: {
         modern: true,
       },
