@@ -1,7 +1,4 @@
 import React from 'react';
-import { IconType } from '@theme';
-import { apiGet } from '@utils/apiFetch';
-import { ApiPageI, RessourceI } from '@utils/types';
 
 export const MESSAGES = {
   GENERAL_ERROR: 'Something went wrong',
@@ -17,7 +14,7 @@ export const LINKS: Record<string, string> = {
 export const FOOTER_LINKS: Record<string, string> = {
   '/privacy': 'Privacy',
   '/legal': 'Legal',
-  '/uses': '/uses',
+  //'/uses': '/uses',
   '/cv': 'CV',
   '/about-this-website': 'This Project is Open Source',
 };

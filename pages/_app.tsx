@@ -4,11 +4,6 @@ import PageLayout from '@comps/PageLayout';
 import { TranslationsProvider } from '@utils/cvTranslations';
 import '../styles/app.css';
 
-/**
- * TODO:
- * create and add og:image and twiter:image
- **/
-
 export default ({ Component, pageProps }) => {
   return (
     <TranslationsProvider>
@@ -93,6 +88,11 @@ export default ({ Component, pageProps }) => {
         <link rel="manifest" href="./manifest.json" />
         <meta name="msapplication-TileColor" content="#009d89" />
         <meta name="theme-color" content="#009d89" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="./facebook.png" />
+        <meta name="twitter:image" content="./twitter.png" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <PageLayout>
         <Component {...pageProps} />

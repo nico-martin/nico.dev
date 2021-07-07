@@ -80,8 +80,10 @@
   span {
     display: block;
     font-size: var(--fs-l);
+    font-weight: normal;
   }
 }
+
 @media print {
   .print {
     padding: 3rem;

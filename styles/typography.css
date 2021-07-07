@@ -24,6 +24,11 @@ a {
   font-weight: bold;
   color: var(--c-grad);
   @mixin transition;
+
+  @media print {
+    font-weight: normal;
+    color: var(--c-p);
+  }
 }
 
 ::selection {
@@ -45,4 +50,8 @@ h2,
 h3,
 h4 {
   font-weight: 900;
+
+  @media print {
+    font-weight: bold;
+  }
 }
