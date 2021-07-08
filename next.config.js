@@ -3,7 +3,6 @@ const withPWA = require('next-pwa');
 
 const preact = require('preact');
 const withPreact = require('next-plugin-preact');
-const withImages = require('next-images');
 const withClassNamesMap = require('@nico-martin/class-names-map/nextjs.js');
 
 module.exports = withPWA(

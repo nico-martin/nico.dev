@@ -12,22 +12,23 @@
   display: inline-block;
   margin-left: -0.05em;
   @mixin background-gradient;
+
+  @mixin mobile {
+    font-size: 3rem;
+  }
 }
 
 .social {
   margin-top: var(--spacing-page);
 }
 
-.socialLink + .socialLink {
-  margin-left: 1rem;
+.socialLink {
+  font-size: var(--fs) !important;
+  @mixin mobile {
+    font-size: 1rem !important;
+  }
 }
 
-@mixin mobile {
-  .title {
-    font-size: 3rem;
-  }
-
-  .socialLink {
-    font-size: 1rem;
-  }
+.socialLink + .socialLink {
+  margin-left: 1rem;
 }
