@@ -40,7 +40,7 @@
     }
   ],
   "orientation": "portrait",
-  "display": "standalone",
+  "display": "browser",
   "start_url": ".",
   "description": "Hello, my name is Nico. I’m a freelance frontend developer and Google Developer Expert from switzerland.",
   "theme_color": "#009d89",
