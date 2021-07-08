@@ -7,7 +7,11 @@ import PageContent from '@comps/PageContent';
 import LanguageSwitcher from '@comps/translations/LanguageSwitcher';
 import cn from '@utils/classnames';
 import { useLanguage, __ } from '@utils/cvTranslations';
-import { getCVProps, maybeConvertStringToAnchor } from '@utils/helpers';
+import {
+  formatDate,
+  getCVProps,
+  maybeConvertStringToAnchor,
+} from '@utils/helpers';
 import styles from './cv.module.css';
 
 export const getStaticProps = async () => await getCVProps();
@@ -54,7 +58,9 @@ export default ({
                       <th>{__(`cv.contact.${key}`)}</th>
                       <td
                         dangerouslySetInnerHTML={{
-                          __html: maybeConvertStringToAnchor(content),
+                          __html: maybeConvertStringToAnchor(
+                            key === 'dob' ? formatDate(content) : content
+                          ),
                         }}
                       />
                     </tr>
@@ -110,7 +116,9 @@ export default ({
                   <td>
                     {profession[`title_${language}`]
                       .split(', ')
-                      .map((e, i) => (i === 0 ? <b>{e}</b> : ', ' + e))}
+                      .map((e, i, a) =>
+                        i === a.length - 1 ? <b>{e}</b> : e + ', '
+                      )}
                     <div
                       className={styles.content}
                       dangerouslySetInnerHTML={{
@@ -124,7 +132,7 @@ export default ({
           </div>
         )}
         {pageData.education && (
-          <div className={cn(styles.element, styles.pagebreak)}>
+          <div className={cn(styles.element)}>
             <h2 className={cn(styles.title)}>{__('cv.education')}</h2>
             <table className={cn(styles.table, styles.tableEducation)}>
               {pageData.education.map((education, i) => (
