@@ -5,15 +5,26 @@ export const supportedImageFormat = (): Promise<'avif' | 'webp' | 'jpg'> =>
     const webpData =
       'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoCAAEAAQAcJaQAA3AA/v3AgAA=';
 
-    Promise.allSettled([fetch(avifData), fetch(webpData)]).then(
-      ([avif, webp]) => {
-        resolve(
-          avif.status === 'fulfilled'
-            ? 'avif'
-            : webp.status === 'fulfilled'
-            ? 'webp'
-            : 'jpg'
-        );
-      }
-    );
+    const checkAviv = () =>
+      new Promise((resolve, reject) => {
+        fetch(avifData)
+          .then((r) => r.blob())
+          .then((blob) =>
+            createImageBitmap(blob).then(
+              () => resolve('avif support'),
+              () => reject()
+            )
+          )
+          .catch(() => reject());
+      });
+
+    Promise.allSettled([checkAviv(), fetch(webpData)]).then(([avif, webp]) => {
+      resolve(
+        avif.status === 'fulfilled'
+          ? 'avif'
+          : webp.status === 'fulfilled'
+          ? 'webp'
+          : 'jpg'
+      );
+    });
   });
