@@ -23,7 +23,7 @@ export default ({
     [pageData]
   );
 
-  const cardElement = ({ date, venue, title, infos, slides, video }) => (
+  const CardElement = ({ date, venue, title, infos, slides, video }) => (
     <Card
       suptitle={formatDate(date)}
       title={venue}
@@ -69,11 +69,35 @@ export default ({
       {upcomingTalks.length >= 1 && (
         <React.Fragment>
           <h2>Upcoming Talks</h2>
-          <CardGrid>{upcomingTalks.map((talk) => cardElement(talk))}</CardGrid>
+          <CardGrid>
+            {upcomingTalks.map(
+              ({ date, venue, title, infos, slides, video }) => (
+                <CardElement
+                  date={date}
+                  venue={venue}
+                  title={title}
+                  infos={infos}
+                  slides={slides}
+                  video={video}
+                />
+              )
+            )}
+          </CardGrid>
           <h2>Past Talks</h2>
         </React.Fragment>
       )}
-      <CardGrid>{pastTalks.map((talk) => cardElement(talk))}</CardGrid>
+      <CardGrid>
+        {pastTalks.map(({ date, venue, title, infos, slides, video }) => (
+          <CardElement
+            date={date}
+            venue={venue}
+            title={title}
+            infos={infos}
+            slides={slides}
+            video={video}
+          />
+        ))}
+      </CardGrid>
     </PageContent>
   );
 };

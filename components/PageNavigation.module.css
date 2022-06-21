@@ -1,6 +1,24 @@
 .root {
   background-color: var(--c-bkg);
   padding: var(--spacing-small) 0;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 1rem;
+    left: -0.5rem;
+    background-color: var(--c-bkg);
+    z-index: -1;
+  }
+
+  &::after {
+    left: auto;
+    right: -0.5rem;
+  }
 }
 
 .linkWrapper {
