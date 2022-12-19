@@ -24,7 +24,7 @@ const PageHeader = ({ className = '' }: { className?: string }) => {
             href={link}
             title={label}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={`noopener noreferrer${icon === 'mastodon' ? ' me' : ''}`}
             size="large"
             className={styles.socialLink}
           />

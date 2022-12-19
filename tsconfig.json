@@ -28,8 +28,9 @@
       ],
       "@theme": [
         "theme/index.ts"
-      ],
+      ]
     },
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",

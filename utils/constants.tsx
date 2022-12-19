@@ -26,6 +26,10 @@ export const SOCIAL_LINKS: Record<
     link: string;
   }
 > = {
+  mastodon: {
+    label: 'Nico Martin on Mastodon',
+    link: 'https://mas.to/@nicomartin',
+  },
   twitter: {
     label: 'Nico Martin on Twitter',
     link: 'https://twitter.com/nic_o_martin',
