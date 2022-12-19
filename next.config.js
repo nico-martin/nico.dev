@@ -26,6 +26,15 @@ module.exports = withPWA(
 
         return config;
       },
+      async redirects() {
+        return [
+          {
+            source: '/m',
+            destination: 'https://mas.to/@nicomartin',
+            permanent: false,
+          },
+        ];
+      },
     })
   )
 );
