@@ -1,0 +1,27 @@
+.root {
+  border-radius: 10px;
+  background-color: var(--c-card-bkg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--c-card-b);
+  gap: var(--spacing-small);
+  display: flex;
+  overflow: hidden;
+}
+
+.title {
+  font-size: var(--fs);
+}
+
+.content {
+  padding: var(--spacing-small);
+}
+
+.description {
+  font-size: var(--fs-s);
+  margin-top: 1rem;
+}
+
+.image {
+  width: 33%;
+  flex-shrink: 0;
+}

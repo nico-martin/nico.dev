@@ -82,3 +82,29 @@ export interface ApiCodeI {
     demo: string;
   }>;
 }
+
+export interface ApiProjectsI {
+  excerpt: string;
+  items: Array<{
+    title: string;
+    description: string;
+    links: Array<{
+      title: string;
+      url: string;
+    }>;
+    image: ImageI;
+  }>;
+}
+
+export interface ImageSizeI {
+  url: string;
+  width: number;
+  height: number;
+}
+
+export interface ImageI {
+  sizes: Record<string, ImageSizeI>;
+  placeholder: string;
+  alt: string;
+  title: string;
+}

@@ -6,9 +6,17 @@ import styles from './CardGrid.module.css';
 const CardGrid = ({
   className = '',
   children,
+  onePerRow = false,
 }: {
   className?: string;
   children: JSX.Element | JSX.Element[];
-}) => <div className={cn(className, styles.root)}>{children}</div>;
+  onePerRow?: boolean;
+}) => (
+  <div
+    className={cn(className, styles.root, { [styles.onePerRow]: onePerRow })}
+  >
+    {children}
+  </div>
+);
 
 export default CardGrid;

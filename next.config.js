@@ -1,12 +1,14 @@
-const withPrefresh = require('@prefresh/next');
+//const withPrefresh = require('@prefresh/next');
 const withPWA = require('next-pwa');
 
 const preact = require('preact');
 const withPreact = require('next-plugin-preact');
 const withClassNamesMap = require('@nico-martin/class-names-map/nextjs.js');
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 
-module.exports = withPWA(
-  withPreact(
+module.exports = (phase, e) => {
+  const isDev = phase === PHASE_DEVELOPMENT_SERVER;
+  const config = withPreact(
     withClassNamesMap({
       pwa: {
         dest: 'public',
@@ -26,7 +28,7 @@ module.exports = withPWA(
 
         return config;
       },
-      async redirects() {
+      redirects: async () => {
         return [
           {
             source: '/m',
@@ -36,5 +38,10 @@ module.exports = withPWA(
         ];
       },
     })
-  )
-);
+  );
+
+  if (isDev) {
+    return config;
+  }
+  return withPWA(config);
+};

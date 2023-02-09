@@ -1,6 +1,16 @@
 import dayjs from 'dayjs';
 import { apiGet } from '@utils/apiFetch';
-import { ApiPageI, ApiCvI, ApiBlogI, ApiTalkI, ApiCodeI } from '@utils/types';
+import {
+  ApiPageI,
+  ApiCvI,
+  ApiBlogI,
+  ApiTalkI,
+  ApiCodeI,
+  ApiProjectsI,
+} from '@utils/types';
+
+export const IS_BROWSER = typeof window !== 'undefined';
+export const IS_NODE = !IS_BROWSER;
 
 export const untrailingSlashIt = (str: string): string =>
   str.replace(/\/$/, '');
@@ -42,6 +52,9 @@ export const getTalkProps = async () =>
 
 export const getCodeProps = async () =>
   getApiProps<ApiCodeI>('https://wp.nico.dev/wp-json/nico/v1/code');
+
+export const getProjectsProps = async () =>
+  getApiProps<ApiProjectsI>('https://wp.nico.dev/wp-json/nico/v1/projects');
 
 export const isUrl = (string: string): boolean =>
   string.indexOf('https://') === 0 || string.indexOf('http://') === 0;

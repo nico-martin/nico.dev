@@ -1,0 +1,38 @@
+.root {
+  display: inline-block;
+  position: relative;
+}
+
+.image {
+  display: block;
+  position: relative;
+  opacity: 0;
+  height: auto;
+  will-change: opacity;
+  transition: opacity 200ms ease-in-out;
+}
+
+.preview {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  will-change: opacity;
+  transition: opacity 200ms ease-in-out;
+}
+
+.lazy {
+}
+
+.loading {
+}
+
+.loaded {
+  opacity: 1;
+}
+
+.parentLoaded {
+  .preview[src$='.png'] {
+    opacity: 0;
+  }
+}
