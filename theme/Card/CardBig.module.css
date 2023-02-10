@@ -18,7 +18,7 @@
 
 .description {
   font-size: var(--fs-s);
-  margin-top: 1rem;
+  margin-top: var(--fs-s);
 }
 
 .image {

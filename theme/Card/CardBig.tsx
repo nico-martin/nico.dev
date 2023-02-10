@@ -9,7 +9,8 @@ const CardBig: React.FC<{
   title?: string;
   image?: ImageI;
   content: string;
-}> = ({ className = '', title = '', image = null, content }) => {
+  links?: Array<{ url: string; title: string }>;
+}> = ({ className = '', title = '', image = null, content, links }) => {
   return (
     <div className={cn(styles.root, className)}>
       {image && <Image image={image} className={styles.image} />}
@@ -19,6 +20,17 @@ const CardBig: React.FC<{
           dangerouslySetInnerHTML={{ __html: content }}
           className={styles.description}
         />
+        {links && links.length !== 0 && (
+          <ul>
+            {links.map((link) => (
+              <li>
+                <a href={link.url} target="_blank">
+                  {link.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

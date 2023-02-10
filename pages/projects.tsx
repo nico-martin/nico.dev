@@ -16,8 +16,13 @@ export default ({
       <meta name="description" content={pageData.excerpt} key="description" />
     </Head>
     <CardGrid onePerRow>
-      {pageData.items.map(({ title, description, image }) => (
-        <CardBig title={title} image={image} content={description} />
+      {pageData.items.map(({ title, description, image, links }) => (
+        <CardBig
+          title={title}
+          image={image}
+          content={description}
+          links={links}
+        />
       ))}
     </CardGrid>
   </PageContent>
