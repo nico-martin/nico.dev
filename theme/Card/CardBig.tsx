@@ -1,7 +1,8 @@
 import React from 'react';
 import cn from '@utils/classnames';
+import { externalLinkIcon } from '@utils/helpers';
 import { ImageI } from '@utils/types';
-import { Image } from '../index';
+import { Icon, Image } from '../index';
 import styles from './CardBig.module.css';
 
 const CardBig: React.FC<{
@@ -11,6 +12,8 @@ const CardBig: React.FC<{
   content: string;
   links?: Array<{ url: string; title: string }>;
 }> = ({ className = '', title = '', image = null, content, links }) => {
+  // todo: image should change the aspect ratio (fit-content: cover)
+
   return (
     <div className={cn(styles.root, className)}>
       {image && <Image image={image} className={styles.image} />}
@@ -21,10 +24,14 @@ const CardBig: React.FC<{
           className={styles.description}
         />
         {links && links.length !== 0 && (
-          <ul>
+          <ul className={styles.links}>
             {links.map((link) => (
-              <li>
-                <a href={link.url} target="_blank">
+              <li className={styles.linkElement}>
+                <a href={link.url} target="_blank" className={styles.link}>
+                  <Icon
+                    icon={externalLinkIcon(link.url)}
+                    className={styles.linkIcon}
+                  />
                   {link.title}
                 </a>
               </li>

@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { IconType } from '@theme';
 import { apiGet } from '@utils/apiFetch';
 import {
   ApiPageI,
@@ -68,3 +69,10 @@ export const convertStringToAnchor = (url: string): string =>
 
 export const maybeConvertStringToAnchor = (url: string): string =>
   isUrl(url) ? convertStringToAnchor(url) : url;
+
+export const externalLinkIcon = (link: string): IconType =>
+  link.startsWith('https://github.com')
+    ? 'github'
+    : link.startsWith('https://twitter.com')
+    ? 'twitter'
+    : 'openInNew';
