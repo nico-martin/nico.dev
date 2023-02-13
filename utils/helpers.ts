@@ -75,4 +75,8 @@ export const externalLinkIcon = (link: string): IconType =>
     ? 'github'
     : link.startsWith('https://twitter.com')
     ? 'twitter'
+    : link.startsWith('https://dev.to/')
+    ? 'devto'
+    : link.startsWith('https://wordpress.org/')
+    ? 'wordpress'
     : 'openInNew';

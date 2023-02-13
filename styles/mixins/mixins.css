@@ -15,6 +15,12 @@
   }
 }
 
+@define-mixin mobileSmall {
+  @media (max-width: 600px) {
+    @mixin-content;
+  }
+}
+
 @define-mixin transition $speed: 100ms, $property: all, $function: ease-in,
   $delay: 0ms {
   transition: $speed $property $function $delay;

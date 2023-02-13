@@ -7,8 +7,15 @@
   display: flex;
   overflow: hidden;
 
+  @mixin mobileSmall {
+    flex-direction: column;
+  }
+
   &:nth-child(even) {
     flex-direction: row-reverse;
+    @mixin mobileSmall {
+      flex-direction: column;
+    }
   }
 }
 
@@ -28,9 +35,21 @@
   margin-top: var(--fs-s);
 }
 
-.image {
+.imageWrapper {
   width: 33%;
   flex-shrink: 0;
+
+  @mixin mobileSmall {
+    width: 100%;
+    height: 20vh;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
 }
 
 .links {
@@ -38,23 +57,30 @@
   padding: var(--spacing-small) 0 0 0 !important;
   width: 100%;
   list-style: none;
+  line-height: 1.5;
 }
 
 .linkElement {
   display: inline-block;
   font-size: var(--fs-s);
   position: relative;
+  margin-right: 0.75em;
+  padding-right: 0.75em;
 
-  & + .linkElement {
-    margin-left: 0.75em;
-    padding-left: 0.75em;
+  &:after {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(50%);
+    content: '|';
+  }
+
+  &:last-child {
+    margin-right: 0;
+    padding-right: 0;
 
     &:after {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%) translateX(-50%);
-      content: '|';
+      display: none;
     }
   }
 }

@@ -84,15 +84,23 @@ export interface ApiCodeI {
 }
 
 export interface ApiProjectsI {
-  excerpt: string;
+  metaDescription: string;
+  intro: string;
   items: Array<{
     title: string;
     description: string;
-    links: Array<{
-      title: string;
-      url: string;
-    }>;
+    links: Array<LinkI>;
     image: ImageI;
+    imagePosition:
+      | 'center center'
+      | 'center top'
+      | 'center bottom'
+      | 'left center'
+      | 'left top'
+      | 'left bottom'
+      | 'right center'
+      | 'right top'
+      | 'right bottom';
   }>;
 }
 
@@ -107,4 +115,10 @@ export interface ImageI {
   placeholder: string;
   alt: string;
   title: string;
+}
+
+export interface LinkI {
+  label: string;
+  title: string;
+  url: string;
 }

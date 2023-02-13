@@ -35,6 +35,16 @@
   }
 }
 
-.title + .content {
+.title + .content,
+.title + .intro,
+.intro + .content {
   margin-top: var(--spacing-section);
+}
+
+.intro {
+  font-size: var(--fs-l);
+
+  p {
+    line-height: 1.5;
+  }
 }

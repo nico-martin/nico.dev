@@ -6,9 +6,16 @@ import styles from './Image.module.css';
 
 IS_BROWSER && require('./lazyConfig');
 
-const Image: React.FC<{ className?: string; image: ImageI }> = ({
+const Image: React.FC<{
+  className?: string;
+  classNameImage?: string;
+  image: ImageI;
+  imagePosition: string;
+}> = ({
   className = '',
+  classNameImage = '',
   image,
+  imagePosition = 'center center',
 }) => {
   const imageSources: Array<ImageSizeI> = React.useMemo(() => {
     const sizes = [...Object.values(image.sizes)];
@@ -21,13 +28,18 @@ const Image: React.FC<{ className?: string; image: ImageI }> = ({
     [imageSources]
   );
 
+  const imageStyles = {
+    'object-position': imagePosition,
+  } as React.CSSProperties;
+
   return (
     <figure className={cn(className, styles.root)}>
       <img
         aria-hidden="true"
         src={image.placeholder}
         alt={`Preview: ${image.alt}`}
-        className={cn(styles.preview)}
+        className={cn(styles.preview, classNameImage)}
+        style={imageStyles}
       />
       <img
         aria-hidden="true"
@@ -40,7 +52,8 @@ const Image: React.FC<{ className?: string; image: ImageI }> = ({
         data-srcset={imageSources
           .map(({ width, url }) => `${url} ${width}w`)
           .join(', ')}
-        className={cn(styles.image, styles.lazy)}
+        className={cn(styles.image, styles.lazy, classNameImage)}
+        style={imageStyles}
       />
     </figure>
   );

@@ -10,20 +10,27 @@ export const getStaticProps = async () => await getProjectsProps();
 export default ({
   pageData,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => (
-  <PageContent>
+  <PageContent intro={pageData.intro}>
     <Head>
       <title key="title">Projects - Nico Martin</title>
-      <meta name="description" content={pageData.excerpt} key="description" />
+      <meta
+        name="description"
+        content={pageData.metaDescription}
+        key="description"
+      />
     </Head>
     <CardGrid onePerRow>
-      {pageData.items.map(({ title, description, image, links }) => (
-        <CardBig
-          title={title}
-          image={image}
-          content={description}
-          links={links}
-        />
-      ))}
+      {pageData.items.map(
+        ({ title, description, image, imagePosition, links }) => (
+          <CardBig
+            title={title}
+            image={image}
+            imagePosition={imagePosition}
+            content={description}
+            links={links}
+          />
+        )
+      )}
     </CardGrid>
   </PageContent>
 );
