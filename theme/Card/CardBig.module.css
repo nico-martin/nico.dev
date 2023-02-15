@@ -1,11 +1,11 @@
 .root {
-  border-radius: 10px;
-  background-color: var(--c-card-bkg);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--c-card-b);
+  //border-radius: 10px;
+  //background-color: var(--c-card-bkg);
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  //border: 1px solid var(--c-card-b);
   gap: var(--spacing-small);
   display: flex;
-  overflow: hidden;
+  //overflow: hidden;
 
   @mixin mobileSmall {
     flex-direction: column;
@@ -53,7 +53,7 @@
 }
 
 .links {
-  margin: auto 0 0 0 !important;
+  margin: 0 0 0 0 !important;
   padding: var(--spacing-small) 0 0 0 !important;
   width: 100%;
   list-style: none;

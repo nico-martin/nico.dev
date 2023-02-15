@@ -55,6 +55,7 @@ const Image: React.FC<{
         className={cn(styles.image, styles.lazy, classNameImage)}
         style={imageStyles}
       />
+      <div className={styles.shadow} />
     </figure>
   );
 };

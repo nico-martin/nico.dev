@@ -19,7 +19,7 @@ export default ({
         key="description"
       />
     </Head>
-    <CardGrid onePerRow>
+    <CardGrid onePerRow gap="big">
       {pageData.items.map(
         ({ title, description, image, imagePosition, links }) => (
           <CardBig

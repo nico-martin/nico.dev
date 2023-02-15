@@ -7,6 +7,10 @@
   }
 }
 
+.gapBig {
+  grid-gap: var(--spacing-page-big);
+}
+
 .onePerRow {
   grid-template-columns: repeat(1, 1fr);
 }
