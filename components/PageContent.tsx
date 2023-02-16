@@ -16,7 +16,7 @@ interface PropsHtml extends Props {
 
 interface PropsChildren extends Props {
   html?: string;
-  children: JSX.Element | Array<JSX.Element>;
+  children?: JSX.Element | Array<JSX.Element>;
 }
 
 const PageContent = ({

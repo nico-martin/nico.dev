@@ -1,9 +1,10 @@
 :root {
   --spacing: 2rem;
   --spacing-small: 1rem;
-  --spacing-section: 2.5rem;
-  --spacing-page: 7vmin;
-  --spacing-page-big: 10vmin;
+  --spacing-large: 4rem;
+  --spacing-v: 7vh;
+  --spacing-v-small: 3vh;
+  --spacing-v-large: 10vh;
   --transition-speed: 200ms;
   --c-p: #1d1d1b;
   --c-border: #d0d0d0;

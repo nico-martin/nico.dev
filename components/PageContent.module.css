@@ -19,30 +19,26 @@
   }
 
   & > * + h2 {
-    margin-top: var(--spacing-section);
+    margin-top: var(--spacing);
   }
 
   p {
     line-height: 1.5;
-  }
-
-  :global(.has-medium-font-size) {
-    font-size: var(--fs-l);
-  }
-
-  :global(.space-large-after) {
-    margin-bottom: var(--spacing-section);
   }
 }
 
 .title + .content,
 .title + .intro,
 .intro + .content {
-  margin-top: var(--spacing-section);
+  margin-top: var(--spacing-large);
 }
 
 .intro {
-  font-size: var(--fs-l);
+  font-size: var(--fs-xl);
+
+  @mixin mobile {
+    font-size: var(--fs-l);
+  }
 
   p {
     line-height: 1.5;
