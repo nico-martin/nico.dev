@@ -3,7 +3,7 @@
   //background-color: var(--c-card-bkg);
   //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   //border: 1px solid var(--c-card-b);
-  gap: var(--spacing-small);
+  gap: var(--spacing);
   display: flex;
   //overflow: hidden;
 

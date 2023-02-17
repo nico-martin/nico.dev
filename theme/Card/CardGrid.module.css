@@ -8,7 +8,7 @@
 }
 
 .gapBig {
-  grid-gap: var(--spacing-page-big);
+  grid-gap: var(--spacing-v-large);
 }
 
 .onePerRow {

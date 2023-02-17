@@ -40,6 +40,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @mixin mobile {
+    padding-top: var(--spacing-small);
+  }
 }
 
 .navigation {
@@ -54,12 +58,11 @@
 
 .content {
   margin-top: var(--spacing-v);
-  //margin-top: calc(var(--spacing-page) - var(--spacing-small));
 }
 
 .footer {
   margin-top: auto;
-  padding-top: var(--spacing-v);
+  padding-top: var(--spacing-v-large);
 }
 
 @mixin mobile {

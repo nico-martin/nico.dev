@@ -43,8 +43,8 @@
   border-radius: 10px;
   position: absolute;
   inset: 0;
-  transform: translateX(-5%) translateY(5%);
-  border: 1px var(--c-border) solid;
+  transform: translateX(-1.5vmin) translateY(1.5vmin);
+  border: 4px var(--c-border-light) solid;
   z-index: -1;
   transition: all 200ms ease-in-out;
 }
@@ -52,10 +52,10 @@
 .root:hover {
   .preview,
   .image {
-    transform: scale(1.01) translateX(1%) translateY(-1%);
+    transform: scale(1.01) translateX(1%) translateY(-1%) rotate(3deg);
   }
 
   .shadow {
-    transform: scale(1.01) translateX(-6%) translateY(6%);
+    transform: scale(1.01) translateX(-2vmin) translateY(2vmin) rotate(-1deg);
   }
 }
