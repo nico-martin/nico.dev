@@ -5,6 +5,8 @@ export interface RessourceI {
 }
 
 export interface ApiPageI {
+  metaDescription: string;
+  intro: string;
   title: string;
   content: string;
   excerpt: string;
@@ -49,6 +51,8 @@ export interface ApiCvI {
 }
 
 export interface ApiBlogI {
+  metaDescription: string;
+  intro: string;
   excerpt: string;
   items: Array<{
     title: string;
@@ -60,6 +64,8 @@ export interface ApiBlogI {
 }
 
 export interface ApiTalkI {
+  metaDescription: string;
+  intro: string;
   excerpt: string;
   items: Array<{
     venue: string;
@@ -72,6 +78,8 @@ export interface ApiTalkI {
 }
 
 export interface ApiCodeI {
+  metaDescription: string;
+  intro: string;
   excerpt: string;
   items: Array<{
     title: string;
@@ -81,4 +89,44 @@ export interface ApiCodeI {
     code: string;
     demo: string;
   }>;
+}
+
+export interface ApiProjectsI {
+  metaDescription: string;
+  intro: string;
+  items: Array<{
+    title: string;
+    description: string;
+    links: Array<LinkI>;
+    image: ImageI;
+    imagePosition:
+      | 'center center'
+      | 'center top'
+      | 'center bottom'
+      | 'left center'
+      | 'left top'
+      | 'left bottom'
+      | 'right center'
+      | 'right top'
+      | 'right bottom';
+  }>;
+}
+
+export interface ImageSizeI {
+  url: string;
+  width: number;
+  height: number;
+}
+
+export interface ImageI {
+  sizes: Record<string, ImageSizeI>;
+  placeholder: string;
+  alt: string;
+  title: string;
+}
+
+export interface LinkI {
+  label: string;
+  title: string;
+  url: string;
 }

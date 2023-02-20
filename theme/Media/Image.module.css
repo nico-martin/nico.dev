@@ -1,0 +1,61 @@
+.root {
+  display: inline-block;
+  position: relative;
+}
+
+.preview,
+.image {
+  border-radius: 10px;
+  transition: all 200ms ease-in-out;
+}
+
+.image {
+  display: block;
+  position: relative;
+  opacity: 0;
+  height: auto;
+}
+
+.preview {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.lazy {
+}
+
+.loading {
+}
+
+.loaded {
+  opacity: 1;
+}
+
+.parentLoaded {
+  .preview[src$='.png'] {
+    opacity: 0;
+  }
+}
+
+.shadow {
+  border-radius: 10px;
+  position: absolute;
+  inset: 0;
+  transform: translateX(-1.5vmin) translateY(1.5vmin);
+  border: 4px var(--c-border-light) solid;
+  z-index: -1;
+  transition: all 200ms ease-in-out;
+}
+
+.root:hover {
+  .preview,
+  .image {
+    transform: scale(1.01) translateX(1%) translateY(-1%) rotate(3deg);
+  }
+
+  .shadow {
+    transform: scale(1.01) translateX(-2vmin) translateY(2vmin) rotate(-1deg);
+  }
+}

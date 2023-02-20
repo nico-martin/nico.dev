@@ -3,6 +3,7 @@
 
 .nav {
   text-align: center;
+  margin-top: var(--spacing);
 }
 
 .link {
@@ -24,4 +25,20 @@
 
 .linkActive {
   font-weight: bold;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+}
+
+.socialLink {
+  font-size: var(--fs) !important;
+  @mixin mobile {
+    font-size: 1rem !important;
+  }
+}
+
+.socialLink + .socialLink {
+  margin-left: 1rem;
 }

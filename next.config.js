@@ -1,12 +1,28 @@
-const withPrefresh = require('@prefresh/next');
+const withPreact = require('next-plugin-preact');
+
+const nextConfig = withPreact({
+  reactStrictMode: true,
+  webpack: (config, { dev, isServer }) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
+});
+
+module.exports = nextConfig;
+/*
 const withPWA = require('next-pwa');
 
-const preact = require('preact');
-const withPreact = require('next-plugin-preact');
 const withClassNamesMap = require('@nico-martin/class-names-map/nextjs.js');
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+const withPreact = require('next-plugin-preact');
 
-module.exports = withPWA(
-  withPreact(
+module.exports = (phase, e) => {
+  const isDev = phase === PHASE_DEVELOPMENT_SERVER;
+  const config = withPreact(
     withClassNamesMap({
       pwa: {
         dest: 'public',
@@ -18,7 +34,7 @@ module.exports = withPWA(
         modern: true,
       },
       images: {},
-      webpack: (config, options) => {
+      webpack: (config, { dev, isServer }) => {
         config.module.rules.push({
           test: /\.svg$/,
           use: ['@svgr/webpack'],
@@ -26,7 +42,7 @@ module.exports = withPWA(
 
         return config;
       },
-      async redirects() {
+      redirects: async () => {
         return [
           {
             source: '/m',
@@ -36,5 +52,10 @@ module.exports = withPWA(
         ];
       },
     })
-  )
-);
+  );
+  if (isDev) {
+    return config;
+  }
+  return withPWA(config);
+};
+*/

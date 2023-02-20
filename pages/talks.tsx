@@ -61,10 +61,14 @@ export default ({
   );
 
   return (
-    <PageContent>
+    <PageContent intro={pageData.intro}>
       <Head>
         <title key="title">Talks - Nico Martin</title>
-        <meta name="description" content={pageData.excerpt} key="description" />
+        <meta
+          name="description"
+          content={pageData.metaDescription}
+          key="description"
+        />
       </Head>
       {upcomingTalks.length >= 1 && (
         <React.Fragment>

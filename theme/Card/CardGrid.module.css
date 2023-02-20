@@ -6,3 +6,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.gapBig {
+  grid-gap: var(--spacing-v-large);
+}
+
+.onePerRow {
+  grid-template-columns: repeat(1, 1fr);
+}

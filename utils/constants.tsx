@@ -8,7 +8,7 @@ export const LINKS: Record<string, string> = {
   '/': 'About',
   '/blog': 'Blog',
   '/talks': 'Talks',
-  '/code': 'Code',
+  '/projects': 'Projects',
 };
 
 export const FOOTER_LINKS: Record<string, string> = {

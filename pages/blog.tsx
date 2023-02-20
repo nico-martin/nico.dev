@@ -10,10 +10,14 @@ export const getStaticProps = async () => await getBlogProps();
 export default ({
   pageData,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => (
-  <PageContent>
+  <PageContent intro={pageData.intro}>
     <Head>
       <title key="title">Blog - Nico Martin</title>
-      <meta name="description" content={pageData.excerpt} key="description" />
+      <meta
+        name="description"
+        content={pageData.metaDescription}
+        key="description"
+      />
     </Head>
     <CardGrid>
       {pageData.items.map(({ title, abstract, link, date, publisher }) => (

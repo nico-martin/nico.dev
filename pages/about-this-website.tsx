@@ -13,8 +13,16 @@ export default ({
   <React.Fragment>
     <Head>
       <title key="title">{pageData.title} - Nico Martin</title>
-      <meta name="description" content={pageData.excerpt} key="description" />
+      <meta
+        name="description"
+        content={pageData.metaDescription}
+        key="description"
+      />
     </Head>
-    <PageContent title={pageData.title} html={pageData.content} />
+    <PageContent
+      title={pageData.title}
+      html={pageData.content}
+      intro={pageData.intro}
+    />
   </React.Fragment>
 );

@@ -34,31 +34,35 @@
 
 .mainContent {
   margin: 0 auto;
-  padding: var(--spacing-page) 0;
+  padding: var(--spacing-v) 0;
   width: 700px;
-  max-width: calc(100% - var(--spacing-page));
+  max-width: calc(100% - var(--spacing-v));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @mixin mobile {
+    padding-top: var(--spacing-small);
+  }
 }
 
 .navigation {
-  margin-top: calc(var(--spacing-page) - var(--spacing-small));
   position: sticky;
   z-index: 9999;
   top: 0;
+  margin-top: var(--spacing-v-small);
 }
 
 .header {
 }
 
 .content {
-  margin-top: calc(var(--spacing-page) - var(--spacing-small));
+  margin-top: var(--spacing-v);
 }
 
 .footer {
   margin-top: auto;
-  padding-top: var(--spacing-page);
+  padding-top: var(--spacing-v-large);
 }
 
 @mixin mobile {
@@ -84,6 +88,5 @@
   }
 
   .mainContent {
-    padding: 0 0 var(--spacing-section) 0;
   }
 }
