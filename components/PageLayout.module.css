@@ -35,7 +35,7 @@
 .mainContent {
   margin: 0 auto;
   padding: var(--spacing-v) 0;
-  width: 700px;
+  width: 900px;
   max-width: calc(100% - var(--spacing-v));
   min-height: 100vh;
   display: flex;
