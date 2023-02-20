@@ -28,9 +28,11 @@
 }
 
 .title + .content,
-.title + .intro,
-.intro + .content {
+.title + .intro {
   margin-top: var(--spacing-large);
+}
+.intro + .content {
+  margin-top: var(--spacing-v-large);
 }
 
 .intro {

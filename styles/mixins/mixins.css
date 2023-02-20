@@ -9,6 +9,12 @@
   text-decoration: none;
 }
 
+@define-mixin tablet {
+  @media (max-width: 1200px) {
+    @mixin-content;
+  }
+}
+
 @define-mixin mobile {
   @media (max-width: 900px) {
     @mixin-content;
