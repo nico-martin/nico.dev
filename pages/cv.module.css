@@ -1,5 +1,5 @@
 .element {
-  margin-top: var(--spacing-section);
+  margin-top: var(--spacing-v-small);
 }
 
 .content {
@@ -72,7 +72,7 @@
 }
 
 .printHeader {
-  margin-bottom: var(--spacing-section);
+  margin-bottom: var(--spacing-v-small);
   display: none;
 }
 
