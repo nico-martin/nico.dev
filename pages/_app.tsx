@@ -1,10 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
 import PageLayout from '@comps/PageLayout';
+import { init, stop } from '@utils/cursorControl';
 import { TranslationsProvider } from '@utils/cvTranslations';
 import '../styles/app.css';
 
 export default ({ Component, pageProps }) => {
+  React.useEffect(() => {
+    //init();
+  }, []);
+
   return (
     <TranslationsProvider>
       <Head>
@@ -18,6 +23,12 @@ export default ({ Component, pageProps }) => {
         <link href="./font/stylesheet.css" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        {/*
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js">
+          {' '}
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgpu/dist/tf-backend-webgpu.js"></script>
+        */}
         <link
           href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
           rel="stylesheet"
@@ -103,6 +114,11 @@ export default ({ Component, pageProps }) => {
       <PageLayout>
         <Component {...pageProps} />
       </PageLayout>
+      <div style={{ position: 'fixed', zIndex: 999, top: '0px', left: '0px' }}>
+        <button onClick={() => init()}>INITIALIZE</button>
+        {' -- '}
+        <button onClick={() => stop()}>STOP</button>
+      </div>
     </TranslationsProvider>
   );
 };
