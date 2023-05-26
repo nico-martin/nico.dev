@@ -4,13 +4,27 @@ import Head from 'next/head';
 import { Card, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
 import dayjs from '@utils/dayjs';
-import { formatDate, getTalkProps } from '@utils/helpers';
+import { formatDate, getTalksProps } from '@utils/helpers';
 
-export const getStaticProps = async () => await getTalkProps();
+export const getStaticProps = async () => await getTalksProps();
 
 export default ({
   pageData,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
+  return (
+    <PageContent intro={pageData.intro}>
+      <Head>
+        <title key="title">Talks - Nico Martin</title>
+        <meta
+          name="description"
+          content={pageData.metaDescription}
+          key="description"
+        />
+      </Head>
+      <p>TEST</p>
+    </PageContent>
+  );
+  /*
   const upcomingTalks = React.useMemo(
     () =>
       pageData.items.filter(({ date }) => dayjs(date).isSameOrAfter(dayjs())),
@@ -103,5 +117,5 @@ export default ({
         ))}
       </CardGrid>
     </PageContent>
-  );
+  );*/
 };

@@ -77,6 +77,27 @@ export interface ApiTalkI {
   }>;
 }
 
+export enum TALK_LINK {
+  INFOS = 'infos',
+  SLIDES = 'slides',
+  VIDEO = 'video',
+}
+
+export interface ApiTalksI {
+  metaDescription: string;
+  intro: string;
+  categories: Array<{
+    title: string;
+    gallery: Array<ImageI>;
+    items: Array<{
+      title: string;
+      venue: string;
+      date: string;
+      links: Array<{ key: TALK_LINK; value: string }>;
+    }>;
+  }>;
+}
+
 export interface ApiCodeI {
   metaDescription: string;
   intro: string;

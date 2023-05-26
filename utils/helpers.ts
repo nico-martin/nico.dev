@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { IconType } from '@theme';
 import { apiGet } from '@utils/apiFetch';
+import { API_HOST } from '@utils/constants';
 import {
   ApiPageI,
   ApiCvI,
@@ -8,6 +9,7 @@ import {
   ApiTalkI,
   ApiCodeI,
   ApiProjectsI,
+  ApiTalksI,
 } from '@utils/types';
 
 export const IS_BROWSER = typeof window !== 'undefined';
@@ -39,23 +41,28 @@ const getApiProps = async <T>(url: string) => {
   }
 };
 
+const host = trailingSlashIt(API_HOST);
+
 export const getPageProps = async (slug: string) =>
-  getApiProps<ApiPageI>(`https://wp.nico.dev/wp-json/nico/v1/page/${slug}`);
+  getApiProps<ApiPageI>(`${host}wp-json/nico/v1/page/${slug}`);
 
 export const getCVProps = async () =>
-  getApiProps<ApiCvI>('https://wp.nico.dev/wp-json/nico/v1/cv');
+  getApiProps<ApiCvI>(`${host}wp-json/nico/v1/cv`);
 
 export const getBlogProps = async () =>
-  getApiProps<ApiBlogI>('https://wp.nico.dev/wp-json/nico/v1/blog');
+  getApiProps<ApiBlogI>(`${host}wp-json/nico/v1/blog`);
 
 export const getTalkProps = async () =>
-  getApiProps<ApiTalkI>('https://wp.nico.dev/wp-json/nico/v1/talk');
+  getApiProps<ApiTalkI>(`${host}wp-json/nico/v1/talk`);
+
+export const getTalksProps = async () =>
+  getApiProps<ApiTalksI>(`${host}wp-json/nico/v1/talks`);
 
 export const getCodeProps = async () =>
-  getApiProps<ApiCodeI>('https://wp.nico.dev/wp-json/nico/v1/code');
+  getApiProps<ApiCodeI>(`${host}wp-json/nico/v1/code`);
 
 export const getProjectsProps = async () =>
-  getApiProps<ApiProjectsI>('https://wp.nico.dev/wp-json/nico/v1/projects');
+  getApiProps<ApiProjectsI>(`${host}wp-json/nico/v1/projects`);
 
 export const isUrl = (string: string): boolean =>
   string.indexOf('https://') === 0 || string.indexOf('http://') === 0;
