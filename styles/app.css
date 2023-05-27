@@ -7,6 +7,7 @@
   --spacing-v-large: 10vh;
   --transition-speed: 200ms;
   --c-p: #1d1d1b;
+  --c-p-light: #bdbdaf;
   --c-border: #d0d0d0;
   --c-border-light: #e7e6e6;
   --c-bkg: #f8f8f8;
@@ -26,6 +27,7 @@
 
   @media (prefers-color-scheme: dark) {
     --c-p: #f2f2f2;
+    --c-p-light-p: #cbc9c9;
     --c-bkg: #252525;
     --c-bkg-inverse: #f8f8f8;
     --c-card-b: #1a1a1a;

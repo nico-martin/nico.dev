@@ -83,9 +83,21 @@ export enum TALK_LINK {
   VIDEO = 'video',
 }
 
+export enum TALK_VIDEO_TYPE {
+  YOUTUBE = 'youtube',
+}
+
+export interface ApiTalksVideoI {
+  type: TALK_VIDEO_TYPE;
+  url: string;
+  width?: number;
+  height?: number;
+}
+
 export interface ApiTalksI {
   metaDescription: string;
   intro: string;
+  videos: Array<ApiTalksVideoI>;
   categories: Array<{
     title: string;
     gallery: Array<ImageI>;

@@ -1,8 +1,9 @@
 import React from 'react';
 import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import { Card, CardGrid } from '@theme';
+import { Card, CardGrid, Video } from '@theme';
 import PageContent from '@comps/PageContent';
+import VideoSlider from '@comps/talks/VideoSlider';
 import dayjs from '@utils/dayjs';
 import { formatDate, getTalksProps } from '@utils/helpers';
 
@@ -21,6 +22,7 @@ export default ({
           key="description"
         />
       </Head>
+      <VideoSlider videos={pageData.videos} />
       <p>TEST</p>
     </PageContent>
   );

@@ -1,0 +1,93 @@
+.root {
+  overflow: hidden;
+}
+
+.slider {
+  list-style: none;
+  display: flex;
+  gap: var(--spacing);
+  scroll-snap-type: x mandatory;
+  overflow: hidden;
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    width: 0;
+  }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.element {
+  width: 80%;
+  flex: 1 0 80%;
+  scroll-snap-align: start;
+}
+
+.video {
+  opacity: 0.3;
+  @mixin transition;
+}
+
+.videoActive {
+  opacity: 1;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.indicator {
+  display: flex;
+  font-size: 0.75rem;
+  gap: 0.75em;
+  list-style: none;
+}
+
+.indicatorElement {
+}
+
+.indicatorButton {
+  height: 1em;
+  width: 1em;
+  background-color: var(--c-p-light);
+  overflow: hidden;
+  border-radius: 100%;
+  @mixin transition;
+  text-indent: -9999px;
+
+  &:disabled {
+    background-color: var(--c-p);
+    cursor: default;
+  }
+}
+
+.nextPrev {
+  display: flex;
+  gap: 0.25em;
+  font-size: 2rem;
+}
+
+.nextPrevIcon {
+  svg {
+    display: block;
+  }
+}
+
+.nextPrevButton {
+  @mixin transition;
+
+  &:disabled {
+    color: var(--c-p-light);
+    cursor: default;
+  }
+}
+
+.nextPrevButtonNext {
+}
+
+.nextPrevButtonPrev {
+}

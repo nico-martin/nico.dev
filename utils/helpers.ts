@@ -87,3 +87,10 @@ export const externalLinkIcon = (link: string): IconType =>
     : link.startsWith('https://wordpress.org/')
     ? 'wordpress'
     : 'openInNew';
+
+export const youtubeParser = (url: string): string | false => {
+  const regExp =
+    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[7].length == 11 ? match[7] : false;
+};
