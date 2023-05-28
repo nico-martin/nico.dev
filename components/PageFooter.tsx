@@ -26,14 +26,13 @@ const PageFooter = ({ className = '' }: { className?: string }) => {
       </nav>
       <nav className={cn(styles.nav)}>
         {Object.entries(FOOTER_LINKS).map(([path, link]) => (
-          <Link href={path}>
-            <a
-              className={cn(styles.link, {
-                [styles.linkActive]: route === path,
-              })}
-            >
-              {link}
-            </a>
+          <Link
+            href={path}
+            className={cn(styles.link, {
+              [styles.linkActive]: route === path,
+            })}
+          >
+            {link}
           </Link>
         ))}
       </nav>

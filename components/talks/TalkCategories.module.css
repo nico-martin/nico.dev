@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.category {
+  display: flex;
+}
+
+.image {
+}
+
+.imageWrapper {
+}

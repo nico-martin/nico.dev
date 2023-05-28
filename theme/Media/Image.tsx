@@ -10,7 +10,7 @@ const Image: React.FC<{
   className?: string;
   classNameImage?: string;
   image: ImageI;
-  imagePosition: string;
+  imagePosition?: string;
 }> = ({
   className = '',
   classNameImage = '',

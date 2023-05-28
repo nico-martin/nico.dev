@@ -94,20 +94,25 @@ export interface ApiTalksVideoI {
   height?: number;
 }
 
+export interface ApiTalksSingleI {
+  title: string;
+  venue: string;
+  date: string;
+  links: Array<{ key: TALK_LINK; value: string }>;
+}
+
+export interface ApiTalksCategoriesI {
+  title: string;
+  image: ImageI;
+  //gallery: Array<ImageI>;
+  items: Array<ApiTalksSingleI>;
+}
+
 export interface ApiTalksI {
   metaDescription: string;
   intro: string;
   videos: Array<ApiTalksVideoI>;
-  categories: Array<{
-    title: string;
-    gallery: Array<ImageI>;
-    items: Array<{
-      title: string;
-      venue: string;
-      date: string;
-      links: Array<{ key: TALK_LINK; value: string }>;
-    }>;
-  }>;
+  categories: Array<ApiTalksCategoriesI>;
 }
 
 export interface ApiCodeI {

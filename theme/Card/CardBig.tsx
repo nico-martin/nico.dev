@@ -38,8 +38,8 @@ const CardBig: React.FC<{
         />
         {links && links.length !== 0 && (
           <ul className={styles.links}>
-            {links.map((link) => (
-              <li className={styles.linkElement}>
+            {links.map((link, i) => (
+              <li className={styles.linkElement} key={i}>
                 <a
                   href={link.url}
                   title={link.title}
