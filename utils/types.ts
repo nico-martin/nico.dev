@@ -1,3 +1,5 @@
+import { IconType } from '@theme';
+
 export interface RessourceI {
   path: string;
   title: string;
@@ -85,6 +87,7 @@ export enum TALK_LINK {
 
 export enum TALK_VIDEO_TYPE {
   YOUTUBE = 'youtube',
+  WORDPRESS = 'wordpresstv',
 }
 
 export interface ApiTalksVideoI {
@@ -92,6 +95,7 @@ export interface ApiTalksVideoI {
   url: string;
   width?: number;
   height?: number;
+  title?: string;
 }
 
 export interface ApiTalksSingleI {
@@ -104,6 +108,7 @@ export interface ApiTalksSingleI {
 export interface ApiTalksCategoriesI {
   title: string;
   image: ImageI;
+  imagePosition: string;
   //gallery: Array<ImageI>;
   items: Array<ApiTalksSingleI>;
 }
@@ -167,4 +172,5 @@ export interface LinkI {
   label: string;
   title: string;
   url: string;
+  icon: IconType;
 }

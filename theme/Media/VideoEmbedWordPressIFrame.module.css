@@ -14,33 +14,22 @@
 }
 
 .overlayButton {
-  color: #ff0000;
+  color: #d9d9d9;
   font-size: 6rem;
   position: absolute;
   inset: 0;
   text-align: center;
 
   &:hover .overlayButtonIcon {
-    color: #c00e0e;
-    transform: translateY(20%) scale(1.1);
-  }
-
-  &:before {
-    content: '';
-    background-color: #fff;
-    width: 0.35em;
-    height: 0.35em;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-10%) translateX(-50%);
+    color: #fff;
+    transform: translateY(10%) scale(1.1);
   }
 }
 
 .overlayButtonIcon {
   position: relative;
   transition: all 200ms ease-in-out;
-  transform: translateY(20%);
+  transform: translateY(10%);
 
   svg {
     display: block;

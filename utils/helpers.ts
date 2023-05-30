@@ -10,6 +10,8 @@ import {
   ApiCodeI,
   ApiProjectsI,
   ApiTalksI,
+  TALK_LINK,
+  LinkI,
 } from '@utils/types';
 
 export const IS_BROWSER = typeof window !== 'undefined';
@@ -77,7 +79,10 @@ export const convertStringToAnchor = (url: string): string =>
 export const maybeConvertStringToAnchor = (url: string): string =>
   isUrl(url) ? convertStringToAnchor(url) : url;
 
-export const externalLinkIcon = (link: string): IconType =>
+export const externalLinkIcon = (
+  link: string,
+  fallback: IconType = null
+): IconType =>
   link.startsWith('https://github.com')
     ? 'github'
     : link.startsWith('https://twitter.com')
@@ -86,7 +91,16 @@ export const externalLinkIcon = (link: string): IconType =>
     ? 'devto'
     : link.startsWith('https://wordpress.org/')
     ? 'wordpress'
-    : 'openInNew';
+    : link.startsWith('https://slides.nico.dev/') ||
+      link.startsWith('https://slide.nicomartin.ch/') ||
+      link.startsWith('https://slides.nicomartin.ch/')
+    ? 'presentation'
+    : link.startsWith('https://youtu.be/') ||
+      link.startsWith('https://youtube.com/') ||
+      link.startsWith('https://www.youtube.com/') ||
+      link.startsWith('https://wordpress.tv')
+    ? 'videoOutline'
+    : fallback || 'openInNew';
 
 export const youtubeParser = (url: string): string | false => {
   const regExp =
@@ -94,3 +108,31 @@ export const youtubeParser = (url: string): string | false => {
   const match = url.match(regExp);
   return match && match[7].length == 11 ? match[7] : false;
 };
+
+export const convertTalkLinks = (
+  links: Array<{ key: TALK_LINK; value: string }>,
+  title: string,
+  venue: string
+): Array<LinkI> =>
+  links.map((link) => ({
+    url: link.value,
+    ...(link.key === 'video'
+      ? {
+          label: 'Video',
+          title: `Nico's Video for "${title}" at ${venue}`,
+          icon: 'videoOutline',
+        }
+      : link.key === 'infos'
+      ? {
+          label: 'Infos',
+          title: `More informations about Nico's Talk at ${venue}`,
+          icon: 'informationSlabCircleOutline',
+        }
+      : link.key === 'slides'
+      ? {
+          label: 'Slides',
+          title: `Nico's Slides for "${title}" at ${venue}`,
+          icon: 'presentationPlay',
+        }
+      : { label: '', title: '', icon: 'informationSlabCircleOutline' }),
+  }));

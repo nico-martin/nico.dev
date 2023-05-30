@@ -1,6 +1,7 @@
 import React from 'react';
-import { Image } from '@theme';
+import { Icon, Image, LinkList } from '@theme';
 import cn from '@utils/classnames';
+import { convertTalkLinks, externalLinkIcon } from '@utils/helpers';
 import { ApiTalksCategoriesI } from '@utils/types';
 import styles from './TalkCategories.module.css';
 
@@ -19,9 +20,54 @@ const TalkCategories: React.FC<{
                 image={cat.image}
                 className={styles.imageWrapper}
                 classNameImage={styles.image}
+                imagePosition={cat.imagePosition}
               />
             )}
-            {cat.title}: {cat.items.map((talk) => talk.venue).join(', ')}
+            <div className={styles.content}>
+              <h3 className={styles.contentTitle}>{cat.title}</h3>
+              <ul className={styles.talkList}>
+                {cat.items.map((talk) => (
+                  <li className={styles.talkElement}>
+                    <div className={styles.talkTitleContainer}>
+                      <h4 className={styles.talkVenue}>{talk.venue}</h4>
+                      {talk.links && (
+                        <ul className={styles.talkLinks}>
+                          {convertTalkLinks(
+                            talk.links,
+                            talk.title,
+                            talk.venue
+                          ).map((link) => (
+                            <li className={styles.talkLinksElement}>
+                              <a
+                                href={link.url}
+                                title={link.title}
+                                className={styles.talkLinksAnchor}
+                                target="_blank"
+                              >
+                                <Icon
+                                  icon={link.icon}
+                                  className={styles.talkLinksIcon}
+                                />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <p className={styles.talkTitle}>{talk.title}</p>
+                    {/*
+                    <LinkList
+                      className={styles.talkLinks}
+                      links={convertTalkLinks(
+                        talk.links,
+                        talk.title,
+                        talk.venue
+                      )}
+                    />*/}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
     </div>

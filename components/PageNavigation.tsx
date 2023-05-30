@@ -29,13 +29,14 @@ const PageNavigation = ({ className = '' }: { className?: string }) => {
           active={route !== '/' && route === path}
           className={styles.linkWrapper}
         >
-          <Link
-            href={path}
-            className={cn(styles.link, {
-              [styles.linkActive]: route === path,
-            })}
-          >
-            {link}
+          <Link href={path}>
+            <a
+              className={cn(styles.link, {
+                [styles.linkActive]: route === path,
+              })}
+            >
+              {link}
+            </a>
           </Link>
         </LinkWrapper>
       ))}
