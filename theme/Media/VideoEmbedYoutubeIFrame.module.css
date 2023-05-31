@@ -1,0 +1,30 @@
+.root {
+}
+
+.overlayButton {
+  color: #ff0000;
+
+  &:hover .overlayButtonIcon {
+    color: #c00e0e;
+    transform: translateY(20%) scale(1.1);
+  }
+
+  &:before {
+    content: '';
+    background-color: #fff;
+    width: 0.35em;
+    height: 0.35em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-10%) translateX(-50%);
+  }
+}
+
+.overlayButtonIcon {
+  transform: translateY(20%);
+
+  svg {
+    display: block;
+  }
+}

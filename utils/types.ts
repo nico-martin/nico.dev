@@ -1,3 +1,5 @@
+import { IconType } from '@theme';
+
 export interface RessourceI {
   path: string;
   title: string;
@@ -77,6 +79,48 @@ export interface ApiTalkI {
   }>;
 }
 
+export enum TALK_LINK {
+  INFOS = 'infos',
+  SLIDES = 'slides',
+  VIDEO = 'video',
+}
+
+export enum TALK_VIDEO_TYPE {
+  YOUTUBE = 'youtube',
+  WORDPRESS = 'wordpresstv',
+  JWPLAYER = 'jwplayer',
+}
+
+export interface ApiTalksVideoI {
+  url: string;
+  width?: number;
+  height?: number;
+  title?: string;
+  poster?: string;
+}
+
+export interface ApiTalksSingleI {
+  title: string;
+  venue: string;
+  date: string;
+  links: Array<{ key: TALK_LINK; value: string }>;
+}
+
+export interface ApiTalksCategoriesI {
+  title: string;
+  image: ImageI;
+  imagePosition: string;
+  //gallery: Array<ImageI>;
+  items: Array<ApiTalksSingleI>;
+}
+
+export interface ApiTalksI {
+  metaDescription: string;
+  intro: string;
+  videos: Array<ApiTalksVideoI>;
+  categories: Array<ApiTalksCategoriesI>;
+}
+
 export interface ApiCodeI {
   metaDescription: string;
   intro: string;
@@ -129,4 +173,5 @@ export interface LinkI {
   label: string;
   title: string;
   url: string;
+  icon?: IconType;
 }

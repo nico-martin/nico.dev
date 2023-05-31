@@ -1,3 +1,4 @@
+import * as process from 'process';
 import React from 'react';
 
 export const MESSAGES = {
@@ -18,6 +19,8 @@ export const FOOTER_LINKS: Record<string, string> = {
   '/cv': 'CV',
   '/about-this-website': 'This Project is Open Source',
 };
+
+export const API_HOST: string = process.env.API_HOST || 'https://wp.nico.dev';
 
 export const SOCIAL_LINKS: Record<
   string,

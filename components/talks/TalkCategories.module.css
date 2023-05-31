@@ -1,0 +1,113 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-v);
+
+  --talks-image-width: 40%;
+
+  @mixin mobileSmall {
+    --talks-image-width: 20vw;
+    //gap: calc(var(--spacing-v) + var(--talks-image-width));
+  }
+}
+
+.category {
+  display: flex;
+  gap: var(--spacing);
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+
+  @mixin mobileSmall {
+    flex-direction: column;
+  }
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+    @mixin mobileSmall {
+      flex-direction: column;
+    }
+  }
+}
+
+.imageWrapper {
+  width: var(--talks-image-width);
+  flex: 1 0 var(--talks-image-width);
+  aspect-ratio: 1 / 1;
+
+  @mixin mobileSmall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    rotate: 5deg;
+  }
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.content {
+  flex: 1 1 calc(100% - var(--talks-image-width));
+  font-size: var(--fs-s);
+
+  @mixin mobileSmall {
+    width: 100%;
+  }
+}
+
+.contentTitle {
+  margin-bottom: 2rem;
+  font-size: var(--fs-l);
+  font-weight: 300;
+
+  @mixin mobileSmall {
+    padding-top: calc(var(--talks-image-width) - 2rem);
+    padding-left: calc(1rem + var(--talks-image-width));
+  }
+}
+
+.talkList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.talkElement {
+}
+
+.talkVenue {
+}
+
+.talkTitle {
+}
+
+.talkTitleContainer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.talkLinks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.talkLinksElement {
+}
+
+.talkLinksAnchor {
+  color: var(--c-p);
+  opacity: 0.5;
+  @mixin transition;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.talkLinksIcon {
+  display: block;
+}
