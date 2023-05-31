@@ -1,24 +1,8 @@
 .root {
 }
 
-.iframe {
-  width: 100%;
-  display: block;
-}
-
-.overlay {
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-}
-
 .overlayButton {
   color: #ff0000;
-  font-size: 6rem;
-  position: absolute;
-  inset: 0;
-  text-align: center;
 
   &:hover .overlayButtonIcon {
     color: #c00e0e;
@@ -38,8 +22,6 @@
 }
 
 .overlayButtonIcon {
-  position: relative;
-  transition: all 200ms ease-in-out;
   transform: translateY(20%);
 
   svg {

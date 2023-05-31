@@ -1,14 +1,14 @@
 import React from 'react';
 import { Icon } from '@theme';
 import cn from '@utils/classnames';
-import { youtubeParser } from '@utils/helpers';
+import { getJwpIdFromUrl } from '@utils/helpers';
 import { VideoIframeProps } from './VideoEmbed';
 import stylesVideo from './VideoEmbed.module.css';
-import styles from './VideoEmbedYoutubeIFrame.module.css';
+import styles from './VideoEmbedJwpIFrame.module.css';
 
 interface Props extends VideoIframeProps {}
 
-const VideoEmbedYoutubeIFrame: React.FC<Props> = ({
+const VideoEmbedJwtIFrame: React.FC<Props> = ({
   url,
   title = '',
   aspectRatio,
@@ -17,7 +17,7 @@ const VideoEmbedYoutubeIFrame: React.FC<Props> = ({
   inactive = false,
   poster = '',
 }) => {
-  const id = youtubeParser(url);
+  const id = getJwpIdFromUrl(url);
   const [loaded, setLoaded] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -28,13 +28,13 @@ const VideoEmbedYoutubeIFrame: React.FC<Props> = ({
     <div style={{ aspectRatio }} className={cn(className, styles.root)}>
       {loaded ? (
         <iframe
-          className={cn(stylesVideo.iframe)}
-          src={`https://www.youtube.com/embed/${id}?autoplay=1`}
-          title={title}
+          src={`https://cdn.jwplayer.com/players/${id}-embed.html?autoplay=1`}
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          scrolling="auto"
           allowFullScreen
           style={{ aspectRatio }}
+          title={title}
+          className={stylesVideo.iframe}
         />
       ) : (
         <div
@@ -44,22 +44,16 @@ const VideoEmbedYoutubeIFrame: React.FC<Props> = ({
             backgroundImage: `url(${poster})`,
           }}
         >
-          {title !== '' && (
+          {
             <p className={stylesVideo.title}>
               <span>{title}</span>
             </p>
-          )}
+          }
           <button
-            className={cn(styles.overlayButton, stylesVideo.overlayButton)}
+            className={cn(stylesVideo.overlayButton)}
             onClick={() => (onClick ? onClick() : setLoaded(true))}
           >
-            <Icon
-              icon="youtube"
-              className={cn(
-                styles.overlayButtonIcon,
-                stylesVideo.overlayButtonIcon
-              )}
-            />
+            <Icon icon="play" className={stylesVideo.overlayButtonIcon} />
           </button>
         </div>
       )}
@@ -67,4 +61,4 @@ const VideoEmbedYoutubeIFrame: React.FC<Props> = ({
   ) : null;
 };
 
-export default VideoEmbedYoutubeIFrame;
+export default VideoEmbedJwtIFrame;

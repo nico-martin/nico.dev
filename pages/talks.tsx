@@ -8,7 +8,7 @@ import VideoSlider from '@comps/talks/VideoSlider';
 import cn from '@utils/classnames';
 import dayjs from '@utils/dayjs';
 import { convertTalkLinks, formatDate, getTalksProps } from '@utils/helpers';
-import { ApiTalksCategoriesI, ApiTalksSingleI } from '@utils/types';
+import { ApiTalksCategoriesI, ApiTalksSingleI, TALK_LINK } from '@utils/types';
 import styles from './talks.module.css';
 
 export const getStaticProps = async () => await getTalksProps();
@@ -31,14 +31,22 @@ export default ({
             ...category.items.filter((talk) =>
               dayjs(talk.date).isSameOrAfter(dayjs())
             ),
-          ],
+          ].map((talk) => ({
+            ...talk,
+            links: talk.links.filter((link) => link.key === TALK_LINK.INFOS),
+          })),
           talksCategories: [
             ...acc.talksCategories,
             {
               ...category,
-              items: category.items.filter(
-                (talk) => !dayjs(talk.date).isSameOrAfter(dayjs())
-              ),
+              items: category.items
+                .filter((talk) => !dayjs(talk.date).isSameOrAfter(dayjs()))
+                .map((talk) => ({
+                  ...talk,
+                  links: talk.links.filter(
+                    (link) => link.key !== TALK_LINK.INFOS
+                  ),
+                })),
             },
           ],
         }),

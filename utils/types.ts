@@ -88,14 +88,15 @@ export enum TALK_LINK {
 export enum TALK_VIDEO_TYPE {
   YOUTUBE = 'youtube',
   WORDPRESS = 'wordpresstv',
+  JWPLAYER = 'jwplayer',
 }
 
 export interface ApiTalksVideoI {
-  type: TALK_VIDEO_TYPE;
   url: string;
   width?: number;
   height?: number;
   title?: string;
+  poster?: string;
 }
 
 export interface ApiTalksSingleI {

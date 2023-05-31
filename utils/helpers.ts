@@ -3,15 +3,16 @@ import { IconType } from '@theme';
 import { apiGet } from '@utils/apiFetch';
 import { API_HOST } from '@utils/constants';
 import {
-  ApiPageI,
-  ApiCvI,
   ApiBlogI,
-  ApiTalkI,
   ApiCodeI,
+  ApiCvI,
+  ApiPageI,
   ApiProjectsI,
+  ApiTalkI,
   ApiTalksI,
-  TALK_LINK,
   LinkI,
+  TALK_LINK,
+  TALK_VIDEO_TYPE,
 } from '@utils/types';
 
 export const IS_BROWSER = typeof window !== 'undefined';
@@ -57,8 +58,16 @@ export const getBlogProps = async () =>
 export const getTalkProps = async () =>
   getApiProps<ApiTalkI>(`${host}wp-json/nico/v1/talk`);
 
-export const getTalksProps = async () =>
-  getApiProps<ApiTalksI>(`${host}wp-json/nico/v1/talks`);
+export const getTalksProps = async () => {
+  const resp = await getApiProps<ApiTalksI>(`${host}wp-json/nico/v1/talks`);
+  resp.props.pageData.videos = await Promise.all(
+    resp.props.pageData.videos.map(async (video) => {
+      const poster = await getVideoPosterByUrl(video.url);
+      return { ...video, poster };
+    })
+  );
+  return resp;
+};
 
 export const getCodeProps = async () =>
   getApiProps<ApiCodeI>(`${host}wp-json/nico/v1/code`);
@@ -108,6 +117,52 @@ export const youtubeParser = (url: string): string | false => {
   const match = url.match(regExp);
   return match && match[7].length == 11 ? match[7] : false;
 };
+
+export const getVideoTypeByUrl = (url: string): TALK_VIDEO_TYPE => {
+  if (url.startsWith('https://videopress.com/v/')) {
+    return TALK_VIDEO_TYPE.WORDPRESS;
+  }
+
+  if (url.startsWith('https://cdn.jwplayer.com/previews/')) {
+    return TALK_VIDEO_TYPE.JWPLAYER;
+  }
+
+  if (youtubeParser(url)) {
+    return TALK_VIDEO_TYPE.YOUTUBE;
+  }
+
+  return null;
+};
+
+export const getVideoPosterByUrl = async (url: string) => {
+  const type = getVideoTypeByUrl(url);
+  if (type === TALK_VIDEO_TYPE.YOUTUBE) {
+    return `https://img.youtube.com/vi/${youtubeParser(url)}/maxresdefault.jpg`;
+  }
+
+  if (type === TALK_VIDEO_TYPE.WORDPRESS) {
+    const resp = await apiGet<{ poster: string }>(
+      `https://public-api.wordpress.com/rest/v1.1/videos/${getVideopressIdFromUrl(
+        url
+      )}/`
+    );
+    return resp.poster;
+  }
+
+  if (type === TALK_VIDEO_TYPE.JWPLAYER) {
+    const resp = await apiGet<{ playlist: Array<{ image: string }> }>(
+      `https://cdn.jwplayer.com/v2/media/${getJwpIdFromUrl(url)}`
+    );
+    return resp.playlist[0].image;
+  }
+  return null;
+};
+
+export const getJwpIdFromUrl = (url: string): string =>
+  untrailingSlashIt(url).replace('https://cdn.jwplayer.com/previews/', '');
+
+export const getVideopressIdFromUrl = (url: string): string =>
+  untrailingSlashIt(url).replace('https://videopress.com/v/', '');
 
 export const convertTalkLinks = (
   links: Array<{ key: TALK_LINK; value: string }>,

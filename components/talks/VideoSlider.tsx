@@ -32,7 +32,7 @@ const VideoSlider: React.FC<{
                 [styles.videoActive]: i === activeElement,
               })}
               url={video.url}
-              type={video.type}
+              poster={video.poster}
               videoWidth={video.width || undefined}
               videoHeight={video.height || undefined}
               onClick={i === activeElement ? null : () => setActiveElement(i)}
