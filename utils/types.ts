@@ -173,5 +173,5 @@ export interface LinkI {
   label: string;
   title: string;
   url: string;
-  icon: IconType;
+  icon?: IconType;
 }
