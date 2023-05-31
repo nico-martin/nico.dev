@@ -22,6 +22,10 @@
 .overlayButton {
   color: #d9d9d9;
   font-size: 6rem;
+
+  @mixin mobileSmall {
+    font-size: 9vw;
+  }
   position: absolute;
   inset: 0;
   text-align: center;
@@ -48,6 +52,10 @@
   line-height: 1.5;
   position: relative;
   font-size: var(--fs-l);
+
+  @mixin mobileSmall {
+    font-size: 3.1vw;
+  }
 
   span {
     position: relative;
