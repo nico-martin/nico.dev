@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.element {
+}
+
+.link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  @mixin background-gradient;
+
+  &:hover {
+    .linkIcon {
+      transform: translateX(0.15em);
+    }
+  }
+}
+
+.icon {
+  margin-left: 0.2em;
+  will-change: transform;
+  @mixin transition;
+}

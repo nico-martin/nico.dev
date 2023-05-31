@@ -1,7 +1,11 @@
 const cn = (...classes: Array<Record<string, boolean> | string>): string =>
   classes
     .map((entry) =>
-      typeof entry === 'string'
+      typeof (
+        /*!entry
+        ? ''
+        :*/ entry
+      ) === 'string'
         ? entry
         : Object.entries(entry)
             .filter(([cl, append]) => append)
