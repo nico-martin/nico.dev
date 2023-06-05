@@ -175,3 +175,25 @@ export interface LinkI {
   url: string;
   icon?: IconType;
 }
+
+export interface ApiPaperI {
+  title: string;
+  content: Array<{
+    title: string;
+    text: string;
+  }>;
+  notes: string;
+}
+
+export interface ApiCfpI {
+  papers: Array<ApiPaperI>;
+  about: Array<{
+    title: string;
+    text: string;
+  }>;
+  links: Array<{
+    title: string;
+    url: string;
+  }>;
+  portrait: Array<string>;
+}

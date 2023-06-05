@@ -29,10 +29,11 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "^10.2.6",
+    "concurrently": "^8.1.0",
     "mini-css-class-name": "^0.12.1",
     "path": "^0.12.7",
     "postcss-mixins": "^8.1.0",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-preset-env": "^7.7.2",
     "prettier": "^2.3.1",
     "raw-loader": "^4.0.2",
     "stylelint": "^13.13.1",
@@ -42,11 +43,13 @@
   "author": "Nico Martin",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"npm run next-dev\" \"npm run ssl\"",
+    "next-dev": "next dev -p 3003",
     "build": "next build",
     "static": "next build && next export",
     "start": "next start",
-    "prod": "npm run build && npm run start"
+    "prod": "npm run build && npm run start",
+    "ssl": "npx local-ssl-proxy --key C:/MAMP/htdocs/_ssh/localhost/localhost.key --cert C:/MAMP/htdocs/_ssh/localhost/localhost.crt --source 3000 --target 3003"
   },
   "bugs": {
     "url": "https://github.com/nico-martin/nico.dev/issues"

@@ -1,0 +1,13 @@
+.root {
+}
+
+.select {
+  padding: 0.4em 0.6em;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.notes {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}

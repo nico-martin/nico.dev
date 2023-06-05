@@ -4,6 +4,7 @@ import { apiGet } from '@utils/apiFetch';
 import { API_HOST } from '@utils/constants';
 import {
   ApiBlogI,
+  ApiCfpI,
   ApiCodeI,
   ApiCvI,
   ApiPageI,
@@ -191,3 +192,6 @@ export const convertTalkLinks = (
         }
       : { label: '', title: '', icon: 'informationSlabCircleOutline' }),
   }));
+
+export const getCfp = async () =>
+  getApiProps<ApiCfpI>(`${host}wp-json/nico/v1/cfp`);
