@@ -1,0 +1,18 @@
+.p {
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.2em;
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  font-size: 0.8em;
+  opacity: 0.3;
+}
+
+.iconCopied {
+  color: green;
+  opacity: 1;
+}

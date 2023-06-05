@@ -1,0 +1,25 @@
+.root {
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.select {
+  padding: 0.4em 0.6em;
+  width: 100%;
+}
+
+.content {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px dashed var(--c-border);
+}
+
+.size {
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.7em;
+}
