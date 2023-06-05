@@ -29,9 +29,11 @@ const VersionsSelect: React.FC<{
       </label>
       <div className={styles.content}>
         <CopyP content={activeContent} />
-        <p className={styles.sizes}>
-          {activeContent.length} / {activeContent.split(' ').length}
-        </p>
+        <div className={styles.sizes}>
+          <p>
+            {activeContent.length} / {activeContent.split(' ').length}
+          </p>
+        </div>
       </div>
     </div>
   );
