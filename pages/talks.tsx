@@ -73,18 +73,22 @@ export default ({
         <React.Fragment>
           <h2 className={styles.heading}>Upcoming Talks</h2>
           <CardGrid className={cn(styles.pastTalks, styles.content)}>
-            {upcomingTalks.map(({ date, venue, title, links }) => (
-              <Card
-                suptitle={formatDate(date)}
-                title={venue}
-                content={title}
-                links={
-                  links.length !== 0
-                    ? convertTalkLinks(links, title, venue)
-                    : []
-                }
-              />
-            ))}
+            {upcomingTalks
+              .sort((a, b) =>
+                dayjs(a.date).isSameOrAfter(dayjs(b.date)) ? 1 : -1
+              )
+              .map(({ date, venue, title, links }) => (
+                <Card
+                  suptitle={formatDate(date)}
+                  title={venue}
+                  content={title}
+                  links={
+                    links.length !== 0
+                      ? convertTalkLinks(links, title, venue)
+                      : []
+                  }
+                />
+              ))}
           </CardGrid>
           <h2 className={styles.heading}>Past Talks</h2>
         </React.Fragment>
