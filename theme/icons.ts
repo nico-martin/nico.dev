@@ -1,6 +1,8 @@
 import arrowLeftThin from './_icons/arrow-left-thin.svg';
 import arrowRightThun from './_icons/arrow-right-thin.svg';
 import arrow from './_icons/arrow.svg';
+import check from './_icons/check.svg';
+import contentCopy from './_icons/content-copy.svg';
 import devto from './_icons/devto.svg';
 import dribbble from './_icons/dribbble.svg';
 import github from './_icons/github.svg';
@@ -36,6 +38,8 @@ const icons = {
   presentationPlay,
   informationSlabCircleOutline,
   play,
+  contentCopy,
+  check,
 };
 
 export type IconType = keyof typeof icons;
