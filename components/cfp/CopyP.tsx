@@ -16,7 +16,7 @@ const CopyP: React.FC<{ className?: string; content: string }> = ({
   const onClick = () => {
     setCopied(true);
     navigator.clipboard.writeText(content);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 1000);
   };
 
   return (

@@ -18,7 +18,7 @@
   border-top: 1px dashed var(--c-border);
 }
 
-.size {
+.sizes p {
   text-align: right;
   font-weight: 600;
   font-size: 0.7em;
