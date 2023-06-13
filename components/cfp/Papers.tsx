@@ -1,4 +1,5 @@
 import React from 'react';
+import Copy from '@comps/cfp/Copy';
 import VersionsSelect from '@comps/cfp/VersionsSelect';
 import cn from '@utils/classnames';
 import { ApiPaperI } from '@utils/types';
@@ -12,14 +13,17 @@ const Papers: React.FC<{ className?: string; papers: Array<ApiPaperI> }> = ({
 
   return (
     <div className={cn(className, styles.root)}>
-      <select
-        className={styles.select}
-        onChange={(e) => setActivePaper(parseInt(e.target.value))}
-      >
-        {papers.map((paper, i) => (
-          <option value={i}>{paper.title}</option>
-        ))}
-      </select>
+      <div className={styles.selectWrapper}>
+        <select
+          className={styles.select}
+          onChange={(e) => setActivePaper(parseInt(e.target.value))}
+        >
+          {papers.map((paper, i) => (
+            <option value={i}>{paper.title}</option>
+          ))}
+        </select>
+        <Copy content={papers[activePaper].title} />
+      </div>
       <VersionsSelect
         key={papers[activePaper].title}
         options={papers[activePaper].content.map((content) => ({
