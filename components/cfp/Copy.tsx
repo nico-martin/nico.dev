@@ -21,7 +21,10 @@ const Copy: React.FC<{ className?: string; content: string }> = ({
 
   return (
     <button className={cn(className, styles.root)} onClick={onClick}>
-      <Icon icon={icon} className={cn(styles.icon)} />
+      <Icon
+        icon={icon}
+        className={cn(styles.icon, { [styles.iconCopied]: copied })}
+      />
     </button>
   );
 };
