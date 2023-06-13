@@ -21,7 +21,7 @@ const VersionsSelect: React.FC<{
           onChange={(e) => setActiveOption(parseInt(e.target.value))}
         >
           {options.map(({ title, content }, i) => (
-            <option value={i}>
+            <option key={i} value={i}>
               {title} ({content.length})
             </option>
           ))}
