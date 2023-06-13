@@ -3,4 +3,11 @@
 
 .icon {
   display: block;
+  font-size: 1em;
+  opacity: 0.3;
+}
+
+.iconCopied {
+  color: green;
+  opacity: 1;
 }
