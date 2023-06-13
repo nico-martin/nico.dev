@@ -2,7 +2,7 @@ import React from 'react';
 import cn from '@utils/classnames';
 import { externalLinkIcon } from '@utils/helpers';
 import { ImageI, LinkI } from '@utils/types';
-import { Icon, Image } from '../index';
+import { Icon, Image, LinkList } from '../index';
 import styles from './CardBig.module.css';
 
 const CardBig: React.FC<{
@@ -38,8 +38,8 @@ const CardBig: React.FC<{
         />
         {links && links.length !== 0 && (
           <ul className={styles.links}>
-            {links.map((link) => (
-              <li className={styles.linkElement}>
+            {links.map((link, i) => (
+              <li className={styles.linkElement} key={i}>
                 <a
                   href={link.url}
                   title={link.title}

@@ -3,61 +3,59 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { Card, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
+import TalkCategories from '@comps/talks/TalkCategories';
+import VideoSlider from '@comps/talks/VideoSlider';
+import cn from '@utils/classnames';
 import dayjs from '@utils/dayjs';
-import { formatDate, getTalkProps } from '@utils/helpers';
+import { convertTalkLinks, formatDate, getTalksProps } from '@utils/helpers';
+import { ApiTalksCategoriesI, ApiTalksSingleI, TALK_LINK } from '@utils/types';
+import styles from './talks.module.css';
 
-export const getStaticProps = async () => await getTalkProps();
+export const getStaticProps = async () => await getTalksProps();
 
 export default ({
   pageData,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  const upcomingTalks = React.useMemo(
+  const {
+    upcomingTalks,
+    talksCategories,
+  }: {
+    upcomingTalks: Array<ApiTalksSingleI>;
+    talksCategories: Array<ApiTalksCategoriesI>;
+  } = React.useMemo(
     () =>
-      pageData.items.filter(({ date }) => dayjs(date).isSameOrAfter(dayjs())),
-    [pageData]
-  );
-
-  const pastTalks = React.useMemo(
-    () =>
-      pageData.items.filter(({ date }) => !dayjs(date).isSameOrAfter(dayjs())),
-    [pageData]
-  );
-
-  const CardElement = ({ date, venue, title, infos, slides, video }) => (
-    <Card
-      suptitle={formatDate(date)}
-      title={venue}
-      content={title}
-      links={[
-        ...(infos !== ''
-          ? [
-              {
-                url: infos,
-                label: 'Infos',
-                title: `More informations about Nico's Talk at ${venue}`,
-              },
-            ]
-          : []),
-        ...(slides !== ''
-          ? [
-              {
-                url: slides,
-                label: 'Slides',
-                title: `Nico's Slides for "${title}" at ${venue}`,
-              },
-            ]
-          : []),
-        ...(video !== ''
-          ? [
-              {
-                url: video,
-                label: 'Video',
-                title: `Nico's Slides for "${title}" at ${venue}`,
-              },
-            ]
-          : []),
-      ]}
-    />
+      pageData.categories.reduce(
+        (acc, category) => ({
+          upcomingTalks: [
+            ...acc.upcomingTalks,
+            ...category.items.filter((talk) =>
+              dayjs(talk.date).isSameOrAfter(dayjs())
+            ),
+          ].map((talk) => ({
+            ...talk,
+            links: talk.links.filter((link) => link.key === TALK_LINK.INFOS),
+          })),
+          talksCategories: [
+            ...acc.talksCategories,
+            {
+              ...category,
+              items: category.items
+                .filter((talk) => !dayjs(talk.date).isSameOrAfter(dayjs()))
+                .map((talk) => ({
+                  ...talk,
+                  links: talk.links.filter(
+                    (link) => link.key !== TALK_LINK.INFOS
+                  ),
+                })),
+            },
+          ],
+        }),
+        {
+          upcomingTalks: [],
+          talksCategories: [],
+        }
+      ),
+    [pageData.categories]
   );
 
   return (
@@ -70,38 +68,32 @@ export default ({
           key="description"
         />
       </Head>
-      {upcomingTalks.length >= 1 && (
+      <VideoSlider videos={pageData.videos} className={styles.videos} />
+      {upcomingTalks.length !== 0 && (
         <React.Fragment>
-          <h2>Upcoming Talks</h2>
-          <CardGrid>
-            {upcomingTalks.map(
-              ({ date, venue, title, infos, slides, video }) => (
-                <CardElement
-                  date={date}
-                  venue={venue}
-                  title={title}
-                  infos={infos}
-                  slides={slides}
-                  video={video}
-                />
+          <h2 className={styles.heading}>Upcoming Talks</h2>
+          <CardGrid className={cn(styles.pastTalks, styles.content)}>
+            {upcomingTalks
+              .sort((a, b) =>
+                dayjs(a.date).isSameOrAfter(dayjs(b.date)) ? 1 : -1
               )
-            )}
+              .map(({ date, venue, title, links }) => (
+                <Card
+                  suptitle={formatDate(date)}
+                  title={venue}
+                  content={title}
+                  links={
+                    links.length !== 0
+                      ? convertTalkLinks(links, title, venue)
+                      : []
+                  }
+                />
+              ))}
           </CardGrid>
-          <h2>Past Talks</h2>
+          <h2 className={styles.heading}>Past Talks</h2>
         </React.Fragment>
       )}
-      <CardGrid>
-        {pastTalks.map(({ date, venue, title, infos, slides, video }) => (
-          <CardElement
-            date={date}
-            venue={venue}
-            title={title}
-            infos={infos}
-            slides={slides}
-            video={video}
-          />
-        ))}
-      </CardGrid>
+      <TalkCategories categories={talksCategories} className={styles.content} />
     </PageContent>
   );
 };

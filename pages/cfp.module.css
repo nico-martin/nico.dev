@@ -1,0 +1,29 @@
+.images {
+  .image + .image {
+    margin-top: 0.4em;
+    padding-top: 0.4em;
+    border-top: 1px dashed var(--c-border);
+  }
+}
+
+.links {
+}
+
+.link {
+  display: flex;
+  margin-top: 0.4em;
+  padding-top: 0.4em;
+  border-top: 1px dashed var(--c-border);
+
+  span {
+    font-weight: normal;
+    flex: 150px 0 0;
+  }
+}
+
+.content {
+  & > * + h2 {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
+}

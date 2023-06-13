@@ -1,0 +1,19 @@
+.root {
+}
+
+.selectWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.select {
+  padding: 0.4em 0.6em;
+  width: 100%;
+}
+
+.notes {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}

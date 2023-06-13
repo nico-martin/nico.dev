@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from '@utils/classnames';
-import { Icon } from '../index';
+import { LinkI } from '@utils/types';
+import { Icon, LinkList } from '../index';
 import styles from './Card.module.css';
 
 const Card = ({
@@ -16,11 +17,7 @@ const Card = ({
   title?: string;
   subtitle?: string;
   content?: string;
-  links?: Array<{
-    url: string;
-    label: string;
-    title?: string;
-  }>;
+  links?: Array<LinkI>;
 }) => (
   <div className={cn(className, styles.root)}>
     {Boolean(suptitle) && <p className={styles.suptitle}>{suptitle}</p>}
@@ -32,20 +29,7 @@ const Card = ({
         dangerouslySetInnerHTML={{ __html: content }}
       />
     )}
-    {links.length >= 1 && (
-      <p className={styles.links}>
-        {links.map(({ url, label, title }) => (
-          <a
-            className={styles.linkElement}
-            href={url}
-            title={title}
-            target="_blank"
-          >
-            {label} <Icon icon="arrow" className={styles.linkIcon} />
-          </a>
-        ))}
-      </p>
-    )}
+    <LinkList links={links} className={styles.links} />
   </div>
 );
 
