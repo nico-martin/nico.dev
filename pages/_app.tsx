@@ -1,10 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import PageLayout from '@comps/PageLayout';
 import { TranslationsProvider } from '@utils/cvTranslations';
 import '../styles/app.css';
 
 export default ({ Component, pageProps }) => {
+  const router = useRouter();
   return (
     <TranslationsProvider>
       <Head>
@@ -96,8 +98,20 @@ export default ({ Component, pageProps }) => {
         <meta name="theme-color" content="#009d89" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="./facebook.png" />
-        <meta name="twitter:image" content="./twitter.png" />
+        <meta
+          property="og:image"
+          content={
+            router.route === '/talks'
+              ? './facebook-talks.png'
+              : './facebook.png'
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            router.route === '/talks' ? './twitter-talks.png' : './twitter.png'
+          }
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <PageLayout>
