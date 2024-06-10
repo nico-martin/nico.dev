@@ -6,9 +6,13 @@ import styles from './PageImage.module.css';
 const SIZES = [500, 700, 1000, 1500, 2000];
 
 const PageImage = ({ className = '' }: { className?: string }) => {
-  const [imageExt, setImageExt] = React.useState<'avif' | 'webp' | 'jpg'>(null);
+  const [imageExt, setImageExt] = React.useState<'avif' | 'webp' | 'jpeg'>(
+    null
+  );
   React.useEffect(() => {
-    supportedImageFormat().then((ext) => setImageExt(ext));
+    supportedImageFormat().then((ext) => {
+      setImageExt(ext === 'jpg' ? 'jpeg' : ext);
+    });
   }, []);
 
   return (
@@ -22,14 +26,14 @@ const PageImage = ({ className = '' }: { className?: string }) => {
           alt="Nico Martin - Frontend Developer"
           className={cn(styles.image)}
           srcSet={SIZES.map(
-            (size) => `../portrait/nico-martin-${size}.${imageExt} ${size}w`
+            (size) => `../img/nico-martin-${size}.${imageExt} ${size}w`
           ).join(',')}
         />
       )}
       <img
         alt="Nico Martin - Frontend Developer"
         className={cn(styles.imageThumb)}
-        src="../portrait/nico-martin-thumb.jpg"
+        src="../img/nico-martin-thumb.jpeg"
       />
     </div>
   );
