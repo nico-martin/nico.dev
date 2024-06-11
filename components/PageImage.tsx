@@ -26,7 +26,7 @@ const PageImage = ({ className = '' }: { className?: string }) => {
           alt="Nico Martin - Frontend Developer"
           className={cn(styles.image)}
           srcSet={SIZES.map(
-            (size) => `../img/nico-martin-${size}.${imageExt} ${size}w`
+            (size) => `../img-67t723/nico-martin-${size}.${imageExt} ${size}w`
           ).join(',')}
         />
       )}

@@ -49,6 +49,7 @@ export default ({
       <div className={styles.images}>
         {pageData.portrait.map((image, i) => (
           <div className={styles.image}>
+            <img src={image} className={styles.img} />
             <CopyP content={image} key={i} />
           </div>
         ))}
