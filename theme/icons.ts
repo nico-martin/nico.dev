@@ -1,6 +1,7 @@
 import arrowLeftThin from './_icons/arrow-left-thin.svg';
 import arrowRightThun from './_icons/arrow-right-thin.svg';
 import arrow from './_icons/arrow.svg';
+import bluesky from './_icons/bluesky.svg';
 import check from './_icons/check.svg';
 import contentCopy from './_icons/content-copy.svg';
 import devto from './_icons/devto.svg';
@@ -40,6 +41,7 @@ const icons = {
   play,
   contentCopy,
   check,
+  bluesky,
 };
 
 export type IconType = keyof typeof icons;

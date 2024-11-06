@@ -29,9 +29,9 @@ export const SOCIAL_LINKS: Record<
     link: string;
   }
 > = {
-  mastodon: {
-    label: 'Nico Martin on Mastodon',
-    link: 'https://mas.to/@nicomartin',
+  bluesky: {
+    label: 'Nico Martin on Bluesky',
+    link: 'https://bsky.app/profile/nico.dev',
   },
   twitter: {
     label: 'Nico Martin on Twitter',
@@ -45,16 +45,16 @@ export const SOCIAL_LINKS: Record<
     label: 'Nico Martin on Dev.to',
     link: 'https://dev.to/nicomartin',
   },
-  wordpress: {
+  /*wordpress: {
     label: "Nico Martin's profile on WordPress.org",
     link: 'https://profiles.wordpress.org/nico_martin/',
-  },
+  },*/
   github: {
     label: 'GitHub repositories by Nico Martin',
     link: 'https://github.com/nico-martin',
   },
-  dribbble: {
+  /*dribbble: {
     label: 'Nico Martin on Dribbble',
     link: 'https://dribbble.com/nicomartin',
-  },
+  },*/
 };
