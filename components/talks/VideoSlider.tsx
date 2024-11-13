@@ -22,31 +22,31 @@ const VideoSlider: React.FC<{
     });
   }, [activeElement, ref]);
 
+  const videosWithPosters = videos.filter((video) => Boolean(video.poster));
+
   return (
     <div className={cn(styles.root, className)}>
       <ul className={cn(styles.slider, className)} ref={ref}>
-        {videos
-          .filter((video) => Boolean(video.poster))
-          .map((video, i) => (
-            <li className={styles.element} key={i} data-i={i}>
-              <Video
-                className={cn(styles.video, {
-                  [styles.videoActive]: i === activeElement,
-                })}
-                url={video.url}
-                poster={video.poster}
-                videoWidth={video.width || undefined}
-                videoHeight={video.height || undefined}
-                onClick={i === activeElement ? null : () => setActiveElement(i)}
-                inactive={i !== activeElement}
-                title={video.title}
-              />
-            </li>
-          ))}
+        {videosWithPosters.map((video, i) => (
+          <li className={styles.element} key={i} data-i={i}>
+            <Video
+              className={cn(styles.video, {
+                [styles.videoActive]: i === activeElement,
+              })}
+              url={video.url}
+              poster={video.poster}
+              videoWidth={video.width || undefined}
+              videoHeight={video.height || undefined}
+              onClick={i === activeElement ? null : () => setActiveElement(i)}
+              inactive={i !== activeElement}
+              title={video.title}
+            />
+          </li>
+        ))}
       </ul>
       <div className={styles.actions}>
         <ul className={styles.indicator}>
-          {videos.map((video, i) => (
+          {videosWithPosters.map((video, i) => (
             <li className={styles.indicatorElement}>
               <button
                 className={styles.indicatorButton}
@@ -68,7 +68,7 @@ const VideoSlider: React.FC<{
           </button>
           <button
             className={cn(styles.nextPrevButton, styles.nextPrevButtonNext)}
-            disabled={activeElement === videos.length - 1}
+            disabled={activeElement === videosWithPosters.length - 1}
             onClick={() => setActiveElement(activeElement + 1)}
           >
             <Icon icon="arrowRightThun" className={styles.nextPrevIcon} />
