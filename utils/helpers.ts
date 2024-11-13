@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import * as console from 'node:console';
 import { IconType } from '@theme';
 import { apiGet } from '@utils/apiFetch';
 import { API_HOST } from '@utils/constants';
@@ -63,8 +64,12 @@ export const getTalksProps = async () => {
   const resp = await getApiProps<ApiTalksI>(`${host}wp-json/nico/v1/talks`);
   resp.props.pageData.videos = await Promise.all(
     resp.props.pageData.videos.map(async (video) => {
-      const poster = await getVideoPosterByUrl(video.url);
-      return { ...video, poster };
+      try {
+        const poster = await getVideoPosterByUrl(video.url);
+        return { ...video, poster };
+      } catch (e) {
+        return video;
+      }
     })
   );
   return resp;

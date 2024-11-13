@@ -25,22 +25,24 @@ const VideoSlider: React.FC<{
   return (
     <div className={cn(styles.root, className)}>
       <ul className={cn(styles.slider, className)} ref={ref}>
-        {videos.map((video, i) => (
-          <li className={styles.element} key={i} data-i={i}>
-            <Video
-              className={cn(styles.video, {
-                [styles.videoActive]: i === activeElement,
-              })}
-              url={video.url}
-              poster={video.poster}
-              videoWidth={video.width || undefined}
-              videoHeight={video.height || undefined}
-              onClick={i === activeElement ? null : () => setActiveElement(i)}
-              inactive={i !== activeElement}
-              title={video.title}
-            />
-          </li>
-        ))}
+        {videos
+          .filter((video) => Boolean(video.poster))
+          .map((video, i) => (
+            <li className={styles.element} key={i} data-i={i}>
+              <Video
+                className={cn(styles.video, {
+                  [styles.videoActive]: i === activeElement,
+                })}
+                url={video.url}
+                poster={video.poster}
+                videoWidth={video.width || undefined}
+                videoHeight={video.height || undefined}
+                onClick={i === activeElement ? null : () => setActiveElement(i)}
+                inactive={i !== activeElement}
+                title={video.title}
+              />
+            </li>
+          ))}
       </ul>
       <div className={styles.actions}>
         <ul className={styles.indicator}>
