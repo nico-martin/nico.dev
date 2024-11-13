@@ -39,7 +39,7 @@ export const SOCIAL_LINKS: Record<
   },
   linkedin: {
     label: 'Nico Martin on LinkedIn',
-    link: 'https://www.linkedin.com/in/martinnico/',
+    link: 'https://www.linkedin.com/in/nicodotdev/',
   },
   devto: {
     label: 'Nico Martin on Dev.to',
