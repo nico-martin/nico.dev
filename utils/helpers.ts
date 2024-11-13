@@ -63,8 +63,12 @@ export const getTalksProps = async () => {
   const resp = await getApiProps<ApiTalksI>(`${host}wp-json/nico/v1/talks`);
   resp.props.pageData.videos = await Promise.all(
     resp.props.pageData.videos.map(async (video) => {
-      const poster = await getVideoPosterByUrl(video.url);
-      return { ...video, poster };
+      try {
+        const poster = await getVideoPosterByUrl(video.url);
+        return { ...video, poster };
+      } catch (e) {
+        return video;
+      }
     })
   );
   return resp;
