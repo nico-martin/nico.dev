@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import * as console from 'node:console';
 import { IconType } from '@theme';
 import { apiGet } from '@utils/apiFetch';
 import { API_HOST } from '@utils/constants';
