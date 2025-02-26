@@ -121,6 +121,34 @@ export interface ApiTalksI {
   categories: Array<ApiTalksCategoriesI>;
 }
 
+export interface Workshop {
+  title: string;
+  slug: string;
+  video: ApiTalksVideoI;
+  intro: string;
+  cta: string;
+  covers: Array<{ title: string; description: string }>;
+  audience: string;
+  requirements: string;
+  facts: Array<{ title: string; description: string }>;
+  image: ImageI;
+  imagePosition: string;
+  publics: Array<WorkshopPublic>;
+}
+
+export interface WorkshopPublic {
+  venue: string;
+  title: string;
+  url: string;
+  date: string;
+}
+
+export interface ApiWorkshopsI {
+  metaDescription: string;
+  intro: string;
+  workshops: Array<Workshop>;
+}
+
 export interface ApiCodeI {
   metaDescription: string;
   intro: string;

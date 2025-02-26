@@ -48,7 +48,7 @@
 }
 
 .links {
-  margin: 0 0 0 0 !important;
+  margin: 0 !important;
   padding: var(--spacing-small) 0 0 0 !important;
   width: 100%;
   list-style: none;
@@ -62,7 +62,7 @@
   margin-right: 0.75em;
   padding-right: 0.75em;
 
-  &:after {
+  &::after {
     position: absolute;
     right: 0;
     top: 50%;
@@ -74,7 +74,7 @@
     margin-right: 0;
     padding-right: 0;
 
-    &:after {
+    &::after {
       display: none;
     }
   }
@@ -90,4 +90,28 @@
 
 .linkIcon {
   margin-right: 0.3em;
+}
+
+.moreLink {
+  margin-top: var(--spacing-small);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--c-grad);
+
+  @mixin background-gradient;
+
+  &:hover {
+    .moreLinkIcon {
+      transform: translateX(0.15em);
+    }
+  }
+}
+
+.moreLinkIcon {
+  margin-left: 0.2em;
+  will-change: transform;
+  @mixin transition;
 }

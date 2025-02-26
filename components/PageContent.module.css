@@ -1,7 +1,7 @@
 .root {
 }
 
-.title {
+.titleContainer {
   display: flex;
   align-items: center;
 }
@@ -27,12 +27,19 @@
   }
 }
 
-.title + .content,
-.title + .intro {
+.titleContainer + .content,
+.titleContainer + .intro {
   margin-top: var(--spacing-large);
 }
+
 .intro + .content {
   margin-top: var(--spacing-v-large);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
 }
 
 .intro {
