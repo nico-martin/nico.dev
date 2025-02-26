@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import cn from '@utils/classnames';
 import { externalLinkIcon } from '@utils/helpers';
 import { ImageI, LinkI } from '@utils/types';
@@ -12,6 +13,8 @@ const CardBig: React.FC<{
   imagePosition?: string;
   content: string;
   links?: Array<LinkI>;
+  moreLink?: string;
+  moreText?: string;
 }> = ({
   className = '',
   title = '',
@@ -19,6 +22,8 @@ const CardBig: React.FC<{
   imagePosition = 'center center',
   content,
   links,
+  moreLink,
+  moreText = 'more',
 }) => {
   return (
     <div className={cn(styles.root, className)}>
@@ -36,6 +41,13 @@ const CardBig: React.FC<{
           dangerouslySetInnerHTML={{ __html: content }}
           className={styles.description}
         />
+        {moreLink && (
+          <Link href={moreLink}>
+            <span className={styles.moreLink}>
+              {moreText} <Icon icon="arrow" className={styles.moreLinkIcon} />
+            </span>
+          </Link>
+        )}
         {links && links.length !== 0 && (
           <ul className={styles.links}>
             {links.map((link, i) => (

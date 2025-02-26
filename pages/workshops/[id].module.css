@@ -1,0 +1,111 @@
+.video {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--c-card-b);
+}
+
+.goalsIntro {
+  font-size: var(--fs-l);
+  margin-top: var(--spacing-large);
+}
+
+.cover {
+  max-width: 550px;
+  margin: var(--spacing-v-large) auto 0 auto;
+  font-size: var(--fs-l);
+}
+
+.coverTitle {
+}
+
+.coverList {
+  list-style: none;
+  counter-reset: list-counter;
+  padding-left: 0;
+
+  li {
+    counter-increment: list-counter;
+    position: relative;
+    padding-left: 3em;
+    margin-top: var(--spacing) !important;
+  }
+
+  li::before {
+    content: counter(list-counter, decimal-leading-zero) '.';
+    position: absolute;
+    left: 0;
+    font-weight: 900;
+    opacity: 0.5;
+  }
+}
+
+.content {
+  display: grid;
+  @media (min-width: 740px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  gap: var(--spacing);
+  margin-top: var(--spacing-v-large);
+
+  .contentTitle {
+  }
+
+  .contentElement {
+    margin-top: var(--spacing-small);
+
+    & > * + * {
+      margin-top: 0.4em;
+    }
+
+    li + li {
+      margin-top: 0.2em;
+    }
+  }
+}
+
+.publicWorkshops {
+  margin-top: var(--spacing-large);
+}
+
+.publicWorkshopsList {
+  margin-top: var(--spacing);
+}
+
+.goalsIntro {
+  font-size: var(--fs-l);
+  margin-top: var(--spacing-large);
+}
+
+.getInTouch {
+  margin-top: var(--spacing-v-large);
+  p {
+    text-align: center;
+    font-size: var(--fs-xl);
+  }
+
+  p + p {
+    margin-top: 1rem;
+  }
+}
+
+.getInTouchLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+
+  @mixin background-gradient;
+
+  &:hover {
+    .getInTouchIcon {
+      transform: translateY(5%) translateX(0.1em);
+    }
+  }
+}
+
+.getInTouchIcon {
+  transform: translateY(5%);
+  will-change: transform;
+  @mixin transition;
+}

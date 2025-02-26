@@ -11,6 +11,7 @@ import {
   ApiProjectsI,
   ApiTalkI,
   ApiTalksI,
+  ApiWorkshopsI,
   LinkI,
   TALK_LINK,
   TALK_VIDEO_TYPE,
@@ -58,6 +59,23 @@ export const getBlogProps = async () =>
 
 export const getTalkProps = async () =>
   getApiProps<ApiTalkI>(`${host}wp-json/nico/v1/talk`);
+
+export const getWorkshopsProps = async () => {
+  const resp = await getApiProps<ApiWorkshopsI>(
+    `${host}wp-json/nico/v1/workshops`
+  );
+  resp.props.pageData.workshops = await Promise.all(
+    resp.props.pageData.workshops.map(async (workshop) => {
+      try {
+        const poster = await getVideoPosterByUrl(workshop.video.url);
+        return { ...workshop, video: { ...workshop.video, poster } };
+      } catch (e) {
+        return workshop;
+      }
+    })
+  );
+  return resp;
+};
 
 export const getTalksProps = async () => {
   const resp = await getApiProps<ApiTalksI>(`${host}wp-json/nico/v1/talks`);
@@ -199,3 +217,5 @@ export const convertTalkLinks = (
 
 export const getCfp = async () =>
   getApiProps<ApiCfpI>(`${host}wp-json/nico/v1/cfp`);
+
+export const nl2br = (str: string): string => str.replace(/\n/g, '<br />');

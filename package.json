@@ -45,12 +45,12 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "concurrently \"npm run next-dev\" \"npm run ssl\"",
-    "next-dev": "next dev -p 3003",
+    "next-dev": "next dev -p 8916",
     "build": "next build",
     "static": "next build && next export",
     "start": "next start",
     "prod": "npm run build && npm run start",
-    "ssl": "npx local-ssl-proxy --key /Users/nico/Documents/Dev/_ssh/localhost-key.pem --cert /Users/nico/Documents/Dev/_ssh/localhost.pem --source 3000 --target 3003"
+    "ssl": "npx local-ssl-proxy --key /Users/nico/Documents/Dev/_ssh/localhost-key.pem --cert /Users/nico/Documents/Dev/_ssh/localhost.pem --source 8917 --target 8916"
   },
   "bugs": {
     "url": "https://github.com/nico-martin/nico.dev/issues"

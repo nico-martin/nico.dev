@@ -3,6 +3,7 @@
   "rules": {
     "block-no-empty": null,
     "at-rule-no-unknown": null,
-    "at-rule-empty-line-before": null
+    "at-rule-empty-line-before": null,
+    "selector-class-pattern": null
   }
 }

@@ -21,25 +21,29 @@ const LinkWrapper = ({
   );
 
 const PageNavigation = ({ className = '' }: { className?: string }) => {
-  const { route } = useRouter();
+  const { route, asPath } = useRouter();
   return (
     <div className={cn(styles.root, className)}>
-      {Object.entries(LINKS).map(([path, link]) => (
-        <LinkWrapper
-          active={route !== '/' && route === path}
-          className={styles.linkWrapper}
-        >
-          <Link href={path}>
-            <a
-              className={cn(styles.link, {
-                [styles.linkActive]: route === path,
-              })}
-            >
-              {link}
-            </a>
-          </Link>
-        </LinkWrapper>
-      ))}
+      {Object.entries(LINKS).map(([path, link]) => {
+        return (
+          <LinkWrapper
+            active={route !== '/' && route === path}
+            className={styles.linkWrapper}
+          >
+            <Link href={path}>
+              <a
+                className={cn(styles.link, {
+                  [styles.linkActive]:
+                    (route === '/' && path === '/') ||
+                    (path !== '/' && asPath.startsWith(path)),
+                })}
+              >
+                {link}
+              </a>
+            </Link>
+          </LinkWrapper>
+        );
+      })}
     </div>
   );
 };
