@@ -10,7 +10,7 @@ export const LINKS: Record<string, string> = {
   '/blog': 'Blog',
   '/talks': 'Talks',
   '/projects': 'Projects',
-  '/workshops': 'Workshops',
+  '/workshops/ai-agents': 'Workshops',
 };
 
 export const FOOTER_LINKS: Record<string, string> = {

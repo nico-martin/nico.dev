@@ -21,8 +21,7 @@ const LinkWrapper = ({
   );
 
 const PageNavigation = ({ className = '' }: { className?: string }) => {
-  const { route, ...rest } = useRouter();
-  console.log(route, rest);
+  const { route, asPath } = useRouter();
   return (
     <div className={cn(styles.root, className)}>
       {Object.entries(LINKS).map(([path, link]) => {
@@ -36,7 +35,7 @@ const PageNavigation = ({ className = '' }: { className?: string }) => {
                 className={cn(styles.link, {
                   [styles.linkActive]:
                     (route === '/' && path === '/') ||
-                    (path !== '/' && route.startsWith(path)),
+                    (path !== '/' && asPath.startsWith(path)),
                 })}
               >
                 {link}

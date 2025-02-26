@@ -10,6 +10,15 @@ const nextConfig = withPreact({
 
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/workshops',
+        destination: '/workshops/ai-agents',
+        permanent: false,
+      },
+    ];
+  },
 });
 
 module.exports = nextConfig;
