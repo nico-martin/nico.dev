@@ -14,6 +14,7 @@
     "next": "^12.3.4",
     "next-plugin-preact": "^3.0.7",
     "next-pwa": "^5.2.23",
+    "node-fetch": "^2.6.7",
     "postcss-nested": "^5.0.5",
     "preact": "^10.12.1",
     "preact-render-to-string": "^5.2.6",
@@ -46,8 +47,9 @@
   "scripts": {
     "dev": "concurrently \"npm run next-dev\" \"npm run ssl\"",
     "next-dev": "next dev -p 8916",
-    "build": "next build",
-    "static": "next build && next export",
+    "build": "next build && npm run generate-rss",
+    "static": "next build && npm run generate-rss && next export",
+    "generate-rss": "node scripts/generate-rss.js",
     "start": "next start",
     "prod": "npm run build && npm run start",
     "ssl": "npx local-ssl-proxy --key /Users/nico/Documents/Dev/_ssh/localhost-key.pem --cert /Users/nico/Documents/Dev/_ssh/localhost.pem --source 8917 --target 8916"

@@ -10,7 +10,14 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link 
+            rel="alternate" 
+            type="application/rss+xml" 
+            title="Nico Martin - Blog RSS Feed" 
+            href="/rss.xml" 
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
