@@ -98,7 +98,6 @@ export default ({ Component, pageProps }) => {
         <meta name="theme-color" content="#009d89" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="./og.jpg" />
       </Head>
       <PageLayout>
         <Component {...pageProps} />

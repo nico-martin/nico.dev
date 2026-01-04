@@ -11,12 +11,13 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link 
-            rel="alternate" 
-            type="application/rss+xml" 
-            title="Nico Martin - Blog RSS Feed" 
-            href="/rss.xml" 
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Nico Martin - Blog RSS Feed"
+            href="/rss.xml"
           />
+          <script src="https://shareable.nico.dev/library.min.js" />
         </Head>
         <body>
           <Main />
