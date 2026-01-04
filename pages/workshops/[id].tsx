@@ -53,6 +53,28 @@ export default ({ workshop }: { workshop: Workshop }) => {
       <Head>
         <title key="title">{workshop.title} - Workshops - Nico Martin</title>
         <meta name="description" content={workshop.intro} key="description" />
+        <meta
+          property="og:title"
+          content={`${workshop.title} - Workshops - Nico Martin`}
+        />
+        <meta property="og:description" content={workshop.intro} />
+        <meta
+          property="og:image"
+          content={`https://shareable.nico.dev/render?url=https://nico.dev/workshops/${workshop.slug}`}
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={`${workshop.title} - Workshops - Nico Martin`}
+        />
+        <meta name="twitter:description" content={workshop.intro} />
+        <meta
+          name="twitter:image"
+          content={`https://shareable.nico.dev/render?url=https://nico.dev/workshops/${workshop.slug}&format=twitter`}
+        />
       </Head>
       {Boolean(workshop.video.url) && (
         <Video

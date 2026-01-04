@@ -19,6 +19,22 @@ export default ({
         content={pageData.metaDescription}
         key="description"
       />
+      <meta property="og:title" content="Blog - Nico Martin" />
+      <meta property="og:description" content={pageData.metaDescription} />
+      <meta
+        property="og:image"
+        content="https://shareable.nico.dev/render?url=https://nico.dev/blog"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Blog - Nico Martin" />
+      <meta name="twitter:description" content={pageData.metaDescription} />
+      <meta
+        name="twitter:image"
+        content="https://shareable.nico.dev/render?url=https://nico.dev/blog&format=twitter"
+      />
     </Head>
     <CardGrid>
       {pageData.items.map(({ title, abstract, link, date, publisher }) => (
