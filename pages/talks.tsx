@@ -3,6 +3,7 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { Card, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
+import ShareableTemplate from '@comps/ShareableTemplate';
 import TalkCategories from '@comps/talks/TalkCategories';
 import VideoSlider from '@comps/talks/VideoSlider';
 import cn from '@utils/classnames';
@@ -67,6 +68,22 @@ export default ({
           content={pageData.metaDescription}
           key="description"
         />
+        <meta property="og:title" content="Talks - Nico Martin" />
+        <meta property="og:description" content={pageData.metaDescription} />
+        <meta
+          property="og:image"
+          content="https://shareable.nico.dev/render?url=https://nico.dev/talks"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Talks - Nico Martin" />
+        <meta name="twitter:description" content={pageData.metaDescription} />
+        <meta
+          name="twitter:image"
+          content="https://shareable.nico.dev/render?url=https://nico.dev/talks&format=twitter"
+        />
       </Head>
       <VideoSlider videos={pageData.videos} className={styles.videos} />
       {upcomingTalks.length !== 0 && (
@@ -94,6 +111,10 @@ export default ({
         </React.Fragment>
       )}
       <TalkCategories categories={talksCategories} className={styles.content} />
+      <ShareableTemplate
+        content="<p>I speak at conferences and meetups around the world about WebML, Transformers.js, and making AI accessible in the browser. Here's where I've been recently.</p>"
+        link="nico.dev/talks"
+      />
     </PageContent>
   );
 };
