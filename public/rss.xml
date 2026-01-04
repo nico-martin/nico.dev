@@ -5,9 +5,16 @@
     <link>https://nico.dev</link>
     <description>Articles and thoughts by Nico Martin</description>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Jul 2025 14:26:39 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 04 Jan 2026 17:09:30 GMT</lastBuildDate>
     <atom:link href="https://nico.dev/rss.xml" rel="self" type="application/rss+xml"/>
     
+    <item>
+      <title><![CDATA[I'm joining 🤗 Hugging Face]]></title>
+      <link>https://www.linkedin.com/feed/update/urn:li:activity:7352927768600354816/</link>
+      <description><![CDATA[Beyond happy to announce that I'm joining 🤗 Hugging Face as a Machine Learning Engineer focused on WebML!]]></description>
+      <pubDate>Mon, 21 Jul 2025 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.linkedin.com/feed/update/urn:li:activity:7352927768600354816/</guid>
+    </item>
     <item>
       <title><![CDATA[Desktop-Apps neu gedacht]]></title>
       <link>https://kiosk.entwickler.de/windows-developer-magazin/windows-developer-magazin-6-2021/</link>

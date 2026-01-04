@@ -2,6 +2,7 @@ import React from 'react';
 import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import PageContent from '@comps/PageContent';
+import ShareableTemplate from '@comps/ShareableTemplate';
 import { getPageProps } from '@utils/helpers';
 
 export const getStaticProps = async () => await getPageProps('home');
@@ -19,5 +20,6 @@ export default ({
       />
     </Head>
     <PageContent html={pageData.content} intro={pageData.intro} />
+    <ShareableTemplate content={pageData.intro}></ShareableTemplate>
   </React.Fragment>
 );
