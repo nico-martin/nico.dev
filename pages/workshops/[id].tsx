@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { Card, CardBig, CardGrid, Icon, Video } from '@theme';
 import PageContent from '@comps/PageContent';
+import ShareableTemplate from '@comps/ShareableTemplate';
 import cn from '@utils/classnames';
 import dayjs from '@utils/dayjs';
 import { formatDate, getWorkshopsProps, nl2br } from '@utils/helpers';
@@ -145,7 +146,13 @@ export default ({ workshop }: { workshop: Workshop }) => {
           </p>
         </div>
       )}
-      <h2></h2>
+      <ShareableTemplate
+        content={`<p><b>${workshop.title}</b></p><p>${workshop.intro.substring(
+          0,
+          180
+        )}...</p>`}
+        link={`nico.dev/workshops/${workshop.slug}`}
+      />
     </PageContent>
   );
 };

@@ -3,6 +3,7 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { Card, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
+import ShareableTemplate from '@comps/ShareableTemplate';
 import { formatDate, getBlogProps } from '@utils/helpers';
 
 export const getStaticProps = async () => await getBlogProps();
@@ -35,5 +36,9 @@ export default ({
         />
       ))}
     </CardGrid>
+    <ShareableTemplate
+      content="<p>Some of the posts and articles I've written over the past years. I don't blog often, but when I do, it's usually about WebML, Transformers.js, or building AI features for the browser.</p>"
+      link="nico.dev/blog"
+    />
   </PageContent>
 );

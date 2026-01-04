@@ -1,7 +1,13 @@
 import cn from '@utils/classnames';
 import styles from './ShareableTemplate.module.css';
 
-export default function ShareableTemplate({ content }: { content: string }) {
+export default function ShareableTemplate({
+  content,
+  link = null,
+}: {
+  content: string;
+  link?: string;
+}) {
   return (
     <template data-shareable>
       <svg
@@ -34,11 +40,13 @@ export default function ShareableTemplate({ content }: { content: string }) {
           </div>
           <div
             className={cn(styles.text)}
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: content.replace('🤗 ', '') }}
           />
-          <p className={cn(styles.text)}>
-            <b>nico.dev</b>
-          </p>
+          {link && (
+            <p className={cn(styles.link)}>
+              <b>{link}</b>
+            </p>
+          )}
         </div>
       </div>
     </template>

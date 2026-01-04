@@ -3,6 +3,7 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { Card, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
+import ShareableTemplate from '@comps/ShareableTemplate';
 import TalkCategories from '@comps/talks/TalkCategories';
 import VideoSlider from '@comps/talks/VideoSlider';
 import cn from '@utils/classnames';
@@ -94,6 +95,10 @@ export default ({
         </React.Fragment>
       )}
       <TalkCategories categories={talksCategories} className={styles.content} />
+      <ShareableTemplate
+        content="<p>I speak at conferences and meetups around the world about WebML, Transformers.js, and making AI accessible in the browser. Here's where I've been recently.</p>"
+        link="nico.dev/talks"
+      />
     </PageContent>
   );
 };

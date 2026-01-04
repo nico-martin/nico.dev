@@ -3,6 +3,7 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { Card, CardBig, CardGrid } from '@theme';
 import PageContent from '@comps/PageContent';
+import ShareableTemplate from '@comps/ShareableTemplate';
 import { getProjectsProps } from '@utils/helpers';
 
 export const getStaticProps = async () => await getProjectsProps();
@@ -32,5 +33,9 @@ export default ({
         )
       )}
     </CardGrid>
+    <ShareableTemplate
+      content="<p>I love writing software. And whenever I see something exciting, I build a little side project to familiarise myself with the technology.</p>"
+      link="nico.dev/projects"
+    />
   </PageContent>
 );
