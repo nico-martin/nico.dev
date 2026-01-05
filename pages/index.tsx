@@ -36,6 +36,6 @@ export default ({
       />
     </Head>
     <PageContent html={pageData.content} intro={pageData.intro} />
-    <ShareableTemplate content={pageData.intro} link="nico.dev" />
+    <ShareableTemplate content={pageData.metaDescription} link="nico.dev" />
   </React.Fragment>
 );
