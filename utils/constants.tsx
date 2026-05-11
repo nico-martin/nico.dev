@@ -36,7 +36,7 @@ export const SOCIAL_LINKS: Record<
   },
   twitter: {
     label: 'Nico Martin on Twitter',
-    link: 'https://twitter.com/nic_o_martin',
+    link: 'https://twitter.com/nicodotdev',
   },
   linkedin: {
     label: 'Nico Martin on LinkedIn',
