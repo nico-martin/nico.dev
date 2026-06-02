@@ -30,19 +30,27 @@ export const SOCIAL_LINKS: Record<
     link: string;
   }
 > = {
-  bluesky: {
-    label: 'Nico Martin on Bluesky',
-    link: 'https://bsky.app/profile/nico.dev',
-  },
   twitter: {
     label: 'Nico Martin on Twitter',
     link: 'https://twitter.com/nic_o_martin',
+  },
+  bluesky: {
+    label: 'Nico Martin on Bluesky',
+    link: 'https://bsky.app/profile/nico.dev',
   },
   linkedin: {
     label: 'Nico Martin on LinkedIn',
     link: 'https://www.linkedin.com/in/nicodotdev/',
   },
-  devto: {
+  youtube: {
+    label: 'Nico Martin on YouTube',
+    link: 'https://www.youtube.com/@nicodotdev',
+  },
+  instagram: {
+    label: 'Nico Martin on Instagram',
+    link: 'https://www.instagram.com/nicodotdev/',
+  },
+  /*devto: {
     label: 'Nico Martin on Dev.to',
     link: 'https://dev.to/nicomartin',
   },
