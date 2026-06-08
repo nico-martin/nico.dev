@@ -8,6 +8,7 @@ import devto from './_icons/devto.svg';
 import dribbble from './_icons/dribbble.svg';
 import github from './_icons/github.svg';
 import informationSlabCircleOutline from './_icons/information-slab-circle-outline.svg';
+import instagram from './_icons/instagram.svg';
 import linkedin from './_icons/linkedin.svg';
 import mastodon from './_icons/mastodon.svg';
 import openInNew from './_icons/open-in-new.svg';
@@ -42,6 +43,7 @@ const icons = {
   contentCopy,
   check,
   bluesky,
+  instagram,
 };
 
 export type IconType = keyof typeof icons;
