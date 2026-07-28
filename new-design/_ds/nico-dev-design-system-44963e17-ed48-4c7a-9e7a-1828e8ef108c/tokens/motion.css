@@ -1,0 +1,16 @@
+:root{
+--ease-rise:cubic-bezier(.2,.85,.25,1); /* @kind other */
+--ease-pop:cubic-bezier(.34,1.45,.5,1); /* @kind other */
+--dur-rise:.62s; /* @kind other */--dur-fast:.18s; /* @kind other */--dur-float:5.5s; /* @kind other */--dur-wobble:6s; /* @kind other */
+--stagger:100ms; /* @kind other */
+}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes wobble{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+@keyframes riseIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes popIn{0%{opacity:0;transform:scale(.45)}62%{opacity:1;transform:scale(1.1)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: no-preference){
+.nd-floaty{animation:floaty var(--dur-float) ease-in-out infinite}
+.nd-wobble{animation:wobble var(--dur-wobble) ease-in-out infinite}
+.nd-rise{animation:riseIn var(--dur-rise) var(--ease-rise) both}
+.nd-pop{animation:popIn var(--dur-rise) var(--ease-pop) both}
+}

@@ -1,0 +1,8 @@
+.next
+.agents
+.idea
+node_modules
+out
+new-design
+pnpm-lock.yaml
+skills-lock.json

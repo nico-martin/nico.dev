@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Nunito+Sans:wght@300;400;600;700&family=Nunito:wght@700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #009d89;
+  --color-brand-deep: #0b8678;
+  --color-brand-tint: #dff2ee;
+  --color-brand-tint-strong: #b9e6df;
+  --color-ink: #15171c;
+  --color-body: #5b6068;
+  --color-muted: #8b9097;
+  --color-faint: #a3a9b1;
+  --color-yellow: #f5c842;
+  --color-yellow-tint: #fdf3d6;
+  --color-yellow-ink: #caa018;
+  --color-pink: #ee5fa7;
+  --color-pink-tint: #fdf3f5;
+  --color-peri: #7c82e8;
+  --color-peri-tint: #eef0ff;
+  --color-surface-muted: #f7f8f9;
+  --color-surface-border: #e6e9ec;
+  --font-heading: "Nunito", system-ui, sans-serif;
+  --font-sans: "Nunito Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius-card: 1.875rem;
+  --radius-tile: 1.125rem;
+  --radius-blob: 46% 54% 58% 42% / 52% 44% 56% 48%;
+  --tracking-display: -0.04em;
+  --tracking-heading: -0.02em;
+  --tracking-eyebrow: 0.14em;
+  --animate-rise: rise-in 0.62s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-10px) rotate(7deg);
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    background: white;
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-ink);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a {
+    color: var(--color-brand);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-brand-deep);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  button,
+  select {
+    font: inherit;
+  }
+  ::selection {
+    background: var(--color-brand-tint);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 75rem;
+    margin-inline: auto;
+    padding-inline: 2.5rem;
+  }
+  .section {
+    padding-top: 6rem;
+  }
+  .display {
+    font-size: clamp(3rem, 6vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+  .page-title {
+    font-size: clamp(2.6rem, 5vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    letter-spacing: -0.04em;
+  }
+  .lead {
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
+  .doodle {
+    position: absolute;
+    z-index: 0;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    animation: float 5.5s ease-in-out infinite;
+  }
+  .dark-band {
+    margin-top: 6rem;
+    padding-block: 6rem 5.5rem;
+    background: var(--color-ink);
+    color: white;
+  }
+  .dark-band h2,
+  .dark-band h3 {
+    color: white;
+  }
+  .event-row {
+    display: grid;
+    grid-template-columns: 8.125rem minmax(11rem, auto) 1fr 1.75rem;
+    align-items: baseline;
+    gap: 1.75rem;
+    padding: 1.625rem 0.25rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.16);
+    transition:
+      padding 0.2s ease,
+      background 0.2s ease;
+  }
+  .event-row:hover {
+    padding-left: 1rem;
+    background: rgb(255 255 255 / 0.04);
+    text-decoration: none;
+  }
+  .placeholder {
+    display: grid;
+    place-items: center;
+    min-height: 8.25rem;
+    border-radius: 1.125rem;
+    background: var(--color-surface-muted);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 61.25rem) {
+  .wrap {
+    padding-inline: 1.5rem;
+  }
+  .section {
+    padding-top: 4.5rem;
+  }
+  .dark-band {
+    margin-top: 4.5rem;
+    padding-block: 4.5rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  .event-row {
+    grid-template-columns: 1fr;
+    gap: 0.375rem;
+  }
+  .event-row > :last-child {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

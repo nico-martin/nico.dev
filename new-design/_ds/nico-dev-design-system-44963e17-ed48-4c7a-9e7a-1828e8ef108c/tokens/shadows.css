@@ -1,0 +1,11 @@
+:root{
+/* hard offset shadows — no blur, ever. the house look. */
+--shadow-hard:10px 10px 0 #B9E6DF;
+--shadow-hard-sm:6px 6px 0 #B9E6DF;
+--shadow-hard-teal:9px 9px 0 #009D89;
+--shadow-hard-pink:9px 9px 0 #EE5FA7;
+--shadow-hard-yellow:9px 9px 0 #F5C842;
+--shadow-hard-peri:9px 9px 0 #7C82E8;
+--shadow-hard-ink:8px 8px 0 rgba(0,0,0,.12);
+--shadow-row:5px 5px 0 var(--brand);
+}

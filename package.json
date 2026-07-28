@@ -1,73 +1,32 @@
 {
-  "name": "nico.dev",
-  "version": "2.1.8",
-  "description": "A Preact-APP for nico.dev",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:nico-martin/nico.dev.git"
+  "name": "nico-dev",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.14.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@next/font": "^13.1.6",
-    "dayjs": "^1.10.6",
-    "imagemagick": "^0.1.3",
-    "lazysizes": "^5.3.2",
-    "next": "^12.3.4",
-    "next-plugin-preact": "^3.0.7",
-    "next-pwa": "^5.2.23",
-    "node-fetch": "^2.6.7",
-    "postcss-nested": "^5.0.5",
-    "preact": "^10.12.1",
-    "preact-render-to-string": "^5.2.6",
-    "react": "npm:@preact/compat@^17.1.2",
-    "react-dom": "npm:@preact/compat@^17.1.2",
-    "react-ssr-prepass": "npm:preact-ssr-prepass@^1.2.0",
-    "react-to-print": "^2.12.6"
+    "@tailwindcss/postcss": "^4.1.11",
+    "lucide-react": "^0.536.0",
+    "next": "^15.4.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
-    "@nico-martin/class-names-map": "^1.0.1",
-    "@svgr/webpack": "^7.0.0",
-    "@trivago/prettier-plugin-sort-imports": "^2.0.2",
-    "@types/node": "18.13.0",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "autoprefixer": "^10.2.6",
-    "concurrently": "^8.1.0",
-    "mini-css-class-name": "^0.12.1",
-    "path": "^0.12.7",
-    "postcss-mixins": "^8.1.0",
-    "postcss-preset-env": "^7.7.2",
-    "prettier": "^2.3.1",
-    "raw-loader": "^4.0.2",
-    "stylelint": "^15.6.0",
-    "stylelint-config-standard": "^33.0.0",
-    "typescript": "4.9.5"
-  },
-  "author": "Nico Martin",
-  "license": "UNLICENSED",
-  "scripts": {
-    "dev": "concurrently \"npm run next-dev\" \"npm run ssl\"",
-    "next-dev": "next dev -p 8916",
-    "build": "next build && npm run generate-rss",
-    "static": "next build && npm run generate-rss && next export",
-    "generate-rss": "node scripts/generate-rss.js",
-    "start": "next start",
-    "prod": "npm run build && npm run start",
-    "ssl": "npx local-ssl-proxy --key /Users/nico/Documents/Dev/_ssh/localhost-key.pem --cert /Users/nico/Documents/Dev/_ssh/localhost.pem --source 8917 --target 8916"
-  },
-  "bugs": {
-    "url": "https://github.com/nico-martin/nico.dev/issues"
-  },
-  "homepage": "https://github.com/nico-martin/nico.dev",
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "importOrder": [
-      "^next",
-      "^@theme$",
-      "^@comps/(.*)$",
-      "^@utils/(.*)$",
-      "^@types/(.*)$",
-      "^[./]"
-    ]
+    "@eslint/eslintrc": "^3.3.1",
+    "@types/node": "^24.1.0",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "eslint": "^9.32.0",
+    "eslint-config-next": "^15.4.4",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "^5.8.3"
   }
 }

@@ -1,0 +1,6 @@
+:root{
+--radius-pill:999px;--radius-xl2:30px;--radius-card:20px;--radius-tile:18px;--radius-tile-lg:21px;
+--radius-row:14px;--radius-input:14px;--radius-sm:10px;
+--border-width-ink:3px;--border-width-hairline:1px;
+--blob:46% 54% 58% 42% / 52% 44% 56% 48%; /* @kind radius */
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "react-spa": {
+      "source": "nico-martin/skills",
+      "sourceType": "github",
+      "skillPath": "react-spa/SKILL.md",
+      "computedHash": "8f3226119c8e3fa4f9f4c746c07dfe415ba7efb2d81a2912868f10ff53e4d50e"
+    }
+  }
+}
