@@ -4,3 +4,6 @@ export { default as Button } from "./Button";
 export { default as Card } from "./Card";
 export { default as Eyebrow } from "./Eyebrow";
 export { default as IconTile } from "./IconTile";
+export { default as ListRow } from "./ListRow";
+export { default as TablerIcon } from "./tabler/TablerIcon";
+export type { TablerIconName } from "./tabler/TablerIcon";

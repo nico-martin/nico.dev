@@ -3,7 +3,7 @@ import Image from "next/image";
 import EventBand from "@/components/EventBand";
 import PageHeader from "@/components/PageHeader";
 import TalkMap from "@/components/TalkMap";
-import { Blob, Button, Eyebrow } from "@/theme";
+import { Blob, Button, Eyebrow, TablerIcon } from "@/theme";
 import stage from "../../../new-design/assets/nico-on-stage-codetalks.jpg";
 
 const videos = [
@@ -93,7 +93,9 @@ export default function SpeakingPage() {
       />
       <section className="wrap">
         <div className="flex flex-wrap gap-4">
-          <Button href="/invite/">Invite me to speak&nbsp; »</Button>
+          <Button href="/invite/" chevron>
+            Invite me to speak
+          </Button>
           <Button
             href="https://www.youtube.com/@nicodotdev"
             secondary
@@ -126,8 +128,8 @@ export default function SpeakingPage() {
                   className="object-cover"
                   sizes="336px"
                 />
-                <span className="absolute bottom-3 left-3 grid size-11 place-items-center rounded-full border-3 border-ink bg-brand font-heading font-black text-white">
-                  »
+                <span className="absolute bottom-3 left-3 grid size-11 place-items-center rounded-full border-3 border-ink bg-brand text-white">
+                  <TablerIcon icon="player-play" className="size-5" />
                 </span>
               </div>
               <div>

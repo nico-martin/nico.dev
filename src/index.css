@@ -169,6 +169,26 @@
     font-size: 0.75rem;
     text-align: center;
   }
+  .talk-map > g:first-child {
+    fill: var(--color-surface-border);
+    stroke: white;
+    stroke-linejoin: round;
+    stroke-width: 0.75;
+  }
+  .talk-map > g:last-child circle {
+    fill: var(--color-pink);
+    stroke: var(--color-ink);
+    stroke-width: 2;
+    transition: fill 0.2s ease;
+  }
+  .talk-map > g:last-child text {
+    fill: var(--color-ink);
+    dominant-baseline: middle;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 61.25rem) {

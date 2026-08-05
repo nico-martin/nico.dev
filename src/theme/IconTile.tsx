@@ -1,5 +1,8 @@
 import cn from "@/utils/classnames";
 
+import TablerIcon from "./tabler/TablerIcon";
+import type { TablerIconName } from "./tabler/TablerIcon";
+
 const tones = {
   teal: "bg-brand-tint text-brand",
   yellow: "bg-yellow-tint text-yellow-ink",
@@ -8,13 +11,13 @@ const tones = {
 } as const;
 
 interface IconTileProps {
-  glyph: string;
+  icon: TablerIconName;
   tone?: keyof typeof tones;
   className?: string;
 }
 
 export default function IconTile({
-  glyph,
+  icon,
   tone = "teal",
   className,
 }: IconTileProps) {
@@ -27,7 +30,7 @@ export default function IconTile({
         className,
       )}
     >
-      {glyph}
+      <TablerIcon icon={icon} className="size-7" />
     </span>
   );
 }

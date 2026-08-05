@@ -78,7 +78,7 @@ export default function TalkSelector() {
         {visibleTalks.map((talk) => (
           <Card key={talk.title} shadow={talk.tone}>
             <div className="flex gap-4">
-              <IconTile glyph="»" tone={talk.tone} />
+              <IconTile icon="microphone" tone={talk.tone} />
               <div>
                 <div className="flex flex-wrap gap-2">
                   <Badge>{talk.topic}</Badge>

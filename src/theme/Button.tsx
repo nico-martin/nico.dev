@@ -2,10 +2,13 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 
 import cn from "@/utils/classnames";
 
+import TablerIcon from "./tabler/TablerIcon";
+
 interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
   secondary?: boolean;
   small?: boolean;
+  chevron?: boolean;
   className?: string;
 }
 
@@ -13,6 +16,7 @@ export default function Button({
   children,
   secondary = false,
   small = false,
+  chevron = false,
   className,
   ...props
 }: ButtonProps) {
@@ -29,6 +33,7 @@ export default function Button({
       {...props}
     >
       {children}
+      {chevron && <TablerIcon icon="chevrons-right" className="ml-2 size-4" />}
     </a>
   );
 }

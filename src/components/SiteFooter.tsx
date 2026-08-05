@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
+
+import { TablerIcon } from "@/theme";
 
 const links = [
   ["Home", "/"],
@@ -36,28 +37,28 @@ export default function SiteFooter() {
             href="https://github.com/nico-martin"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
-            <Github size={17} />
+            <TablerIcon icon="brand-github" className="size-4" />
             GitHub
           </a>
           <a
             href="https://www.linkedin.com/in/nicodotdev/"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
-            <Linkedin size={17} />
+            <TablerIcon icon="brand-linkedin" className="size-4" />
             LinkedIn
           </a>
           <a
             href="https://www.youtube.com/@nicodotdev"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
-            <Youtube size={17} />
+            <TablerIcon icon="brand-youtube" className="size-4" />
             YouTube
           </a>
           <a
             href="https://www.instagram.com/nicodotdev/"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
-            <Instagram size={17} />
+            <TablerIcon icon="brand-instagram" className="size-4" />
             Instagram
           </a>
         </div>

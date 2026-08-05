@@ -3,7 +3,15 @@ import Link from "next/link";
 
 import Doodles from "@/components/Doodles";
 import EventBand from "@/components/EventBand";
-import { Badge, Blob, Button, Card, Eyebrow, IconTile } from "@/theme";
+import {
+  Badge,
+  Blob,
+  Button,
+  Card,
+  Eyebrow,
+  IconTile,
+  TablerIcon,
+} from "@/theme";
 import portrait from "../../new-design/assets/nico-portrait.jpg";
 
 const events = [
@@ -32,7 +40,7 @@ const events = [
 
 const introCards = [
   {
-    glyph: "✦",
+    icon: "user",
     title: "About me",
     text: "WebML at Hugging Face, Google Developer Expert, and a few years of conference stages behind me. The long version, plus what came before.",
     shadow: "teal" as const,
@@ -41,7 +49,7 @@ const introCards = [
     cta: "Who I am",
   },
   {
-    glyph: "»",
+    icon: "presentation",
     title: "Talks",
     text: "AI agents in the browser, K.I.T.T. in JavaScript, robots over Bluetooth - every one with a live demo that runs on-device.",
     shadow: "yellow" as const,
@@ -50,7 +58,7 @@ const introCards = [
     cta: "See the talks",
   },
   {
-    glyph: "⌁",
+    icon: "activity",
     title: "What's up",
     text: "Side projects, articles, recorded talks and podcast appearances. Whatever I am currently building or explaining.",
     shadow: "pink" as const,
@@ -58,7 +66,7 @@ const introCards = [
     href: "/whats-up/",
     cta: "Have a look",
   },
-];
+] as const;
 
 const projects = [
   {
@@ -67,7 +75,7 @@ const projects = [
     desc: "Retrieval Augmented Generation and large language models to interact with a PDF, entirely in the browser.",
     tags: ["RAG", "WebGPU"],
     tone: "teal" as const,
-    glyph: "✦",
+    icon: "file-text",
     live: "https://pdf.nico.dev",
     source: "https://github.com/nico-martin/ask-my-pdf",
   },
@@ -77,7 +85,7 @@ const projects = [
     desc: "A web based markdown editor showcasing the File System Access API: files open and save straight in the browser.",
     tags: ["PWA", "File System"],
     tone: "yellow" as const,
-    glyph: "⌁",
+    icon: "markdown",
     live: "https://md.nico.dev/",
     source: "https://github.com/nico-martin/markdown-editor/",
   },
@@ -87,11 +95,11 @@ const projects = [
     desc: "An Arduino toy car that talks Bluetooth Low Energy, driven by a web app over the Web Bluetooth API.",
     tags: ["WebBluetooth", "Arduino"],
     tone: "pink" as const,
-    glyph: "»",
+    icon: "car",
     live: "https://speed-wheels.nico.dev/",
     source: "https://github.com/nico-martin/speed-wheels-ble-arduino",
   },
-];
+] as const;
 
 export default function Home() {
   return (
@@ -112,7 +120,9 @@ export default function Home() {
               technologies, from Switzerland.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/speaking/">See where I speak&nbsp; »</Button>
+              <Button href="/speaking/" chevron>
+                See where I speak
+              </Button>
               <Button href="mailto:mail@nico.dev" secondary>
                 Invite me to your event
               </Button>
@@ -141,11 +151,15 @@ export default function Home() {
               className="animate-rise"
               style={{ animationDelay: `${index * 90}ms` }}
             >
-              <IconTile glyph={item.glyph} tone={item.tone} />
+              <IconTile icon={item.icon} tone={item.tone} />
               <h2 className="mt-5 text-2xl">{item.title}</h2>
               <p className="mt-2">{item.text}</p>
-              <Link href={item.href} className="font-mono text-sm">
-                {item.cta} »
+              <Link
+                href={item.href}
+                className="inline-flex items-center gap-1 font-mono text-sm"
+              >
+                {item.cta}
+                <TablerIcon icon="chevrons-right" className="size-4" />
               </Link>
             </Card>
           ))}
@@ -158,15 +172,19 @@ export default function Home() {
             <Eyebrow>What&apos;s new</Eyebrow>
             <h2 className="section-title mt-5">Latest things I built</h2>
           </div>
-          <Link href="/whats-up/" className="font-mono text-sm">
-            Everything I&apos;m up to »
+          <Link
+            href="/whats-up/"
+            className="inline-flex items-center gap-1 font-mono text-sm"
+          >
+            Everything I&apos;m up to
+            <TablerIcon icon="chevrons-right" className="size-4" />
           </Link>
         </div>
         <div className="mt-8 grid gap-7 lg:grid-cols-3">
           {projects.map((project) => (
             <Card key={project.name} shadow={project.tone}>
               <div className="flex gap-4">
-                <IconTile glyph={project.glyph} tone={project.tone} />
+                <IconTile icon={project.icon} tone={project.tone} />
                 <div className="min-w-0">
                   <h3 className="text-xl">{project.name}</h3>
                   <div className="mt-1 font-mono text-xs break-all text-muted">
@@ -182,8 +200,8 @@ export default function Home() {
                     </Badge>
                   </div>
                   <div className="flex flex-wrap gap-3">
-                    <Button small href={project.live}>
-                      Launch app&nbsp; »
+                    <Button small href={project.live} chevron>
+                      Launch app
                     </Button>
                     <Button
                       small

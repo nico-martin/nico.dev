@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { TablerIcon } from "@/theme";
+
 interface Event {
   date: string;
   event: string;
@@ -54,9 +56,10 @@ export default function EventBand({
                 {item.event}
               </strong>
               <span className="text-sm text-white/60">{item.talk}</span>
-              <span className="text-right font-heading font-black text-brand">
-                »
-              </span>
+              <TablerIcon
+                icon="chevrons-right"
+                className="ml-auto size-5 text-brand"
+              />
             </a>
           ))}
         </div>
@@ -65,7 +68,10 @@ export default function EventBand({
             href="/speaking/"
             className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
           >
-            All talks, slides and recordings »
+            <span className="inline-flex items-center gap-2">
+              All talks, slides and recordings
+              <TablerIcon icon="chevrons-right" className="size-4" />
+            </span>
           </Link>
         )}
       </div>

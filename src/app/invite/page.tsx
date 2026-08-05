@@ -1,7 +1,7 @@
 import EventBand from "@/components/EventBand";
 import PageHeader from "@/components/PageHeader";
 import TalkSelector from "@/components/TalkSelector";
-import { Button, Card, Eyebrow } from "@/theme";
+import { Button, Card, Eyebrow, TablerIcon } from "@/theme";
 import portrait from "../../../new-design/assets/nico-portrait.jpg";
 
 const facts = [
@@ -33,7 +33,9 @@ export default function InvitePage() {
       />
       <section className="wrap">
         <div className="flex flex-wrap gap-4">
-          <Button href="mailto:mail@nico.dev">mail@nico.dev&nbsp; »</Button>
+          <Button href="mailto:mail@nico.dev" chevron>
+            mail@nico.dev
+          </Button>
           <Button href="/speaking/" secondary>
             Watch a talk first
           </Button>
@@ -86,9 +88,7 @@ export default function InvitePage() {
             "Placeholder - a second quote works well next to the first.",
           ].map((quote, index) => (
             <Card key={quote} shadow={index === 0 ? "teal" : "peri"}>
-              <span className="font-heading text-4xl font-black text-brand">
-                »
-              </span>
+              <TablerIcon icon="quote" className="size-10 text-brand" />
               <p className="lead mt-3">{quote}</p>
               <strong className="font-heading text-ink">Organiser name</strong>
               <div className="font-mono text-xs text-muted">
@@ -110,13 +110,13 @@ export default function InvitePage() {
             <div className="my-5 grid gap-2">
               {needs.map((need) => (
                 <div key={need} className="flex gap-3">
-                  <span className="font-heading font-black text-brand">✓</span>
+                  <TablerIcon icon="check" className="mt-1 size-4 text-brand" />
                   <span>{need}</span>
                 </div>
               ))}
             </div>
-            <Button href="mailto:mail@nico.dev" small>
-              mail@nico.dev&nbsp; »
+            <Button href="mailto:mail@nico.dev" small chevron>
+              mail@nico.dev
             </Button>
           </Card>
           <Card shadow="pink">
@@ -129,9 +129,23 @@ export default function InvitePage() {
               technologies, from Switzerland.
             </p>
             <div className="mt-5 flex flex-wrap gap-4 font-mono text-xs">
-              <a href={portrait.src}>Portrait photo »</a>
-              <a href="https://github.com/nico-martin">GitHub »</a>
-              <a href="https://x.com/nicodotdev">X »</a>
+              <a href={portrait.src} className="inline-flex items-center gap-1">
+                Portrait photo
+                <TablerIcon icon="chevrons-right" className="size-4" />
+              </a>
+              <a
+                href="https://github.com/nico-martin"
+                className="inline-flex items-center gap-1"
+              >
+                GitHub
+                <TablerIcon icon="chevrons-right" className="size-4" />
+              </a>
+              <a
+                href="https://x.com/nicodotdev"
+                className="inline-flex items-center gap-1"
+              >
+                X<TablerIcon icon="chevrons-right" className="size-4" />
+              </a>
             </div>
           </Card>
         </div>

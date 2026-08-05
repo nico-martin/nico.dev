@@ -181,7 +181,7 @@ export default function WhatsUpStream() {
             <div className="grid gap-5 sm:grid-cols-[8.25rem_1fr]">
               <div className="placeholder">
                 <IconTile
-                  glyph={entry.type === "Project" ? "⌁" : "✦"}
+                  icon={entry.type === "Project" ? "code" : "article"}
                   tone={entry.tone}
                 />
                 <span>{entry.type}</span>
@@ -210,11 +210,11 @@ export default function WhatsUpStream() {
                       key={href}
                       href={href}
                       small
+                      chevron={index === 0}
                       secondary={index > 0}
                       className={index > 0 ? "shadow-none" : undefined}
                     >
                       {label}
-                      {index === 0 && "  »"}
                     </Button>
                   ))}
                 </div>
