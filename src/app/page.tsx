@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import Doodles from "@/components/Doodles";
 import EventBand from "@/components/EventBand";
+import { talksToEvents } from "@/lib/talks";
+import { type TalksResponse, wpApiGet } from "@/lib/wp-api";
 import {
   Badge,
   Blob,
@@ -13,30 +15,6 @@ import {
   TablerIcon,
 } from "@/theme";
 import portrait from "../../new-design/assets/nico-portrait.jpg";
-
-const events = [
-  {
-    date: "14.09.2026",
-    event: "Infobip Shift",
-    talk: "coming soon..",
-    accent: "brand" as const,
-    href: "https://shift.infobip.com/",
-  },
-  {
-    date: "05.06.2026",
-    event: "React Norway",
-    talk: "Look ma, no hands! Multimodal AI agents in the browser",
-    accent: "yellow" as const,
-    href: "https://reactnorway.com/",
-  },
-  {
-    date: "03.06.2026",
-    event: "Dev<Talks/>",
-    talk: "Look ma, no hands! Multimodal AI agents in the browser",
-    accent: "pink" as const,
-    href: "https://www.devtalks.ro/speakers/688-nico-martin",
-  },
-];
 
 const introCards = [
   {
@@ -101,7 +79,10 @@ const projects = [
   },
 ] as const;
 
-export default function Home() {
+export default async function Home() {
+  const { talks } = await wpApiGet<TalksResponse>("nico/v2/talks");
+  const events = talksToEvents(talks);
+
   return (
     <>
       <section className="relative py-18">
@@ -119,14 +100,6 @@ export default function Home() {
               at Hugging Face and Google Developer Expert in AI and web
               technologies, from Switzerland.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/speaking/" chevron>
-                See where I speak
-              </Button>
-              <Button href="mailto:mail@nico.dev" secondary>
-                Invite me to your event
-              </Button>
-            </div>
           </div>
           <div className="grid animate-rise place-items-center [animation-delay:90ms]">
             <Blob>
@@ -148,15 +121,15 @@ export default function Home() {
             <Card
               key={item.title}
               shadow={item.shadow}
-              className="animate-rise"
+              className="flex animate-rise flex-col"
               style={{ animationDelay: `${index * 90}ms` }}
             >
               <IconTile icon={item.icon} tone={item.tone} />
               <h2 className="mt-5 text-2xl">{item.title}</h2>
-              <p className="mt-2">{item.text}</p>
+              <p className="mt-2 mb-4">{item.text}</p>
               <Link
                 href={item.href}
-                className="inline-flex items-center gap-1 font-mono text-sm"
+                className="mt-auto inline-flex items-center gap-1 font-mono text-sm"
               >
                 {item.cta}
                 <TablerIcon icon="chevrons-right" className="size-4" />
@@ -165,7 +138,12 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <EventBand events={events} showAll />
+      <EventBand
+        events={events}
+        description="Over the past few years I’ve had the pleasure of speaking at many different conferences and meetups. And I’m always happy about new opportunities."
+        upcomingOnly
+        showAll
+      />
       <section className="wrap section">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <div>
@@ -180,7 +158,7 @@ export default function Home() {
             <TablerIcon icon="chevrons-right" className="size-4" />
           </Link>
         </div>
-        <div className="mt-8 grid gap-7 lg:grid-cols-3">
+        <div className="mt-8 mb-24 grid gap-7 lg:grid-cols-3">
           {projects.map((project) => (
             <Card key={project.name} shadow={project.tone}>
               <div className="flex gap-4">

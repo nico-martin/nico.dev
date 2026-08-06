@@ -1,62 +1,28 @@
 import Image from "next/image";
 
 import Doodles from "@/components/Doodles";
+import { type AboutResponse, wpApiGet } from "@/lib/wp-api";
 import { Badge, Blob, Button, Card, Eyebrow, IconTile, ListRow } from "@/theme";
 import type { TablerIconName } from "@/theme";
 import portrait from "../../../new-design/assets/nico-portrait.jpg";
 
-const timeline = [
-  [
-    "now",
-    "Transformers.js at Hugging Face",
-    "Open source machine learning engineer with a focus on WebML - bringing state-of-the-art models directly to the browser.",
-    "teal",
-  ],
-  [
-    "now",
-    "Google Developer Expert",
-    "For AI and web technologies. Interactive demos, technical content and open source tools for privacy-preserving, on-device inference.",
-    "peri",
-  ],
-  [
-    "2025",
-    "The K.I.T.T. tour",
-    "Let's build K.I.T.T. with JavaScript and Look ma, no hands! at Nordic.js, React Advanced London, Devfest Nantes, JSNation, React Paris, Codemotion Rome, CityJS London.",
-    "yellow",
-  ],
-  [
-    "2024",
-    "Ask my PDF",
-    "RAG and LLMs against a PDF, fully in the browser. Plus From ML to LLM: on-device AI in the browser at HalfStack London.",
-    "pink",
-  ],
-  [
-    "2023",
-    "Desktop-class web apps",
-    "Rethinking desktop applications with progressive web apps at Build Stuff and Full Stack Europe; test automation with Playwright at WordCamp Switzerland.",
-    "teal",
-  ],
-  [
-    "2022",
-    "Talking to hardware",
-    "WebBluetooth - the missing link at JSNation and Voxxed Days Zürich, robots at Front Conference Zürich - and the SpeedWheels BLE car and WebUSB matrix to go with them.",
-    "peri",
-  ],
-  [
-    "2019",
-    "Accessibility & WordPress",
-    "A brief introduction to a11y at WordCamp Zürich, and Git Installer - a plugin to deploy WordPress themes straight from a Git repository.",
-    "yellow",
-  ],
-  [
-    "2018",
-    "#PWAforEveryone",
-    "My first conference stages: DevFest Switzerland and Frontendconf Zürich.",
-    "pink",
-  ],
-] as const;
+const historyStyles = {
+  community: {
+    accent: "yellow",
+    badge: "bg-yellow-tint text-yellow-ink",
+  },
+  professional: {
+    accent: "teal",
+    badge: "bg-brand-tint text-brand-deep",
+  },
+} as const;
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const { history } = await wpApiGet<AboutResponse>("nico/v2/about");
+  const timeline = [...history].sort(
+    (first, second) => Number(second.year) - Number(first.year),
+  );
+
   return (
     <>
       <section className="relative py-18">
@@ -151,68 +117,49 @@ export default function AboutPage() {
         <Eyebrow>What I&apos;ve done</Eyebrow>
         <h2 className="section-title mt-5 mb-8">A short history</h2>
         <div className="grid gap-4">
-          {timeline.map(([year, title, text, accent]) => (
-            <ListRow
-              key={title}
-              accent={accent}
-              lead={<Badge className="mt-0.5 w-fit shrink-0">{year}</Badge>}
-            >
-              <h3 className="text-lg">{title}</h3>
-              <p className="mt-2 mb-0 max-w-3xl">{text}</p>
-            </ListRow>
-          ))}
-        </div>
-        <div className="mt-10 grid gap-7 md:grid-cols-3">
-          <Card>
-            <div className="font-heading text-5xl font-black text-brand">
-              30+
-            </div>
-            <div className="mt-2 font-heading font-bold text-ink">
-              Conference talks
-            </div>
-            <div className="font-mono text-xs text-muted">since 2018</div>
-          </Card>
-          <Card shadow="peri">
-            <div className="font-heading text-5xl font-black text-ink">
-              2018
-            </div>
-            <div className="mt-2 font-heading font-bold text-ink">
-              Speaking since
-            </div>
-            <div className="font-mono text-xs text-muted">
-              conferences & meetups
-            </div>
-          </Card>
-          <Card shadow="yellow">
-            <div className="font-heading text-5xl font-black text-yellow-ink">
-              MIT
-            </div>
-            <div className="mt-2 font-heading font-bold text-ink">
-              Side projects
-            </div>
-            <div className="font-mono text-xs text-muted">all open source</div>
-          </Card>
+          {timeline.map((entry) => {
+            const style = historyStyles[entry.tag];
+
+            return (
+              <ListRow
+                key={`${entry.year}-${entry.title}`}
+                accent={style.accent}
+                className="relative"
+                lead={
+                  <Badge className={`mt-0.5 w-fit shrink-0 ${style.badge}`}>
+                    {entry.year}
+                  </Badge>
+                }
+              >
+                <Badge className={`absolute top-4 right-5 ${style.badge}`}>
+                  {entry.tag}
+                </Badge>
+                <h3 className="pr-28 text-lg">{entry.title}</h3>
+                <p className="mt-2 mb-0 max-w-3xl">{entry.description}</p>
+              </ListRow>
+            );
+          })}
         </div>
       </section>
       <section className="mt-24 bg-brand py-18">
         <div className="wrap flex flex-wrap items-center justify-between gap-10">
           <div className="max-w-2xl">
-            <Eyebrow className="bg-white/90">Say hi</Eyebrow>
+            <Eyebrow className="bg-white/90">Curriculum vitae</Eyebrow>
             <h2 className="section-title mt-5 text-white">
-              Looking for a speaker?
+              There&apos;s more to the story.
             </h2>
             <p className="lead mt-3 text-white/85">
-              I&apos;m always happy about new opportunities - conferences,
-              meetups or an internal team session.
+              For the complete timeline, roles, projects and experience, take a
+              look at my CV.
             </p>
           </div>
           <Button
-            href="mailto:mail@nico.dev"
+            href="https://nico.dev/cv"
             secondary
             chevron
             className="shadow-[6px_6px_0_var(--color-ink)]"
           >
-            mail@nico.dev
+            Read the CV
           </Button>
         </div>
       </section>

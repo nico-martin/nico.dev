@@ -48,6 +48,12 @@
   }
 }
 
+@keyframes conference-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -169,25 +175,71 @@
     font-size: 0.75rem;
     text-align: center;
   }
+  .conference-carousel {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 3rem,
+      black calc(100% - 3rem),
+      transparent
+    );
+  }
+  .conference-carousel-track {
+    animation: conference-marquee 60s linear infinite;
+  }
+  .conference-carousel:hover .conference-carousel-track,
+  .conference-carousel:focus-within .conference-carousel-track {
+    animation-play-state: paused;
+  }
+  .recordings-scroller {
+    --recordings-edge: max(2.5rem, calc((100vw - 75rem) / 2 + 2.5rem));
+
+    scroll-padding-inline-start: var(--recordings-edge);
+    scrollbar-width: none;
+  }
+  .recordings-scroller::before,
+  .recordings-scroller::after {
+    content: "";
+    flex: 0 0 calc(var(--recordings-edge) - 1.5rem);
+  }
+  .recordings-scroller::-webkit-scrollbar {
+    display: none;
+  }
   .talk-map > g:first-child {
     fill: var(--color-surface-border);
     stroke: white;
     stroke-linejoin: round;
     stroke-width: 0.75;
   }
-  .talk-map > g:last-child circle {
+  .talk-map-points circle {
     fill: var(--color-pink);
     stroke: var(--color-ink);
-    stroke-width: 2;
     transition: fill 0.2s ease;
   }
-  .talk-map > g:last-child text {
+  .talk-map-points .talk-map-connections line {
+    stroke: var(--color-brand);
+    opacity: 0.6;
+  }
+  .talk-map-points .talk-map-home {
+    fill: var(--color-yellow);
+  }
+  .talk-map-points text {
     fill: var(--color-ink);
     dominant-baseline: middle;
     font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 500;
     pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .conference-carousel {
+    overflow-x: auto;
+    mask-image: none;
+  }
+  .conference-carousel-track {
+    animation: none;
   }
 }
 
@@ -201,6 +253,11 @@
   .dark-band {
     margin-top: 4.5rem;
     padding-block: 4.5rem;
+  }
+  .recordings-scroller {
+    --recordings-edge: 1.5rem;
+
+    padding-inline: 0;
   }
 }
 

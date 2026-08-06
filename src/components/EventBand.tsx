@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useSyncExternalStore } from "react";
 
 import { TablerIcon } from "@/theme";
 
-interface Event {
+export interface Event {
   date: string;
+  isoDate?: string;
   event: string;
   talk: string;
   href: string;
@@ -15,6 +19,7 @@ interface EventBandProps {
   title?: string;
   description?: string;
   showAll?: boolean;
+  upcomingOnly?: boolean;
 }
 
 const dateColors = {
@@ -23,13 +28,40 @@ const dateColors = {
   pink: "text-pink",
 } as const;
 
+function getStartOfToday() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today.getTime();
+}
+
+function subscribeToDateChange(onStoreChange: () => void) {
+  const interval = window.setInterval(onStoreChange, 60_000);
+  return () => window.clearInterval(interval);
+}
+
 export default function EventBand({
   events,
   eyebrow = "Up next",
   title = "Where you can catch me",
-  description = "Over the past few years I’ve had the pleasure of speaking at many different conferences and meetups. And I’m always happy about new opportunities.",
+  description = "",
   showAll = false,
+  upcomingOnly = false,
 }: EventBandProps) {
+  const today = useSyncExternalStore(
+    subscribeToDateChange,
+    getStartOfToday,
+    () => 0,
+  );
+  const visibleEvents = upcomingOnly
+    ? events.filter((event) => {
+        if (!today || !event.isoDate) return false;
+
+        const [year, month, day] = event.isoDate.split("-").map(Number);
+        const eventDate = new Date(year, month - 1, day);
+        return eventDate.getTime() >= today;
+      })
+    : events;
+
   return (
     <section className="dark-band">
       <div className="wrap">
@@ -43,7 +75,7 @@ export default function EventBand({
           <p className="m-0 max-w-md text-white/60">{description}</p>
         </div>
         <div className="border-t border-white/15">
-          {events.map((item) => (
+          {visibleEvents.map((item) => (
             <a
               key={`${item.event}-${item.date}`}
               href={item.href}

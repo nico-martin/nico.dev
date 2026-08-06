@@ -4,7 +4,10 @@ const nextConfig: NextConfig = {
   output: "export",
   images: {
     unoptimized: true,
-    remotePatterns: [{ protocol: "https", hostname: "i.ytimg.com" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "i.ytimg.com" },
+      { protocol: "https", hostname: "wp.nico.dev" },
+    ],
   },
   trailingSlash: true,
   webpack(config) {

@@ -12,7 +12,7 @@ const links = [
 
 export default function SiteFooter() {
   return (
-    <footer className="mt-24 bg-ink py-16 text-white">
+    <footer className="bg-ink py-16 text-white">
       <div className="wrap grid gap-12 md:grid-cols-[1fr_auto_auto]">
         <div>
           <div className="font-heading text-3xl font-black tracking-display">
