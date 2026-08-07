@@ -8,6 +8,7 @@ const links = [
   ["Speaking", "/speaking/"],
   ["What's up", "/whats-up/"],
   ["Invite me", "/invite/"],
+  ["CV", "/cv/"],
 ] as const;
 
 export default function SiteFooter() {
@@ -29,7 +30,7 @@ export default function SiteFooter() {
             mail@nico.dev
           </a>
         </div>
-        <div className="grid gap-3">
+        <div className="grid content-start gap-3">
           <span className="font-heading text-xs font-bold tracking-eyebrow text-faint uppercase">
             Elsewhere
           </span>

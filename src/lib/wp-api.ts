@@ -190,6 +190,29 @@ export interface CvResponse {
   language: CvLanguageEntry[];
 }
 
+export interface CfpTextVariant {
+  title: string;
+  text: string;
+}
+
+export interface CfpPaper {
+  title: string;
+  content: CfpTextVariant[];
+  notes: string;
+}
+
+export interface CfpLink {
+  title: string;
+  url: string;
+}
+
+export interface CfpResponse {
+  papers: CfpPaper[];
+  about: CfpTextVariant[];
+  links: CfpLink[];
+  portrait: string[];
+}
+
 export async function wpApiGet<Response, Params extends object = object>(
   path: string,
   params?: Params,

@@ -2,7 +2,7 @@ import EventBand from "@/components/EventBand";
 import PageHeader from "@/components/PageHeader";
 import TalkSelector from "@/components/TalkSelector";
 import { Button, Card, Eyebrow, TablerIcon } from "@/theme";
-import portrait from "../../../new-design/assets/nico-portrait.jpg";
+import portrait from "@/assets/nico-martin.png";
 
 const facts = [
   [
@@ -98,7 +98,7 @@ export default function InvitePage() {
           ))}
         </div>
       </section>
-      <section className="wrap section">
+      <section className="wrap section mb-24">
         <div className="grid items-start gap-7 md:grid-cols-2">
           <Card shadow="yellow">
             <Eyebrow>On site</Eyebrow>

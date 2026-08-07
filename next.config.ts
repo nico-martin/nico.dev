@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "i.ytimg.com" },
       { protocol: "https", hostname: "wp.nico.dev" },
+      { protocol: "https", hostname: "uploads.nico.dev" },
     ],
   },
   trailingSlash: true,
