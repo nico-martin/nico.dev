@@ -1,46 +1,53 @@
-import EventBand from "@/components/EventBand";
+import Image from "next/image";
+
+import CopyTextButton from "@/components/CopyTextButton";
+import InviteFacts from "@/components/InviteFacts";
 import PageHeader from "@/components/PageHeader";
 import TalkSelector from "@/components/TalkSelector";
-import { Button, Card, Eyebrow, TablerIcon } from "@/theme";
-import portrait from "@/assets/nico-martin.png";
-
-const facts = [
-  [
-    "Formats",
-    "Conference talk, meetup talk, or a half- to two-day team workshop",
-  ],
-  ["Length", "20 to 45 minutes for a talk, agreed with you up front"],
-  ["Languages", "English or German"],
-  ["Travelling from", "Thun, Switzerland - anywhere in Europe works"],
-  ["Slides", "Published openly on slides.nico.dev after the event"],
-  ["Recording", "Always welcome - I link it from this site"],
-] as const;
+import { type CfpResponse, wpApiGet } from "@/lib/wp-api";
+import { Card, Eyebrow, TablerIcon } from "@/theme";
 
 const needs = [
   "A stage and a beamer that accepts HDMI",
-  "Internet is nice, not required - the demos run offline",
-  "A table if the talk involves the car or the robot",
-  "I bring the hardware",
+  "Internet is nice, not required (I need to know it upfront)",
+  "I need to present from my own device",
+  "I might bring additional hardware devices :)",
 ];
 
-export default function InvitePage() {
+const facts = [
+  ["Formats", "Conference talk, keynote"],
+  ["Length", "20 to 45 minutes, agreed with you up front"],
+  ["Languages", "English or German"],
+  ["Travelling from", "Thun, Switzerland"],
+  ["Slides", "Published openly on slides.nico.dev after the event"],
+  ["Recording", "Always welcome"],
+  ["requirements", needs],
+] as const;
+
+export default async function InvitePage() {
+  const cfp = await wpApiGet<CfpResponse>("nico/v1/cfp");
+  const activePapers = cfp.papers.filter((paper) => paper.isActive);
+  const speakerBio = cfp.about[0];
+
   return (
     <>
       <PageHeader
         eyebrow="Invite me"
         title="Everything you need to book me"
         lead="Topics, formats, logistics and what I need on site. If something is missing, just ask: mail@nico.dev"
+        buttons={[
+          {
+            href: "mailto:mail@nico.dev",
+            children: "mail@nico.dev",
+            chevron: true,
+          },
+          {
+            href: "/speaking/",
+            children: "Watch a talk first",
+            secondary: true,
+          },
+        ]}
       />
-      <section className="wrap">
-        <div className="flex flex-wrap gap-4">
-          <Button href="mailto:mail@nico.dev" chevron>
-            mail@nico.dev
-          </Button>
-          <Button href="/speaking/" secondary>
-            Watch a talk first
-          </Button>
-        </div>
-      </section>
       <section className="wrap section">
         <div>
           <Eyebrow>The talks</Eyebrow>
@@ -51,31 +58,11 @@ export default function InvitePage() {
           </p>
         </div>
         <div className="mt-7">
-          <TalkSelector />
+          <TalkSelector papers={activePapers} />
         </div>
       </section>
-      <EventBand
-        eyebrow="The facts"
-        title="Formats, languages, logistics"
-        description="The short version for your CFP sheet or programme document."
-        events={[]}
-      />
-      <section className="-mt-[5.5rem] bg-ink pb-22 text-white">
-        <div className="wrap border-t border-white/15">
-          {facts.map(([key, value]) => (
-            <div
-              key={key}
-              className="grid gap-2 border-b border-white/15 py-5 md:grid-cols-[12.5rem_1fr]"
-            >
-              <span className="font-mono text-xs tracking-[0.12em] text-brand uppercase">
-                {key}
-              </span>
-              <span className="text-white/80">{value}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="wrap section">
+      <InviteFacts facts={facts} />
+      {/*<section className="wrap section">
         <Eyebrow>Kind words</Eyebrow>
         <h2 className="section-title mt-5">What organisers said</h2>
         <p className="mt-3 mb-8 max-w-xl">
@@ -97,55 +84,84 @@ export default function InvitePage() {
             </Card>
           ))}
         </div>
-      </section>
-      <section className="wrap section mb-24">
-        <div className="grid items-start gap-7 md:grid-cols-2">
-          <Card shadow="yellow">
-            <Eyebrow>On site</Eyebrow>
-            <h2 className="mt-4 text-2xl">What I need from you</h2>
-            <p className="mt-2">
-              A stage, a beamer that accepts HDMI, and internet is nice but not
-              required. I bring the car.
-            </p>
-            <div className="my-5 grid gap-2">
-              {needs.map((need) => (
-                <div key={need} className="flex gap-3">
-                  <TablerIcon icon="check" className="mt-1 size-4 text-brand" />
-                  <span>{need}</span>
+      </section>*/}
+      <section className="wrap section mt-24 mb-24 pt-0">
+        <Eyebrow>Speaker kit</Eyebrow>
+        <h2 className="section-title mt-5">Bio, pictures and links</h2>
+        <p className="mt-3 max-w-2xl">
+          Everything you need for your programme, speaker page, or event
+          announcement.
+        </p>
+        <div className="mt-8 grid items-start gap-7 lg:grid-cols-2">
+          <Card shadow="pink">
+            <h3 className="text-2xl">Bio</h3>
+            <p className="mt-2">Copy this straight into your programme:</p>
+            {speakerBio && (
+              <div className="mt-5 rounded-tile bg-surface-muted p-5">
+                <p className="whitespace-pre-line">{speakerBio.text}</p>
+                <div className="mt-3 text-right">
+                  <CopyTextButton
+                    text={speakerBio.text}
+                    label="Copy bio"
+                    quiet
+                  />
+                </div>
+              </div>
+            )}
+          </Card>
+          <Card shadow="peri">
+            <h3 className="text-2xl">Pictures and links</h3>
+            <h4 className="mt-6 font-heading text-lg text-ink">Press photos</h4>
+            <div className="mt-3 grid gap-3 sm:grid-cols-3">
+              {cfp.portrait.map((portrait, index) => (
+                <div
+                  key={portrait}
+                  className="overflow-hidden rounded-tile bg-surface-muted"
+                >
+                  <a
+                    href={portrait}
+                    target="_blank"
+                    className="relative block aspect-4/5 overflow-hidden bg-ink hover:no-underline"
+                  >
+                    <Image
+                      src={portrait}
+                      alt={`Nico Martin portrait ${index + 1}`}
+                      fill
+                      className="object-cover object-top transition-transform hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 200px"
+                    />
+                  </a>
+                  <div className="flex items-center justify-between gap-2 p-3 font-mono text-xs">
+                    <a href={portrait} target="_blank">
+                      Photo {index + 1}
+                    </a>
+                    <CopyTextButton text={portrait} label="Copy" quiet />
+                  </div>
                 </div>
               ))}
             </div>
-            <Button href="mailto:mail@nico.dev" small chevron>
-              mail@nico.dev
-            </Button>
-          </Card>
-          <Card shadow="pink">
-            <Eyebrow>Speaker kit</Eyebrow>
-            <h2 className="mt-4 text-2xl">Bio and photo</h2>
-            <p className="mt-2">Copy this straight into your programme:</p>
-            <p className="rounded-tile bg-surface-muted p-5">
-              Nico Martin is an open source machine learning engineer with focus
-              on WebML at Hugging Face and Google Developer Expert in AI and web
-              technologies, from Switzerland.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-4 font-mono text-xs">
-              <a href={portrait.src} className="inline-flex items-center gap-1">
-                Portrait photo
-                <TablerIcon icon="chevrons-right" className="size-4" />
-              </a>
-              <a
-                href="https://github.com/nico-martin"
-                className="inline-flex items-center gap-1"
-              >
-                GitHub
-                <TablerIcon icon="chevrons-right" className="size-4" />
-              </a>
-              <a
-                href="https://x.com/nicodotdev"
-                className="inline-flex items-center gap-1"
-              >
-                X<TablerIcon icon="chevrons-right" className="size-4" />
-              </a>
+            <h4 className="mt-7 font-heading text-lg text-ink">
+              Profile links
+            </h4>
+            <div className="mt-2 grid gap-x-15 sm:grid-cols-2">
+              {cfp.links.map((link) => (
+                <div
+                  key={link.title}
+                  className="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-ink/10 py-3 font-mono text-xs"
+                >
+                  <a
+                    href={link.url}
+                    className="inline-flex min-w-0 items-center gap-1"
+                  >
+                    <span className="truncate">{link.title}</span>
+                    <TablerIcon
+                      icon="chevrons-right"
+                      className="size-4 shrink-0"
+                    />
+                  </a>
+                  <CopyTextButton text={link.url} label="Copy" quiet />
+                </div>
+              ))}
             </div>
           </Card>
         </div>

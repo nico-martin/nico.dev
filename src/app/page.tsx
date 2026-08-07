@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import Doodles from "@/components/Doodles";
 import EventBand from "@/components/EventBand";
+import PageHeader from "@/components/PageHeader";
+import Portrait from "@/components/Portrait";
 import { WhatsUpEntryCard } from "@/components/WhatsUpStream";
 import { talksToEvents } from "@/lib/talks";
 import {
@@ -11,7 +12,6 @@ import {
   wpApiGet,
 } from "@/lib/wp-api";
 import { Card, Eyebrow, IconTile, TablerIcon } from "@/theme";
-import Portrait from "@/components/Portrait";
 
 const introCards = [
   {
@@ -57,25 +57,19 @@ export default async function Home() {
 
   return (
     <>
-      <section className="relative py-18">
-        <Doodles />
-        <div className="wrap relative z-10 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="animate-rise">
-            <Eyebrow>Machine learning engineer</Eyebrow>
-            <h1 className="display mt-6">
-              Hello, my name
-              <br />
-              is <span className="text-brand">Nico</span>.
-            </h1>
-            <p className="lead mt-5 max-w-xl">
-              I am an open source machine learning engineer with focus on WebML
-              at Hugging Face and Google Developer Expert in AI and web
-              technologies, from Switzerland.
-            </p>
-          </div>
-          <Portrait />
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Machine learning engineer"
+        title={
+          <>
+            Hello, my name
+            <br />
+            is <span className="text-brand">Nico</span>.
+          </>
+        }
+        lead="I am an open source machine learning engineer with focus on WebML at Hugging Face and Google Developer Expert in AI and web technologies, from Switzerland."
+        media={<Portrait />}
+        displayTitle
+      />
       <section className="wrap pt-16">
         <div className="grid gap-7 md:grid-cols-3">
           {introCards.map((item, index) => (

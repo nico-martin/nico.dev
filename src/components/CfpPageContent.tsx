@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import type { CfpResponse } from "@/lib/wp-api";
-import { Blob, Button, Card, Eyebrow } from "@/theme";
+import { Blob, Card, Eyebrow } from "@/theme";
 
 import CfpBioSelector from "./CfpBioSelector";
 import CfpTalkSelector from "./CfpTalkSelector";
@@ -17,16 +17,14 @@ function CfpHeader({ portrait }: { portrait?: string }) {
       eyebrow="Speaker resources"
       title="Talk abstracts, bios and everything CFP"
       lead="Ready-to-use proposals and speaker material for conference organisers. Pick the length that fits your form and copy what you need."
-      actions={
-        <div className="mt-7 flex flex-wrap gap-4">
-          <Button href="mailto:mail@nico.dev" chevron>
-            mail@nico.dev
-          </Button>
-          <Button href="/speaking/" secondary>
-            past talks
-          </Button>
-        </div>
-      }
+      buttons={[
+        {
+          href: "mailto:mail@nico.dev",
+          children: "mail@nico.dev",
+          chevron: true,
+        },
+        { href: "/speaking/", children: "past talks", secondary: true },
+      ]}
       media={
         portrait ? (
           <Blob className="size-[min(23rem,82vw)] bg-yellow">

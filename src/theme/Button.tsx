@@ -4,7 +4,7 @@ import cn from "@/utils/classnames";
 
 import TablerIcon from "./tabler/TablerIcon";
 
-interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
   secondary?: boolean;
   small?: boolean;

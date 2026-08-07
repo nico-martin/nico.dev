@@ -197,6 +197,9 @@ export interface CfpTextVariant {
 
 export interface CfpPaper {
   title: string;
+  isActive: boolean;
+  abstract: string;
+  tags: string[];
   content: CfpTextVariant[];
   notes: string;
 }

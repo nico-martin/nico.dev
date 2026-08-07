@@ -11,7 +11,7 @@ import {
   type TalksResponse,
   wpApiGet,
 } from "@/lib/wp-api";
-import { Blob, Eyebrow } from "@/theme";
+import { Blob, Button, Eyebrow } from "@/theme";
 import stage from "../../assets/nico-on-stage-codetalks.jpg";
 
 export default async function SpeakingPage() {
@@ -27,6 +27,7 @@ export default async function SpeakingPage() {
         eyebrow="Speaking"
         title="Conferences, meetups, live demos"
         lead="Over the past few years, I've had the pleasure of speaking at conferences and meetups around the world, connecting with incredible developer communities along the way."
+        buttons={[{ href: "/invite/", children: "Invite me", chevron: true }]}
         media={
           <Blob className="size-[min(23.75rem,82vw)] bg-yellow">
             <Image
@@ -78,6 +79,28 @@ export default async function SpeakingPage() {
             </div>
           </div>
           <TalkMap cities={cities} />
+        </div>
+      </section>
+      <section className="mt-24 bg-brand py-18">
+        <div className="wrap flex flex-wrap items-center justify-between gap-10">
+          <div className="max-w-2xl">
+            <Eyebrow className="bg-white/90">Invite me</Eyebrow>
+            <h2 className="section-title mt-5 text-white">
+              Bring browser AI to your stage.
+            </h2>
+            <p className="lead mt-3 text-white/85">
+              Talks, formats, logistics, bio and press photos: everything you
+              need to invite me to your event.
+            </p>
+          </div>
+          <Button
+            href="/invite/"
+            secondary
+            chevron
+            className="shadow-[6px_6px_0_var(--color-ink)]"
+          >
+            Invite me
+          </Button>
         </div>
       </section>
     </>

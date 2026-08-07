@@ -1,4 +1,4 @@
-import Doodles from "@/components/Doodles";
+import PageHeader from "@/components/PageHeader";
 import Portrait from "@/components/Portrait";
 import { type AboutResponse, wpApiGet } from "@/lib/wp-api";
 import { Badge, Button, Card, Eyebrow, IconTile, ListRow } from "@/theme";
@@ -23,49 +23,46 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="relative py-18">
-        <Doodles />
-        <div className="wrap relative z-10 grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="animate-rise">
-            <Eyebrow>About me</Eyebrow>
-            <h1 className="page-title mt-6">Hello, my name is Nico.</h1>
-            <div className="lead mt-5 space-y-4">
-              <p>
-                I am an open source machine learning engineer with focus on
-                WebML at Hugging Face and Google Developer Expert in AI and web
-                technologies, from Switzerland.
-              </p>
-              <p>
-                I work on{" "}
-                <a href="https://github.com/huggingface/transformers.js">
-                  Transformers.js
-                </a>
-                , bringing state-of-the-art machine learning models directly to
-                the web browser. My focus is on making AI accessible through
-                interactive demos, technical content and open source tools.
-              </p>
-              <p>
-                Beyond code, I&apos;m passionate about developer relations:
-                sharing knowledge through conference talks, blog posts and
-                community engagement.
-              </p>
-              <p>
-                When I&apos;m not in front of a computer, I spend my days in the
-                mountains, on skis, or waiting for the wind.
-              </p>
-            </div>
-            <div className="mt-7 flex flex-wrap gap-4">
-              <Button href="/cv" chevron>
-                Read the CV
-              </Button>
-              <Button href="mailto:mail@nico.dev" secondary>
-                mail@nico.dev
-              </Button>
-            </div>
+      <PageHeader
+        eyebrow="About me"
+        title="Hello, my name is Nico."
+        lead={
+          <div className="space-y-4">
+            <p>
+              I am an open source machine learning engineer with focus on WebML
+              at Hugging Face and Google Developer Expert in AI and web
+              technologies, from Switzerland.
+            </p>
+            <p>
+              I work on{" "}
+              <a href="https://github.com/huggingface/transformers.js">
+                Transformers.js
+              </a>
+              , bringing state-of-the-art machine learning models directly to
+              the web browser. My focus is on making AI accessible through
+              interactive demos, technical content and open source tools.
+            </p>
+            <p>
+              Beyond code, I&apos;m passionate about developer relations:
+              sharing knowledge through conference talks, blog posts and
+              community engagement.
+            </p>
+            <p>
+              When I&apos;m not in front of a computer, I spend my days in the
+              mountains, on skis, or waiting for the wind.
+            </p>
           </div>
-          <Portrait />
-        </div>
-      </section>
+        }
+        buttons={[
+          { href: "/cv", children: "Read the CV", chevron: true },
+          {
+            href: "mailto:mail@nico.dev",
+            children: "mail@nico.dev",
+            secondary: true,
+          },
+        ]}
+        media={<Portrait />}
+      />
       <section className="wrap section">
         <Eyebrow>What I do</Eyebrow>
         <h2 className="section-title mt-5 mb-8">Three things, most days</h2>

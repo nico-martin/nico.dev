@@ -1,15 +1,17 @@
 import type { ReactNode } from "react";
 
-import { Eyebrow } from "@/theme";
+import { Button, Eyebrow, type ButtonProps } from "@/theme";
 
 import Doodles from "./Doodles";
 
 interface PageHeaderProps {
   eyebrow: string;
-  title: string;
-  lead: string;
+  title: ReactNode;
+  lead: ReactNode;
   media?: ReactNode;
+  buttons?: ButtonProps[];
   actions?: ReactNode;
+  displayTitle?: boolean;
 }
 
 export default function PageHeader({
@@ -17,7 +19,9 @@ export default function PageHeader({
   title,
   lead,
   media,
+  buttons,
   actions,
+  displayTitle = false,
 }: PageHeaderProps) {
   return (
     <section className="relative py-18">
@@ -31,8 +35,25 @@ export default function PageHeader({
       >
         <div className="animate-rise">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="page-title mt-6 max-w-3xl">{title}</h1>
-          <p className="lead mt-4 max-w-2xl">{lead}</p>
+          <h1
+            className={
+              displayTitle ? "display mt-6" : "page-title mt-6 max-w-3xl"
+            }
+          >
+            {title}
+          </h1>
+          {typeof lead === "string" ? (
+            <p className="lead mt-4 max-w-2xl">{lead}</p>
+          ) : (
+            <div className="lead mt-4 max-w-2xl">{lead}</div>
+          )}
+          {buttons && buttons.length > 0 && (
+            <div className="mt-7 flex flex-wrap gap-4">
+              {buttons.map((button, index) => (
+                <Button key={`${button.href}-${index}`} {...button} />
+              ))}
+            </div>
+          )}
           {actions}
         </div>
         {media && (
