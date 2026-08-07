@@ -9,6 +9,7 @@ interface PageHeaderProps {
   title: string;
   lead: string;
   media?: ReactNode;
+  actions?: ReactNode;
 }
 
 export default function PageHeader({
@@ -16,6 +17,7 @@ export default function PageHeader({
   title,
   lead,
   media,
+  actions,
 }: PageHeaderProps) {
   return (
     <section className="relative py-18">
@@ -31,6 +33,7 @@ export default function PageHeader({
           <Eyebrow>{eyebrow}</Eyebrow>
           <h1 className="page-title mt-6 max-w-3xl">{title}</h1>
           <p className="lead mt-4 max-w-2xl">{lead}</p>
+          {actions}
         </div>
         {media && (
           <div className="grid animate-rise place-items-center [animation-delay:90ms]">

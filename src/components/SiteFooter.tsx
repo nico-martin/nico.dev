@@ -16,7 +16,7 @@ export default function SiteFooter() {
       <div className="wrap grid gap-12 md:grid-cols-[1fr_auto_auto]">
         <div>
           <div className="font-heading text-3xl font-black tracking-display">
-            nico.dev
+            Nico Martin
           </div>
           <p className="mt-4 max-w-sm text-faint">
             Open source machine learning engineer at Hugging Face, Google
@@ -24,7 +24,7 @@ export default function SiteFooter() {
           </p>
           <a
             href="mailto:mail@nico.dev"
-            className="font-mono text-sm text-white"
+            className="mt-2 inline-block font-mono text-sm text-white"
           >
             mail@nico.dev
           </a>

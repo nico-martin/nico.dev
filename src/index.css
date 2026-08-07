@@ -205,6 +205,29 @@
   .recordings-scroller::-webkit-scrollbar {
     display: none;
   }
+  .cv-rich-text > :first-child {
+    margin-top: 0;
+  }
+  .cv-rich-text > :last-child {
+    margin-bottom: 0;
+  }
+  .cv-rich-text p {
+    margin-block: 0.75rem;
+  }
+  .cv-rich-text ul {
+    display: grid;
+    gap: 0.625rem;
+    margin-block: 0.75rem 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+  .cv-rich-text li::marker {
+    color: var(--color-brand);
+  }
+  .cv-rich-text strong {
+    color: var(--color-ink);
+    font-weight: 700;
+  }
   .talk-map > g:first-child {
     fill: var(--color-surface-border);
     stroke: white;
@@ -240,6 +263,148 @@
   }
   .conference-carousel-track {
     animation: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 8mm 0;
+}
+
+@media print {
+  .cv-print {
+    color: #25272b;
+    font-size: 9pt;
+    line-height: 1.35;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cv-print-header > section {
+    padding: 4mm 12mm 7mm;
+  }
+  .cv-print-header [aria-hidden="true"],
+  .cv-print-header > section > .wrap > :last-child,
+  .cv-print .cv-controls {
+    display: none;
+  }
+  .cv-print-header > section > .wrap {
+    display: block;
+    max-width: none;
+    padding-inline: 0;
+  }
+  .cv-print .page-title {
+    margin-top: 2mm;
+    font-size: 24pt;
+    letter-spacing: -0.025em;
+  }
+  .cv-print-header .lead {
+    margin-top: 1.5mm;
+    max-width: none;
+    font-size: 10pt;
+  }
+  .cv-print .cv-print-layout {
+    display: grid;
+    grid-template-columns: 48mm minmax(0, 1fr);
+    gap: 10mm;
+    max-width: none;
+    padding: 10mm 12mm 10mm;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .cv-print .cv-print-sidebar {
+    position: static;
+    gap: 5mm;
+  }
+  .cv-print .cv-print-card,
+  .cv-print .cv-print-community {
+    border: 0;
+    border-radius: 0;
+    background: white;
+    padding: 0;
+    box-shadow: none;
+  }
+  .cv-print .cv-print-community {
+    padding-top: 3mm;
+  }
+  .cv-print .cv-print-card .mt-5 {
+    margin-top: 2.5mm;
+  }
+  .cv-print .cv-print-card .mt-6 {
+    margin-top: 3mm;
+  }
+  .cv-print .cv-print-card .gap-4 {
+    gap: 2.5mm;
+  }
+  .cv-print .cv-print-card a {
+    color: #25272b;
+    font-size: 8pt;
+    overflow-wrap: anywhere;
+  }
+  .cv-print .cv-print-main > section > .inline-flex,
+  .cv-print .cv-print-sidebar .inline-flex,
+  .cv-print-header .inline-flex {
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--color-brand-deep);
+    font-size: 8pt;
+    letter-spacing: 0.1em;
+  }
+  .cv-print .cv-print-section-title {
+    display: flex;
+    width: 100%;
+    border-bottom: 1.5pt solid var(--color-brand);
+    padding-bottom: 1.5mm;
+  }
+  .cv-print .cv-print-community {
+    margin-top: 2.5mm;
+  }
+  .cv-print .cv-print-community .lead {
+    font-size: 9pt;
+  }
+  .cv-print .cv-print-experience {
+    margin-top: 7mm;
+  }
+  .cv-print .cv-print-experience > .section-title {
+    margin-block: 2mm 4mm;
+    font-size: 17pt;
+  }
+  .cv-print .cv-print-experience > .grid {
+    gap: 4mm;
+  }
+  .cv-print .cv-print-entry {
+    display: grid;
+    grid-template-columns: 31mm minmax(0, 1fr);
+    gap: 4mm;
+    break-inside: avoid-page !important;
+    page-break-inside: avoid !important;
+    border: 0;
+    border-left: 1.5pt solid var(--color-brand);
+    border-radius: 0;
+    padding: 0 0 0 3mm;
+    box-shadow: none;
+  }
+  .cv-print .cv-print-entry .rounded-full {
+    align-self: start;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--color-muted);
+    font-size: 8pt;
+  }
+  .cv-print .cv-print-entry h3 {
+    font-size: 11pt;
+  }
+  .cv-print .cv-print-entry .mt-3 {
+    margin-top: 1.5mm;
+  }
+  .cv-print .cv-rich-text p,
+  .cv-print .cv-rich-text ul {
+    margin-block: 1.5mm 0;
+  }
+  .cv-print .cv-rich-text ul {
+    gap: 1mm;
+    padding-left: 4mm;
   }
 }
 

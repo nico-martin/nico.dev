@@ -18,11 +18,14 @@ import mail from "./outline/mail.svg";
 import markdown from "./outline/markdown.svg";
 import menu from "./outline/menu-2.svg";
 import microphone from "./outline/microphone.svg";
+import pencil from "./outline/pencil.svg";
 import playerPlay from "./outline/player-play.svg";
 import presentation from "./outline/presentation.svg";
 import quote from "./outline/quote.svg";
 import sparkles from "./outline/sparkles.svg";
+import star from "./outline/star.svg";
 import user from "./outline/user.svg";
+import video from "./outline/video.svg";
 import x from "./outline/x.svg";
 
 export const tablerIconAssets = {
@@ -44,11 +47,14 @@ export const tablerIconAssets = {
   markdown,
   menu,
   microphone,
+  pencil,
   "player-play": playerPlay,
   presentation,
   quote,
   sparkles,
+  star,
   user,
+  video,
   x,
 } as const;
 

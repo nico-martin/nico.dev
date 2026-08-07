@@ -64,8 +64,142 @@ export interface AboutResponse {
   history: WpHistoryEntry[];
 }
 
-export async function wpApiGet<Response>(path: string): Promise<Response> {
+export interface ApiImageSize {
+  url: string;
+  width: number;
+  height: number;
+}
+
+export interface ApiImage {
+  placeholder: string;
+  alt: string;
+  title: string;
+  sizes: {
+    page: ApiImageSize;
+    large: ApiImageSize;
+    medium: ApiImageSize;
+    small: ApiImageSize;
+  };
+}
+
+export interface WhatsUpEntryBase {
+  title: string;
+  description: string;
+  date: string;
+}
+
+export interface WhatsUpProject extends WhatsUpEntryBase {
+  type: "project";
+  image: ApiImage | null;
+  githubUrl: string | null;
+  appUrl: string | null;
+  stars: string;
+}
+
+export interface WhatsUpPodcast extends WhatsUpEntryBase {
+  type: "podcast";
+  image: ApiImage | null;
+  podcastName: string;
+  link: string;
+}
+
+export interface WhatsUpBlogPost extends WhatsUpEntryBase {
+  type: "blogpost";
+  publisher: string;
+  summary: string;
+  link: string;
+}
+
+export interface WhatsUpVideo extends WhatsUpEntryBase {
+  type: "video";
+  image: ApiImage | null;
+  youtubeUrl: string;
+}
+
+export interface WhatsUpInstagramPost extends WhatsUpEntryBase {
+  type: "instagram";
+  id: string;
+  publishedAt: string;
+  link: string | null;
+  mediaType: "image" | "video" | "carousel_album";
+  image: {
+    url: string;
+  };
+}
+
+export type WhatsUpEntry =
+  | WhatsUpProject
+  | WhatsUpPodcast
+  | WhatsUpBlogPost
+  | WhatsUpVideo
+  | WhatsUpInstagramPost;
+
+export interface WhatsUpResponse {
+  entries: WhatsUpEntry[];
+}
+
+export interface WhatsUpParams {
+  limit?: number;
+  offset?: number;
+}
+
+export interface CvContact {
+  name: string;
+  dob: string;
+  address: string;
+  email: string;
+  phone: string;
+  web: string;
+  twitter: string;
+  linkedin: string;
+  github: string;
+  image: string;
+}
+
+export interface CvProfessionalEntry {
+  from: string;
+  to: string;
+  title_de: string;
+  title_en: string;
+  desc_de: string;
+  desc_en: string;
+}
+
+export interface CvEducationEntry {
+  from: string;
+  to: string;
+  title_de: string;
+  title_en: string;
+}
+
+export interface CvLanguageEntry {
+  lang_de: string;
+  desc_de: string;
+  lang_en: string;
+  desc_en: string;
+}
+
+export interface CvResponse {
+  contact: CvContact;
+  community: {
+    de: string;
+    en: string;
+  };
+  professional: CvProfessionalEntry[];
+  education: CvEducationEntry[];
+  language: CvLanguageEntry[];
+}
+
+export async function wpApiGet<Response, Params extends object = object>(
+  path: string,
+  params?: Params,
+): Promise<Response> {
   const url = new URL(path.replace(/^\//, ""), wpApiUrl);
+
+  for (const [key, value] of Object.entries(params ?? {})) {
+    if (value !== undefined) url.searchParams.set(key, String(value));
+  }
+
   const response = await fetch(url, { cache: "force-cache" });
 
   if (!response.ok) {

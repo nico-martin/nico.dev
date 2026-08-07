@@ -11,8 +11,8 @@ import {
   type TalksResponse,
   wpApiGet,
 } from "@/lib/wp-api";
-import { Blob, Button, Eyebrow } from "@/theme";
-import stage from "../../../new-design/assets/nico-on-stage-codetalks.jpg";
+import { Blob, Eyebrow } from "@/theme";
+import stage from "../../assets/nico-on-stage-codetalks.jpg";
 
 export default async function SpeakingPage() {
   const [{ talks, videos }, { conferences, cities }] = await Promise.all([
@@ -26,7 +26,7 @@ export default async function SpeakingPage() {
       <PageHeader
         eyebrow="Speaking"
         title="Conferences, meetups, live demos"
-        lead="Over the past few years I've had the pleasure of speaking at many different conferences and meetups. And I'm always happy about new opportunities as well: mail@nico.dev"
+        lead="Over the past few years, I've had the pleasure of speaking at conferences and meetups around the world, connecting with incredible developer communities along the way."
         media={
           <Blob className="size-[min(23.75rem,82vw)] bg-yellow">
             <Image
@@ -57,7 +57,7 @@ export default async function SpeakingPage() {
         </p>
         <ConferenceCarousel conferences={conferences} />
       </section>
-      <section className="wrap section">
+      <section className="wrap section mb-24">
         <div className="grid items-center gap-12 lg:grid-cols-[21rem_1fr]">
           <div>
             <Eyebrow>Where</Eyebrow>

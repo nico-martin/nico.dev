@@ -1,10 +1,8 @@
-import Image from "next/image";
-
 import Doodles from "@/components/Doodles";
+import Portrait from "@/components/Portrait";
 import { type AboutResponse, wpApiGet } from "@/lib/wp-api";
-import { Badge, Blob, Button, Card, Eyebrow, IconTile, ListRow } from "@/theme";
+import { Badge, Button, Card, Eyebrow, IconTile, ListRow } from "@/theme";
 import type { TablerIconName } from "@/theme";
-import portrait from "../../../new-design/assets/nico-portrait.jpg";
 
 const historyStyles = {
   community: {
@@ -57,7 +55,7 @@ export default async function AboutPage() {
               </p>
             </div>
             <div className="mt-7 flex flex-wrap gap-4">
-              <Button href="https://nico.dev/cv" chevron>
+              <Button href="/cv" chevron>
                 Read the CV
               </Button>
               <Button href="mailto:mail@nico.dev" secondary>
@@ -65,17 +63,7 @@ export default async function AboutPage() {
               </Button>
             </div>
           </div>
-          <div className="grid place-items-center">
-            <Blob className="size-[min(22.5rem,82vw)]">
-              <Image
-                src={portrait}
-                alt="Nico Martin"
-                fill
-                className="[transform-origin:50%_0] scale-[1.6] object-cover object-top"
-                sizes="360px"
-              />
-            </Blob>
-          </div>
+          <Portrait />
         </div>
       </section>
       <section className="wrap section">
@@ -96,9 +84,9 @@ export default async function AboutPage() {
               "yellow",
             ],
             [
-              "bluetooth",
-              "Browser hardware APIs",
-              "WebBluetooth, WebUSB, File System Access. If the browser can talk to a device, I have probably tried it.",
+              "bolt",
+              "Progressive web apps",
+              "Installable, offline-capable web apps that feel at home on any device, powered by service workers and modern browser APIs.",
               "pink",
             ],
           ].map(([icon, title, text, tone]) => (
@@ -154,7 +142,7 @@ export default async function AboutPage() {
             </p>
           </div>
           <Button
-            href="https://nico.dev/cv"
+            href="/cv"
             secondary
             chevron
             className="shadow-[6px_6px_0_var(--color-ink)]"

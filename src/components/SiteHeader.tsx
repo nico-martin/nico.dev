@@ -12,7 +12,7 @@ const NAVIGATION = [
   ["About", "/about/"],
   ["Speaking", "/speaking/"],
   ["What's up", "/whats-up/"],
-  ["Invite me", "/invite/"],
+  //["Invite me", "/invite/"],
 ] as const;
 
 const accents = [

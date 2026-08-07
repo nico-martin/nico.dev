@@ -80,6 +80,7 @@ export default function EventBand({
               key={`${item.event}-${item.date}`}
               href={item.href}
               className="event-row"
+              target="_blank"
             >
               <span className={`font-mono text-xs ${dateColors[item.accent]}`}>
                 {item.date}
@@ -101,7 +102,7 @@ export default function EventBand({
             className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
           >
             <span className="inline-flex items-center gap-2">
-              All talks, slides and recordings
+              All talks and recordings
               <TablerIcon icon="chevrons-right" className="size-4" />
             </span>
           </Link>
