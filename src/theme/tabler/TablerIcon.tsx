@@ -6,6 +6,7 @@ import bluetooth from "./outline/bluetooth.svg";
 import bolt from "./outline/bolt.svg";
 import brain from "./outline/brain.svg";
 import brandGithub from "./outline/brand-github.svg";
+import brandX from "./outline/brand-x.svg";
 import brandInstagram from "./outline/brand-instagram.svg";
 import brandLinkedin from "./outline/brand-linkedin.svg";
 import brandYoutube from "./outline/brand-youtube.svg";
@@ -13,6 +14,7 @@ import car from "./outline/car.svg";
 import check from "./outline/check.svg";
 import chevronsRight from "./outline/chevrons-right.svg";
 import code from "./outline/code.svg";
+import download from "./outline/download.svg";
 import fileText from "./outline/file-text.svg";
 import mail from "./outline/mail.svg";
 import markdown from "./outline/markdown.svg";
@@ -38,10 +40,12 @@ export const tablerIconAssets = {
   "brand-instagram": brandInstagram,
   "brand-linkedin": brandLinkedin,
   "brand-youtube": brandYoutube,
+  "brand-x": brandX,
   car,
   check,
   "chevrons-right": chevronsRight,
   code,
+  download,
   "file-text": fileText,
   mail,
   markdown,

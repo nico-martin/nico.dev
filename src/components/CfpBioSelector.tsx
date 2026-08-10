@@ -12,7 +12,7 @@ interface CfpBioSelectorProps {
 }
 
 export default function CfpBioSelector({ bios }: CfpBioSelectorProps) {
-  const [bioIndex, setBioIndex] = useState(0);
+  const [bioIndex, setBioIndex] = useState(2);
   const bio = bios[bioIndex];
 
   if (!bio) return <Card>No biographies are currently available.</Card>;

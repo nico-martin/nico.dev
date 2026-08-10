@@ -2,11 +2,12 @@ type InviteFact = readonly [label: string, value: string | readonly string[]];
 
 interface InviteFactsProps {
   facts: readonly InviteFact[];
+  id?: string;
 }
 
-export default function InviteFacts({ facts }: InviteFactsProps) {
+export default function InviteFacts({ facts, id }: InviteFactsProps) {
   return (
-    <section className="dark-band">
+    <section id={id} className="dark-band">
       <div className="wrap">
         <div className="mb-12">
           <span className="font-mono text-xs tracking-[0.16em] text-brand uppercase">

@@ -1,44 +1,66 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
-import CopyTextButton from "@/components/CopyTextButton";
+import InviteBioSelector from "@/components/InviteBioSelector";
 import InviteFacts from "@/components/InviteFacts";
+import OrganizerEmailTemplate from "@/components/OrganizerEmailTemplate";
 import PageHeader from "@/components/PageHeader";
+import PressPhotoSelector from "@/components/PressPhotoSelector";
+import StagePhoto from "@/components/StagePhoto";
 import TalkSelector from "@/components/TalkSelector";
-import { type CfpResponse, wpApiGet } from "@/lib/wp-api";
-import { Card, Eyebrow, TablerIcon } from "@/theme";
+import { getPressImages } from "@/lib/press-images";
+import {
+  type AboutResponse,
+  type CfpResponse,
+  type TalksResponse,
+  wpApiGet,
+} from "@/lib/wp-api";
+import { Button, Card, Eyebrow, TablerIcon } from "@/theme";
+
+export const metadata: Metadata = {
+  title: "Invite Nico Martin to speak",
+  description:
+    "Talks, formats, logistics, reviews and speaker material for inviting Nico Martin to your conference or meetup.",
+};
 
 const needs = [
-  "A stage and a beamer that accepts HDMI",
-  "Internet is nice, not required (I need to know it upfront)",
+  "A projector or screen with HDMI input",
+  "Venue Wi-Fi is optional; please confirm availability in advance",
   "I need to present from my own device",
   "I might bring additional hardware devices :)",
 ];
 
 const facts = [
-  ["Formats", "Conference talk, keynote"],
+  ["Formats", "Conference talks, keynotes, panels, podcasts, and meetups"],
+  ["Delivery", "In person only. I don't do remote talks"],
   ["Length", "20 to 45 minutes, agreed with you up front"],
   ["Languages", "English or German"],
   ["Travelling from", "Thun, Switzerland"],
-  ["Slides", "Published openly on slides.nico.dev after the event"],
+  ["Slides", "Available online after the talk"],
   ["Recording", "Always welcome"],
-  ["requirements", needs],
+  ["Requirements", needs],
 ] as const;
 
 export default async function InvitePage() {
-  const cfp = await wpApiGet<CfpResponse>("nico/v1/cfp");
+  const [cfp, about, talks, pressImages] = await Promise.all([
+    wpApiGet<CfpResponse>("nico/v1/cfp"),
+    wpApiGet<AboutResponse>("nico/v2/about"),
+    wpApiGet<TalksResponse>("nico/v2/talks"),
+    getPressImages(),
+  ]);
   const activePapers = cfp.papers.filter((paper) => paper.isActive);
-  const speakerBio = cfp.about[0];
+  const organizerQuotes = talks.organizerQuotes ?? [];
 
   return (
     <>
       <PageHeader
         eyebrow="Invite me"
-        title="Everything you need to book me"
-        lead="Topics, formats, logistics and what I need on site. If something is missing, just ask: mail@nico.dev"
+        title="Find the right talk for your audience"
+        lead="Practical browser AI, explained clearly and without the hype."
         buttons={[
           {
-            href: "mailto:mail@nico.dev",
-            children: "mail@nico.dev",
+            href: "#invitation",
+            children: "Draft an invitation",
             chevron: true,
           },
           {
@@ -47,45 +69,120 @@ export default async function InvitePage() {
             secondary: true,
           },
         ]}
+        media={<StagePhoto />}
       />
-      <section className="wrap section">
+      <nav
+        aria-label="On this page"
+        className="wrap flex flex-wrap gap-x-7 gap-y-3 border-y border-ink/10 py-4 font-mono text-xs"
+      >
+        <span className="text-muted">Jump to</span>
+        <a href="#talks">Talks</a>
+        <a href="#logistics">Logistics</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#speaker-kit">Speaker kit</a>
+      </nav>
+      <section className="wrap pt-12 lg:pt-16">
+        <Eyebrow>Working with me</Eyebrow>
+        <h2 className="section-title mt-5">Built for curious audiences</h2>
+        <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)]">
+          <div className="space-y-5 text-lg">
+            <p>
+              I&apos;m Nico, an open-source machine learning engineer at Hugging
+              Face, a maintainer of Transformers.js, and a Google Developer
+              Expert in AI and Web Technologies. After more than a decade of
+              building for the web, I now explore what happens when modern AI
+              meets the browser.
+            </p>
+            <p>
+              I&apos;ve spoken at developer conferences across Europe since
+              2018. I match the technical depth to the room, explain the
+              trade-offs without the hype, and leave people with ideas they can
+              actually try.
+            </p>
+            <Button href="#speaker-kit" secondary small chevron>
+              Need copy for your programme?
+            </Button>
+          </div>
+          <Card shadow="yellow">
+            <h3 className="text-2xl">What organisers can expect</h3>
+            <div className="mt-5 border-t border-ink/15 py-4">
+              <strong className="font-heading text-ink">Audience first</strong>
+              <p className="mt-1 mb-0">
+                I adapt the focus, depth, and length to your event and the
+                people in the room.
+              </p>
+            </div>
+            <div className="border-t border-ink/15 py-4">
+              <strong className="font-heading text-ink">
+                Live and practical
+              </strong>
+              <p className="mt-1 mb-0">
+                Working code, clear takeaways, and demos that serve the story.
+              </p>
+            </div>
+            <div className="border-t border-ink/15 pt-4">
+              <strong className="font-heading text-ink">
+                Straightforward planning
+              </strong>
+              <p className="mt-1 mb-0">
+                Clear communication before the event, simple requirements, and
+                no surprises for your production team.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </section>
+      <section id="talks" className="wrap pt-16 lg:pt-20">
         <div>
           <Eyebrow>The talks</Eyebrow>
           <h2 className="section-title mt-5">What I can bring to your stage</h2>
           <p className="mt-3 max-w-xl">
-            Each one comes with a live demo that runs entirely in the browser.
-            English or German, 20 to 45 minutes.
+            English or German, 20 to 45 minutes, adapted to your format and
+            audience.
           </p>
         </div>
         <div className="mt-7">
           <TalkSelector papers={activePapers} />
         </div>
       </section>
-      <InviteFacts facts={facts} />
-      {/*<section className="wrap section">
+      <section id="reviews" className="wrap section">
         <Eyebrow>Kind words</Eyebrow>
         <h2 className="section-title mt-5">What organisers said</h2>
-        <p className="mt-3 mb-8 max-w-xl">
-          Two placeholder quotes - send me the real ones and I&apos;ll drop them
-          in.
-        </p>
-        <div className="grid gap-7 md:grid-cols-2">
-          {[
-            "Placeholder - send me a line from an organiser you worked with and I'll set it here.",
-            "Placeholder - a second quote works well next to the first.",
-          ].map((quote, index) => (
-            <Card key={quote} shadow={index === 0 ? "teal" : "peri"}>
+        <div className="mt-8 grid gap-7 md:grid-cols-2">
+          {organizerQuotes.map((quote, index) => (
+            <Card
+              key={`${quote.organizer}-${quote.conference}`}
+              shadow={index % 2 === 0 ? "teal" : "peri"}
+              className="flex h-full flex-col"
+            >
               <TablerIcon icon="quote" className="size-10 text-brand" />
-              <p className="lead mt-3">{quote}</p>
-              <strong className="font-heading text-ink">Organiser name</strong>
-              <div className="font-mono text-xs text-muted">
-                Conference, year
+              <p className="lead mt-3">{quote.text}</p>
+              <div className="mt-auto flex items-end justify-between gap-5 pt-5">
+                <div>
+                  <strong className="font-heading text-ink">
+                    {quote.organizer}
+                  </strong>
+                  <div className="font-mono text-xs text-muted">
+                    {quote.conference}
+                  </div>
+                </div>
+                {quote.logo && (
+                  <Image
+                    src={quote.logo.url}
+                    width={quote.logo.width}
+                    height={quote.logo.height}
+                    alt={quote.logo.alt || `${quote.conference} logo`}
+                    className="max-h-14 max-w-32 object-contain"
+                  />
+                )}
               </div>
             </Card>
           ))}
         </div>
-      </section>*/}
-      <section className="wrap section mt-24 mb-24 pt-0">
+      </section>
+      <InviteFacts id="logistics" facts={facts} />
+      <OrganizerEmailTemplate />
+      <section id="speaker-kit" className="wrap section mt-24 mb-24 pt-0">
         <Eyebrow>Speaker kit</Eyebrow>
         <h2 className="section-title mt-5">Bio, pictures and links</h2>
         <p className="mt-3 max-w-2xl">
@@ -93,76 +190,13 @@ export default async function InvitePage() {
           announcement.
         </p>
         <div className="mt-8 grid items-start gap-7 lg:grid-cols-2">
-          <Card shadow="pink">
-            <h3 className="text-2xl">Bio</h3>
-            <p className="mt-2">Copy this straight into your programme:</p>
-            {speakerBio && (
-              <div className="mt-5 rounded-tile bg-surface-muted p-5">
-                <p className="whitespace-pre-line">{speakerBio.text}</p>
-                <div className="mt-3 text-right">
-                  <CopyTextButton
-                    text={speakerBio.text}
-                    label="Copy bio"
-                    quiet
-                  />
-                </div>
-              </div>
-            )}
-          </Card>
+          <InviteBioSelector
+            bios={about.bio}
+            links={cfp.links.filter((link) => link.title !== "Talks")}
+          />
           <Card shadow="peri">
-            <h3 className="text-2xl">Pictures and links</h3>
-            <h4 className="mt-6 font-heading text-lg text-ink">Press photos</h4>
-            <div className="mt-3 grid gap-3 sm:grid-cols-3">
-              {cfp.portrait.map((portrait, index) => (
-                <div
-                  key={portrait}
-                  className="overflow-hidden rounded-tile bg-surface-muted"
-                >
-                  <a
-                    href={portrait}
-                    target="_blank"
-                    className="relative block aspect-4/5 overflow-hidden bg-ink hover:no-underline"
-                  >
-                    <Image
-                      src={portrait}
-                      alt={`Nico Martin portrait ${index + 1}`}
-                      fill
-                      className="object-cover object-top transition-transform hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, 200px"
-                    />
-                  </a>
-                  <div className="flex items-center justify-between gap-2 p-3 font-mono text-xs">
-                    <a href={portrait} target="_blank">
-                      Photo {index + 1}
-                    </a>
-                    <CopyTextButton text={portrait} label="Copy" quiet />
-                  </div>
-                </div>
-              ))}
-            </div>
-            <h4 className="mt-7 font-heading text-lg text-ink">
-              Profile links
-            </h4>
-            <div className="mt-2 grid gap-x-15 sm:grid-cols-2">
-              {cfp.links.map((link) => (
-                <div
-                  key={link.title}
-                  className="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-ink/10 py-3 font-mono text-xs"
-                >
-                  <a
-                    href={link.url}
-                    className="inline-flex min-w-0 items-center gap-1"
-                  >
-                    <span className="truncate">{link.title}</span>
-                    <TablerIcon
-                      icon="chevrons-right"
-                      className="size-4 shrink-0"
-                    />
-                  </a>
-                  <CopyTextButton text={link.url} label="Copy" quiet />
-                </div>
-              ))}
-            </div>
+            <h3 className="text-2xl">Press photos</h3>
+            <PressPhotoSelector images={pressImages} />
           </Card>
         </div>
       </section>

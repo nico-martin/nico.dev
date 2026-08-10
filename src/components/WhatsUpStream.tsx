@@ -1,13 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
-import type {
-  ApiImage,
-  WhatsUpEntry,
-  WhatsUpInstagramPost,
-} from "@/lib/wp-api";
+import type { ApiImage, WhatsUpEntry } from "@/lib/wp-api";
 import { Badge, Card, TablerIcon } from "@/theme";
 import cn from "@/utils/classnames";
 
@@ -84,31 +79,37 @@ function EntryBadge({ type }: Pick<WhatsUpEntry, "type">) {
 
 function ApiMedia({ image, alt }: { image: ApiImage; alt: string }) {
   const source = image.sizes.large;
-
-  return (
-    <Image
-      src={source.url}
-      width={source.width}
-      height={source.height}
-      alt={image.alt || alt}
-      placeholder={image.placeholder ? "blur" : "empty"}
-      blurDataURL={image.placeholder || undefined}
-      className="block h-auto w-full"
-      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25rem"
-    />
+  const sizesByWidth = new Map(
+    Object.values(image.sizes).map((size) => [size.width, size]),
   );
-}
+  const srcSet = [...sizesByWidth.values()]
+    .sort((first, second) => first.width - second.width)
+    .map((size) => `${size.url} ${size.width}w`)
+    .join(", ");
 
-function InstagramMedia({ entry }: { entry: WhatsUpInstagramPost }) {
   return (
-    // Instagram CDN hosts vary per post, so this image cannot use a fixed Next host allowlist.
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={entry.image.url}
-      alt={entry.title}
-      loading="lazy"
-      className="block h-auto w-full"
-    />
+    <div
+      className="bg-cover bg-center"
+      style={
+        image.placeholder
+          ? { backgroundImage: `url("${image.placeholder}")` }
+          : undefined
+      }
+    >
+      {/* The static export relies on the API-generated responsive variants. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={source.url}
+        srcSet={srcSet}
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25rem"
+        width={source.width}
+        height={source.height}
+        alt={image.alt || alt}
+        loading="lazy"
+        decoding="async"
+        className="block h-auto w-full"
+      />
+    </div>
   );
 }
 
@@ -138,9 +139,7 @@ function EntryMedia({ entry }: { entry: WhatsUpEntry }) {
 
   return (
     <div className="relative overflow-hidden border-b-3 border-ink bg-surface-muted">
-      {entry.type === "instagram" ? (
-        <InstagramMedia entry={entry} />
-      ) : entry.image ? (
+      {entry.image?.sizes?.large ? (
         <ApiMedia image={entry.image} alt={entry.title} />
       ) : (
         <MediaPlaceholder label={`${typeStyles[entry.type].label} image`} />

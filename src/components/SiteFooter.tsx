@@ -35,7 +35,15 @@ export default function SiteFooter() {
             Elsewhere
           </span>
           <a
+            href="https://x.com/nicodotdev"
+            target="_blank"
+            className="flex items-center gap-2 font-mono text-sm text-white"
+          >
+            <TablerIcon icon="brand-x" className="size-4" />X
+          </a>
+          <a
             href="https://github.com/nico-martin"
+            target="_blank"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-github" className="size-4" />
@@ -43,6 +51,7 @@ export default function SiteFooter() {
           </a>
           <a
             href="https://www.linkedin.com/in/nicodotdev/"
+            target="_blank"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-linkedin" className="size-4" />
@@ -50,6 +59,7 @@ export default function SiteFooter() {
           </a>
           <a
             href="https://www.youtube.com/@nicodotdev"
+            target="_blank"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-youtube" className="size-4" />
@@ -57,6 +67,7 @@ export default function SiteFooter() {
           </a>
           <a
             href="https://www.instagram.com/nicodotdev/"
+            target="_blank"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-instagram" className="size-4" />

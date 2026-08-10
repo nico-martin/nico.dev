@@ -5,6 +5,8 @@ const configuredWpApiUrl =
 const wpApiUrl = configuredWpApiUrl.endsWith("/")
   ? configuredWpApiUrl
   : `${configuredWpApiUrl}/`;
+const apiBuildCacheKey =
+  process.env.WP_API_CACHE_KEY ?? Date.now().toString(36);
 
 export interface WpTalk {
   title: string;
@@ -23,9 +25,22 @@ export interface WpVideo {
   title: string;
 }
 
+export interface WpOrganizerQuote {
+  text: string;
+  organizer: string;
+  conference: string;
+  logo: {
+    url: string;
+    width: number;
+    height: number;
+    alt: string;
+  } | null;
+}
+
 export interface TalksResponse {
   talks: WpTalk[];
   videos: WpVideo[];
+  organizerQuotes: WpOrganizerQuote[];
 }
 
 export interface WpConference {
@@ -62,6 +77,7 @@ export interface WpHistoryEntry {
 
 export interface AboutResponse {
   history: WpHistoryEntry[];
+  bio: CfpTextVariant[];
 }
 
 export interface ApiImageSize {
@@ -122,9 +138,7 @@ export interface WhatsUpInstagramPost extends WhatsUpEntryBase {
   publishedAt: string;
   link: string | null;
   mediaType: "image" | "video" | "carousel_album";
-  image: {
-    url: string;
-  };
+  image: ApiImage;
 }
 
 export type WhatsUpEntry =
@@ -199,6 +213,7 @@ export interface CfpPaper {
   title: string;
   isActive: boolean;
   abstract: string;
+  idealAudience: string;
   tags: string[];
   content: CfpTextVariant[];
   notes: string;
@@ -209,11 +224,21 @@ export interface CfpLink {
   url: string;
 }
 
+export interface CfpPortrait {
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+  label: string;
+  orientation: "portrait" | "landscape" | "square";
+  preferred: boolean;
+  credit: string;
+}
+
 export interface CfpResponse {
   papers: CfpPaper[];
-  about: CfpTextVariant[];
   links: CfpLink[];
-  portrait: string[];
+  portrait: CfpPortrait[];
 }
 
 export async function wpApiGet<Response, Params extends object = object>(
@@ -221,6 +246,9 @@ export async function wpApiGet<Response, Params extends object = object>(
   params?: Params,
 ): Promise<Response> {
   const url = new URL(path.replace(/^\//, ""), wpApiUrl);
+  // Static exports require cacheable fetches, so vary the URL once per build
+  // instead of reusing Next's persisted response from an earlier build.
+  url.searchParams.set("_build", apiBuildCacheKey);
 
   for (const [key, value] of Object.entries(params ?? {})) {
     if (value !== undefined) url.searchParams.set(key, String(value));

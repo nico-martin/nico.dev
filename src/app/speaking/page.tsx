@@ -1,9 +1,8 @@
-import Image from "next/image";
-
 import ConferenceCarousel from "@/components/ConferenceCarousel";
 import EventBand from "@/components/EventBand";
 import PageHeader from "@/components/PageHeader";
 import RecordingsCarousel from "@/components/RecordingsCarousel";
+import StagePhoto from "@/components/StagePhoto";
 import TalkMap from "@/components/TalkMap";
 import { talksToEvents } from "@/lib/talks";
 import {
@@ -11,8 +10,7 @@ import {
   type TalksResponse,
   wpApiGet,
 } from "@/lib/wp-api";
-import { Blob, Button, Eyebrow } from "@/theme";
-import stage from "../../assets/nico-on-stage-codetalks.jpg";
+import { Button, Eyebrow } from "@/theme";
 
 export default async function SpeakingPage() {
   const [{ talks, videos }, { conferences, cities }] = await Promise.all([
@@ -28,18 +26,7 @@ export default async function SpeakingPage() {
         title="Conferences, meetups, live demos"
         lead="Over the past few years, I've had the pleasure of speaking at conferences and meetups around the world, connecting with incredible developer communities along the way."
         buttons={[{ href: "/invite/", children: "Invite me", chevron: true }]}
-        media={
-          <Blob className="size-[min(23.75rem,82vw)] bg-yellow">
-            <Image
-              src={stage}
-              alt="Nico Martin on stage at code.talks Hamburg"
-              fill
-              priority
-              className="object-cover object-[58%_30%]"
-              sizes="380px"
-            />
-          </Blob>
-        }
+        media={<StagePhoto />}
       />
       <RecordingsCarousel videos={videos} />
       <EventBand

@@ -36,6 +36,14 @@ export default function TalkSelector({ papers }: TalkSelectorProps) {
                 )}
                 <h3 className="mt-3 text-xl">{paper.title}</h3>
                 <p className="mt-2 mb-0">{paper.abstract}</p>
+                {paper.idealAudience && (
+                  <div className="mt-5 border-t border-ink/10 pt-4">
+                    <span className="font-mono text-[0.7rem] tracking-[0.1em] text-muted uppercase">
+                      Ideal audience
+                    </span>
+                    <p className="mt-1 mb-0 text-sm">{paper.idealAudience}</p>
+                  </div>
+                )}
               </div>
             </div>
           </Card>
