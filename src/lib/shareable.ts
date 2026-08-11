@@ -16,42 +16,42 @@ export const shareablePages = {
   "/about/": {
     eyebrow: "About me",
     title: "Hello, my name is Nico.",
-    metadataTitle: "About - Nico Martin",
+    metadataTitle: "About",
     metadataDescription:
       "Open source machine learning engineer, Google Developer Expert, speaker and WebML enthusiast from Switzerland.",
   },
   "/speaking/": {
     eyebrow: "Speaking",
     title: "Conferences, meetups, live demos",
-    metadataTitle: "Speaking - Nico Martin",
+    metadataTitle: "Speaking",
     metadataDescription:
       "Conference talks about browser AI, WebML and modern web technologies, complete with practical live demos.",
   },
   "/whats-up/": {
     eyebrow: "What's up",
     title: "Things I build, write and post",
-    metadataTitle: "What's up - Nico Martin",
+    metadataTitle: "What's up",
     metadataDescription:
       "Projects, articles, videos, pictures and podcast appearances from Nico Martin.",
   },
   "/invite/": {
     eyebrow: "Invite me",
     title: "Find the right talk for your audience",
-    metadataTitle: "Invite me to speak - Nico Martin",
+    metadataTitle: "Invite me to speak",
     metadataDescription:
       "Talks, formats, logistics, reviews and speaker material for inviting Nico Martin to your conference or meetup.",
   },
   "/cfp/": {
     eyebrow: "Speaker material",
     title: "Everything for your call for papers",
-    metadataTitle: "Call for papers - Nico Martin",
+    metadataTitle: "Call for papers",
     metadataDescription:
       "Talk abstracts, speaker biographies, links and portrait photos for conference organisers.",
   },
   "/cv/": {
     eyebrow: "Experience",
     title: "Curriculum vitae",
-    metadataTitle: "Curriculum vitae - Nico Martin",
+    metadataTitle: "Curriculum vitae",
     metadataDescription:
       "Professional experience, education and community work of Nicolas Martin.",
   },
