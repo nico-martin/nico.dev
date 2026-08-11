@@ -254,7 +254,10 @@ export async function wpApiGet<Response, Params extends object = object>(
     if (value !== undefined) url.searchParams.set(key, String(value));
   }
 
-  const response = await fetch(url, { cache: "force-cache" });
+  const response = await fetch(url, {
+    cache: "force-cache",
+    headers: { Accept: "application/json" },
+  });
 
   if (!response.ok) {
     throw new Error(

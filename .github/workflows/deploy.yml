@@ -36,6 +36,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: ./beta.nico.dev/
+          local-dir: ./out/
+          server-dir: ./
           dangerous-clean-slate: false
