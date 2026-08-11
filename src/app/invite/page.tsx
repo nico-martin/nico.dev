@@ -9,6 +9,7 @@ import PressPhotoSelector from "@/components/PressPhotoSelector";
 import StagePhoto from "@/components/StagePhoto";
 import TalkSelector from "@/components/TalkSelector";
 import { getPressImages } from "@/lib/press-images";
+import { getPageMetadata } from "@/lib/shareable";
 import {
   type AboutResponse,
   type CfpResponse,
@@ -17,11 +18,7 @@ import {
 } from "@/lib/wp-api";
 import { Button, Card, Eyebrow, TablerIcon } from "@/theme";
 
-export const metadata: Metadata = {
-  title: "Invite Nico Martin to speak",
-  description:
-    "Talks, formats, logistics, reviews and speaker material for inviting Nico Martin to your conference or meetup.",
-};
+export const metadata: Metadata = getPageMetadata("/invite/");
 
 const needs = [
   "A projector or screen with HDMI input",
@@ -195,7 +192,7 @@ export default async function InvitePage() {
             links={cfp.links.filter((link) => link.title !== "Talks")}
           />
           <Card shadow="peri">
-            <h3 className="text-2xl">Press photos</h3>
+            <h3 className="text-2xl">Photos</h3>
             <PressPhotoSelector images={pressImages} />
           </Card>
         </div>

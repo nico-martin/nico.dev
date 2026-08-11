@@ -97,15 +97,26 @@ export default function EventBand({
           ))}
         </div>
         {showAll && (
-          <Link
-            href="/speaking/"
-            className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
-          >
-            <span className="inline-flex items-center gap-2">
-              All talks and recordings
-              <TablerIcon icon="chevrons-right" className="size-4" />
-            </span>
-          </Link>
+          <div className="flex flex-col items-start justify-between md:flex-row">
+            <Link
+              href="/speaking/"
+              className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
+            >
+              <span className="inline-flex items-center gap-2">
+                All talks and recordings
+                <TablerIcon icon="chevrons-right" className="size-4" />
+              </span>
+            </Link>
+            <Link
+              href="/invite/"
+              className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
+            >
+              <span className="inline-flex items-center gap-2">
+                Find a talk for your event
+                <TablerIcon icon="chevrons-right" className="size-4" />
+              </span>
+            </Link>
+          </div>
         )}
       </div>
     </section>

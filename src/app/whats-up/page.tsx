@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
+
 import PageHeader from "@/components/PageHeader";
 import WhatsUpStream from "@/components/WhatsUpStream";
+import { getPageMetadata } from "@/lib/shareable";
 import { type WhatsUpResponse, wpApiGet } from "@/lib/wp-api";
+
+export const metadata: Metadata = getPageMetadata("/whats-up/");
 
 export default async function WhatsUpPage() {
   const { entries } = await wpApiGet<WhatsUpResponse>("nico/v2/whats-up");

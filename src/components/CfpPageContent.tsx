@@ -3,13 +3,15 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import type { PressImage } from "@/lib/press-images";
 import type { AboutResponse, CfpPortrait, CfpResponse } from "@/lib/wp-api";
-import { Badge, Blob, Card, Eyebrow } from "@/theme";
+import { Blob, Card, Eyebrow } from "@/theme";
 
 import CfpBioSelector from "./CfpBioSelector";
 import CfpTalkSelector from "./CfpTalkSelector";
 import CopyTextButton from "./CopyTextButton";
 import PageHeader from "./PageHeader";
+import PressPhotoSelector from "./PressPhotoSelector";
 
 function CfpHeader({ portrait }: { portrait?: CfpPortrait }) {
   return (
@@ -43,7 +45,11 @@ function CfpHeader({ portrait }: { portrait?: CfpPortrait }) {
   );
 }
 
-export default function CfpPageContent() {
+export default function CfpPageContent({
+  pressImages,
+}: {
+  pressImages: PressImage[];
+}) {
   const [cfp, setCfp] = useState<CfpResponse | null>(null);
   const [bios, setBios] = useState<AboutResponse["bio"] | null>(null);
   const [error, setError] = useState(false);
@@ -166,51 +172,7 @@ export default function CfpPageContent() {
           <div>
             <Eyebrow>Press photos</Eyebrow>
             <h2 className="mt-5 text-2xl">Portraits to download</h2>
-            <div className="mt-6 grid gap-5 sm:grid-cols-3">
-              {cfp.portrait.map((portrait, index) => (
-                <div
-                  key={portrait.url}
-                  className="group overflow-hidden rounded-card border-3 border-ink bg-white shadow-[7px_7px_0_var(--color-brand-tint-strong)] hover:no-underline"
-                >
-                  <a href={portrait.url} className="block hover:no-underline">
-                    <div className="relative aspect-[4/5] overflow-hidden bg-ink">
-                      <Image
-                        src={portrait.url}
-                        alt={
-                          portrait.alt || `Nico Martin portrait ${index + 1}`
-                        }
-                        fill
-                        className="object-cover object-top transition-transform group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, 220px"
-                      />
-                    </div>
-                  </a>
-                  <div className="grid gap-3 p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <a
-                        href={portrait.url}
-                        className="font-heading text-sm text-ink"
-                      >
-                        {portrait.label || `Photo ${index + 1}`}
-                      </a>
-                      {portrait.preferred && <Badge>Preferred</Badge>}
-                    </div>
-                    <div className="font-mono text-xs text-muted capitalize">
-                      {portrait.orientation} · {portrait.width} ×{" "}
-                      {portrait.height}
-                    </div>
-                    {portrait.credit && (
-                      <div className="font-mono text-xs text-muted">
-                        Credit: {portrait.credit}
-                      </div>
-                    )}
-                    <div>
-                      <CopyTextButton text={portrait.url} label="Copy link" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PressPhotoSelector images={pressImages} />
           </div>
         </div>
       </section>

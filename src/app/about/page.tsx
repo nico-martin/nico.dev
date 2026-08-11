@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
+
 import PageHeader from "@/components/PageHeader";
 import Portrait from "@/components/Portrait";
+import { getPageMetadata } from "@/lib/shareable";
 import { type AboutResponse, wpApiGet } from "@/lib/wp-api";
 import { Badge, Button, Card, Eyebrow, IconTile, ListRow } from "@/theme";
 import type { TablerIconName } from "@/theme";
+
+export const metadata: Metadata = getPageMetadata("/about/");
 
 const historyStyles = {
   community: {

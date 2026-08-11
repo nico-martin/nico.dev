@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import ConferenceCarousel from "@/components/ConferenceCarousel";
 import EventBand from "@/components/EventBand";
 import PageHeader from "@/components/PageHeader";
@@ -5,12 +7,15 @@ import RecordingsCarousel from "@/components/RecordingsCarousel";
 import StagePhoto from "@/components/StagePhoto";
 import TalkMap from "@/components/TalkMap";
 import { talksToEvents } from "@/lib/talks";
+import { getPageMetadata } from "@/lib/shareable";
 import {
   type ConferencesResponse,
   type TalksResponse,
   wpApiGet,
 } from "@/lib/wp-api";
 import { Button, Eyebrow } from "@/theme";
+
+export const metadata: Metadata = getPageMetadata("/speaking/");
 
 export default async function SpeakingPage() {
   const [{ talks, videos }, { conferences, cities }] = await Promise.all([

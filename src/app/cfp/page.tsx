@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 import CfpPageContent from "@/components/CfpPageContent";
+import { getPressImages } from "@/lib/press-images";
+import { getPageMetadata } from "@/lib/shareable";
 
-export const metadata: Metadata = {
-  title: "Call for papers",
-  description:
-    "Talk abstracts, speaker biographies, links and portrait photos for conference organisers.",
-};
+export const metadata: Metadata = getPageMetadata("/cfp/");
 
-export default function CfpPage() {
-  return <CfpPageContent />;
+export default async function CfpPage() {
+  const pressImages = await getPressImages();
+
+  return <CfpPageContent pressImages={pressImages} />;
 }
