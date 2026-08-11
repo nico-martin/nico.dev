@@ -68,7 +68,7 @@ export default function OrganizerEmailTemplate() {
   );
   const compensation = valueOrPlaceholder(
     details.compensation,
-    "is available / can be discussed",
+    "is available / is not offered / can be discussed",
   );
   const subject = `${conference} would love to invite you to speak`;
   const email = `Hi Nico,
@@ -304,12 +304,12 @@ ${name}`;
                 type="text"
                 value={details.compensation}
                 onChange={(event) => update("compensation", event.target.value)}
-                placeholder="is available / can be discussed"
+                placeholder="is available / is not offered / can be discussed"
                 style={{
                   width: inputWidth(
                     details.compensation,
-                    "is available / can be discussed",
-                    34,
+                    "is available / is not offered / can be discussed",
+                    42,
                   ),
                 }}
                 className={inputClassName}
