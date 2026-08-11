@@ -70,8 +70,7 @@ function getImageUrl(pageUrl: URL, format: "og" | "twitter") {
 export function getPageMetadata(pathname: ShareablePath): Metadata {
   const page = shareablePages[pathname];
   const pageUrl = new URL(pathname, SITE_URL);
-  const title =
-    pathname === "/" ? page.metadataTitle : `${page.metadataTitle} | nico.dev`;
+  const title = `${page.metadataTitle} | nico.dev`;
 
   return {
     metadataBase: new URL(SITE_URL),
