@@ -287,7 +287,7 @@ export default function PressPhotoSelector({
   }
 
   return (
-    <div className="mt-3 grid grid-cols-2 gap-3">
+    <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
       {images.map((image) => (
         <PressPhoto key={image.name} image={image} />
       ))}

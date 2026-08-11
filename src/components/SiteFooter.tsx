@@ -39,7 +39,7 @@ export default function SiteFooter() {
             target="_blank"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
-            <TablerIcon icon="brand-x" className="size-4" />X
+            <TablerIcon icon="brand-x" className="size-4" />x.com/nicodotdev
           </a>
           <a
             href="https://github.com/nico-martin"
@@ -47,7 +47,7 @@ export default function SiteFooter() {
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-github" className="size-4" />
-            GitHub
+            github.com/nico-martin
           </a>
           <a
             href="https://www.linkedin.com/in/nicodotdev/"
@@ -55,7 +55,7 @@ export default function SiteFooter() {
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-linkedin" className="size-4" />
-            LinkedIn
+            linkedin.com/in/nicodotdev/
           </a>
           <a
             href="https://www.youtube.com/@nicodotdev"
@@ -63,7 +63,7 @@ export default function SiteFooter() {
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-youtube" className="size-4" />
-            YouTube
+            youtube.com/@nicodotdev
           </a>
           <a
             href="https://www.instagram.com/nicodotdev/"
@@ -71,7 +71,7 @@ export default function SiteFooter() {
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
             <TablerIcon icon="brand-instagram" className="size-4" />
-            Instagram
+            instagram.com/nicodotdev/
           </a>
         </div>
         <div className="grid content-start gap-3">

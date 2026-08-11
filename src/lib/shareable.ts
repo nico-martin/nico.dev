@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const SHAREABLE_URL = "https://shareable.nico.dev";
 
-const SITE_URL = "https://nico.dev";
+const SITE_URL = "https://beta.nico.dev";
 const SHAREABLE_VERSION = "5";
 
 export const shareablePages = {
@@ -16,42 +16,42 @@ export const shareablePages = {
   "/about/": {
     eyebrow: "About me",
     title: "Hello, my name is Nico.",
-    metadataTitle: "About Nico Martin",
+    metadataTitle: "About - Nico Martin",
     metadataDescription:
       "Open source machine learning engineer, Google Developer Expert, speaker and WebML enthusiast from Switzerland.",
   },
   "/speaking/": {
     eyebrow: "Speaking",
     title: "Conferences, meetups, live demos",
-    metadataTitle: "Speaking",
+    metadataTitle: "Speaking - Nico Martin",
     metadataDescription:
       "Conference talks about browser AI, WebML and modern web technologies, complete with practical live demos.",
   },
   "/whats-up/": {
     eyebrow: "What's up",
     title: "Things I build, write and post",
-    metadataTitle: "What's up",
+    metadataTitle: "What's up - Nico Martin",
     metadataDescription:
       "Projects, articles, videos, pictures and podcast appearances from Nico Martin.",
   },
   "/invite/": {
     eyebrow: "Invite me",
     title: "Find the right talk for your audience",
-    metadataTitle: "Invite Nico Martin to speak",
+    metadataTitle: "Invite me to speak - Nico Martin",
     metadataDescription:
       "Talks, formats, logistics, reviews and speaker material for inviting Nico Martin to your conference or meetup.",
   },
   "/cfp/": {
     eyebrow: "Speaker material",
     title: "Everything for your call for papers",
-    metadataTitle: "Call for papers",
+    metadataTitle: "Call for papers - Nico Martin",
     metadataDescription:
       "Talk abstracts, speaker biographies, links and portrait photos for conference organisers.",
   },
   "/cv/": {
     eyebrow: "Experience",
     title: "Curriculum vitae",
-    metadataTitle: "Curriculum vitae",
+    metadataTitle: "Curriculum vitae - Nico Martin",
     metadataDescription:
       "Professional experience, education and community work of Nicolas Martin.",
   },
