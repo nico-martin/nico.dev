@@ -43,6 +43,14 @@ const introCards = [
   },
 ] as const;
 
+const socialLinks = [
+  ["X", "https://x.com/nicodotdev", "brand-x"],
+  ["LinkedIn", "https://www.linkedin.com/in/nicodotdev/", "brand-linkedin"],
+  ["GitHub", "https://github.com/nico-martin", "brand-github"],
+  ["YouTube", "https://www.youtube.com/@nicodotdev", "brand-youtube"],
+  ["Instagram", "https://www.instagram.com/nicodotdev/", "brand-instagram"],
+] as const;
+
 export default async function Home() {
   const [{ talks }, { entries }] = await Promise.all([
     wpApiGet<TalksResponse>("nico/v2/talks"),
@@ -67,6 +75,23 @@ export default async function Home() {
           </>
         }
         lead="I am an open source machine learning engineer with focus on WebML at Hugging Face and Google Developer Expert in AI and web technologies, from Switzerland."
+        actions={
+          <div className="mt-7 flex flex-wrap gap-3">
+            {socialLinks.map(([label, href, icon]) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                title={label}
+                className="inline-grid size-11 place-items-center rounded-full border-2 border-ink bg-white text-ink shadow-[3px_3px_0_var(--color-yellow)] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_var(--color-yellow)]"
+              >
+                <TablerIcon icon={icon} className="size-5" />
+              </a>
+            ))}
+          </div>
+        }
         media={<Portrait />}
         displayTitle
       />
