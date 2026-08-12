@@ -5,12 +5,6 @@
 
 <IfModule mod_headers.c>
   <FilesMatch "\.(?:avif|css|gif|ico|jpe?g|js|png|svg|webp|woff2)$">
-    Header set Cache-Control "public, max-age=604800"
+    Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-
-  <IfModule mod_setenvif.c>
-    # Next.js filenames under this directory are content-hashed.
-    SetEnvIf Request_URI "^/_next/static/" next_static_asset
-    Header set Cache-Control "public, max-age=31536000, immutable" env=next_static_asset
-  </IfModule>
 </IfModule>
