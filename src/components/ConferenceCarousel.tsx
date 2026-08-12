@@ -37,6 +37,7 @@ export default function ConferenceCarousel({
       <a
         key={`${duplicate ? "duplicate-" : ""}${conference.title}`}
         href={conference.link}
+        target="_blank"
         tabIndex={duplicate ? -1 : undefined}
         className="placeholder h-32 w-56 shrink-0 px-5 transition-transform hover:-translate-y-1 hover:no-underline"
       >
