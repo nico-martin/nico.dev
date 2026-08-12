@@ -80,7 +80,9 @@ function EntryBadge({ type }: Pick<WhatsUpEntry, "type">) {
 function ApiMedia({ image, alt }: { image: ApiImage; alt: string }) {
   const source = image.sizes.large;
   const sizesByWidth = new Map(
-    Object.values(image.sizes).map((size) => [size.width, size]),
+    Object.values(image.sizes)
+      .filter((size) => size.width <= source.width)
+      .map((size) => [size.width, size]),
   );
   const srcSet = [...sizesByWidth.values()]
     .sort((first, second) => first.width - second.width)

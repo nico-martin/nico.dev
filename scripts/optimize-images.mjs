@@ -20,7 +20,7 @@ const images = [
   },
 ];
 
-const widths = [400, 800];
+const widths = [400, 600, 800];
 
 await mkdir(outputDirectory, { recursive: true });
 

@@ -1,5 +1,7 @@
 import portrait400Avif from "@/assets/generated/nico-martin-400.avif";
 import portrait400Webp from "@/assets/generated/nico-martin-400.webp";
+import portrait600Avif from "@/assets/generated/nico-martin-600.avif";
+import portrait600Webp from "@/assets/generated/nico-martin-600.webp";
 import portrait800Avif from "@/assets/generated/nico-martin-800.avif";
 import portrait800Webp from "@/assets/generated/nico-martin-800.webp";
 import { Blob } from "@/theme";
@@ -19,17 +21,17 @@ export default function Portrait({ className = "" }: { className?: string }) {
         <picture>
           <source
             type="image/avif"
-            srcSet={`${portrait400Avif.src} 400w, ${portrait800Avif.src} 800w`}
+            srcSet={`${portrait400Avif.src} 400w, ${portrait600Avif.src} 600w, ${portrait800Avif.src} 800w`}
             sizes={sizes}
           />
           <source
             type="image/webp"
-            srcSet={`${portrait400Webp.src} 400w, ${portrait800Webp.src} 800w`}
+            srcSet={`${portrait400Webp.src} 400w, ${portrait600Webp.src} 600w, ${portrait800Webp.src} 800w`}
             sizes={sizes}
           />
           <img
             src={portrait800Webp.src}
-            srcSet={`${portrait400Webp.src} 400w, ${portrait800Webp.src} 800w`}
+            srcSet={`${portrait400Webp.src} 400w, ${portrait600Webp.src} 600w, ${portrait800Webp.src} 800w`}
             sizes={sizes}
             width="800"
             height="800"

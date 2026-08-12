@@ -1,5 +1,7 @@
 import stage400Avif from "@/assets/generated/nico-on-stage-codetalks-400.avif";
 import stage400Webp from "@/assets/generated/nico-on-stage-codetalks-400.webp";
+import stage600Avif from "@/assets/generated/nico-on-stage-codetalks-600.avif";
+import stage600Webp from "@/assets/generated/nico-on-stage-codetalks-600.webp";
 import stage800Avif from "@/assets/generated/nico-on-stage-codetalks-800.avif";
 import stage800Webp from "@/assets/generated/nico-on-stage-codetalks-800.webp";
 import { Blob } from "@/theme";
@@ -12,17 +14,17 @@ export default function StagePhoto() {
       <picture>
         <source
           type="image/avif"
-          srcSet={`${stage400Avif.src} 400w, ${stage800Avif.src} 800w`}
+          srcSet={`${stage400Avif.src} 400w, ${stage600Avif.src} 600w, ${stage800Avif.src} 800w`}
           sizes={sizes}
         />
         <source
           type="image/webp"
-          srcSet={`${stage400Webp.src} 400w, ${stage800Webp.src} 800w`}
+          srcSet={`${stage400Webp.src} 400w, ${stage600Webp.src} 600w, ${stage800Webp.src} 800w`}
           sizes={sizes}
         />
         <img
           src={stage800Webp.src}
-          srcSet={`${stage400Webp.src} 400w, ${stage800Webp.src} 800w`}
+          srcSet={`${stage400Webp.src} 400w, ${stage600Webp.src} 600w, ${stage800Webp.src} 800w`}
           sizes={sizes}
           width="800"
           height="800"
