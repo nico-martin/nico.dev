@@ -34,12 +34,7 @@ export default async function SpeakingPage() {
         media={<StagePhoto />}
       />
       <RecordingsCarousel videos={videos} />
-      <EventBand
-        eyebrow="Upcoming"
-        title="Next up"
-        events={events}
-        upcomingOnly
-      />
+      <EventBand eyebrow="Upcoming" title="Next up" events={events} />
       <section className="wrap section">
         <Eyebrow>Archive</Eyebrow>
         <h2 className="section-title mt-5">Stages I&apos;ve been on</h2>

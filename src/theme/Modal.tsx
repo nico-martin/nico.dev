@@ -57,7 +57,7 @@ export default function Modal({
     >
       <div className="flex max-h-[calc(100dvh-2rem)] flex-col">
         <header className="flex shrink-0 items-center justify-between gap-6 border-b-3 border-ink bg-yellow-tint px-5 py-4 sm:px-7">
-          <h2 id={titleId} className="text-xl sm:text-2xl">
+          <h2 id={titleId} className="text-xl text-black sm:text-2xl">
             {title}
           </h2>
           <button

@@ -16,6 +16,7 @@ import chevronsRight from "./outline/chevrons-right.svg";
 import code from "./outline/code.svg";
 import download from "./outline/download.svg";
 import fileText from "./outline/file-text.svg";
+import infoCircle from "./outline/info-circle.svg";
 import mail from "./outline/mail.svg";
 import markdown from "./outline/markdown.svg";
 import menu from "./outline/menu-2.svg";
@@ -47,6 +48,7 @@ export const tablerIconAssets = {
   code,
   download,
   "file-text": fileText,
+  "info-circle": infoCircle,
   mail,
   markdown,
   menu,

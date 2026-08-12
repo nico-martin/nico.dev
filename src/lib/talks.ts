@@ -12,5 +12,16 @@ export function talksToEvents(talks: WpTalk[]): Event[] {
     accent: eventAccents[index % eventAccents.length],
     href:
       talk.links.find((link) => link.key === "infos")?.value ?? "/speaking/",
+    links: talk.links.flatMap((link) => {
+      if (
+        link.key !== "infos" &&
+        link.key !== "slides" &&
+        link.key !== "video"
+      ) {
+        return [];
+      }
+
+      return [{ key: link.key, href: link.value }];
+    }),
   }));
 }

@@ -96,7 +96,6 @@ export default async function Home() {
       <EventBand
         events={events}
         description="Over the past few years, I’ve spoken at conferences and meetups across Europe, meeting brilliant people and happily nerding out about what browsers can do."
-        upcomingOnly
         showAll
       />
       <section className="wrap section">
