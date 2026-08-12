@@ -25,7 +25,7 @@ const typeStyles = {
   project: {
     label: "Project",
     icon: "code",
-    badge: "[background:var(--color-brand)] text-ink",
+    badge: "[background:var(--color-brand)] text-white",
     shadow: "shadow-[9px_9px_0_var(--color-brand-tint-strong)]",
   },
   podcast: {

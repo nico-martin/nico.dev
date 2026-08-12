@@ -31,6 +31,11 @@ const dateColors = {
   pink: "text-pink",
 } as const;
 
+const darkDateColors = {
+  ...dateColors,
+  brand: "text-brand-tint-strong",
+} as const;
+
 const linkLabels = {
   infos: "Info",
   slides: "Slides",
@@ -97,7 +102,7 @@ export default function EventBand({
       <div className="wrap">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-10">
           <div>
-            <span className="font-mono text-xs tracking-[0.16em] text-brand uppercase">
+            <span className="font-mono text-xs tracking-[0.16em] text-brand-tint-strong uppercase">
               {eyebrow}
             </span>
             <h2 className="section-title mt-3">{title}</h2>
@@ -112,7 +117,9 @@ export default function EventBand({
               className="event-row"
               target="_blank"
             >
-              <span className={`font-mono text-xs ${dateColors[item.accent]}`}>
+              <span
+                className={`font-mono text-xs ${darkDateColors[item.accent]}`}
+              >
                 {item.date}
               </span>
               <strong className="font-heading text-xl font-extrabold text-white">
