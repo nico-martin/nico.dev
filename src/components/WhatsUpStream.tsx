@@ -49,7 +49,7 @@ const typeStyles = {
   instagram: {
     label: "Instagram",
     icon: "brand-instagram",
-    badge: "[background:#405de6] text-ink",
+    badge: "[background:#405de6] text-white",
     shadow: "shadow-[9px_9px_0_var(--color-peri-tint)]",
   },
 } as const;
