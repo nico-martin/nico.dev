@@ -44,9 +44,9 @@ export default async function AboutPage() {
                 Transformers.js
               </a>
               , bringing state-of-the-art AI models directly to the browser. My
-              work combines WebGPU, WebAssembly and modern browser APIs to
-              build private, offline AI, autonomous agents and even
-              browser-controlled hardware.
+              work combines WebGPU, WebAssembly and modern browser APIs to build
+              private, offline AI, autonomous agents and even browser-controlled
+              hardware.
             </p>
             <p>
               With more than a decade of web development behind me, I focus on

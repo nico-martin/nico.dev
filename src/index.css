@@ -227,6 +227,39 @@
     color: var(--color-ink);
     font-weight: 700;
   }
+  .legal-content h2 {
+    margin-top: 3rem;
+    font-size: 1.75rem;
+  }
+  .legal-content h3 {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+  }
+  .legal-content p,
+  .legal-content ul,
+  .legal-content ol {
+    margin-top: 1rem;
+  }
+  .legal-content ul,
+  .legal-content ol {
+    display: grid;
+    gap: 0.5rem;
+    padding-left: 1.5rem;
+  }
+  .legal-content ul {
+    list-style: disc;
+  }
+  .legal-content ol {
+    list-style: decimal;
+  }
+  .legal-content li::marker {
+    color: var(--color-brand);
+    font-weight: 700;
+  }
+  .legal-content strong {
+    color: var(--color-ink);
+    font-weight: 700;
+  }
   .talk-map > g:first-child {
     fill: var(--color-surface-border);
     stroke: white;
