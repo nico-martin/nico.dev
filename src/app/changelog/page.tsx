@@ -4,8 +4,15 @@ import PageHeader from "@/components/PageHeader";
 import WhatsUpStream from "@/components/WhatsUpStream";
 import { getPageMetadata } from "@/lib/shareable";
 import { type WhatsUpResponse, wpApiGet } from "@/lib/wp-api";
+import { TablerIcon } from "@/theme";
 
-export const metadata: Metadata = getPageMetadata("/whats-up/");
+export const metadata: Metadata = {
+  ...getPageMetadata("/changelog/"),
+  alternates: {
+    canonical: "/changelog/",
+    types: { "application/rss+xml": "/changelog/feed.xml" },
+  },
+};
 
 export default async function WhatsUpPage() {
   const { entries } = await wpApiGet<WhatsUpResponse>("nico/v2/whats-up");
@@ -16,12 +23,20 @@ export default async function WhatsUpPage() {
   return (
     <>
       <PageHeader
-        eyebrow="What's up"
-        title="Things I build, write and post"
+        eyebrow="Changelog"
+        title="What I’ve been working on"
         lead="I love exploring new technologies, testing ideas and seeing what the browser can do. This is where those experiments end up, alongside articles, videos, podcast appearances and everything else I share along the way."
       />
       <section className="wrap mb-24">
         <WhatsUpStream entries={sortedEntries} />
+        <a
+          href="/changelog/feed.xml"
+          className="mt-12 inline-flex items-center gap-2 font-mono text-sm"
+          type="application/rss+xml"
+        >
+          <TablerIcon icon="rss" className="size-4" />
+          Subscribe via RSS
+        </a>
       </section>
     </>
   );

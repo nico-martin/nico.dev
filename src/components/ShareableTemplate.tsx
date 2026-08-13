@@ -30,7 +30,7 @@ const pageDetails = {
     frameClass: "shadow-[-14px_14px_0_var(--color-pink)]",
     image: "stage",
   },
-  "/whats-up/": {
+  "/changelog/": {
     sticker: "A living notebook",
     stickerClass: "bg-pink text-white shadow-[5px_5px_0_var(--color-yellow)]",
     accentClass: "shadow-[4px_4px_0_var(--color-pink)]",

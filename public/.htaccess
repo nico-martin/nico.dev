@@ -3,6 +3,10 @@
   AddType font/woff2 .woff2
 </IfModule>
 
+<IfModule mod_alias.c>
+  Redirect 301 /whats-up/ /changelog/
+</IfModule>
+
 <IfModule mod_headers.c>
   <FilesMatch "\.(?:avif|css|gif|ico|jpe?g|js|png|svg|webp|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"

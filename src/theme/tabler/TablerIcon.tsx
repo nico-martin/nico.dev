@@ -25,6 +25,7 @@ import pencil from "./outline/pencil.svg";
 import playerPlay from "./outline/player-play.svg";
 import presentation from "./outline/presentation.svg";
 import quote from "./outline/quote.svg";
+import rss from "./outline/rss.svg";
 import sparkles from "./outline/sparkles.svg";
 import star from "./outline/star.svg";
 import user from "./outline/user.svg";
@@ -57,6 +58,7 @@ export const tablerIconAssets = {
   "player-play": playerPlay,
   presentation,
   quote,
+  rss,
   sparkles,
   star,
   user,

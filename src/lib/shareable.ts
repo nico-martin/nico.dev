@@ -27,10 +27,10 @@ export const shareablePages = {
     metadataDescription:
       "Conference talks about browser AI, WebML and modern web technologies, complete with practical live demos.",
   },
-  "/whats-up/": {
-    eyebrow: "What's up",
-    title: "Things I build, write and post",
-    metadataTitle: "What's up",
+  "/changelog/": {
+    eyebrow: "Changelog",
+    title: "What I’ve been working on",
+    metadataTitle: "Changelog",
     metadataDescription:
       "Projects, articles, videos, pictures and podcast appearances from Nico Martin.",
   },

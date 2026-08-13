@@ -11,14 +11,14 @@ import {
   type WhatsUpResponse,
   wpApiGet,
 } from "@/lib/wp-api";
-import { Card, Eyebrow, IconTile, TablerIcon } from "@/theme";
+import { Eyebrow, IconTile, TablerIcon } from "@/theme";
 
 const introCards = [
   {
     icon: "user",
     title: "About me",
     text: "WebML at Hugging Face, Google Developer Expert, and a few years of conference stages behind me. The long version, plus what came before.",
-    shadow: "teal" as const,
+    shadow: "shadow-[9px_9px_0_var(--color-brand-tint-strong)]",
     hoverShadow:
       "hover:shadow-[11px_11px_0_var(--color-brand-tint-strong)] focus-within:shadow-[11px_11px_0_var(--color-brand-tint-strong)]",
     tone: "teal" as const,
@@ -29,7 +29,7 @@ const introCards = [
     icon: "presentation",
     title: "Talks",
     text: "AI agents in the browser, K.I.T.T. in JavaScript, robots over Bluetooth, ... Every one with on-device live demos along the way.",
-    shadow: "yellow" as const,
+    shadow: "shadow-[9px_9px_0_var(--color-yellow)]",
     hoverShadow:
       "hover:shadow-[11px_11px_0_var(--color-yellow)] focus-within:shadow-[11px_11px_0_var(--color-yellow)]",
     tone: "yellow" as const,
@@ -38,13 +38,13 @@ const introCards = [
   },
   {
     icon: "activity",
-    title: "What's up",
+    title: "Changelog",
     text: "Side projects, articles, videos, pictures and podcast appearances. Whatever I am currently building and exploring.",
-    shadow: "pink" as const,
+    shadow: "shadow-[9px_9px_0_var(--color-pink)]",
     hoverShadow:
       "hover:shadow-[11px_11px_0_var(--color-pink)] focus-within:shadow-[11px_11px_0_var(--color-pink)]",
     tone: "pink" as const,
-    href: "/whats-up/",
+    href: "/changelog/",
     cta: "Have a look",
   },
 ] as const;
@@ -104,23 +104,25 @@ export default async function Home() {
       <section className="wrap pt-16">
         <div className="grid gap-7 md:grid-cols-3">
           {introCards.map((item, index) => (
-            <Card
+            <Link
               key={item.title}
-              shadow={item.shadow}
-              className={`relative flex animate-rise flex-col transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-within:-translate-x-0.5 focus-within:-translate-y-0.5 focus-within:outline-3 focus-within:outline-offset-4 focus-within:outline-brand ${item.hoverShadow}`}
+              href={item.href}
+              className={`group flex animate-rise flex-col rounded-card border-3 border-ink bg-white p-7 text-body no-underline transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:text-body hover:no-underline focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-brand ${item.shadow} ${item.hoverShadow}`}
               style={{ animationDelay: `${index * 90}ms` }}
             >
-              <IconTile icon={item.icon} tone={item.tone} />
+              <div className="flex items-start justify-between gap-4">
+                <IconTile icon={item.icon} tone={item.tone} />
+                <span className="grid size-10 shrink-0 place-items-center rounded-full border-2 border-ink bg-white text-ink shadow-[3px_3px_0_var(--color-yellow)] transition group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 group-hover:shadow-[5px_5px_0_var(--color-yellow)] group-focus-visible:-translate-x-0.5 group-focus-visible:-translate-y-0.5 group-focus-visible:shadow-[5px_5px_0_var(--color-yellow)]">
+                  <TablerIcon icon="chevrons-right" className="size-4" />
+                </span>
+              </div>
               <h2 className="mt-5 text-2xl">{item.title}</h2>
               <p className="mt-2 mb-4">{item.text}</p>
-              <Link
-                href={item.href}
-                className="mt-auto inline-flex items-center gap-1 font-mono text-sm focus-visible:outline-none after:absolute after:inset-0 after:content-['']"
-              >
+              <span className="mt-auto inline-flex w-fit items-center gap-1 border-b-2 border-brand pb-1 font-mono text-sm font-medium text-brand">
                 {item.cta}
                 <TablerIcon icon="chevrons-right" className="size-4" />
-              </Link>
-            </Card>
+              </span>
+            </Link>
           ))}
         </div>
       </section>
@@ -136,10 +138,10 @@ export default async function Home() {
             <h2 className="section-title mt-5">Latest things I&apos;ve done</h2>
           </div>
           <Link
-            href="/whats-up/"
+            href="/changelog/"
             className="inline-flex items-center gap-1 font-mono text-sm"
           >
-            Everything I&apos;m up to
+            View the changelog
             <TablerIcon icon="chevrons-right" className="size-4" />
           </Link>
         </div>
