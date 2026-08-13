@@ -34,27 +34,25 @@ export default async function AboutPage() {
         lead={
           <div className="space-y-4">
             <p>
-              I am an open source machine learning engineer with focus on WebML
-              at Hugging Face and Google Developer Expert in AI and web
-              technologies, from Switzerland.
+              I am a machine learning engineer focused on WebML at Hugging Face
+              and a Google Developer Expert in AI and Web Technologies from
+              Switzerland.
             </p>
             <p>
-              I work on{" "}
+              At Hugging Face, I work on{" "}
               <a href="https://github.com/huggingface/transformers.js">
                 Transformers.js
               </a>
-              , bringing state-of-the-art machine learning models directly to
-              the web browser. My focus is on making AI accessible through
-              interactive demos, technical content and open source tools.
+              , bringing state-of-the-art AI models directly to the browser. My
+              work combines WebGPU, WebAssembly and modern browser APIs to
+              build private, offline AI, autonomous agents and even
+              browser-controlled hardware.
             </p>
             <p>
-              Beyond code, I&apos;m passionate about developer relations:
-              sharing knowledge through conference talks, blog posts and
-              community engagement.
-            </p>
-            <p>
-              When I&apos;m not in front of a computer, I spend my days in the
-              mountains, on skis, or waiting for the wind.
+              With more than a decade of web development behind me, I focus on
+              browser AI that works for real users and devices. I share what I
+              learn through conference talks and hands-on workshops, usually
+              with live demos and occasionally robots.
             </p>
           </div>
         }
@@ -69,26 +67,26 @@ export default async function AboutPage() {
         media={<Portrait />}
       />
       <section className="wrap section">
-        <Eyebrow>What I do</Eyebrow>
-        <h2 className="section-title mt-5 mb-8">Three things, most days</h2>
+        <Eyebrow>A little more about me</Eyebrow>
+        <h2 className="section-title mt-5 mb-8">What keeps me busy</h2>
         <div className="grid gap-7 md:grid-cols-3">
           {[
             [
-              "brain",
-              "On-device machine learning",
-              "Models that run client-side: quantisation, WebGPU, worker pipelines, and the demos that prove it works.",
+              "code",
+              "Engineering",
+              "I build open source machine learning tools for the web, turn new browser capabilities into practical products, and share what I learn along the way.",
               "teal",
             ],
             [
-              "microphone",
-              "Speaking & teaching",
-              "Conference talks and team workshops. I like a live demo that could fail on stage - it usually does not.",
+              "home-heart",
+              "Family",
+              "My wife, our three kids and I live in a small city by a beautiful lake, surrounded by the Swiss mountains. They keep my life busy, joyful, and full of surprises.",
               "yellow",
             ],
             [
-              "bolt",
-              "Progressive web apps",
-              "Installable, offline-capable web apps that feel at home on any device, powered by service workers and modern browser APIs.",
+              "mountain",
+              "Wind and mountains",
+              "Whenever there is wind, I try to be on the water. Otherwise, you will find me on skis in the terrain park, hiking in the mountains, or checking the wind forecast again.",
               "pink",
             ],
           ].map(([icon, title, text, tone]) => (
