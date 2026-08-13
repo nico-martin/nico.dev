@@ -137,7 +137,7 @@ export default function EventBand({
           {showAll && (
             <Link
               href="/speaking/"
-              className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
+              className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:text-brand focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5"
             >
               <span className="inline-flex items-center gap-2">
                 All talks and recordings
@@ -149,7 +149,7 @@ export default function EventBand({
             <button
               type="button"
               onClick={() => setArchiveOpen(true)}
-              className="mt-9 inline-flex cursor-pointer items-center gap-2 border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
+              className="mt-9 inline-flex cursor-pointer items-center gap-2 border-b-2 border-brand pb-1 font-mono text-sm text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:text-brand focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5"
             >
               Event archive
               <TablerIcon icon="chevrons-right" className="size-4" />
@@ -157,7 +157,7 @@ export default function EventBand({
           )}
           <Link
             href="/invite/"
-            className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white hover:text-brand"
+            className="mt-9 inline-block border-b-2 border-brand pb-1 font-mono text-sm text-white transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:text-brand focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5"
           >
             <span className="inline-flex items-center gap-2">
               Find a talk for your event

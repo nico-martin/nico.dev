@@ -19,6 +19,8 @@ const introCards = [
     title: "About me",
     text: "WebML at Hugging Face, Google Developer Expert, and a few years of conference stages behind me. The long version, plus what came before.",
     shadow: "teal" as const,
+    hoverShadow:
+      "hover:shadow-[11px_11px_0_var(--color-brand-tint-strong)] focus-within:shadow-[11px_11px_0_var(--color-brand-tint-strong)]",
     tone: "teal" as const,
     href: "/about/",
     cta: "Who I am",
@@ -28,6 +30,8 @@ const introCards = [
     title: "Talks",
     text: "AI agents in the browser, K.I.T.T. in JavaScript, robots over Bluetooth, ... Every one with on-device live demos along the way.",
     shadow: "yellow" as const,
+    hoverShadow:
+      "hover:shadow-[11px_11px_0_var(--color-yellow)] focus-within:shadow-[11px_11px_0_var(--color-yellow)]",
     tone: "yellow" as const,
     href: "/speaking/",
     cta: "See the talks",
@@ -37,6 +41,8 @@ const introCards = [
     title: "What's up",
     text: "Side projects, articles, videos, pictures and podcast appearances. Whatever I am currently building and exploring.",
     shadow: "pink" as const,
+    hoverShadow:
+      "hover:shadow-[11px_11px_0_var(--color-pink)] focus-within:shadow-[11px_11px_0_var(--color-pink)]",
     tone: "pink" as const,
     href: "/whats-up/",
     cta: "Have a look",
@@ -101,7 +107,7 @@ export default async function Home() {
             <Card
               key={item.title}
               shadow={item.shadow}
-              className="flex animate-rise flex-col"
+              className={`relative flex animate-rise flex-col transition hover:-translate-x-0.5 hover:-translate-y-0.5 focus-within:-translate-x-0.5 focus-within:-translate-y-0.5 focus-within:outline-3 focus-within:outline-offset-4 focus-within:outline-brand ${item.hoverShadow}`}
               style={{ animationDelay: `${index * 90}ms` }}
             >
               <IconTile icon={item.icon} tone={item.tone} />
@@ -109,7 +115,7 @@ export default async function Home() {
               <p className="mt-2 mb-4">{item.text}</p>
               <Link
                 href={item.href}
-                className="mt-auto inline-flex items-center gap-1 font-mono text-sm"
+                className="mt-auto inline-flex items-center gap-1 font-mono text-sm focus-visible:outline-none after:absolute after:inset-0 after:content-['']"
               >
                 {item.cta}
                 <TablerIcon icon="chevrons-right" className="size-4" />

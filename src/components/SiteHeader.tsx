@@ -148,7 +148,7 @@ export default function SiteHeader() {
                           "border-3 border-ink bg-ink py-[0.3125rem] text-white shadow-[3px_3px_0_currentColor] hover:bg-ink hover:text-white",
                           accents[index],
                         )
-                      : "bg-white/80 text-ink shadow-none hover:bg-white hover:text-ink",
+                      : "border-3 border-ink bg-white/80 py-[0.3125rem] text-ink shadow-none hover:bg-white hover:text-ink",
                   )}
                 >
                   {label}
