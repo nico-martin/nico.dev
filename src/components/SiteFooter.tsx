@@ -9,8 +9,6 @@ const links = [
   ["Latest", "/latest/"],
   ["Invite me", "/invite/"],
   ["CV", "/cv/"],
-  ["Privacy", "/privacy/"],
-  ["Legal", "/legal/"],
 ] as const;
 
 export default function SiteFooter() {
@@ -91,6 +89,17 @@ export default function SiteFooter() {
             </Link>
           ))}
         </div>
+      </div>
+      <div className="wrap mt-12 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-t border-white/15 pt-6 text-center font-mono text-xs text-faint">
+        <span>&copy; {new Date().getFullYear()} Nico Martin</span>
+        <span aria-hidden="true">·</span>
+        <Link href="/privacy/" className="text-white">
+          Privacy
+        </Link>
+        <span aria-hidden="true">·</span>
+        <Link href="/legal/" className="text-white">
+          Legal
+        </Link>
       </div>
     </footer>
   );
