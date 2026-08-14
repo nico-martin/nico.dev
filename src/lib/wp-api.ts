@@ -23,6 +23,7 @@ export interface WpVideo {
   width: string;
   height: string;
   title: string;
+  cover?: ApiImage;
 }
 
 export interface WpOrganizerQuote {

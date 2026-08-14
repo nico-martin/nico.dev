@@ -10,13 +10,14 @@ interface RecordingsCarouselProps {
   videos: WpVideo[];
 }
 
-function getVideoMedia(url: string) {
-  const parsedUrl = new URL(url);
+function getVideoMedia(video: WpVideo) {
+  const parsedUrl = new URL(video.url);
+  const cover = video.cover?.sizes.large.url;
 
   if (parsedUrl.hostname === "youtu.be") {
     const id = parsedUrl.pathname.slice(1);
     return {
-      thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+      thumbnail: cover ?? `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
       embed: `https://www.youtube.com/embed/${id}?autoplay=1`,
     };
   }
@@ -25,16 +26,16 @@ function getVideoMedia(url: string) {
     const id = parsedUrl.searchParams.get("v");
     return id
       ? {
-          thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+          thumbnail: cover ?? `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
           embed: `https://www.youtube.com/embed/${id}?autoplay=1`,
         }
-      : { thumbnail: null, embed: url };
+      : { thumbnail: cover ?? null, embed: video.url };
   }
 
   if (parsedUrl.hostname === "videopress.com") {
     const id = parsedUrl.pathname.split("/").filter(Boolean).at(-1);
     return {
-      thumbnail: null,
+      thumbnail: cover ?? null,
       embed: `https://videopress.com/embed/${id}?autoplay=1`,
     };
   }
@@ -43,7 +44,7 @@ function getVideoMedia(url: string) {
     parsedUrl.searchParams.set("autostart", "true");
   }
 
-  return { thumbnail: null, embed: parsedUrl.toString() };
+  return { thumbnail: cover ?? null, embed: parsedUrl.toString() };
 }
 
 export default function RecordingsCarousel({
@@ -102,7 +103,7 @@ export default function RecordingsCarousel({
         className="recordings-scroller mt-9 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-5"
       >
         {videos.map((video) => {
-          const media = getVideoMedia(video.url);
+          const media = getVideoMedia(video);
           const isActive = activeVideo === video.url;
 
           return (
