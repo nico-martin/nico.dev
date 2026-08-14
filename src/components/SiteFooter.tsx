@@ -9,6 +9,8 @@ const links = [
   ["Latest", "/latest/"],
   ["Invite me", "/invite/"],
   ["CV", "/cv/"],
+  ["Privacy", "/privacy/"],
+  ["Legal", "/legal/"],
 ] as const;
 
 export default function SiteFooter() {

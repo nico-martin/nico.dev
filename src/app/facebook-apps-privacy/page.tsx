@@ -20,6 +20,7 @@ export default function FacebookAppsPrivacyPage() {
     <LegalPage
       title="Facebook privacy policy"
       intro="Privacy policy for Facebook applications developed by Nico Martin"
+      eyebrow="Facebook apps"
     >
       <p>
         <strong>Last Updated:</strong> 19.07.2025
@@ -108,15 +109,11 @@ export default function FacebookAppsPrivacyPage() {
           <strong>Email:</strong> privacy@nico.dev
         </li>
         <li>
-          <strong>Address:</strong>
+          <strong>Contact:</strong>
           <br />
           sandkopf GmbH
           <br />
           c/o Nicolas Martin
-          <br />
-          Marquard-Wocher Strasse 11
-          <br />
-          3600 Thun
         </li>
       </ul>
     </LegalPage>

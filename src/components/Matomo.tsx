@@ -36,6 +36,8 @@ export default function Matomo({
   return (
     <Script id="matomo" strategy="afterInteractive">
       {`var _paq = window._paq = window._paq || [];
+_paq.push(['disableCookies']);
+_paq.push(['setDoNotTrack', true]);
 _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']);
 (function() {

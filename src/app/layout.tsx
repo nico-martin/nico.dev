@@ -44,7 +44,7 @@ export default function RootLayout({
       lang="en"
       className={`${headingFont.variable} ${sansFont.variable} ${monoFont.variable}`}
     >
-      <body>
+      <body className="flex min-h-dvh flex-col">
         {matomoUrl && matomoSiteId && (
           <Matomo url={`${matomoUrl}/`} siteId={matomoSiteId} />
         )}
@@ -54,7 +54,7 @@ export default function RootLayout({
         />
         <ShareableTemplate />
         <SiteHeader />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>

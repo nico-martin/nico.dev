@@ -20,6 +20,7 @@ export default function FacebookAppsDataDeletionPage() {
     <LegalPage
       title="Facebook data deletion"
       intro="Data deletion for Facebook applications developed by Nico Martin"
+      eyebrow="Facebook apps"
     >
       <h2 id="how-to-delete-your-data">How to Delete Your Data</h2>
       <p>

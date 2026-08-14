@@ -20,7 +20,6 @@ const translations = {
   en: {
     eyebrow: "Curriculum vitae",
     contact: "Contact",
-    address: "Address",
     born: "Born",
     languages: "Languages",
     education: "Education",
@@ -33,7 +32,6 @@ const translations = {
   de: {
     eyebrow: "Lebenslauf",
     contact: "Kontakt",
-    address: "Adresse",
     born: "Geboren",
     languages: "Sprachen",
     education: "Ausbildung",
@@ -125,15 +123,6 @@ export default function CvDocument({ cv }: CvDocumentProps) {
                 {copy.contact}
               </Eyebrow>
               <div className="mt-5 grid gap-4 text-sm">
-                <div>
-                  <div className="font-mono text-xs text-muted uppercase">
-                    {copy.address}
-                  </div>
-                  <address
-                    className="mt-1 not-italic"
-                    dangerouslySetInnerHTML={{ __html: cv.contact.address }}
-                  />
-                </div>
                 <div>
                   <div className="font-mono text-xs text-muted uppercase">
                     {copy.born}
