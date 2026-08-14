@@ -38,13 +38,13 @@ const introCards = [
   },
   {
     icon: "activity",
-    title: "Changelog",
+    title: "Latest",
     text: "Side projects, articles, videos, pictures and podcast appearances. Whatever I am currently building and exploring.",
     shadow: "shadow-[9px_9px_0_var(--color-pink)]",
     hoverShadow:
       "hover:shadow-[11px_11px_0_var(--color-pink)] focus-within:shadow-[11px_11px_0_var(--color-pink)]",
     tone: "pink" as const,
-    href: "/changelog/",
+    href: "/latest/",
     cta: "Have a look",
   },
 ] as const;
@@ -138,10 +138,10 @@ export default async function Home() {
             <h2 className="section-title mt-5">Latest things I&apos;ve done</h2>
           </div>
           <Link
-            href="/changelog/"
+            href="/latest/"
             className="inline-flex items-center gap-1 font-mono text-sm"
           >
-            View the changelog
+            View all updates
             <TablerIcon icon="chevrons-right" className="size-4" />
           </Link>
         </div>

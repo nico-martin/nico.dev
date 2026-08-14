@@ -2,7 +2,7 @@ import type { WhatsUpEntry, WhatsUpResponse } from "@/lib/wp-api";
 import { wpApiGet } from "@/lib/wp-api";
 
 const SITE_URL = "https://beta.nico.dev";
-const CHANGELOG_URL = `${SITE_URL}/changelog/`;
+const LATEST_URL = `${SITE_URL}/latest/`;
 
 export const dynamic = "force-static";
 
@@ -22,14 +22,14 @@ function escapeXml(value: string) {
 function getEntryUrl(entry: WhatsUpEntry) {
   switch (entry.type) {
     case "project":
-      return entry.appUrl || entry.githubUrl || CHANGELOG_URL;
+      return entry.appUrl || entry.githubUrl || LATEST_URL;
     case "podcast":
     case "blogpost":
       return entry.link;
     case "video":
       return entry.youtubeUrl;
     case "instagram":
-      return entry.link || CHANGELOG_URL;
+      return entry.link || LATEST_URL;
   }
 }
 
@@ -55,12 +55,12 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Changelog | nico.dev</title>
-    <link>${CHANGELOG_URL}</link>
+    <title>Latest from Nico Martin</title>
+    <link>${LATEST_URL}</link>
     <description>Projects, articles, videos, pictures and podcast appearances from Nico Martin.</description>
     <language>en</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="${CHANGELOG_URL}feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="${LATEST_URL}feed.xml" rel="self" type="application/rss+xml" />
 ${items}
   </channel>
 </rss>`;

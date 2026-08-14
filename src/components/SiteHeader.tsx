@@ -11,7 +11,7 @@ const NAVIGATION = [
   ["Home", "/"],
   ["About", "/about/"],
   ["Speaking", "/speaking/"],
-  ["Changelog", "/changelog/"],
+  ["Latest", "/latest/"],
   //["Invite me", "/invite/"],
 ] as const;
 

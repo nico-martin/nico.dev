@@ -6,7 +6,7 @@ const links = [
   ["Home", "/"],
   ["About", "/about/"],
   ["Speaking", "/speaking/"],
-  ["Changelog", "/changelog/"],
+  ["Latest", "/latest/"],
   ["Invite me", "/invite/"],
   ["CV", "/cv/"],
 ] as const;
@@ -39,7 +39,8 @@ export default function SiteFooter() {
             target="_blank"
             className="flex items-center gap-2 font-mono text-sm text-white"
           >
-            <TablerIcon icon="brand-x" className="size-4" />x.com/nicodotdev
+            <TablerIcon icon="brand-x" className="size-4" />
+            x.com/nicodotdev
           </a>
           <a
             href="https://github.com/nico-martin"

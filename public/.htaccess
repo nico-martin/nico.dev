@@ -4,7 +4,8 @@
 </IfModule>
 
 <IfModule mod_alias.c>
-  Redirect 301 /whats-up/ /changelog/
+  Redirect 301 /whats-up/ /latest/
+  Redirect 301 /changelog/ /latest/
 </IfModule>
 
 <IfModule mod_headers.c>
