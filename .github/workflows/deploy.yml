@@ -3,7 +3,7 @@ name: Deploy to FTP
 on:
   push:
     branches:
-      - new-design
+      - main
   workflow_dispatch:
 
 jobs:
