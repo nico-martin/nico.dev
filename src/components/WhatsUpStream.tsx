@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import type { ApiImage, WhatsUpEntry } from "@/lib/wp-api";
 import { Badge, Card, TablerIcon } from "@/theme";
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 interface WhatsUpStreamProps {
   entries: WhatsUpEntry[];

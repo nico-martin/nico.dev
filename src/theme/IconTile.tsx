@@ -1,4 +1,4 @@
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 import TablerIcon from "./tabler/TablerIcon";
 import type { TablerIconName } from "./tabler/TablerIcon";

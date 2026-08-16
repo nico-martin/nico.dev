@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const SHAREABLE_URL = "https://shareable.nico.dev";
 
-const SITE_URL = "https://beta.nico.dev";
 const SHAREABLE_VERSION = "5";
 
 export const shareablePages = {

@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 const accents = {
   teal: "shadow-[6px_6px_0_var(--color-brand)]",

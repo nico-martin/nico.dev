@@ -1,7 +1,7 @@
 import type { WhatsUpEntry, WhatsUpResponse } from "@/lib/wp-api";
 import { wpApiGet } from "@/lib/wp-api";
+import { SITE_URL } from "@/lib/constants";
 
-const SITE_URL = "https://beta.nico.dev";
 const LATEST_URL = `${SITE_URL}/latest/`;
 
 export const dynamic = "force-static";

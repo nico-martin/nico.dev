@@ -6,7 +6,7 @@ import { useReactToPrint } from "react-to-print";
 
 import type { CvResponse } from "@/lib/wp-api";
 import { Badge, Blob, Card, Eyebrow, ListRow } from "@/theme";
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 import PageHeader from "./PageHeader";
 

@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 const shadows = {
   teal: "shadow-[9px_9px_0_var(--color-brand-tint-strong)]",

@@ -5,7 +5,7 @@ import portrait600Webp from "@/assets/generated/nico-martin-600.webp";
 import portrait800Avif from "@/assets/generated/nico-martin-800.avif";
 import portrait800Webp from "@/assets/generated/nico-martin-800.webp";
 import { Blob } from "@/theme";
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 const sizes = "(max-width: 980px) 82vw, 400px";
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 import { TablerIcon } from "@/theme";
 
 const NAVIGATION = [

@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 interface EyebrowProps extends HTMLAttributes<HTMLSpanElement> {
   children: ReactNode;

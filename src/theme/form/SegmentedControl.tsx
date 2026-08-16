@@ -2,7 +2,7 @@
 
 import { useId, type ReactNode } from "react";
 
-import cn from "@/utils/classnames";
+import cn from "@/lib/classnames";
 
 export interface SegmentedControlOption<Value extends string = string> {
   value: Value;
