@@ -4,7 +4,7 @@ import { toPng } from "html-to-image";
 import Image from "next/image";
 import { useState } from "react";
 
-import { TablerIcon } from "@/theme";
+import { TablerIcon, type TablerIconName } from "@/theme";
 
 interface DownloadButtonProps {
   targetId: string;
@@ -44,6 +44,38 @@ function DownloadButton({ targetId, fileName, width }: DownloadButtonProps) {
       <TablerIcon icon="download" className="size-4" />
       {downloading ? "Rendering..." : "Download PNG"}
     </button>
+  );
+}
+
+interface HighlightCompositionProps {
+  targetId: string;
+  fileName: string;
+  icon: TablerIconName;
+  blobClassName: string;
+  iconClassName: string;
+}
+
+function HighlightComposition({
+  targetId,
+  fileName,
+  icon,
+  blobClassName,
+  iconClassName,
+}: HighlightCompositionProps) {
+  return (
+    <section className="relative grid min-h-dvh snap-start place-items-center">
+      <DownloadButton targetId={targetId} fileName={fileName} width={1000} />
+      <div
+        id={targetId}
+        className="[container-type:inline-size] relative size-[min(100vw,100dvh)] overflow-hidden bg-transparent"
+      >
+        <div
+          className={`absolute top-1/2 left-1/2 grid size-[96%] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-blob ${blobClassName}`}
+        >
+          <TablerIcon icon={icon} className={`size-[60cqw] ${iconClassName}`} />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -162,6 +194,28 @@ export default function HeaderCompositions() {
           </div>
         </div>
       </section>
+
+      <HighlightComposition
+        targetId="highlight-home"
+        fileName="nico-highlight-home.png"
+        icon="home"
+        blobClassName="bg-yellow"
+        iconClassName="text-ink"
+      />
+      <HighlightComposition
+        targetId="highlight-code"
+        fileName="nico-highlight-code.png"
+        icon="code"
+        blobClassName="bg-peri"
+        iconClassName="text-white"
+      />
+      <HighlightComposition
+        targetId="highlight-microphone"
+        fileName="nico-highlight-microphone.png"
+        icon="microphone-2"
+        blobClassName="bg-brand"
+        iconClassName="text-white"
+      />
     </div>
   );
 }

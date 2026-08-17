@@ -16,12 +16,14 @@ import chevronsRight from "./outline/chevrons-right.svg";
 import code from "./outline/code.svg";
 import download from "./outline/download.svg";
 import fileText from "./outline/file-text.svg";
+import home from "./outline/home.svg";
 import homeHeart from "./outline/home-heart.svg";
 import infoCircle from "./outline/info-circle.svg";
 import mail from "./outline/mail.svg";
 import markdown from "./outline/markdown.svg";
 import menu from "./outline/menu-2.svg";
 import microphone from "./outline/microphone.svg";
+import microphone2 from "./outline/microphone-2.svg";
 import mountain from "./outline/mountain.svg";
 import pencil from "./outline/pencil.svg";
 import playerPlay from "./outline/player-play.svg";
@@ -51,12 +53,14 @@ export const tablerIconAssets = {
   code,
   download,
   "file-text": fileText,
+  home,
   "home-heart": homeHeart,
   "info-circle": infoCircle,
   mail,
   markdown,
   menu,
   microphone,
+  "microphone-2": microphone2,
   mountain,
   pencil,
   "player-play": playerPlay,
