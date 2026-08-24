@@ -4,6 +4,7 @@
 </IfModule>
 
 <IfModule mod_alias.c>
+  Redirect 301 /talks/ /speaking/
   Redirect 301 /whats-up/ /latest/
   Redirect 301 /changelog/ /latest/
 </IfModule>
