@@ -3,6 +3,8 @@
   AddType font/woff2 .woff2
 </IfModule>
 
+ErrorDocument 404 /404.html
+
 <IfModule mod_alias.c>
   Redirect 301 /talks/ /speaking/
   Redirect 301 /whats-up/ /latest/
