@@ -12,8 +12,9 @@ import CfpTalkSelector from "./CfpTalkSelector";
 import CopyTextButton from "./CopyTextButton";
 import PageHeader from "./PageHeader";
 import PressPhotoSelector from "./PressPhotoSelector";
+import StagePhoto from "@/components/StagePhoto";
 
-function CfpHeader({ portrait }: { portrait?: CfpPortrait }) {
+function CfpHeader() {
   return (
     <PageHeader
       eyebrow="Speaker resources"
@@ -27,20 +28,7 @@ function CfpHeader({ portrait }: { portrait?: CfpPortrait }) {
         },
         { href: "/speaking/", children: "past talks", secondary: true },
       ]}
-      media={
-        portrait ? (
-          <Blob className="size-[min(23rem,82vw)] bg-yellow">
-            <Image
-              src={portrait.url}
-              alt={portrait.alt || "Nico Martin"}
-              fill
-              priority
-              className="object-cover object-top"
-              sizes="(max-width: 980px) 82vw, 368px"
-            />
-          </Blob>
-        ) : undefined
-      }
+      media={<StagePhoto />}
     />
   );
 }
@@ -113,12 +101,9 @@ export default function CfpPageContent({
     );
   }
 
-  const preferredPortrait =
-    cfp.portrait.find((portrait) => portrait.preferred) ?? cfp.portrait[0];
-
   return (
     <>
-      <CfpHeader portrait={preferredPortrait} />
+      <CfpHeader />
 
       <section className="wrap">
         <Eyebrow>Talk proposals</Eyebrow>

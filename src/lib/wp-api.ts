@@ -239,7 +239,6 @@ export interface CfpPortrait {
 export interface CfpResponse {
   papers: CfpPaper[];
   links: CfpLink[];
-  portrait: CfpPortrait[];
 }
 
 export async function wpApiGet<Response, Params extends object = object>(
