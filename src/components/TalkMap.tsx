@@ -21,6 +21,15 @@ const defaultScale = 5;
 const homePosition = { x: 811.33, y: 255.19 };
 const mapSize = { width: 1561, height: 745.67 };
 
+function getFlightPath(destination: { x: number; y: number }) {
+  const horizontalDistance = Math.abs(destination.x - homePosition.x);
+  const controlX = (homePosition.x + destination.x) / 2;
+  const controlY =
+    (homePosition.y + destination.y) / 2 - horizontalDistance * 0.2;
+
+  return `M ${homePosition.x} ${homePosition.y} Q ${controlX} ${controlY} ${destination.x} ${destination.y}`;
+}
+
 function getHomeCenteredTransform(width: number, height: number): MapTransform {
   return {
     scale: defaultScale,
@@ -201,13 +210,11 @@ export default function TalkMap({ cities }: TalkMapProps) {
         >
           <g className="talk-map-connections">
             {cities.map((city) => (
-              <line
+              <path
                 strokeWidth={calculateRelativeSize(0.4)}
                 key={city.name}
-                x1={homePosition.x}
-                y1={homePosition.y}
-                x2={city.position.x}
-                y2={city.position.y}
+                d={getFlightPath(city.position)}
+                fill="none"
               />
             ))}
           </g>
