@@ -6,6 +6,7 @@ import bluetooth from "./outline/bluetooth.svg";
 import bolt from "./outline/bolt.svg";
 import brain from "./outline/brain.svg";
 import brandGithub from "./outline/brand-github.svg";
+import brandOpenSource from "./outline/brand-open-source.svg";
 import brandX from "./outline/brand-x.svg";
 import brandInstagram from "./outline/brand-instagram.svg";
 import brandLinkedin from "./outline/brand-linkedin.svg";
@@ -41,6 +42,7 @@ export const tablerIconAssets = {
   bolt,
   brain,
   "brand-github": brandGithub,
+  "brand-open-source": brandOpenSource,
   "brand-instagram": brandInstagram,
   "brand-linkedin": brandLinkedin,
   "brand-youtube": brandYoutube,
