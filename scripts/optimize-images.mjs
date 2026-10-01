@@ -18,6 +18,11 @@ const images = [
     input: "src/assets/nico-on-stage-codetalks.jpg",
     crop: { left: 1700, top: 300, width: 3600, height: 3600 },
   },
+  {
+    name: "nico-on-stage-infobip-shift",
+    input: "src/assets/nico-on-stage-infobip-shift.jpg",
+    crop: { left: 706, top: 0, width: 2829, height: 2829 },
+  },
 ];
 
 const widths = [400, 600, 800];
