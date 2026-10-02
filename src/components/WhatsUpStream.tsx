@@ -137,7 +137,7 @@ function ActionLink({ href, children }: { href: string; children: string }) {
 }
 
 function EntryMedia({ entry }: { entry: WhatsUpEntry }) {
-  if (entry.type === "blogpost") return null;
+  if (entry.type === "blogpost" && !entry.image?.sizes?.large) return null;
 
   return (
     <div className="relative overflow-hidden border-b-3 border-ink bg-surface-muted">
@@ -234,7 +234,8 @@ function EntryDetails({ entry }: { entry: WhatsUpEntry }) {
 }
 
 export function WhatsUpEntryCard({ entry }: { entry: WhatsUpEntry }) {
-  const hasMedia = entry.type !== "blogpost";
+  const hasMedia =
+    entry.type !== "blogpost" || Boolean(entry.image?.sizes?.large);
 
   return (
     <article

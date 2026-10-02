@@ -125,6 +125,7 @@ export interface WhatsUpBlogPost extends WhatsUpEntryBase {
   publisher: string;
   summary: string;
   link: string;
+  image: ApiImage | null;
 }
 
 export interface WhatsUpVideo extends WhatsUpEntryBase {
