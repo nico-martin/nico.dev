@@ -271,7 +271,7 @@
     stroke: var(--color-ink);
     transition: fill 0.2s ease;
   }
-  .talk-map-points .talk-map-connections line {
+  .talk-map-points .talk-map-connections path {
     stroke: var(--color-brand);
     opacity: 0.6;
   }

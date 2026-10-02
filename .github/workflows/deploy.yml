@@ -1,10 +1,16 @@
 name: Deploy to FTP
+run-name: ${{ inputs.request_id && format('Redeploy {0}', inputs.request_id) || format('Deploy {0}', github.sha) }}
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      request_id:
+        description: ID used by WordPress to track this deployment
+        required: false
+        type: string
 
 jobs:
   deploy:

@@ -1,9 +1,9 @@
-import stage400Avif from "@/assets/generated/nico-on-stage-codetalks-400.avif";
-import stage400Webp from "@/assets/generated/nico-on-stage-codetalks-400.webp";
-import stage600Avif from "@/assets/generated/nico-on-stage-codetalks-600.avif";
-import stage600Webp from "@/assets/generated/nico-on-stage-codetalks-600.webp";
-import stage800Avif from "@/assets/generated/nico-on-stage-codetalks-800.avif";
-import stage800Webp from "@/assets/generated/nico-on-stage-codetalks-800.webp";
+import stage400Avif from "@/assets/generated/nico-on-stage-infobip-shift-400.avif";
+import stage400Webp from "@/assets/generated/nico-on-stage-infobip-shift-400.webp";
+import stage600Avif from "@/assets/generated/nico-on-stage-infobip-shift-600.avif";
+import stage600Webp from "@/assets/generated/nico-on-stage-infobip-shift-600.webp";
+import stage800Avif from "@/assets/generated/nico-on-stage-infobip-shift-800.avif";
+import stage800Webp from "@/assets/generated/nico-on-stage-infobip-shift-800.webp";
 import { Blob } from "@/theme";
 
 const sizes = "(max-width: 980px) 82vw, 380px";
@@ -28,7 +28,7 @@ export default function StagePhoto() {
           sizes={sizes}
           width="800"
           height="800"
-          alt="Nico Martin on stage at code.talks Hamburg"
+          alt="Nico Martin on stage at Infobip Shift"
           fetchPriority="high"
           decoding="async"
           className="absolute inset-0 size-full object-cover"

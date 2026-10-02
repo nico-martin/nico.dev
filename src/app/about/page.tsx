@@ -74,13 +74,13 @@ export default async function AboutPage() {
             [
               "code",
               "Engineering",
-              "I build open source machine learning tools for the web, turn new browser capabilities into practical products, and share what I learn along the way.",
+              "I build machine learning tools for the web, turn new browser capabilities into practical products, and explore what becomes possible when AI runs locally.",
               "teal",
             ],
             [
-              "home-heart",
-              "Family",
-              "My wife, our three kids and I live in a small city by a beautiful lake, surrounded by the Swiss mountains. They keep my life busy, joyful, and full of surprises.",
+              "brand-open-source",
+              "Open source",
+              "Most of my work happens in public. I enjoy turning experiments into tools others can use, learning from contributors, and giving useful pieces back to the web.",
               "yellow",
             ],
             [
