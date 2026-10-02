@@ -181,7 +181,7 @@ export default function HeaderCompositions() {
           id="profile-image"
           className="[container-type:inline-size] relative size-[min(100vw,100dvh)] overflow-hidden bg-[#060709]"
         >
-          <div className="absolute inset-[0.8%] rounded-full bg-[conic-gradient(from_225deg,var(--color-brand)_0_88%,var(--color-yellow)_88%_94%,var(--color-pink)_94%_100%)] p-[2%]">
+          <div className="absolute inset-[0.8%] rounded-full bg-[conic-gradient(from_225deg,var(--color-brand)_0_88%,var(--color-yellow)_88%_94%,var(--color-pink)_94%_100%)] p-[4%]">
             <div className="relative size-full overflow-hidden rounded-full border-[0.2cqw] border-[#060709] bg-[#060709]">
               <Image
                 src="/profile.png"
